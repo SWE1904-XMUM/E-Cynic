@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.221875" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_baseline_delete_sweep_24.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.2101851851851852" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2101851851851852" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2101851851851852" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.24307692307692308" />
+        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_launcher_background.xml" value="0.221875" />
+        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/activity_bottom_nav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/bottom_navigation.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/fragment_articles.xml" value="0.19114583333333332" />
@@ -25,6 +28,8 @@
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/recycle.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.221875" />
+        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>
