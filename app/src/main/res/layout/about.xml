@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForgotPassword">
+    tools:context=".About">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot password page"
+        android:text="About E-Cynic"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="239dp" />
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="236dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
