@@ -27,7 +27,7 @@ public class History extends AppCompatActivity
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
-        // Set home as selected
+        // Set selected layout
         btmNav.setSelectedItemId(R.id.history);
 
         // Perform item selected listener

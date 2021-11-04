@@ -27,7 +27,7 @@ public class Profile extends AppCompatActivity
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
-        // Set home as selected
+        // Set selected layout
         btmNav.setSelectedItemId(R.id.profile);
 
         // Perform item selected listener

@@ -27,7 +27,7 @@ public class Recycle extends AppCompatActivity
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
-        // Set home as selected
+        // Set selected layout
         btmNav.setSelectedItemId(R.id.recycle);
 
         // Perform item selected listener
