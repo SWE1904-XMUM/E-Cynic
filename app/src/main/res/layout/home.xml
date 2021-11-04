@@ -19,4 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
+
+    <ImageView
+        android:id="@+id/info"
+        android:layout_width="99dp"
+        android:layout_height="105dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_baseline_info_24" />
 </RelativeLayout>
