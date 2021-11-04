@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECynic">
         <activity
-            android:name=".ElectronicAppliancesExample"
+            android:name=".EditProfile"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".ElectronicAppliancesExample"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".About"
             android:exported="false"

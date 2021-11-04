@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Profile extends AppCompatActivity
 {
-    private Button about;
+    private Button about, editProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,6 +21,7 @@ public class Profile extends AppCompatActivity
         setContentView(R.layout.profile);
 
         about = findViewById(R.id.about);
+        editProfile = findViewById(R.id.editProfile);
 
         bottomNavBar();
 
@@ -30,6 +31,16 @@ public class Profile extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent i = new Intent(Profile.this,About.class);
+                startActivity(i);
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(Profile.this,EditProfile.class);
                 startActivity(i);
             }
         });

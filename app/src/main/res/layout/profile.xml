@@ -20,6 +20,13 @@
         android:text="About E-Cynic"
         android:textAllCaps="false"/>
 
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="EDIT" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
         android:layout_width="match_parent"
