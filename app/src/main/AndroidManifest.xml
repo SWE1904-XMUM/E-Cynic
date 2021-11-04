@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECynic">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".Recycle"
             android:exported="false" />
         <activity
