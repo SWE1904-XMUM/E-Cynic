@@ -7,8 +7,20 @@ import androidx.annotation.Nullable;
 
 public class OrderDatabase extends DatabaseProvider
 {
-    public OrderDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
+    public OrderDatabase(@Nullable Context context)
     {
-        super(context, name, factory, version);
+        super(context);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db)
+    {
+        super.onCreate(db);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1)
+    {
+        super.onUpgrade(db, i, i1);
     }
 }

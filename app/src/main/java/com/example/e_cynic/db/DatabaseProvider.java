@@ -8,20 +8,22 @@ import androidx.annotation.Nullable;
 
 public class DatabaseProvider extends SQLiteOpenHelper
 {
+    // Database name
+    public static final String dbName = "E-Cynic.db";
 
-    public DatabaseProvider(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
+    public DatabaseProvider(@Nullable Context context)
     {
-        super(context, name, factory, version);
+        super(context, dbName, null, 1);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase)
+    public void onCreate(SQLiteDatabase db)
     {
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1)
+    public void onUpgrade(SQLiteDatabase db, int i, int i1)
     {
 
     }
