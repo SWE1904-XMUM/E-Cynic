@@ -60,6 +60,11 @@ public class HomeActivity extends AppCompatActivity
                         overridePendingTransition(0, 0);
                         return true;
 
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                         overridePendingTransition(0, 0);

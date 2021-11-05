@@ -61,6 +61,11 @@ public class RecycleActivity extends AppCompatActivity
                         case R.id.recycle:
                             return true;
 
+                        case R.id.quiz:
+                            startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+
                         case R.id.history:
                             startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                             overridePendingTransition(0, 0);
