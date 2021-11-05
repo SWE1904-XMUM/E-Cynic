@@ -1,10 +1,12 @@
-package com.example.e_cynic;
+package com.example.e_cynic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ForgotPassword extends AppCompatActivity
+import com.example.e_cynic.R;
+
+public class ForgotPasswordActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)

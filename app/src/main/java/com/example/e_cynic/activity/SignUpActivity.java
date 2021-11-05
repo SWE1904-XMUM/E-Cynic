@@ -1,10 +1,12 @@
-package com.example.e_cynic;
+package com.example.e_cynic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SignUp extends AppCompatActivity
+import com.example.e_cynic.R;
+
+public class SignUpActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)

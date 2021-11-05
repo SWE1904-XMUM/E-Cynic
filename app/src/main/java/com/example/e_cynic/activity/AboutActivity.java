@@ -1,15 +1,17 @@
-package com.example.e_cynic;
+package com.example.e_cynic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class EditProfile extends AppCompatActivity
+import com.example.e_cynic.R;
+
+public class AboutActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_profile);
+        setContentView(R.layout.about);
     }
 }

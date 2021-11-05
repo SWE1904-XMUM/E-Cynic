@@ -1,14 +1,15 @@
-package com.example.e_cynic;
+package com.example.e_cynic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class Login extends AppCompatActivity
+import com.example.e_cynic.R;
+
+public class LoginActivity extends AppCompatActivity
 {
     private Button loginBtn;
     private Button signUpBtn;
@@ -29,7 +30,7 @@ public class Login extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(Login.this,Home.class);
+                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(i);
             }
         });
@@ -39,7 +40,7 @@ public class Login extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(Login.this,SignUp.class);
+                Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(i);
             }
         });
@@ -49,7 +50,7 @@ public class Login extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(Login.this,ForgotPassword.class);
+                Intent i = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(i);
             }
         });

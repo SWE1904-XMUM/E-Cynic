@@ -1,4 +1,4 @@
-package com.example.e_cynic;
+package com.example.e_cynic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.e_cynic.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Recycle extends AppCompatActivity
+public class RecycleActivity extends AppCompatActivity
 {
     private ImageView example;
 
@@ -30,7 +30,7 @@ public class Recycle extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(Recycle.this,ElectronicAppliancesExample.class);
+                Intent i = new Intent(RecycleActivity.this, ElectronicAppliancesExampleActivity.class);
                 startActivity(i);
             }
         });
@@ -54,7 +54,7 @@ public class Recycle extends AppCompatActivity
                     switch (item.getItemId())
                     {
                         case R.id.home:
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             overridePendingTransition(0, 0);
                             return true;
 
@@ -62,12 +62,12 @@ public class Recycle extends AppCompatActivity
                             return true;
 
                         case R.id.history:
-                            startActivity(new Intent(getApplicationContext(), History.class));
+                            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
                             overridePendingTransition(0, 0);
                             return true;
 
                         case R.id.profile:
-                            startActivity(new Intent(getApplicationContext(), Profile.class));
+                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                             overridePendingTransition(0, 0);
                             return true;
                     }

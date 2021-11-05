@@ -1,4 +1,4 @@
-package com.example.e_cynic;
+package com.example.e_cynic.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
