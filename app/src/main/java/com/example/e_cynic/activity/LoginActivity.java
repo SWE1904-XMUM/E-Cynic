@@ -11,9 +11,7 @@ import com.example.e_cynic.R;
 
 public class LoginActivity extends AppCompatActivity
 {
-    private Button loginBtn;
-    private Button signUpBtn;
-    private Button forgotPwd;
+    private Button loginBtn, signUpBtn, forgotPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
