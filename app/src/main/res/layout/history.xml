@@ -13,11 +13,17 @@
         android:text="History Page"
         android:textSize="30dp"/>
 
+    <ImageView
+        android:id="@+id/redeemPointsBtn"
+        android:layout_width="93dp"
+        android:layout_height="85dp"
+        app:srcCompat="@drawable/ic_baseline_card_giftcard_24"
+        android:layout_centerHorizontal="true"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
-
 </RelativeLayout>
