@@ -5,10 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-public class UserDatabase extends DatabaseProvider
+public class UserDatabase
 {
-    public UserDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
-    {
-        super(context, name, factory, version);
-    }
+
 }
