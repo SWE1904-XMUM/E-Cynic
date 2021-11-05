@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/recycle"
-        android:icon="@drawable/ic_baseline_delete_sweep_24"
+        android:icon="@drawable/ic_recycle_24"
         android:title="Recycle"/>
 
     <item
