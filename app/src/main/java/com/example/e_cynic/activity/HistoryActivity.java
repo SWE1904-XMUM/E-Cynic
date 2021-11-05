@@ -46,6 +46,11 @@ public class HistoryActivity extends AppCompatActivity
                         overridePendingTransition(0, 0);
                         return true;
 
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
                     case R.id.history:
                         return true;
 

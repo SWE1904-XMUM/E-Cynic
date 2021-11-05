@@ -4,21 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HomeActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home Page"
-        android:textSize="30dp"/>
-
-    <ImageView
-        android:id="@+id/info"
-        android:layout_width="99dp"
-        android:layout_height="105dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_baseline_info_24" />
+    tools:context=".activity.QuizActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
@@ -26,4 +12,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu" />
+
 </RelativeLayout>

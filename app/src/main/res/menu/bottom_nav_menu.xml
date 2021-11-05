@@ -11,6 +11,11 @@
         android:title="Recycle"/>
 
     <item
+        android:id="@+id/quiz"
+        android:icon="@drawable/ic_baseline_quiz_24"
+        android:title="Quiz"/>
+
+    <item
         android:id="@+id/history"
         android:icon="@drawable/ic_baseline_history_24"
         android:title="History"/>
