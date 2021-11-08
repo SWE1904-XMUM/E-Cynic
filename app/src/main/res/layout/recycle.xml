@@ -6,18 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".activity.RecycleActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/apple_green">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfair_display_black"
+            android:text="Recycle"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+    </FrameLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Recycle Page"
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/example"
         android:layout_width="84dp"
         android:layout_height="95dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
         app:srcCompat="@drawable/ic_baseline_question_mark_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

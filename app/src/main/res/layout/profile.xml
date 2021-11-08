@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProfileActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/apple_green">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfair_display_black"
+            android:text="Profile"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_baseline_info_24"
+            app:tint="@color/white" />
+
+
+    </FrameLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,19 +43,31 @@
         android:text="Profile Page"
         android:textSize="30dp"/>
 
-    <Button
-        android:id="@+id/about"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About E-Cynic"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/editProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:text="EDIT" />
+        android:layout_centerInParent="true"
+        >
+
+        <Button
+            android:id="@+id/about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About E-Cynic"
+
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/editProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="EDIT" />
+
+    </LinearLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"

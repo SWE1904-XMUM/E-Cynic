@@ -6,19 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".activity.HistoryActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/apple_green">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfair_display_black"
+            android:text="History"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/redeemPointsBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/ic_baseline_card_giftcard_24"
+            app:tint="@color/white" />
+
+
+    </FrameLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="History Page"
-        android:textSize="30dp"/>
-
-    <ImageView
-        android:id="@+id/redeemPointsBtn"
-        android:layout_width="93dp"
-        android:layout_height="85dp"
-        app:srcCompat="@drawable/ic_baseline_card_giftcard_24"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="30dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"

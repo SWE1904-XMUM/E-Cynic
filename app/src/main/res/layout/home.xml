@@ -6,19 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/apple_green">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfair_display_black"
+            android:text="Home"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_baseline_info_24"
+            app:tint="@color/white" />
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Home Page"
-        android:textSize="30dp" />
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/info"
-        android:layout_width="99dp"
-        android:layout_height="105dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_baseline_info_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Articles"
+            android:textSize="30dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
