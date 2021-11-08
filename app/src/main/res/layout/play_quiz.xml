@@ -13,5 +13,7 @@
         android:text="Play quiz at here"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="270dp" />
+        tools:layout_editor_absoluteY="270dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
