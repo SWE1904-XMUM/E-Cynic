@@ -3,7 +3,7 @@ package com.example.e_cynic.entity;
 import androidx.annotation.Nullable;
 
 public class Address {
-    public Integer id;
+    public Integer addressId;
     public String firstLine;
     public String secondLine;
     public String thirdLine;
@@ -11,9 +11,9 @@ public class Address {
     public String state;
     public Integer postcode;
 
-    public Address(@Nullable Integer id, String firstLine, String secondLine,
+    public Address(@Nullable Integer addressId, String firstLine, String secondLine,
                    String thirdLine, String city, String state, Integer postcode) {
-        this.id = id;
+        this.addressId = addressId;
         this.firstLine = firstLine;
         this.secondLine = secondLine;
         this.thirdLine = thirdLine;
@@ -25,7 +25,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
+                "id=" + addressId +
                 ", firstLine='" + firstLine + '\'' +
                 ", secondLine='" + secondLine + '\'' +
                 ", thirdLine='" + thirdLine + '\'' +
