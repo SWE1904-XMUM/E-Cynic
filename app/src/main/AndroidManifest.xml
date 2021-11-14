@@ -17,41 +17,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
                 android:name=".activity.RedeemPointsActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.PlayQuizActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.QuizActivity"
                 android:exported="false" />
         <activity
                 android:name=".activity.EditProfileActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.ElectronicAppliancesExampleActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.AboutActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.AppInfoActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.ForgotPasswordActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.SignUpActivity"
-                android:exported="false"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+                android:exported="false" />
         <activity
                 android:name=".activity.RecycleActivity"
                 android:exported="false" />
@@ -66,8 +59,7 @@
                 android:exported="false" />
         <activity
                 android:name=".activity.LoginActivity"
-                android:exported="true"
-                android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+                android:exported="true">
         </activity>
     </application>
 
