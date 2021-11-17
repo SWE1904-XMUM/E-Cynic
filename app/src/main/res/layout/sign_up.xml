@@ -183,16 +183,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:background="@drawable/bg_inputfield"
-        android:layout_width="180dp"
+    <RelativeLayout
+        android:layout_width="200dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_marginStart="30dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="1dp"/>
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/bg_inputfield" >
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/editTextTextPostcode"
