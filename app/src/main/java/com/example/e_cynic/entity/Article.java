@@ -5,13 +5,13 @@ import androidx.annotation.Nullable;
 import java.util.Date;
 
 public class Article {
-    public Integer id;
+    public Integer articleId;
     public String articleName;
     public String url;
     public Date articleDate;
 
-    public Article(@Nullable Integer id, String articleName, String url, Date articleDate) {
-        this.id = id;
+    public Article(@Nullable Integer articleId, String articleName, String url, Date articleDate) {
+        this.articleId = articleId;
         this.articleName = articleName;
         this.url = url;
         this.articleDate = articleDate;
@@ -20,7 +20,7 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "id=" + id +
+                "id=" + articleId +
                 ", articleName='" + articleName + '\'' +
                 ", url='" + url + '\'' +
                 ", articleDate=" + articleDate +

@@ -11,18 +11,16 @@ public class User {
     public String password;
     public String name;
     public String phoneNumber;
-    public ArrayList<Address> addresses;
 
     public User(@Nullable Integer userId, String username, @Nullable String email,
                 @Nullable String password,
-                @Nullable String name, @Nullable String phoneNumber, @Nullable ArrayList<Address> addresses) {
+                @Nullable String name, @Nullable String phoneNumber) {
         this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.addresses = addresses;
     }
 
     @Override
@@ -34,7 +32,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", addresses=" + addresses +
                 '}';
     }
 }

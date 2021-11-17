@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 public class Address {
     public Integer addressId;
+    public Integer userId;
     public String firstLine;
     public String secondLine;
     public String thirdLine;
@@ -11,9 +12,9 @@ public class Address {
     public String state;
     public Integer postcode;
 
-    public Address(@Nullable Integer addressId, String firstLine, String secondLine,
-                   String thirdLine, String city, String state, Integer postcode) {
+    public Address(Integer addressId, Integer userId, String firstLine, String secondLine, String thirdLine, String city, String state, Integer postcode) {
         this.addressId = addressId;
+        this.userId = userId;
         this.firstLine = firstLine;
         this.secondLine = secondLine;
         this.thirdLine = thirdLine;

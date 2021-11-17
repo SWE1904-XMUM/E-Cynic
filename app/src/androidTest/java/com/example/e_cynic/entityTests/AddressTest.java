@@ -11,13 +11,14 @@ public class AddressTest {
 
     @Test
     public void addressConstructorTest() {
+        Integer userId = 2;
         String firstLine = "Jalan Sunsuria";
         String secondLine = "Bandar Sunsuria";
         String thirdLine = "";
         String city = "Sepang";
         int postcode = 43900;
         String state = "Selangor";
-        Address address = new Address(null, firstLine, secondLine, thirdLine, city, state, postcode);
+        Address address = new Address(null, userId, firstLine, secondLine, thirdLine, city, state, postcode);
         String expected = "Address{id=null, firstLine='Jalan Sunsuria', secondLine='Bandar Sunsuria', " +
                 "thirdLine='', city='Sepang', state='Selangor', postcode=43900}";
         String result = address.toString();

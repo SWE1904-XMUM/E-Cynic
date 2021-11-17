@@ -1,16 +1,16 @@
 package com.example.e_cynic.entity;
 
-import androidx.annotation.Nullable;
-
 import java.util.Date;
 
 public class Point {
     public Integer pointId;
+    public Integer userId;
     public Integer pointsEarned;
     public Date date;
 
-    public Point(@Nullable Integer pointId, Integer pointsEarned, Date date) {
+    public Point(Integer pointId, Integer userId, Integer pointsEarned, Date date) {
         this.pointId = pointId;
+        this.userId = userId;
         this.pointsEarned = pointsEarned;
         this.date = date;
     }

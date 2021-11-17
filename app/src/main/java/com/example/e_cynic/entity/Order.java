@@ -8,16 +8,13 @@ import java.util.Date;
 public class Order {
     public Integer orderId;
     public Integer userId;
-    public ArrayList<Item> items;
-    public ArrayList<Address> addresses;
+    public Integer addressId;
     public Date date;
 
-    public Order(@Nullable Integer orderId, Integer userId, ArrayList<Item> items, ArrayList<Address> addresses,
-                 Date date) {
+    public Order(Integer orderId, Integer userId, Integer addressId, Date date) {
         this.orderId = orderId;
         this.userId = userId;
-        this.items = items;
-        this.addresses = addresses;
+        this.addressId = addressId;
         this.date = date;
     }
 
@@ -26,8 +23,7 @@ public class Order {
         return "Order{" +
                 "orderId=" + orderId +
                 ", userId=" + userId +
-                ", items=" + items +
-                ", addresses=" + addresses +
+                ", addresses=" + addressId +
                 ", date=" + date +
                 '}';
     }
