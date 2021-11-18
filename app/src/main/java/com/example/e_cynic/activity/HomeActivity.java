@@ -2,6 +2,9 @@ package com.example.e_cynic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,6 +17,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity
 {
     private ImageView info;
+    //article array
+    String s1[], s2[];
+    //recycler view
+    RecyclerView article;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +41,15 @@ public class HomeActivity extends AppCompatActivity
         });
 
         bottomNavBar();
+
+        //get resourse from the array (string.xml)
+        article = findViewById(R.id.ArticleView);
+        s1 = getResources().getStringArray(R.array.Articles);
+        s2 = getResources().getStringArray(R.array.A_description);
+
+        HomeArticleAdapter adapter = new HomeArticleAdapter(this, s1, s2);
+        article.setAdapter(adapter);
+        article.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void bottomNavBar()

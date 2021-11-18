@@ -7,6 +7,7 @@
     tools:context=".activity.HomeActivity">
 
     <FrameLayout
+        android:id="@+id/headerFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/apple_green">
@@ -41,11 +42,6 @@
         android:layout_centerInParent="true"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Articles"
-            android:textSize="30dp" />
 
     </LinearLayout>
 
@@ -59,6 +55,19 @@
         app:itemTextColor="@drawable/tab_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ArticleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="60dp" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
