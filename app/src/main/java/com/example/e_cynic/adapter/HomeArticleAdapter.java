@@ -1,4 +1,4 @@
-package com.example.e_cynic.activity;
+package com.example.e_cynic.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,7 +20,6 @@ public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.
         d1 = s1;
         d2 = s2;
     }
-
 
     @NonNull
     @Override

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.adapter.HomeArticleAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity
