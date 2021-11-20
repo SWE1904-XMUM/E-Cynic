@@ -18,7 +18,7 @@ import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 public class SignUpActivity extends AppCompatActivity
 {
     TextView username,email,phone,password,
-                     postcode,city,addressLine1;
+                     postcode,city,addressLine1,addressLine2,addressLine3;
     Spinner state;
     Button signUpBtn;
 
@@ -37,6 +37,8 @@ public class SignUpActivity extends AppCompatActivity
         postcode = findViewById(R.id.postcode);
         city = findViewById(R.id.city);
         addressLine1 = findViewById(R.id.addressLine1);
+        addressLine2 = findViewById(R.id.addressLine2);
+        addressLine3 = findViewById(R.id.addressLine3);
         signUpBtn = findViewById(R.id.signUpBtn);
 
         Spinner mySpinner = (Spinner) findViewById(R.id.state);
@@ -63,11 +65,14 @@ public class SignUpActivity extends AppCompatActivity
                 String postcodeTxt = postcode.getText().toString();
                 String cityTxt = city.getText().toString();
                 String addressLine1Txt = addressLine1.getText().toString();
+                String addressLine2Txt = addressLine2.getText().toString();
+                String addressLine3Txt = addressLine3.getText().toString();
                 //TODO this line will cause error when open signUp page
                 //String stateTxt = state.getSelectedItem().toString();
 
                 if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
-                    postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
+                    postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals("")||addressLine2Txt.equals("")
+                    ||addressLine3Txt.equals(""))
                 {
                     sb.createNewSnackbar(view,"Please fill in blank field.");
                 }
@@ -88,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity
                         if (insertUser)
                         {
                             int userId = userDatabase.getUserId(usernameTxt);
-                            Address address = new Address(null,userId,addressLine1Txt,null,null,cityTxt,"Melaka",Integer.parseInt(postcodeTxt));
+                            Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,addressLine3Txt,cityTxt,"Melaka",Integer.parseInt(postcodeTxt));
                             boolean insertAddress = addressDatabase.insertAddress(address);
 
                             if (insertAddress)

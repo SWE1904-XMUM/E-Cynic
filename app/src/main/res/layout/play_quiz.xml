@@ -1,19 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".activity.PlayQuizActivity">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/questionNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play quiz at here"
+        android:text="Q1"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="270dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="270dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correct: 0"
+        android:textSize="20dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ans">
+
+        <RadioButton
+            android:id="@+id/ans1"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="ans 1"
+            android:onClick="checkAns"/>
+
+        <RadioButton
+            android:id="@+id/ans2"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="ans 2"
+            android:onClick="checkAns"/>
+
+        <RadioButton
+            android:id="@+id/ans3"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="ans 3"
+            android:onClick="checkAns"/>
+
+        <RadioButton
+            android:id="@+id/ans4"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="ans 4"
+            android:onClick="checkAns"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/confirmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:onClick="checkAns"/>
+
+</LinearLayout>
