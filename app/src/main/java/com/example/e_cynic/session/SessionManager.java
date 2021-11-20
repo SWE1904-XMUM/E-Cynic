@@ -12,7 +12,7 @@ public class SessionManager
     // Constructor
     public SessionManager(Context context)
     {
-        sp = context.getSharedPreferences("AppKey",0);
+        sp = context.getSharedPreferences("E-Cynic",0);
         edt = sp.edit();
         edt.apply();
     }
