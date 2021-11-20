@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity
                 Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(i);
 
-                if (usernameTxt.equals("")||passwordTxt.equals(""))
+                /*if (usernameTxt.equals("")||passwordTxt.equals(""))
                 {
                     sb.createNewSnackbar(view,"Please enter all field.");
                 }
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity
                     sm.setUsername(usernameTxt);
 
                     // Redirect to home page
-                }
+                }*/
             }
         });
 
