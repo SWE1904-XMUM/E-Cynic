@@ -83,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity
                     {
                         User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
                         boolean insertUser = userDatabase.insertUser(user);
+                        user.toString();
 
                         if (insertUser)
                         {
