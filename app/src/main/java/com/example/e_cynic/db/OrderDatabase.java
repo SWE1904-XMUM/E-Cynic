@@ -14,7 +14,7 @@ public class OrderDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static void insertOrder(Order order)
+    public boolean insertOrder(Order order)
     {
         ContentValues cv = new ContentValues();
         cv.put(userId,order.userId);
@@ -22,5 +22,15 @@ public class OrderDatabase
         cv.put(date, String.valueOf(order.date));
 
         long result = db.insert(ordersTable, null, cv);
+
+        if (result == 1)
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
     }
 }

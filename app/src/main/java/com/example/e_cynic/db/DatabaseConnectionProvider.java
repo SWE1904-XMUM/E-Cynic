@@ -36,7 +36,7 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //create users table
-        sqLiteDatabase.execSQL("create table users (userId integer primary key autoincrement, username text unique, email text unique, password text, name text, phoneNumber text)");
+        sqLiteDatabase.execSQL("create table users (userId integer primary key autoincrement, username text unique, email text unique, password text, phoneNumber text)");
 
         //create addresses table
         sqLiteDatabase.execSQL("create table addresses (addressId integer primary key autoincrement, userId" +

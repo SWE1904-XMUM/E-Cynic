@@ -18,7 +18,7 @@ public class AddressDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static void insertAddress(Address address)
+    public boolean insertAddress(Address address)
     {
         ContentValues cv = new ContentValues();
         cv.put(userId,address.userId);
@@ -30,5 +30,15 @@ public class AddressDatabase
         cv.put(postcode,address.postcode);
 
         long result = db.insert(addressesTable, null, cv);
+
+        if (result == 1)
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
     }
 }

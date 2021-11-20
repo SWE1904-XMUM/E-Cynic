@@ -1,6 +1,7 @@
 package com.example.e_cynic.db;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.entity.User;
 
@@ -15,7 +16,7 @@ public class UserDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static void insertUser(User user)
+    public boolean insertUser(User user)
     {
         ContentValues cv = new ContentValues();
         cv.put(uname,user.username);
@@ -26,6 +27,36 @@ public class UserDatabase
 
         long result = db.insert(usersTable, null, cv);
 
-        //if (result)
+        if (result == 1)
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
+    }
+
+    public boolean checkUsername(String username)
+    {
+        Cursor c = db.rawQuery("select * from users where username = ?", new String[]{username});
+
+        if (c.getCount()>0)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
+    public int getUserId(String username)
+    {
+        Cursor c = db.rawQuery("select userId from users where username = " + username,null);
+        int userId = c.getInt(0);
+        return userId;
     }
 }

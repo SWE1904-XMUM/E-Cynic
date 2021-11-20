@@ -13,13 +13,11 @@ public class User {
     public String phoneNumber;
 
     public User(@Nullable Integer userId, String username, @Nullable String email,
-                @Nullable String password,
-                @Nullable String name, @Nullable String phoneNumber) {
+                @Nullable String password, @Nullable String phoneNumber) {
         this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.name = name;
         this.phoneNumber = phoneNumber;
     }
 
@@ -30,7 +28,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }

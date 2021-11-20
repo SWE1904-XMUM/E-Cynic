@@ -19,7 +19,7 @@ public class ItemDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static void insertItem(Item item)
+    public boolean insertItem(Item item)
     {
         ContentValues cv = new ContentValues();
         cv.put(orderId,item.orderId);
@@ -29,5 +29,15 @@ public class ItemDatabase
         cv.put(price,item.price);
 
         long result = db.insert(itemsTable, null, cv);
+
+        if (result == 1)
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
     }
 }
