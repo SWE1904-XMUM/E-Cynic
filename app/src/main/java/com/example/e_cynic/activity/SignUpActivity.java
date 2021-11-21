@@ -71,8 +71,7 @@ public class SignUpActivity extends AppCompatActivity
                 //String stateTxt = state.getSelectedItem().toString();
 
                 if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
-                    postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals("")||addressLine2Txt.equals("")
-                    ||addressLine3Txt.equals(""))
+                    postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
                 {
                     sb.createNewSnackbar(view,"Please fill in blank field.");
                 }
