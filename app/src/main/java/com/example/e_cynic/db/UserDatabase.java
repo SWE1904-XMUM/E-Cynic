@@ -56,8 +56,18 @@ public class UserDatabase
     //TODO maybe this got problem
     public int getUserId(String username)
     {
-        Cursor c = db.rawQuery("select userId from users where username = " + username,null);
-        int userId = c.getInt(0);
-        return userId;
+        int userId;
+        Cursor c = db.rawQuery("select userId from users where username = '"+username+"';",null);
+
+        if (c.moveToFirst())
+        {
+             userId = c.getInt(0);
+             return userId;
+        }
+
+        else
+        {
+            return -1;
+        }
     }
 }

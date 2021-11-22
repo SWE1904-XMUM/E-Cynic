@@ -73,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity
                 if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
                     postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
                 {
-                    sb.createNewSnackbar(view,"Please fill in blank field.");
+                    sb.createNewSnackbar(view,"Please fill in required field.");
                 }
 
                 else
@@ -87,18 +87,21 @@ public class SignUpActivity extends AppCompatActivity
                     {
                         User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
                         boolean insertUser = userDatabase.insertUser(user);
-                        user.toString();
 
                         if (insertUser)
                         {
-                            int userId = userDatabase.getUserId(usernameTxt);
-                            Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,addressLine3Txt,cityTxt,"Melaka",Integer.parseInt(postcodeTxt));
-                            boolean insertAddress = addressDatabase.insertAddress(address);
+                            /*int userId = userDatabase.getUserId(usernameTxt);
 
-                            if (insertAddress)
+                            if (userId!=-1)
                             {
-                                sb.createNewSnackbar(view,"Successfully sign up!");
-                            }
+                                Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,addressLine3Txt,cityTxt,"Melaka",Integer.parseInt(postcodeTxt));
+                                boolean insertAddress = addressDatabase.insertAddress(address);
+
+                                if (insertAddress)
+                                {
+                                    sb.createNewSnackbar(view,"Successfully sign up!");
+                                }
+                            }*/
                         }
                     }
                 }
