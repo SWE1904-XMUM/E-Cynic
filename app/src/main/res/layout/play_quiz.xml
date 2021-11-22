@@ -66,11 +66,4 @@
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/confirmBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:onClick="checkAns"/>
-
 </LinearLayout>

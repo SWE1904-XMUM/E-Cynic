@@ -24,7 +24,6 @@ public class PlayQuizActivity extends AppCompatActivity
     private RadioButton ans2;
     private RadioButton ans3;
     private RadioButton ans4;
-    private Button confirmBtn;
 
     private String correctAns;
     private int correctAnsCount = 0;
@@ -59,7 +58,6 @@ public class PlayQuizActivity extends AppCompatActivity
         ans2 = findViewById(R.id.ans2);
         ans3 = findViewById(R.id.ans3);
         ans4 = findViewById(R.id.ans4);
-        confirmBtn = findViewById(R.id.confirmBtn);
 
         int l = quizData.length;
 
