@@ -16,7 +16,7 @@ public class UserDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public boolean insertUser(User user)
+    public static boolean insertUser(User user)
     {
         ContentValues cv = new ContentValues();
         cv.put(uname,user.username);
@@ -38,7 +38,7 @@ public class UserDatabase
         }
     }
 
-    public boolean checkUsernameExistence(String username)
+    public static boolean checkUsernameExistence(String username)
     {
         Cursor c = db.rawQuery("select username from users where username = ?", new String[]{username});
 
@@ -53,7 +53,7 @@ public class UserDatabase
         }
     }
 
-    public int getUserIdByUsername(String username)
+    public static int getUserIdByUsername(String username)
     {
         int userId;
         Cursor c = db.rawQuery("select userId from users where username=?", new String[]{username});

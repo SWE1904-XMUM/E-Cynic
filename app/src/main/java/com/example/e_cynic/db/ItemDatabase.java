@@ -19,7 +19,7 @@ public class ItemDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public boolean insertItem(Item item)
+    public static boolean insertItem(Item item)
     {
         ContentValues cv = new ContentValues();
         cv.put(orderId,item.orderId);

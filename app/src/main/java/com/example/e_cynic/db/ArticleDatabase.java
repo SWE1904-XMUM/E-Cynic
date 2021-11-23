@@ -14,7 +14,7 @@ public class ArticleDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public boolean insertArticle(Article article)
+    public static boolean insertArticle(Article article)
     {
         ContentValues cv = new ContentValues();
         cv.put(articleName,article.articleName);

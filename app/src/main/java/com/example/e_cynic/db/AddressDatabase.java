@@ -18,7 +18,7 @@ public class AddressDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public boolean insertAddress(Address address)
+    public static boolean insertAddress(Address address)
     {
         ContentValues cv = new ContentValues();
         cv.put(userId,address.userId);

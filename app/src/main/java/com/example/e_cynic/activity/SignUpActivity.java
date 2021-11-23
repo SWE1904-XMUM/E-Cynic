@@ -49,9 +49,6 @@ public class SignUpActivity extends AppCompatActivity
 
         signUpBtn.setOnClickListener(new View.OnClickListener()
         {
-            UserDatabase userDatabase = new UserDatabase();
-            AddressDatabase addressDatabase= new AddressDatabase();
-
             @Override
             public void onClick(View view)
             {
@@ -75,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity
 
                 else
                 {
-                    if(userDatabase.checkUsernameExistence(usernameTxt)==true)
+                    if(UserDatabase.checkUsernameExistence(usernameTxt)==true)
                     {
                         SnackbarCreator.createNewSnackbar(view,"Username already exist, please try another one.");
                     }
@@ -83,17 +80,17 @@ public class SignUpActivity extends AppCompatActivity
                     else
                     {
                         User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
-                        boolean insertUser = userDatabase.insertUser(user);
+                        boolean insertUser = UserDatabase.insertUser(user);
 
                         if (insertUser)
                         {
-                            int userId = userDatabase.getUserIdByUsername(usernameTxt);
+                            int userId = UserDatabase.getUserIdByUsername(usernameTxt);
 
                             if (userId!=-1)
                             {
                                 Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
                                         addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
-                                boolean insertAddress = addressDatabase.insertAddress(address);
+                                boolean insertAddress = AddressDatabase.insertAddress(address);
 
                                 if (insertAddress)
                                 {

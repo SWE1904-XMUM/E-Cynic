@@ -14,7 +14,7 @@ public class OrderDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public boolean insertOrder(Order order)
+    public static boolean insertOrder(Order order)
     {
         ContentValues cv = new ContentValues();
         cv.put(userId,order.userId);
