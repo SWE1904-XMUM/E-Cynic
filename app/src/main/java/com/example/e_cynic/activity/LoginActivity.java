@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity
 
                 /*if (usernameTxt.equals("")||passwordTxt.equals(""))
                 {
-                    sb.createNewSnackbar(view,"Please enter all field.");
+                    SnackbarCreator.createNewSnackbar(view,"Please enter all field.");
                 }
 
                 else

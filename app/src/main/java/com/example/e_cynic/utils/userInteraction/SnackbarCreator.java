@@ -11,7 +11,7 @@ public class SnackbarCreator extends UIMaker
 
     }
 
-    public void createNewSnackbar(View view,String message)
+    public static void createNewSnackbar(View view,String message)
     {
         Snackbar sb = Snackbar.make(view,message,Snackbar.LENGTH_LONG);
         sb.show();

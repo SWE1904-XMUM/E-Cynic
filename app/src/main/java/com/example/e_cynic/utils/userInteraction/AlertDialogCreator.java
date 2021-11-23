@@ -12,7 +12,7 @@ public class AlertDialogCreator extends UIMaker
 
     }
 
-    public void createNewAlertDialog(Context context,String title,String message)
+    public static void createNewAlertDialog(Context context,String title,String message)
     {
         AlertDialog.Builder ad = new AlertDialog.Builder(context);
         ad.setTitle(title);

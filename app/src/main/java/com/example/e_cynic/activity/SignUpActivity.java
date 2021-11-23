@@ -51,7 +51,6 @@ public class SignUpActivity extends AppCompatActivity
         {
             UserDatabase userDatabase = new UserDatabase();
             AddressDatabase addressDatabase= new AddressDatabase();
-            SnackbarCreator sb = new SnackbarCreator();
 
             @Override
             public void onClick(View view)
@@ -71,14 +70,14 @@ public class SignUpActivity extends AppCompatActivity
                 if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
                     postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
                 {
-                    sb.createNewSnackbar(view,"Please fill in required field.");
+                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
                 }
 
                 else
                 {
                     if(userDatabase.checkUsernameExistence(usernameTxt)==true)
                     {
-                        sb.createNewSnackbar(view,"Username already exist, please try another one.");
+                        SnackbarCreator.createNewSnackbar(view,"Username already exist, please try another one.");
                     }
 
                     else
@@ -98,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity
 
                                 if (insertAddress)
                                 {
-                                    sb.createNewSnackbar(view,"Successfully sign up!");
+                                    SnackbarCreator.createNewSnackbar(view,"Successfully sign up!");
                                 }
                             }
                         }
