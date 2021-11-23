@@ -1,6 +1,8 @@
 package com.example.e_cynic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,10 +18,13 @@ import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 public class SignUpActivity extends AppCompatActivity
 {
-    TextView username,email,phone,password,
-                     postcode,city,addressLine1,addressLine2,addressLine3;
+    //views
+    TextView username,email,phone,password, postcode,city,addressLine1,addressLine2,addressLine3;
     Spinner state;
     Button signUpBtn;
+
+    //text of view
+    String usernameTxt, emailTxt, phoneTxt, passwordTxt, postcodeTxt, cityTxt, addressLine1Txt, addressLine2Txt, addressLine3Txt, stateTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,7 +32,52 @@ public class SignUpActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        // view
+        setViewComponent();
+
+        signUpBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                updateViewText();
+
+                if (!fieldDataIsComplete())
+                {
+                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
+                    return;
+                }
+
+                if(UserDatabase.checkUsernameExistence(usernameTxt)==true)
+                {
+                    SnackbarCreator.createNewSnackbar(view,"Username already exist, please try another one.");
+                    return;
+                }
+
+                User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
+                boolean insertUser = UserDatabase.insertUser(user);
+
+                if (insertUser == true)
+                {
+                    int userId = UserDatabase.getUserIdByUsername(usernameTxt);
+
+                    if (userId!=-1)
+                    {
+                        Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
+                                addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
+                        boolean insertAddress = AddressDatabase.insertAddress(address);
+
+                        if (insertAddress)
+                        {
+                            SnackbarCreator.createNewSnackbar(view,"Successfully sign up!");
+                            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    private void setViewComponent() {
         username = findViewById(R.id.uname);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
@@ -40,67 +90,28 @@ public class SignUpActivity extends AppCompatActivity
         addressLine3 = findViewById(R.id.addressLine3);
         signUpBtn = findViewById(R.id.signUpBtn);
 
-        Spinner mySpinner = (Spinner) findViewById(R.id.state);
-
         ArrayAdapter<String> myAdapter=new ArrayAdapter<String>(SignUpActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.state));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
+        state.setAdapter(myAdapter);
+    }
 
-        signUpBtn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                // text of view
-                String usernameTxt = username.getText().toString();
-                String emailTxt = email.getText().toString();
-                String phoneTxt = phone.getText().toString();
-                String passwordTxt = password.getText().toString();
-                String postcodeTxt = postcode.getText().toString();
-                String cityTxt = city.getText().toString();
-                String addressLine1Txt = addressLine1.getText().toString();
-                String addressLine2Txt = addressLine2.getText().toString();
-                String addressLine3Txt = addressLine3.getText().toString();
-                String stateTxt = state.getSelectedItem().toString();
+    private boolean fieldDataIsComplete() {
+        return !(usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||
+                passwordTxt.equals("")|| postcodeTxt.equals("")||cityTxt.equals("")||
+                addressLine1Txt.equals("")||(addressLine2.equals("")&&!addressLine3.equals("")));
+    }
 
-                if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
-                    postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
-                {
-                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
-                }
-
-                else
-                {
-                    if(UserDatabase.checkUsernameExistence(usernameTxt)==true)
-                    {
-                        SnackbarCreator.createNewSnackbar(view,"Username already exist, please try another one.");
-                    }
-
-                    else
-                    {
-                        User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
-                        boolean insertUser = UserDatabase.insertUser(user);
-
-                        if (insertUser)
-                        {
-                            int userId = UserDatabase.getUserIdByUsername(usernameTxt);
-
-                            if (userId!=-1)
-                            {
-                                Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
-                                        addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
-                                boolean insertAddress = AddressDatabase.insertAddress(address);
-
-                                if (insertAddress)
-                                {
-                                    SnackbarCreator.createNewSnackbar(view,"Successfully sign up!");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        });
+    private void updateViewText() {
+        usernameTxt = username.getText().toString();
+        emailTxt = email.getText().toString();
+        phoneTxt = phone.getText().toString();
+        passwordTxt = password.getText().toString();
+        postcodeTxt = postcode.getText().toString();
+        cityTxt = city.getText().toString();
+        addressLine1Txt = addressLine1.getText().toString();
+        addressLine2Txt = addressLine2.getText().toString();
+        addressLine3Txt = addressLine3.getText().toString();
+        stateTxt = state.getSelectedItem().toString();
     }
 }
