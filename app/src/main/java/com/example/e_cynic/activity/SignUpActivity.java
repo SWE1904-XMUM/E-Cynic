@@ -3,7 +3,6 @@ package com.example.e_cynic.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -67,8 +66,7 @@ public class SignUpActivity extends AppCompatActivity
                 String addressLine1Txt = addressLine1.getText().toString();
                 String addressLine2Txt = addressLine2.getText().toString();
                 String addressLine3Txt = addressLine3.getText().toString();
-                //TODO this line will cause error when open signUp page
-                //String stateTxt = state.getSelectedItem().toString();
+                String stateTxt = state.getSelectedItem().toString();
 
                 if (usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||passwordTxt.equals("")||
                     postcodeTxt.equals("")||cityTxt.equals("")||addressLine1Txt.equals(""))
@@ -78,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity
 
                 else
                 {
-                    if(userDatabase.checkUsername(usernameTxt)==true)
+                    if(userDatabase.checkUsernameExistence(usernameTxt)==true)
                     {
                         sb.createNewSnackbar(view,"Username already exist, please try another one.");
                     }
@@ -90,18 +88,19 @@ public class SignUpActivity extends AppCompatActivity
 
                         if (insertUser)
                         {
-                            /*int userId = userDatabase.getUserId(usernameTxt);
+                            int userId = userDatabase.getUserIdByUsername(usernameTxt);
 
                             if (userId!=-1)
                             {
-                                Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,addressLine3Txt,cityTxt,"Melaka",Integer.parseInt(postcodeTxt));
+                                Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
+                                        addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
                                 boolean insertAddress = addressDatabase.insertAddress(address);
 
                                 if (insertAddress)
                                 {
                                     sb.createNewSnackbar(view,"Successfully sign up!");
                                 }
-                            }*/
+                            }
                         }
                     }
                 }

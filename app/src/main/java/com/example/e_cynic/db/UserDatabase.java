@@ -38,9 +38,9 @@ public class UserDatabase
         }
     }
 
-    public boolean checkUsername(String username)
+    public boolean checkUsernameExistence(String username)
     {
-        Cursor c = db.rawQuery("select * from users where username = ?", new String[]{username});
+        Cursor c = db.rawQuery("select username from users where username = ?", new String[]{username});
 
         if (c.getCount()>0)
         {
@@ -53,11 +53,10 @@ public class UserDatabase
         }
     }
 
-    //TODO maybe this got problem
-    public int getUserId(String username)
+    public int getUserIdByUsername(String username)
     {
         int userId;
-        Cursor c = db.rawQuery("select userId from users where username = '"+username+"';",null);
+        Cursor c = db.rawQuery("select userId from users where username=?", new String[]{username});
 
         if (c.moveToFirst())
         {
