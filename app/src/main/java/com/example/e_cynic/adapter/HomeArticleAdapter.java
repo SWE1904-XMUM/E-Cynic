@@ -1,6 +1,8 @@
 package com.example.e_cynic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,9 @@ import com.example.e_cynic.R;
 
 public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.MyViewHolder> {
     //retrieve the data from array
-    String d1[], d2[];
+    String[] d1, d2;
     Context context;
-    public HomeArticleAdapter(Context ct, String s1[], String s2[]) {
+    public HomeArticleAdapter(Context ct, String[] s1, String[] s2) {
         context = ct;
         d1 = s1;
         d2 = s2;
@@ -34,6 +36,23 @@ public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.title.setText(d1[position]);
         holder.description.setText(d2[position]);
+        holder.title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(d2[holder.getAdapterPosition()]));
+                context.startActivity(intent);
+            }
+        });
+
+        holder.description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(d2[holder.getAdapterPosition()]));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

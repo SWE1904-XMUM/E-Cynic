@@ -38,19 +38,21 @@
     </string-array>
 
     <string-array name="Articles">
-        <item>A1</item>
-        <item>A2</item>
-        <item>A3</item>
-        <item>A4</item>
-        <item>A5</item>
+        <item>What is E-waste?</item>
+        <item>e-Waste Management in Malaysia</item>
+        <item>Effects of Electronic Waste Pollution</item>
+        <item>7 Ways To Safely Manage And Recycle E-Waste</item>
+        <item>Global E-Waste Up 21% in 5 Years</item>
+        <item>5 Benefits of Recycling E-Waste</item>
     </string-array>
 
     <string-array name="A_description">
-        <item>A1d</item>
-        <item>A2d</item>
-        <item>A3d</item>
-        <item>A4d</item>
-        <item>A5d</item>
+        <item>https://www.ewaste1.com/what-is-e-waste/</item>
+        <item>https://www.iproperty.com.my/lifestyle/ewaste-recycling-in-malaysia/</item>
+        <item>https://www.ewaste1.com/effects-of-electronic-waste-pollution/</item>
+        <item>https://www.roadrunnerwm.com/blog/recycle-e-waste</item>
+        <item>https://theconversation.com/global-electronic-waste-up-21-in-five-years-and-recycling-isnt-keeping-up-141997</item>
+        <item>https://ecocycle.com.au/lighting-and-electrical/5-benefits-of-recycling-e-waste/</item>
     </string-array>
 
 </resources>

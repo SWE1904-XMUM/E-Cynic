@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,11 @@ public class HomeActivity extends AppCompatActivity
         });
 
         bottomNavBar();
+
+        //homepage header slide show
+        ImageView iv_slideshow = findViewById(R.id.slideshow);
+        AnimationDrawable ad = (AnimationDrawable) iv_slideshow.getDrawable();
+        ad.start();
 
         //get resourse from the array (string.xml)
         article = findViewById(R.id.ArticleView);
