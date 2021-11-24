@@ -17,17 +17,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.example.e_cynic.R;
+import com.example.e_cynic.permission.LocationPermission;
 import com.example.e_cynic.permission.PhotoPermission;
+import com.example.e_cynic.permission.RequestCode;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity
 {
     private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
-
-    // Request code
-    private static final int SNAP_PHOTO = 0;
-    private static final int CHOOSE_FROM_GALLERY = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,6 +56,8 @@ public class RecycleActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                LocationPermission locationPermission = new LocationPermission();
+                locationPermission.grantLocationPermission(RecycleActivity.this);
                 //
             }
         });
@@ -87,13 +87,13 @@ public class RecycleActivity extends AppCompatActivity
                 if (options[i].equals("Snap photo"))
                 {
                     Intent snapPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(snapPhoto,SNAP_PHOTO);
+                    startActivityForResult(snapPhoto,RequestCode.SNAP_PHOTO);
                 }
 
                 else if (options[i].equals("Choose from gallery"))
                 {
                     Intent chooseFromGallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(chooseFromGallery,CHOOSE_FROM_GALLERY);
+                    startActivityForResult(chooseFromGallery,RequestCode.CHOOSE_FROM_GALLERY);
                 }
 
                 else if (options[i].equals("Cancel"))
@@ -115,7 +115,7 @@ public class RecycleActivity extends AppCompatActivity
         {
             switch (requestCode)
             {
-                case SNAP_PHOTO:
+                case RequestCode.SNAP_PHOTO:
                     if (resultCode == RESULT_OK && data!= null)
                     {
                         Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
@@ -123,7 +123,7 @@ public class RecycleActivity extends AppCompatActivity
                     }
                     break;
 
-                case CHOOSE_FROM_GALLERY:
+                case RequestCode.CHOOSE_FROM_GALLERY:
                     if (resultCode == RESULT_OK && data != null)
                     {
                         Uri selectedImage = data.getData();
@@ -147,6 +147,16 @@ public class RecycleActivity extends AppCompatActivity
 
                     break;
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == RequestCode.LOCATION_PERMISSION)
+        {
+            //
         }
     }
 

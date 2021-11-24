@@ -1,10 +1,7 @@
 package com.example.e_cynic.dbTests;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.User;
-import com.example.e_cynic.utils.GetDatabaseUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;

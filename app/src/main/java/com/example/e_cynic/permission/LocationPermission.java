@@ -9,10 +9,10 @@ import androidx.core.content.ContextCompat;
 
 public class LocationPermission
 {
-    // Request code
+    // TODO Request code
     private static final int LOCATION_PERMISSION = 3;
 
-    LocationPermission()
+    public LocationPermission()
     {
 
     }
@@ -21,7 +21,7 @@ public class LocationPermission
     {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions((Activity) context, new String[] { Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION);
+            ActivityCompat.requestPermissions((Activity) context, new String[] { Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION}, RequestCode.LOCATION_PERMISSION);
         }
     }
 }
