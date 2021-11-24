@@ -2,8 +2,6 @@ package com.example.e_cynic.entity;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-
 public class User {
     public Integer userId;
     public String username;
@@ -11,6 +9,8 @@ public class User {
     public String password;
     public String name;
     public String phoneNumber;
+
+    public User() {}
 
     public User(@Nullable Integer userId, String username, @Nullable String email,
                 @Nullable String password, @Nullable String phoneNumber) {

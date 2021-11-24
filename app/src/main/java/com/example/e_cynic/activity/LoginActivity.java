@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.e_cynic.R;
 import com.example.e_cynic.session.SessionManager;
-import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 public class LoginActivity extends AppCompatActivity
 {
@@ -34,8 +34,6 @@ public class LoginActivity extends AppCompatActivity
 
         loginBtn.setOnClickListener(new View.OnClickListener()
         {
-            SnackbarCreator sb = new SnackbarCreator();
-
             @Override
             public void onClick(View view)
             {
