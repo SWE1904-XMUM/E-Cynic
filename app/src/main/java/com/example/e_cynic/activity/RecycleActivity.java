@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -98,6 +99,50 @@ public class RecycleActivity extends AppCompatActivity
         });
 
         ad.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_CANCELED)
+        {
+            switch (requestCode)
+            {
+                case 1:
+                    if (resultCode == RESULT_OK && data!= null)
+                    {
+                        Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
+                        uploadImg.setImageBitmap(capturedImg);
+                    }
+                    break;
+
+                case 2:
+                    if (resultCode == RESULT_OK && data != null)
+                    {
+                        Uri selectedImage = data.getData();
+                        String [] filePath = {MediaStore.Images.Media.DATA};
+
+                        if (selectedImage != null)
+                        {
+                            Cursor cursor = getContentResolver().query(selectedImage,filePath,null,null,null);
+
+                            if (cursor != null)
+                            {
+                                cursor.moveToFirst();
+
+                                int colInd = cursor.getColumnIndex(filePath[0]);
+                                String imgPath = cursor.getString(colInd);
+                                uploadImg.setImageBitmap(BitmapFactory.decodeFile(imgPath));
+                                cursor.close();
+                            }
+                        }
+                    }
+
+                    break;
+            }
+        }
     }
 
     private void bottomNavBar()
