@@ -4,12 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,7 +28,6 @@ public class RecycleActivity extends AppCompatActivity
     // Request code
     private static final int SNAP_PHOTO = 0;
     private static final int CHOOSE_FROM_GALLERY = 1;
-    private static final int LOCATION_PERMISSION = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
