@@ -31,14 +31,10 @@ public class AddressDatabase
 
         long result = db.insert(addressesTable, null, cv);
 
-        if (result == 1)
-        {
-            return false;
-        }
-
-        else
+        if (result >= 1)
         {
             return true;
         }
+        return false;
     }
 }
