@@ -26,7 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity
 {
-    private ImageView example, uploadImg;
+    private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
 
     @Override
@@ -38,6 +38,7 @@ public class RecycleActivity extends AppCompatActivity
         example = findViewById(R.id.example);
         uploadImg = findViewById(R.id.uploadImg);
         uploadBtn = findViewById(R.id.uploadBtn);
+        pinLocation = findViewById(R.id.pinLocation);
 
         bottomNavBar();
 
@@ -48,6 +49,15 @@ public class RecycleActivity extends AppCompatActivity
             {
                 grantPermission();
                 selectImg();
+            }
+        });
+
+        pinLocation.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //
             }
         });
 
