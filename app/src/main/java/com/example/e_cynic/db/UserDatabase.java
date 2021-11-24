@@ -40,7 +40,7 @@ public class UserDatabase
 
         long result = db.insert(usersTable, null, cv);
 
-        if (result == 1)
+        if (result >= 1)
         {
             return true;
         }
