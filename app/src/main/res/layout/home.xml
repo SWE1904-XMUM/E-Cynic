@@ -36,38 +36,73 @@
 
     </FrameLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center">
+        android:layout_below="@+id/headerFrame"
+        android:layout_marginBottom="?attr/actionBarSize">
 
+        <RelativeLayout
+            android:id="@+id/articlesList"
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            android:layout_below="@+id/headerFrame">
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/homeimg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/slideshow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:scrollbars="vertical"
+                    android:src="@drawable/anim_slideshow" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/articlesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeimg"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inder"
+                android:paddingStart="10dp"
+                android:text="Articles"
+                android:textColor="@color/dark_green"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/articlesTitle"
+                android:background="@color/dark_green" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ArticleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/line"
+                android:layout_alignLeft="@+id/articlesTitle" />
+
+        </RelativeLayout>
+    </ScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/articlesList"
         android:layout_alignParentBottom="true"
         android:background="@color/apple_green"
         app:itemIconTint="@drawable/tab_color"
         app:itemTextColor="@drawable/tab_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ArticleView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="60dp" />
-
-    </RelativeLayout>
-
 
 </RelativeLayout>
