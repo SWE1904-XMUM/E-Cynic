@@ -56,11 +56,9 @@ public class SignUpActivity extends AppCompatActivity
                 User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
                 boolean insertUser = UserDatabase.insertUser(user);
 
-                System.out.println("insert user: " + insertUser);
                 if (insertUser == true)
                 {
                     int userId = UserDatabase.getUserIdByUsername(usernameTxt);
-                    System.out.println("USER ID: " + userId);
 
                     if (userId > 0)
                     {
