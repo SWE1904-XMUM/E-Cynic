@@ -1,8 +1,5 @@
 package com.example.e_cynic.activity;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.e_cynic.R;
+import com.example.e_cynic.utils.userInteraction.AlertDialogCreator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -31,6 +33,24 @@ public class PlayQuizActivity extends AppCompatActivity
     static final private int qc = 5;
 
     ArrayList<ArrayList<String>> quizArray = new ArrayList<>();
+
+    private DialogInterface.OnClickListener ad_positive_listener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            if (qCount == qc)
+            {
+                Intent intent = new Intent(getApplicationContext(), QuizResultActivity.class);
+                intent.putExtra("CorrectAns", correctAnsCount);
+                startActivity(intent);
+            }
+
+            else
+            {
+                qCount++;
+                nextQuestion();
+            }
+        }
+    };
 
     String quizData[][] = {
             // {"question","correct ans","ans","ans"}
@@ -126,30 +146,7 @@ public class PlayQuizActivity extends AppCompatActivity
             alertTitle = "Wrong answer.";
         }
 
-        AlertDialog.Builder ad = new AlertDialog.Builder(this);
-        ad.setTitle(alertTitle);
-        ad.setMessage("Answer: " + correctAns);
-        ad.setPositiveButton("Ok", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                if (qCount == qc)
-                {
-                    Intent intent = new Intent(getApplicationContext(), QuizResultActivity.class);
-                    intent.putExtra("CorrectAns", correctAnsCount);
-                    startActivity(intent);
-                }
-
-                else
-                {
-                    qCount++;
-                    nextQuestion();
-                }
-            }
-        });
-
-        ad.setCancelable(false);
-        ad.show();
+        AlertDialogCreator.createAlertDialog(this, alertTitle, "Answer: " + correctAns, "OK",
+                ad_positive_listener, null, null).show();
     }
 }
