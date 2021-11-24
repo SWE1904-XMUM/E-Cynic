@@ -4,7 +4,8 @@ import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class SnackbarCreator {
+public class SnackbarCreator
+{
     public SnackbarCreator()
     {
 
