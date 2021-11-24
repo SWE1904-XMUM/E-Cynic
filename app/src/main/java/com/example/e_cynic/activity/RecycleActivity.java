@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -71,6 +72,7 @@ public class RecycleActivity extends AppCompatActivity
         final CharSequence [] options = {"Snap photo","Choose from gallery","Cancel"};
         AlertDialog.Builder ad = new AlertDialog.Builder(this);
         ad.setTitle("Upload photo");
+
         ad.setItems(options, new DialogInterface.OnClickListener()
         {
             @Override
@@ -78,15 +80,14 @@ public class RecycleActivity extends AppCompatActivity
             {
                 if (options[i].equals("Snap photo"))
                 {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(Environment.getExternalStorageDirectory(),"img.filetype");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intent,1);
+                    Intent snapPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(snapPhoto,1);
                 }
 
                 else if (options[i].equals("Choose from gallery"))
                 {
-                    Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent chooseFromGallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(chooseFromGallery,2);
                 }
 
                 else if (options[i].equals("Cancel"))
