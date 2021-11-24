@@ -15,12 +15,13 @@ import com.example.e_cynic.R;
 
 public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.MyViewHolder> {
     //retrieve the data from array
-    String[] d1, d2;
+    String[] d1, d2, d3;
     Context context;
-    public HomeArticleAdapter(Context ct, String[] s1, String[] s2) {
+    public HomeArticleAdapter(Context ct, String[] s1, String[] s2, String[] s3) {
         context = ct;
         d1 = s1;
         d2 = s2;
+        d3 = s3;
     }
 
     @NonNull
@@ -40,7 +41,7 @@ public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(d2[holder.getAdapterPosition()]));
+                intent.setData(Uri.parse(d3[holder.getAdapterPosition()]));
                 context.startActivity(intent);
             }
         });
@@ -49,7 +50,7 @@ public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(d2[holder.getAdapterPosition()]));
+                intent.setData(Uri.parse(d3[holder.getAdapterPosition()]));
                 context.startActivity(intent);
             }
         });
@@ -58,7 +59,7 @@ public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.
     @Override
     public int getItemCount() {
         //item card
-        return d2.length;
+        return d1.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

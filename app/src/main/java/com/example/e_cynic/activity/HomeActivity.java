@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity
 {
     private ImageView info;
     //article array
-    String s1[], s2[];
+    String s1[], s2[], s3[];
     //recycler view
     RecyclerView article;
 
@@ -52,9 +52,10 @@ public class HomeActivity extends AppCompatActivity
         //get resourse from the array (string.xml)
         article = findViewById(R.id.ArticleView);
         s1 = getResources().getStringArray(R.array.Articles);
-        s2 = getResources().getStringArray(R.array.A_description);
+        s2 = getResources().getStringArray (R.array.A_description);
+        s3 = getResources().getStringArray(R.array.A_link);
 
-        HomeArticleAdapter adapter = new HomeArticleAdapter(this, s1, s2);
+        HomeArticleAdapter adapter = new HomeArticleAdapter(this, s1, s2, s3);
         article.setAdapter(adapter);
         article.setLayoutManager(new LinearLayoutManager(this));
     }
