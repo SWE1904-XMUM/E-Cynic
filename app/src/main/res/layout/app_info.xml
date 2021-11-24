@@ -1,17 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.AppInfoActivity">
 
-    <TextView
-        android:id="@+id/infoText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How to use this app"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="261dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="2dp"
+                app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
+                app:tint="@color/apple_green" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="83dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="85dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="How the recycling works?"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toTopOf="@+id/playBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backBtn" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="300dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/border_step"
+                        android:padding="9dp"
+                        app:layout_constraintBottom_toTopOf="@+id/img2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/textView1"
+                        app:srcCompat="@drawable/step1" />
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="300dp"
+                        android:layout_height="205dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/border_step"
+                        android:padding="9dp"
+                        app:layout_constraintBottom_toTopOf="@+id/img3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img2"
+                        app:srcCompat="@drawable/step2" />
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="300dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/border_step"
+                        android:padding="9dp"
+                        app:layout_constraintBottom_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img2"
+                        app:srcCompat="@drawable/step3" />
+
+                </LinearLayout>
+
+
+            </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
