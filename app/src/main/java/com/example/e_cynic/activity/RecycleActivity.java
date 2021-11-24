@@ -28,6 +28,12 @@ public class RecycleActivity extends AppCompatActivity
     private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
 
+    // Request code
+    private static final int SNAP_PHOTO = 0;
+    private static final int CHOOSE_FROM_GALLERY = 1;
+    private static final int PHOTO_PERMISSION = 2;
+    private static final int LOCATION_PERMISSION = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -75,7 +81,7 @@ public class RecycleActivity extends AppCompatActivity
     {
         if (ContextCompat.checkSelfPermission(RecycleActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(RecycleActivity.this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
+            ActivityCompat.requestPermissions(RecycleActivity.this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, PHOTO_PERMISSION);
         }
     }
 
@@ -93,13 +99,13 @@ public class RecycleActivity extends AppCompatActivity
                 if (options[i].equals("Snap photo"))
                 {
                     Intent snapPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(snapPhoto,1);
+                    startActivityForResult(snapPhoto,SNAP_PHOTO);
                 }
 
                 else if (options[i].equals("Choose from gallery"))
                 {
                     Intent chooseFromGallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(chooseFromGallery,2);
+                    startActivityForResult(chooseFromGallery,CHOOSE_FROM_GALLERY);
                 }
 
                 else if (options[i].equals("Cancel"))
