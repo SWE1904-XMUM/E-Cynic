@@ -8,15 +8,14 @@ import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 public class UserDatabase
 {
     public static final String usersTable = "users";
-    public static final String uname = "username";
+    public static final String username = "username";
+    public static final String name = "name";
     public static final String email = "email";
     public static final String password = "password";
-    public static final String name = "name";
     public static final String phoneNumber = "phoneNumber";
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
@@ -34,22 +33,21 @@ public class UserDatabase
     public static boolean insertUser(User user)
     {
         ContentValues cv = new ContentValues();
-        cv.put(uname,user.username);
+        cv.put(username,user.username);
         cv.put(email,user.email);
         cv.put(password,user.password);
-        cv.put(name,user.name);
         cv.put(phoneNumber,user.phoneNumber);
 
         long result = db.insert(usersTable, null, cv);
 
         if (result == 1)
         {
-            return false;
+            return true;
         }
 
         else
         {
-            return true;
+            return false;
         }
     }
 
@@ -87,7 +85,7 @@ public class UserDatabase
         int userId;
         Cursor c = db.rawQuery("select userId from users where username=?", new String[]{username});
 
-        if (c.moveToFirst())
+        if (c.moveToNext())
         {
              userId = c.getInt(0);
              return userId;
