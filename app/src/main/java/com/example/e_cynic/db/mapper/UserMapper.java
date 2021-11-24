@@ -32,9 +32,9 @@ public class UserMapper
     public static List<User> mapCursorToUsers(Cursor cursor) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         List<User> userList = new ArrayList<>();
 
-        while(cursor.moveToNext()) {
+        do {
             userList.add(mapCursorToOneUser(cursor));
-        }
+        } while(cursor.moveToNext());
 
         return userList;
     }

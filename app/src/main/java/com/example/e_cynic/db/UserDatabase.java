@@ -8,6 +8,8 @@ import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDatabase
 {
@@ -40,60 +42,34 @@ public class UserDatabase
 
         long result = db.insert(usersTable, null, cv);
 
-        if (result >= 1)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
+        return (result >= 1) ? true : false;
     }
 
     public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         //return User object in users table (except password)
         Cursor c = db.rawQuery("select username, email, phoneNumber from users where username=?",
                 new String[]{username});
-
-        User user = null;
-
-        if(c.moveToNext()) {
-            user = UserMapper.mapCursorToOneUser(c);
-        }
-
-        return user;
+        return (c.moveToNext()) ? UserMapper.mapCursorToOneUser(c) : null;
     }
 
     public static boolean checkUsernameExistence(String username)
     {
         Cursor c = db.rawQuery("select username from users where username = ?", new String[]{username});
-
-        if (c.getCount()>0)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
+        return (c.getCount() > 0) ? true : false;
     }
 
     public static int getUserIdByUsername(String username)
     {
-        int userId;
         Cursor c = db.rawQuery("select userId from users where username=?", new String[]{username});
+        return (c.moveToNext()) ? c.getInt(0) : -1;
+    }
 
-        if (c.moveToNext())
-        {
-             userId = c.getInt(0);
-             return userId;
+    public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Cursor c = db.rawQuery("select username, email, phoneNumber from users", null);
+        List<User> userList = new ArrayList<>();
+        if(c.moveToNext()) {
+            userList = UserMapper.mapCursorToUsers(c);
         }
-
-        else
-        {
-            return -1;
-        }
+        return userList;
     }
 }
