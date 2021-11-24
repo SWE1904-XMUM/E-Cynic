@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.example.e_cynic.R;
+import com.example.e_cynic.permission.PhotoPermission;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity
@@ -31,7 +32,6 @@ public class RecycleActivity extends AppCompatActivity
     // Request code
     private static final int SNAP_PHOTO = 0;
     private static final int CHOOSE_FROM_GALLERY = 1;
-    private static final int PHOTO_PERMISSION = 2;
     private static final int LOCATION_PERMISSION = 3;
 
     @Override
@@ -52,7 +52,8 @@ public class RecycleActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                grantPermission();
+                PhotoPermission photoPermission = new PhotoPermission();
+                photoPermission.grantPhotoPermission(RecycleActivity.this);
                 selectImg();
             }
         });
@@ -75,14 +76,6 @@ public class RecycleActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
-    }
-
-    private void grantPermission()
-    {
-        if (ContextCompat.checkSelfPermission(RecycleActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(RecycleActivity.this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, PHOTO_PERMISSION);
-        }
     }
 
     private void selectImg()
@@ -127,7 +120,7 @@ public class RecycleActivity extends AppCompatActivity
         {
             switch (requestCode)
             {
-                case 1:
+                case SNAP_PHOTO:
                     if (resultCode == RESULT_OK && data!= null)
                     {
                         Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
@@ -135,7 +128,7 @@ public class RecycleActivity extends AppCompatActivity
                     }
                     break;
 
-                case 2:
+                case CHOOSE_FROM_GALLERY:
                     if (resultCode == RESULT_OK && data != null)
                     {
                         Uri selectedImage = data.getData();

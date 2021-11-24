@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
-public class AlertDialogCreator extends UIMaker {
+public class AlertDialogCreator {
     public static AlertDialog createAlertDialog(Context context, @Nullable String title,
                                          @Nullable String message,
                                          @Nullable String positiveButtonText,
