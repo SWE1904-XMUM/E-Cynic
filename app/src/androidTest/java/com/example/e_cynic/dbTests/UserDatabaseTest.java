@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.User;
-import com.example.e_cynic.utils.GetDatabaseUtil;
+import com.example.e_cynic.utils.DatabaseUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class UserDatabaseTest {
     private String username = "testuser";
     private String password = "1";
 
-    private static SQLiteDatabase database = GetDatabaseUtil.getTestDatabase();
+    private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
     @Test
     public void getUserInfo_test() throws NoSuchMethodException, NoSuchFieldException, InstantiationException,

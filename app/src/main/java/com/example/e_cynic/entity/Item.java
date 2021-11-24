@@ -7,4 +7,6 @@ public class Item {
     public Integer numberOfItems;
     //TODO BLOB image
     public double price;
+
+    public Item() {}
 }

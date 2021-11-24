@@ -12,6 +12,8 @@ public class Address {
     public String state;
     public Integer postcode;
 
+    public Address (){}
+
     public Address(Integer addressId, Integer userId, String firstLine, String secondLine, String thirdLine, String city, String state, Integer postcode) {
         this.addressId = addressId;
         this.userId = userId;

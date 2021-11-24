@@ -10,6 +10,7 @@ public class Article {
     public String url;
     public Date articleDate;
 
+    public Article () {}
     public Article(@Nullable Integer articleId, String articleName, String url, Date articleDate) {
         this.articleId = articleId;
         this.articleName = articleName;

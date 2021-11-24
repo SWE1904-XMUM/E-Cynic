@@ -11,6 +11,9 @@ public class FieldTypeCaster {
         else if(type == java.lang.Float.class) {
             return Float.parseFloat(value);
         }
+        else if(type == java.lang.Long.class) {
+            return Long.valueOf(value);
+        }
         else {
             return type.cast(value);
         }

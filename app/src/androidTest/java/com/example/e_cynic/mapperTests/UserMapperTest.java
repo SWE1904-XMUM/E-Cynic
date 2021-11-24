@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
-import com.example.e_cynic.utils.GetDatabaseUtil;
+import com.example.e_cynic.utils.DatabaseUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class UserMapperTest {
 
-    SQLiteDatabase database = GetDatabaseUtil.getTestDatabase();
+    SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
     @Test
     public void mapToOneUser_test() throws InvocationTargetException, NoSuchMethodException,

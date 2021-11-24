@@ -7,14 +7,14 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.e_cynic.db.DatabaseConnectionProvider;
 
-public class GetDatabaseUtil {
+public class DatabaseUtil {
 
-    private static Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+    private static Context context = ContextUtil.getContext();
     private static SQLiteDatabase database;
 
     public static SQLiteDatabase getTestDatabase() {
         if(database == null) {
-            synchronized (GetDatabaseUtil.class) {
+            synchronized (DatabaseUtil.class) {
                 database = DatabaseConnectionProvider.getDatabase(context);
             }
         }

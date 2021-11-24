@@ -8,6 +8,8 @@ public class Point {
     public Integer pointsEarned;
     public Date date;
 
+    public Point() {}
+
     public Point(Integer pointId, Integer userId, Integer pointsEarned, Date date) {
         this.pointId = pointId;
         this.userId = userId;
