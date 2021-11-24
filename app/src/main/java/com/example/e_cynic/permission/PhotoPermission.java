@@ -9,9 +9,6 @@ import androidx.core.content.ContextCompat;
 
 public class PhotoPermission
 {
-    // Request code
-    private static final int PHOTO_PERMISSION = 2;
-
     public PhotoPermission()
     {
 
@@ -21,7 +18,7 @@ public class PhotoPermission
     {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions((Activity) context, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, PHOTO_PERMISSION);
+            ActivityCompat.requestPermissions((Activity) context, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, RequestCode.PHOTO_PERMISSION);
         }
     }
 }

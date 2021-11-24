@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.e_cynic.entity.Item;
 
-import java.sql.Blob;
-
 public class ItemDatabase
 {
     public static final String itemsTable = "items";
