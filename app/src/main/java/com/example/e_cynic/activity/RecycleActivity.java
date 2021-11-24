@@ -4,37 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import android.content.Context;
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.FileObserver;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.example.e_cynic.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 public class RecycleActivity extends AppCompatActivity
 {
     private ImageView example, uploadImg;
     private Button uploadBtn;
-    private String img = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +46,7 @@ public class RecycleActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                grantPermission();
                 selectImg();
             }
         });
@@ -66,6 +60,14 @@ public class RecycleActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void grantPermission()
+    {
+        if (ContextCompat.checkSelfPermission(RecycleActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(RecycleActivity.this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
+        }
     }
 
     private void selectImg()
