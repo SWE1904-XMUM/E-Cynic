@@ -28,13 +28,6 @@ public class UserDatabase
 
     public static boolean insertUser(User user) throws IllegalAccessException {
         ContentValues cv = UserMapper.mapUserToContentValues(user);
-/*
-        ContentValues cv = new ContentValues();
-        cv.put(username,user.username);
-        cv.put(email,user.email);
-        cv.put(password,user.password);
-        cv.put(phoneNumber,user.phoneNumber);
-*/
         long result = db.insert(usersTable, null, cv);
         return result > 0;
     }
@@ -61,7 +54,7 @@ public class UserDatabase
     public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users", null);
         List<User> userList = new ArrayList<>();
-        if(c.moveToNext()) {
+        if(c.getCount() > 0) {
             userList = UserMapper.mapCursorToUsers(c);
         }
         return userList;

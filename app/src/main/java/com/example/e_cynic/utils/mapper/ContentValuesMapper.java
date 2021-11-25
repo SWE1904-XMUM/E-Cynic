@@ -5,7 +5,7 @@ import android.content.ContentValues;
 import java.lang.reflect.Field;
 import java.util.List;
 
-public class Mapper {
+public class ContentValuesMapper {
     public static ContentValues mapFieldsToContentValues(List<Field> fields, Object object) throws IllegalAccessException {
         ContentValues cv = new ContentValues();
 

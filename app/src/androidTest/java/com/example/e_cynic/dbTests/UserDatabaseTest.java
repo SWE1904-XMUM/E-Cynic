@@ -16,8 +16,8 @@ import java.util.List;
 public class UserDatabaseTest {
 
     private Integer userid  = 1;
-    private String username = "testuser";
-    private String email = "test@gmail.com";
+    private String username = "testuser1";
+    private String email = "test1@gmail.com";
     private String password = "testuser";
     private String phoneNumber = "12345";
     private User test_user = new User(userid, username, email, password, phoneNumber);
