@@ -1,4 +1,4 @@
-package com.example.e_cynic.db.mapper;
+package com.example.e_cynic.utils.mapper;
 
 import android.content.ContentValues;
 
