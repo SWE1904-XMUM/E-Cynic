@@ -54,11 +54,22 @@ public class SignUpActivity extends AppCompatActivity
                 }
 
                 User user = new User(null,usernameTxt,emailTxt,passwordTxt,phoneTxt);
-                boolean insertUser = UserDatabase.insertUser(user);
+                boolean insertUser = false;
+                try {
+                    insertUser = UserDatabase.insertUser(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 if (insertUser == true)
                 {
-                    int userId = UserDatabase.getUserIdByUsername(usernameTxt);
+                    Integer userId = -1;
+
+                    try {
+                        userId = UserDatabase.getUserIdByUsername(usernameTxt);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                     if (userId > 0)
                     {

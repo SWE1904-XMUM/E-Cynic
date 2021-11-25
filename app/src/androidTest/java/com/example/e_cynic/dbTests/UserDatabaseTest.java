@@ -7,6 +7,7 @@ import com.example.e_cynic.entity.User;
 import com.example.e_cynic.utils.DatabaseUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -14,16 +15,28 @@ import java.util.List;
 
 public class UserDatabaseTest {
 
+    private Integer userid  = 1;
     private String username = "testuser";
-    private String password = "1";
+    private String email = "test@gmail.com";
+    private String password = "testuser";
+    private String phoneNumber = "12345";
+    private User test_user = new User(userid, username, email, password, phoneNumber);
 
     private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
+
+    @Test
+    public void insertUser() throws IllegalAccessException {
+        test_user.userId = null;
+        boolean result = UserDatabase.insertUser(test_user);
+        LoggingUtil.printMessage("insert user", result == true ? "true" : "false");
+        Assert.assertEquals(true, result);
+    }
 
     @Test
     public void getUserInfo_test() throws NoSuchMethodException, NoSuchFieldException, InstantiationException,
             IllegalAccessException, InvocationTargetException {
         User user = UserDatabase.getUserInfoByUsername(username);
-        LoggingUtil.printMessage("Get User Info By Username", (user != null)? user.toString() : "null");
+        LoggingUtil.printMessage("Get User Info By Username", (user != null) ? user.toString() : "null");
     }
 
     @Test
@@ -41,8 +54,7 @@ public class UserDatabaseTest {
     @Test
     public void getAllUsers_test() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         List<User> userList = UserDatabase.getAllUsers();
-        for (User u :
-                userList) {
+        for (User u : userList) {
             LoggingUtil.printMessage("get all users", u.toString());
         }
     }

@@ -28,7 +28,7 @@ public class AddressMapper {
         return address;
     }
 
-    public static List<Address> mapCursorToAddresss(Cursor cursor) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public static List<Address> mapCursorToAddress(Cursor cursor) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         List<Address> addressList = new ArrayList<>();
 
         do {
