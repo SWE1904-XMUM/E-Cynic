@@ -19,12 +19,14 @@
         android:theme="@style/Theme.ECynic"
         android:usesCleartextTraffic="true">
 
-        <meta-data
-        android:name="com.google.android.API_KEY"
-        android:value="@string/api_key" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key"/>
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".activity.PinLocation"
+            android:name=".activity.PinLocationActivity"
             android:exported="false" />
         <activity
             android:name=".activity.StartupActivity"

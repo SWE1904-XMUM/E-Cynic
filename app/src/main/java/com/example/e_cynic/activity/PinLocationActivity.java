@@ -1,12 +1,14 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.e_cynic.R;
 import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.permission.LocationPermission;
@@ -22,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class PinLocation extends FragmentActivity implements OnMapReadyCallback
+public class PinLocationActivity extends FragmentActivity implements OnMapReadyCallback
 {
     Location currentLocation;
     SupportMapFragment supportMapFragment;
@@ -60,7 +62,7 @@ public class PinLocation extends FragmentActivity implements OnMapReadyCallback
                     toastCreator.createToast(getApplicationContext(),currentLocation.getLatitude()+""+currentLocation.getLongitude());
 
                     supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
-                    supportMapFragment.getMapAsync(PinLocation.this);
+                    supportMapFragment.getMapAsync(PinLocationActivity.this);
                 }
             }
         });

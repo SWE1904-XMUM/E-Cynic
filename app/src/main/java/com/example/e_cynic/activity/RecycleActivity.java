@@ -40,7 +40,7 @@ public class RecycleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(RecycleActivity.this, PinLocation.class);
+                Intent i = new Intent(RecycleActivity.this, PinLocationActivity.class);
                 startActivity(i);
             }
         });
