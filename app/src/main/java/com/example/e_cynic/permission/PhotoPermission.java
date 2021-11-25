@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.e_cynic.constants.RequestCode;
+
 public class PhotoPermission
 {
     public PhotoPermission()

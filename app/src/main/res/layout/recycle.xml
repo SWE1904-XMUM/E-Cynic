@@ -24,14 +24,6 @@
 
     </FrameLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Recycle Page"
-        android:textSize="30dp" />
-
     <ImageView
         android:id="@+id/example"
         android:layout_width="84dp"
@@ -55,13 +47,29 @@
         android:layout_marginTop="150dp"
         app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="location" />
+
+    <TextView
+        android:id="@+id/fetchAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:text="address" />
+
     <Button
         android:id="@+id/uploadBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="upload"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="300dp"
+        android:text="upload" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"

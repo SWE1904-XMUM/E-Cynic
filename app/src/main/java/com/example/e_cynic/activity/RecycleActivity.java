@@ -4,32 +4,45 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.example.e_cynic.R;
 import com.example.e_cynic.permission.LocationPermission;
 import com.example.e_cynic.permission.PhotoPermission;
-import com.example.e_cynic.permission.RequestCode;
+import com.example.e_cynic.constants.RequestCode;
+import com.example.e_cynic.utils.userInteraction.ToastCreator;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class RecycleActivity extends AppCompatActivity
-{
+public class RecycleActivity extends AppCompatActivity {
     private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
+    private TextView location, fetchAddress;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle);
 
@@ -37,67 +50,53 @@ public class RecycleActivity extends AppCompatActivity
         uploadImg = findViewById(R.id.uploadImg);
         uploadBtn = findViewById(R.id.uploadBtn);
         pinLocation = findViewById(R.id.pinLocation);
+        location = findViewById(R.id.location);
+        fetchAddress = findViewById(R.id.fetchAddress);
 
         bottomNavBar();
 
-        uploadImg.setOnClickListener(new View.OnClickListener()
-        {
+        uploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 PhotoPermission photoPermission = new PhotoPermission();
                 photoPermission.grantPhotoPermission(RecycleActivity.this);
                 selectImg();
             }
         });
 
-        pinLocation.setOnClickListener(new View.OnClickListener()
-        {
+        pinLocation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 LocationPermission locationPermission = new LocationPermission();
                 locationPermission.grantLocationPermission(RecycleActivity.this);
                 //
             }
         });
 
-        example.setOnClickListener(new View.OnClickListener()
-        {
+        example.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent i = new Intent(RecycleActivity.this, ElectronicAppliancesExampleActivity.class);
                 startActivity(i);
             }
         });
     }
 
-    private void selectImg()
-    {
-        final CharSequence [] options = {"Snap photo","Choose from gallery","Cancel"};
+    private void selectImg() {
+        final CharSequence[] options = {"Snap photo", "Choose from gallery", "Cancel"};
         AlertDialog.Builder ad = new AlertDialog.Builder(this);
         ad.setTitle("Upload photo");
 
-        ad.setItems(options, new DialogInterface.OnClickListener()
-        {
+        ad.setItems(options, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                if (options[i].equals("Snap photo"))
-                {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (options[i].equals("Snap photo")) {
                     Intent snapPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(snapPhoto,RequestCode.SNAP_PHOTO);
-                }
-
-                else if (options[i].equals("Choose from gallery"))
-                {
-                    Intent chooseFromGallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(chooseFromGallery,RequestCode.CHOOSE_FROM_GALLERY);
-                }
-
-                else if (options[i].equals("Cancel"))
-                {
+                    startActivityForResult(snapPhoto, RequestCode.SNAP_PHOTO);
+                } else if (options[i].equals("Choose from gallery")) {
+                    Intent chooseFromGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(chooseFromGallery, RequestCode.CHOOSE_FROM_GALLERY);
+                } else if (options[i].equals("Cancel")) {
                     dialogInterface.dismiss();
                 }
             }
@@ -107,34 +106,27 @@ public class RecycleActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode != RESULT_CANCELED)
-        {
-            switch (requestCode)
-            {
+        if (resultCode != RESULT_CANCELED) {
+            switch (requestCode) {
                 case RequestCode.SNAP_PHOTO:
-                    if (resultCode == RESULT_OK && data!= null)
-                    {
+                    if (resultCode == RESULT_OK && data != null) {
                         Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
                         uploadImg.setImageBitmap(capturedImg);
                     }
                     break;
 
                 case RequestCode.CHOOSE_FROM_GALLERY:
-                    if (resultCode == RESULT_OK && data != null)
-                    {
+                    if (resultCode == RESULT_OK && data != null) {
                         Uri selectedImage = data.getData();
-                        String [] filePath = {MediaStore.Images.Media.DATA};
+                        String[] filePath = {MediaStore.Images.Media.DATA};
 
-                        if (selectedImage != null)
-                        {
-                            Cursor cursor = getContentResolver().query(selectedImage,filePath,null,null,null);
+                        if (selectedImage != null) {
+                            Cursor cursor = getContentResolver().query(selectedImage, filePath, null, null, null);
 
-                            if (cursor != null)
-                            {
+                            if (cursor != null) {
                                 cursor.moveToFirst();
 
                                 int colInd = cursor.getColumnIndex(filePath[0]);
@@ -151,13 +143,54 @@ public class RecycleActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == RequestCode.LOCATION_PERMISSION)
-        {
-            //
+
+        if (requestCode == RequestCode.LOCATION_PERMISSION && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getCurrentLocation();
+            } else {
+                ToastCreator toastCreator = new ToastCreator();
+                toastCreator.createToast(this, "Permission denied");
+            }
         }
+    }
+
+    private void getCurrentLocation() {
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(3000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+        LocationServices.getFusedLocationProviderClient(RecycleActivity.this).requestLocationUpdates(locationRequest, new LocationCallback()
+        {
+            @Override
+            public void onLocationResult(LocationResult locationResult)
+            {
+                super.onLocationResult(locationResult);
+                LocationServices.getFusedLocationProviderClient(RecycleActivity.this).removeLocationUpdates(this);
+
+                if (locationResult != null && locationResult.getLocations().size() > 0)
+                {
+                    int latestLocationIndex = locationResult.getLocations().size() -1;
+                    double latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
+                    double longitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
+                    location.setText(String.format("Latitude: %s\nLongitude: %s",latitude,longitude));
+                }
+            }
+        }, Looper.getMainLooper());
     }
 
     private void bottomNavBar()

@@ -74,6 +74,8 @@
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true"/>
+
+        <service android:name=".services.FetchAddressService"/>
     </application>
 
 </manifest>

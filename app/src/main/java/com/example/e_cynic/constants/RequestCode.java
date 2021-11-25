@@ -1,4 +1,4 @@
-package com.example.e_cynic.permission;
+package com.example.e_cynic.constants;
 
 public class RequestCode
 {
@@ -7,8 +7,6 @@ public class RequestCode
     public static final int CHOOSE_FROM_GALLERY = 1;
     public static final int PHOTO_PERMISSION = 2;
     public static final int LOCATION_PERMISSION = 3;
-
-    //test to push
 
     RequestCode()
     {
