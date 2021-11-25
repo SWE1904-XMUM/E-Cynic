@@ -19,6 +19,13 @@
         android:theme="@style/Theme.ECynic"
         android:usesCleartextTraffic="true">
 
+        <meta-data
+        android:name="com.google.android.API_KEY"
+        android:value="@string/api_key" />
+
+        <activity
+            android:name=".activity.PinLocation"
+            android:exported="false" />
         <activity
             android:name=".activity.StartupActivity"
             android:exported="true">
@@ -28,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.QuizResultActivity"
             android:exported="false" />
@@ -73,9 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true"/>
-
-        <service android:name=".services.FetchAddressService"/>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -11,9 +11,6 @@ import com.example.e_cynic.constants.RequestCode;
 
 public class LocationPermission
 {
-    // TODO Request code
-    private static final int LOCATION_PERMISSION = 3;
-
     public LocationPermission()
     {
 

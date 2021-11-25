@@ -6,29 +6,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.example.e_cynic.R;
-import com.example.e_cynic.permission.LocationPermission;
 import com.example.e_cynic.permission.PhotoPermission;
 import com.example.e_cynic.constants.RequestCode;
-import com.example.e_cynic.utils.userInteraction.ToastCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity {
-    private ImageView example, uploadImg, pinLocation;
+    private ImageView example, uploadImg,pinLocation;
     private Button uploadBtn;
 
     @Override
@@ -41,6 +35,16 @@ public class RecycleActivity extends AppCompatActivity {
         uploadBtn = findViewById(R.id.uploadBtn);
         pinLocation = findViewById(R.id.pinLocation);
 
+        pinLocation.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(RecycleActivity.this, PinLocation.class);
+                startActivity(i);
+            }
+        });
+
         bottomNavBar();
 
         uploadImg.setOnClickListener(new View.OnClickListener() {
@@ -49,15 +53,6 @@ public class RecycleActivity extends AppCompatActivity {
                 PhotoPermission photoPermission = new PhotoPermission();
                 photoPermission.grantPhotoPermission(RecycleActivity.this);
                 selectImg();
-            }
-        });
-
-        pinLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LocationPermission locationPermission = new LocationPermission();
-                locationPermission.grantLocationPermission(RecycleActivity.this);
-                //
             }
         });
 
@@ -126,19 +121,6 @@ public class RecycleActivity extends AppCompatActivity {
                     }
 
                     break;
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == RequestCode.LOCATION_PERMISSION && grantResults.length > 0) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            } else {
-                ToastCreator toastCreator = new ToastCreator();
-                toastCreator.createToast(this, "Permission denied");
             }
         }
     }

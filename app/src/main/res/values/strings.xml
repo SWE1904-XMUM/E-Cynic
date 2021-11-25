@@ -1,4 +1,7 @@
 <resources>
+    <!-- API KEY -->
+    <string name="api_key">AIzaSyB_qsP8AOP_P0MdlPz-48TDaJYjTP3vbjo</string>
+
     <string name="app_name">E-Cynic</string>
     <string name="title_activity_bottom_nav">BottomNav</string>
     <string name="title_home">Home</string>
@@ -63,7 +66,6 @@
         <item>https://theconversation.com/global-electronic-waste-up-21-in-five-years-and-recycling-isnt-keeping-up-141997</item>
         <item>https://ecocycle.com.au/lighting-and-electrical/5-benefits-of-recycling-e-waste/</item>
     </string-array>
-
 
 
 </resources>
