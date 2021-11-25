@@ -15,7 +15,6 @@ public class UserDatabase
 {
     public static final String usersTable = "users";
     public static final String username = "username";
-    public static final String name = "name";
     public static final String email = "email";
     public static final String password = "password";
     public static final String phoneNumber = "phoneNumber";
@@ -24,30 +23,25 @@ public class UserDatabase
 
     public static boolean verifyUser(String username, String password) {
         Cursor c = db.rawQuery("select password from users where username=?", new String[]{username});
-        if(c.moveToNext()) {
-            if(password.equals(c.getString(0))) {
-                return true;
-            }
-        }
-        return false;
+        return (c.moveToNext() && password.equals(c.getString(0)));
     }
 
-    public static boolean insertUser(User user)
-    {
+    public static boolean insertUser(User user) throws IllegalAccessException {
+        ContentValues cv = UserMapper.mapUserToContentValues(user);
+/*
         ContentValues cv = new ContentValues();
         cv.put(username,user.username);
         cv.put(email,user.email);
         cv.put(password,user.password);
         cv.put(phoneNumber,user.phoneNumber);
-
+*/
         long result = db.insert(usersTable, null, cv);
-
-        return (result >= 1) ? true : false;
+        return result > 0;
     }
 
     public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         //return User object in users table (except password)
-        Cursor c = db.rawQuery("select username, email, phoneNumber from users where username=?",
+        Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users where username=?",
                 new String[]{username});
         return (c.moveToNext()) ? UserMapper.mapCursorToOneUser(c) : null;
     }
@@ -55,7 +49,7 @@ public class UserDatabase
     public static boolean checkUsernameExistence(String username)
     {
         Cursor c = db.rawQuery("select username from users where username = ?", new String[]{username});
-        return (c.getCount() > 0) ? true : false;
+        return (c.getCount() > 0);
     }
 
     public static int getUserIdByUsername(String username)
@@ -65,11 +59,16 @@ public class UserDatabase
     }
 
     public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Cursor c = db.rawQuery("select username, email, phoneNumber from users", null);
+        Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users", null);
         List<User> userList = new ArrayList<>();
         if(c.moveToNext()) {
             userList = UserMapper.mapCursorToUsers(c);
         }
         return userList;
+    }
+
+    public static boolean editUserByUserId(Integer userId, User new_user) {
+        //TODO Map User to ContentValues
+        return false;
     }
 }

@@ -28,7 +28,7 @@ public class OrderDatabase
         cv.put(date, String.valueOf(order.date));
 
         long result = db.insert(ordersTable, null, cv);
-        return (result > 0) ? true : false;
+        return result > 0;
     }
 
     public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
@@ -47,5 +47,10 @@ public class OrderDatabase
             NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select * from orders where userId=?",null);
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null ;
+    }
+
+    public static boolean editOrderByOrderId(Integer orderId, Order order) {
+        //TODO Map Order to ContentValues
+        return false;
     }
 }

@@ -1,9 +1,14 @@
 package com.example.e_cynic.db;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.e_cynic.db.mapper.AddressMapper;
 import com.example.e_cynic.entity.Address;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class AddressDatabase
 {
@@ -30,11 +35,33 @@ public class AddressDatabase
         cv.put(postcode,address.postcode);
 
         long result = db.insert(addressesTable, null, cv);
+        return result > 0;
+    }
 
-        if (result >= 1)
-        {
-            return true;
-        }
+    public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+        Cursor c = db.rawQuery("select * from addresses where addressId=?",
+                new String[]{String.valueOf(addressId)});
+        return (c.moveToNext()) ? AddressMapper.mapCursorToOneAddress(c) : null;
+    }
+
+    public static List<Address> getAddressesByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+        Cursor c = db.rawQuery("select * from addresses where userId=?",
+                new String[]{String.valueOf(userId)});
+        return (c.moveToNext()) ? AddressMapper.mapCursorToAddress(c) : null;
+    }
+
+    public static List<Address> getAddressesByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Integer userId = UserDatabase.getUserIdByUsername(username);
+        return getAddressesByUserId(userId);
+    }
+
+    public static boolean removeAddressByAddressId(Integer addressId) {
+        long result = db.delete(addressesTable, "addressId=?", new String[]{String.valueOf(addressId)});
+        return result > 0;
+    }
+
+    public static boolean editAddressByAddressId(Integer addressId, Address new_address) {
+        // TODO Map Address to ContentValues
         return false;
     }
 }

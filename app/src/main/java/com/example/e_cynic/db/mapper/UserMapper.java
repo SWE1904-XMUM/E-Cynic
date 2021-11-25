@@ -1,5 +1,6 @@
 package com.example.e_cynic.db.mapper;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.e_cynic.entity.User;
@@ -37,5 +38,11 @@ public class UserMapper
         } while(cursor.moveToNext());
 
         return userList;
+    }
+
+    public static ContentValues mapUserToContentValues(User user) throws IllegalAccessException {
+        List<Field> field_list = Arrays.asList(user.getClass().getDeclaredFields());
+        ContentValues cv = Mapper.mapFieldsToContentValues(field_list, user);
+        return cv;
     }
 }
