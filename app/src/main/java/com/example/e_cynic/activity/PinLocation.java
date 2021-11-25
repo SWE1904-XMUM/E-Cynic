@@ -3,6 +3,8 @@ package com.example.e_cynic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -22,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class PinLocation extends AppCompatActivity implements OnMapReadyCallback
+public class PinLocation extends FragmentActivity implements OnMapReadyCallback
 {
     Location currentLocation;
     SupportMapFragment supportMapFragment;
