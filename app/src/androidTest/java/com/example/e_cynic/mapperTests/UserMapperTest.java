@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserContentValuesMapperTest {
+public class UserMapperTest {
 
     private SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
@@ -44,10 +44,7 @@ public class UserContentValuesMapperTest {
     @Test
     public void mapCursorToUsers() throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor cursor = database.rawQuery("select * from users", null);
-        List<User> userList = new ArrayList<>();
-        while (cursor.moveToNext()) {
-            userList.add(UserMapper.mapCursorToOneUser(cursor));
-        }
+        List<User> userList = UserMapper.mapCursorToUsers(cursor);
 
         for (User u : userList) {
             LoggingUtil.printMessage("map to many users", u.toString());
