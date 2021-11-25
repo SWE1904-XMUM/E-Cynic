@@ -30,8 +30,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class RecycleActivity extends AppCompatActivity {
     private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
-    private TextView location, fetchAddress;
-    private ResultReceiver resultReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +40,6 @@ public class RecycleActivity extends AppCompatActivity {
         uploadImg = findViewById(R.id.uploadImg);
         uploadBtn = findViewById(R.id.uploadBtn);
         pinLocation = findViewById(R.id.pinLocation);
-        location = findViewById(R.id.location);
-        fetchAddress = findViewById(R.id.fetchAddress);
-
-        resultReceiver = new ResultReceiver(new Handler());
 
         bottomNavBar();
 
