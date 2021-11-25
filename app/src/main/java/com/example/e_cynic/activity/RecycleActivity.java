@@ -4,42 +4,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.e_cynic.R;
 import com.example.e_cynic.permission.LocationPermission;
 import com.example.e_cynic.permission.PhotoPermission;
 import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.utils.userInteraction.ToastCreator;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity {
     private ImageView example, uploadImg, pinLocation;
     private Button uploadBtn;
     private TextView location, fetchAddress;
+    private ResultReceiver resultReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +44,8 @@ public class RecycleActivity extends AppCompatActivity {
         pinLocation = findViewById(R.id.pinLocation);
         location = findViewById(R.id.location);
         fetchAddress = findViewById(R.id.fetchAddress);
+
+        resultReceiver = new ResultReceiver(new Handler());
 
         bottomNavBar();
 
@@ -148,49 +142,11 @@ public class RecycleActivity extends AppCompatActivity {
 
         if (requestCode == RequestCode.LOCATION_PERMISSION && grantResults.length > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentLocation();
             } else {
                 ToastCreator toastCreator = new ToastCreator();
                 toastCreator.createToast(this, "Permission denied");
             }
         }
-    }
-
-    private void getCurrentLocation() {
-        LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(10000);
-        locationRequest.setFastestInterval(3000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-        LocationServices.getFusedLocationProviderClient(RecycleActivity.this).requestLocationUpdates(locationRequest, new LocationCallback()
-        {
-            @Override
-            public void onLocationResult(LocationResult locationResult)
-            {
-                super.onLocationResult(locationResult);
-                LocationServices.getFusedLocationProviderClient(RecycleActivity.this).removeLocationUpdates(this);
-
-                if (locationResult != null && locationResult.getLocations().size() > 0)
-                {
-                    int latestLocationIndex = locationResult.getLocations().size() -1;
-                    double latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
-                    double longitude = locationResult.getLocations().get(latestLocationIndex).getLongitude();
-                    location.setText(String.format("Latitude: %s\nLongitude: %s",latitude,longitude));
-                }
-            }
-        }, Looper.getMainLooper());
     }
 
     private void bottomNavBar()
