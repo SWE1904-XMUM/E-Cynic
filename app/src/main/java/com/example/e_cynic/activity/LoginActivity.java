@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                // TODO remove login (after done)
+/*
                 updateViewText();
 
                 if (!fieldDataIsComplete())
@@ -92,6 +94,9 @@ public class LoginActivity extends AppCompatActivity
                         }
                     }
                 }
+*/
+                Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(homePage);
             }
         });
 
