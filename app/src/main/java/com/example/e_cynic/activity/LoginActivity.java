@@ -10,11 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 public class LoginActivity extends AppCompatActivity
 {
+    // views
     private Button loginBtn, signUpBtn, forgotPwd;
     private TextView username,password;
+
+    // text of view
+    private String usernameTxt,passwordTxt;
+
+    // session manager
     SessionManager sm;
 
     @Override
@@ -23,11 +30,7 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        loginBtn = findViewById(R.id.loginBtn);
-        signUpBtn = findViewById(R.id.signUpBtn);
-        forgotPwd = findViewById(R.id.forgotPwd);
+        setViewComponent();
 
         // Initialize session manager
         sm = new SessionManager(getApplicationContext());
@@ -37,19 +40,19 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                String usernameTxt = username.getText().toString();
-                String passwordTxt = password.getText().toString();
+                updateViewText();
 
                 Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(i);
 
-                /*if (usernameTxt.equals("")||passwordTxt.equals(""))
+                if (!fieldDataIsComplete())
                 {
                     SnackbarCreator.createNewSnackbar(view,"Please enter all field.");
                 }
 
                 else
                 {
+                    /*
                     //TODO -> link to database
                     //Store login in session
                     sm.setLogin(true);
@@ -57,8 +60,8 @@ public class LoginActivity extends AppCompatActivity
                     // Store username
                     sm.setUsername(usernameTxt);
 
-                    // Redirect to home page
-                }*/
+                    // Redirect to home page*/
+                }
             }
         });
 
@@ -81,5 +84,25 @@ public class LoginActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void setViewComponent()
+    {
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        loginBtn = findViewById(R.id.loginBtn);
+        signUpBtn = findViewById(R.id.signUpBtn);
+        forgotPwd = findViewById(R.id.forgotPwd);
+    }
+
+    private void updateViewText()
+    {
+        usernameTxt = username.getText().toString();
+        passwordTxt = password.getText().toString();
+    }
+
+    private boolean fieldDataIsComplete()
+    {
+        return !(usernameTxt.equals("")||passwordTxt.equals(""));
     }
 }
