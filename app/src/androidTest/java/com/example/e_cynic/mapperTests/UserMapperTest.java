@@ -29,7 +29,7 @@ public class UserMapperTest {
     private User test_user = new User(userid, username, email, password, phoneNumber);
 
     @Test
-    public void mapUserToContentValues() throws IllegalAccessException {
+    public void mapUserToContentValues() throws IllegalAccessException, NoSuchMethodException {
         ContentValues cv = UserMapper.mapUserToContentValues(test_user);
         LoggingUtil.printMessage("map user to content values", cv.toString());
     }

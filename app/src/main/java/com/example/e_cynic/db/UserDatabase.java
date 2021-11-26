@@ -26,7 +26,7 @@ public class UserDatabase
         return (c.moveToNext() && password.equals(c.getString(0)));
     }
 
-    public static boolean insertUser(User user) throws IllegalAccessException {
+    public static boolean insertUser(User user) throws IllegalAccessException, NoSuchMethodException {
         ContentValues cv = UserMapper.mapUserToContentValues(user);
         long result = db.insert(usersTable, null, cv);
         return result > 0;
@@ -60,9 +60,9 @@ public class UserDatabase
         return userList;
     }
 
-    public static boolean editUserByUserId(Integer userId, User new_user) throws IllegalAccessException {
+    public static boolean editUserByUserId(User new_user) throws IllegalAccessException, NoSuchMethodException {
         ContentValues cv = UserMapper.mapUserToContentValues(new_user);
-        long result = db.update(usersTable, cv, "userId=?", new String[]{String.valueOf(userId)});
+        long result = db.update(usersTable, cv, "userId=?", new String[]{String.valueOf(new_user.userId)});
         return result > 0;
     }
 }

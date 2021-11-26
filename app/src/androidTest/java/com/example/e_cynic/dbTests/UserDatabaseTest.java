@@ -16,8 +16,8 @@ import java.util.List;
 public class UserDatabaseTest {
 
     private Integer userid  = 1;
-    private String username = "testuser1";
-    private String email = "test1@gmail.com";
+    private String username = "testuser";
+    private String email = "test12345@gmail.com";
     private String password = "testuser";
     private String phoneNumber = "12345";
     private User test_user = new User(userid, username, email, password, phoneNumber);
@@ -25,7 +25,7 @@ public class UserDatabaseTest {
     private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
     @Test
-    public void insertUser() throws IllegalAccessException {
+    public void insertUser() throws IllegalAccessException, NoSuchMethodException {
         test_user.userId = null;
         boolean result = UserDatabase.insertUser(test_user);
         LoggingUtil.printMessage("insert user", result == true ? "true" : "false");
@@ -59,4 +59,10 @@ public class UserDatabaseTest {
         }
     }
 
+    @Test
+    public void editUserByUserId() throws IllegalAccessException, NoSuchMethodException {
+        User user = new User(userid, username, email, password, phoneNumber);
+        boolean result = UserDatabase.editUserByUserId(user);
+        LoggingUtil.printMessage("edit user by userid", (result == true) ? "true" : "false");
+    }
 }

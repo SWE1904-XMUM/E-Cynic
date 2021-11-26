@@ -49,7 +49,7 @@ public class Mapper
         return objectList;
     }
 
-    public static <T> ContentValues mapEntityToContentValues(T target) throws IllegalAccessException {
+    public static <T> ContentValues mapEntityToContentValues(T target) throws IllegalAccessException, NoSuchMethodException {
         List<Field> field_list = Arrays.asList(target.getClass().getDeclaredFields());
         ContentValues cv = ContentValuesMapper.mapFieldsToContentValues(field_list, target);
         return cv;

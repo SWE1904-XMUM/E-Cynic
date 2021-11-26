@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class ContentValuesMapper {
-    public static ContentValues mapFieldsToContentValues(List<Field> fields, Object object) throws IllegalAccessException {
+    public static ContentValues mapFieldsToContentValues(List<Field> fields, Object object) throws IllegalAccessException, NoSuchMethodException {
         ContentValues cv = new ContentValues();
 
         Class<?> fieldType = null;

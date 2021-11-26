@@ -18,7 +18,7 @@ public class AddressMapper
         return (cursor.moveToFirst()) ? Mapper.mapCursorToMany(cursor, Address.class) : null;
     }
 
-    public static ContentValues mapAddressToContentValues(Address address) throws IllegalAccessException {
+    public static ContentValues mapAddressToContentValues(Address address) throws IllegalAccessException, NoSuchMethodException {
         return Mapper.mapEntityToContentValues(address);
     }
 }

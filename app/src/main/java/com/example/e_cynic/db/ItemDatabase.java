@@ -14,6 +14,7 @@ import java.util.List;
 public class ItemDatabase
 {
     public static final String itemsTable = "items";
+    public static final String itemId = "itemId";
     public static final String orderId = "orderId";
     public static final String itemName = "itemName";
     public static final String numberOfItems = "numberOfItems";
@@ -23,17 +24,9 @@ public class ItemDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static boolean insertItem(Item item)
-    {
-        ContentValues cv = new ContentValues();
-        cv.put(orderId,item.orderId);
-        cv.put(itemName,item.itemName);
-        cv.put(numberOfItems,item.numberOfItems);
-        //cv.put(image);
-        cv.put(price,item.price);
-
+    public static boolean insertItem(Item item) throws IllegalAccessException, NoSuchMethodException {
+        ContentValues cv = ItemMapper.mapItemToContentValues(item);
         long result = db.insert(itemsTable, null, cv);
-
         return result > 0;
     }
 

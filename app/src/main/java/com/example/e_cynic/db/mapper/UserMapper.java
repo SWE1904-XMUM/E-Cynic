@@ -18,7 +18,7 @@ public class UserMapper
         return (cursor.moveToFirst()) ? Mapper.mapCursorToMany(cursor, User.class) : null;
     }
 
-    public static ContentValues mapUserToContentValues(User user) throws IllegalAccessException {
+    public static ContentValues mapUserToContentValues(User user) throws IllegalAccessException, NoSuchMethodException {
         return Mapper.mapEntityToContentValues(user);
     }
 }

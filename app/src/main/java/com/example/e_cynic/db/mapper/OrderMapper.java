@@ -18,7 +18,7 @@ public class OrderMapper
         return (cursor.moveToFirst()) ? Mapper.mapCursorToMany(cursor, Order.class) : null;
     }
 
-    public static ContentValues mapOrderToContentValues(Order order) throws IllegalAccessException {
+    public static ContentValues mapOrderToContentValues(Order order) throws IllegalAccessException, NoSuchMethodException {
         return Mapper.mapEntityToContentValues(order);
     }
 }
