@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
@@ -42,9 +41,6 @@ public class LoginActivity extends AppCompatActivity
             {
                 updateViewText();
 
-                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(i);
-
                 if (!fieldDataIsComplete())
                 {
                     SnackbarCreator.createNewSnackbar(view,"Please enter all field.");
@@ -52,15 +48,25 @@ public class LoginActivity extends AppCompatActivity
 
                 else
                 {
-                    /*
-                    //TODO -> link to database
-                    //Store login in session
-                    sm.setLogin(true);
+                    boolean verify = UserDatabase.verifyUser(usernameTxt,passwordTxt);
 
-                    // Store username
-                    sm.setUsername(usernameTxt);
+                    if (verify == true)
+                    {
+                        //Store login in session
+                        sm.setLogin(true);
 
-                    // Redirect to home page*/
+                        // Store username
+                        sm.setUsername(usernameTxt);
+
+                        // Redirect to home page
+                        Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
+                        startActivity(homePage);
+                    }
+
+                    else
+                    {
+                        SnackbarCreator.createNewSnackbar(view,"Invalid username or password!");
+                    }
                 }
             }
         });
