@@ -20,7 +20,6 @@ import java.util.List;
 public class AddressDatabaseTest {
     private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
-    //TODO AddressDatabaseTest
     private Integer userId = 1;
     private Integer addressId = 3;
     private String line1 = "No 1, Jalan Sunsuria," ;
