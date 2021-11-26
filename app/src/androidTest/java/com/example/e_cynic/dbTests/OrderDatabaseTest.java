@@ -59,4 +59,12 @@ public class OrderDatabaseTest {
             LoggingUtil.printMessage("get order by userid", o.toString());
         }
     }
+
+    @Test
+    public void getOrdersByUserId() {
+    }
+
+    @Test
+    public void editOrderByOrderId() {
+    }
 }

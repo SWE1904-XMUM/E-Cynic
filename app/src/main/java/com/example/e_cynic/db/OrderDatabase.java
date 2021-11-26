@@ -49,8 +49,9 @@ public class OrderDatabase
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null ;
     }
 
-    public static boolean editOrderByOrderId(Integer orderId, Order order) {
-        //TODO Map Order to ContentValues
-        return false;
+    public static boolean editOrderByOrderId(Integer orderId, Order new_order) throws IllegalAccessException {
+        ContentValues cv = OrderMapper.mapOrderToContentValues(new_order);
+        long result = db.update(ordersTable, cv, "orderId=?", new String[]{String.valueOf(orderId)});
+        return result > 0;
     }
 }

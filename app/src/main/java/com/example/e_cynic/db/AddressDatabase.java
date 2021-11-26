@@ -60,8 +60,9 @@ public class AddressDatabase
         return result > 0;
     }
 
-    public static boolean editAddressByAddressId(Integer addressId, Address new_address) {
-        // TODO Map Address to ContentValues
+    public static boolean editAddressByAddressId(Integer addressId, Address new_address) throws IllegalAccessException {
+        ContentValues cv = AddressMapper.mapAddressToContentValues(new_address);
+        db.update(addressesTable, cv, "addressId=?", new String[]{String.valueOf(addressId)});
         return false;
     }
 }
