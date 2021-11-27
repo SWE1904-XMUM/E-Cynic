@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.OrderMapper;
 import com.example.e_cynic.entity.Order;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -31,20 +32,20 @@ public class OrderDatabase
         return result > 0;
     }
 
-    public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Integer userId = UserDatabase.getUserIdByUsername(username);
         Cursor c = db.rawQuery("select * from orders where userId=?", new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null;
     }
 
-    public static Order getOrderByOrderId(int orderId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public static Order getOrderByOrderId(int orderId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
         Cursor c = db.rawQuery("select * from orders where orderId=?",
                 new String[]{String.valueOf(orderId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOneOrder(c) : null;
     }
 
     public static List<Order> getOrdersByUserId(int userId) throws NoSuchMethodException,
-            NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+            NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Cursor c = db.rawQuery("select * from orders where userId=?",new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null ;
     }

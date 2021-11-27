@@ -9,6 +9,7 @@ import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +30,7 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
        List<Order> orderList = OrderDatabase.getOrdersByUsername(username);
         if(orderList == null) {
             LoggingUtil.printMessage("get orders by username", "no orders exist");
@@ -42,13 +43,13 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Order order = OrderDatabase.getOrderByOrderId(orderId);
         LoggingUtil.printMessage("get order by orderId", (order != null) ? order.toString() : "null");
     }
 
     @Test
-    public void getOrdersByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getOrdersByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
         List<Order> orderList = OrderDatabase.getOrdersByUserId(userId);
         if(orderList == null) {
             LoggingUtil.printMessage("get orders by userid", "no orders exist");

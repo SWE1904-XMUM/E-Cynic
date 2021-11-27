@@ -6,11 +6,11 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class ContentValuesMapper {
-    public static ContentValues mapFieldsToContentValues(List<Field> fields, Object object) throws IllegalAccessException, NoSuchMethodException {
+    public static ContentValues mapFieldsToContentValues(List<Field> fields, Object object) throws IllegalAccessException {
         ContentValues cv = new ContentValues();
 
-        Class<?> fieldType = null;
-        String fieldName = "";
+        Class<?> fieldType;
+        String fieldName;
         for (Field field : fields) {
             fieldType = field.getType();
             fieldName = field.getName();
@@ -29,6 +29,8 @@ public class ContentValuesMapper {
                 cv.put(fieldName, (Boolean) field.get(object));
             } else if (fieldType == java.lang.Byte.class) {
                 cv.put(fieldName, (Byte) field.get(object));
+            } else if(fieldType == byte[].class) {
+                cv.put(fieldName, (byte[]) field.get(object));
             } else {
                 cv.put(fieldName, (String) field.get(object));
             }

@@ -1,6 +1,8 @@
 package com.example.e_cynic.dbTests;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.entity.Item;
@@ -9,28 +11,35 @@ import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class ItemDatabaseTest {
-    //TODO Run Test (cannot run without image)
     private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
 
     private Integer itemId = 1;
     private Integer orderId = 1;
     private String itemName = "smartphone";
     private Integer numberOfItems = 1;
+    private String imgPath = "/storage/emulated/0/DCIM/Camera/IMG_20211127_072317.jpg";
     private Double price = 300d;
 
     @Test
     public void insertItem() throws IllegalAccessException, NoSuchMethodException {
-        Item item = new Item(null, orderId, itemName, numberOfItems, null);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Bitmap bitmap = BitmapFactory.decodeFile(imgPath);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
+        byte[] imgBytes = outputStream.toByteArray();
+
+        Item item = new Item(null, orderId, itemName, numberOfItems, imgBytes, null);
         boolean result = ItemDatabase.insertItem(item);
         LoggingUtil.printMessage("insert item", (result == true) ? "true" : "false");
     }
 
     @Test
-    public void getItemsByOrderId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getItemsByOrderId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
         List<Item> itemList = ItemDatabase.getItemsByOrderId(orderId);
         if(itemList == null) {
             LoggingUtil.printMessage("get items by orderid", "no items found");
@@ -43,8 +52,9 @@ public class ItemDatabaseTest {
     }
 
     @Test
-    public void getItemByItemId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public void getItemByItemId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Item item = ItemDatabase.getItemByItemId(itemId);
         LoggingUtil.printMessage("get item by itemid", (item != null) ? item.toString() : "null");
     }
+
 }

@@ -10,6 +10,7 @@ import com.example.e_cynic.utils.LoggingUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class UserDatabaseTest {
 
     @Test
     public void getUserInfo_test() throws NoSuchMethodException, NoSuchFieldException, InstantiationException,
-            IllegalAccessException, InvocationTargetException {
+            IllegalAccessException, InvocationTargetException, IOException {
         User user = UserDatabase.getUserInfoByUsername(username);
         LoggingUtil.printMessage("Get User Info By Username", (user != null) ? user.toString() : "null");
     }
@@ -52,7 +53,7 @@ public class UserDatabaseTest {
     }
 
     @Test
-    public void getAllUsers_test() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getAllUsers_test() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
         List<User> userList = UserDatabase.getAllUsers();
         for (User u : userList) {
             LoggingUtil.printMessage("get all users", u.toString());

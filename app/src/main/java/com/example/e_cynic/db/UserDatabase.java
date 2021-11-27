@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class UserDatabase
         return result > 0;
     }
 
-    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
         //return User object in users table (except password)
         Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users where username=?",
                 new String[]{username});
@@ -51,7 +52,7 @@ public class UserDatabase
         return (c.moveToNext()) ? c.getInt(0) : -1;
     }
 
-    public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users", null);
         List<User> userList = new ArrayList<>();
         if(c.getCount() > 0) {

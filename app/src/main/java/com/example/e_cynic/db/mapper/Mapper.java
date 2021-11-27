@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.e_cynic.utils.mapper.ContentValuesMapper;
+import com.example.e_cynic.utils.mapper.CursorColumnsMapper;
 import com.example.e_cynic.utils.mapper.FieldTypeCaster;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -28,12 +30,7 @@ public class Mapper
             return null;
         }
         T object = (T) cons.newInstance();
-
-        List<String> column_names = Arrays.asList(cursor.getColumnNames());
-        for (int i = 0; i < cursor.getColumnCount(); i++) {
-            Field field = object.getClass().getDeclaredField(column_names.get(i));
-            field.set(object, FieldTypeCaster.parseValueToType(cursor.getString(i), field.getType()));
-        }
+        object = CursorColumnsMapper.mapCursorColumnsToObject(cursor, object);
 
         return object;
     }
@@ -49,7 +46,7 @@ public class Mapper
         return objectList;
     }
 
-    public static <T> ContentValues mapEntityToContentValues(T target) throws IllegalAccessException, NoSuchMethodException {
+    public static <T> ContentValues mapEntityToContentValues(T target) throws IllegalAccessException {
         List<Field> field_list = Arrays.asList(target.getClass().getDeclaredFields());
         ContentValues cv = ContentValuesMapper.mapFieldsToContentValues(field_list, target);
         return cv;

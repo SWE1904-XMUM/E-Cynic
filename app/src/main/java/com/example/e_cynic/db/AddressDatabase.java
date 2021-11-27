@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.AddressMapper;
 import com.example.e_cynic.entity.Address;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -38,19 +39,19 @@ public class AddressDatabase
         return result > 0;
     }
 
-    public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
         Cursor c = db.rawQuery("select * from addresses where addressId=?",
                 new String[]{String.valueOf(addressId)});
         return (c.moveToNext()) ? AddressMapper.mapCursorToOneAddress(c) : null;
     }
 
-    public static List<Address> getAddressesByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public static List<Address> getAddressesByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
         Cursor c = db.rawQuery("select * from addresses where userId=?",
                 new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? AddressMapper.mapCursorToAddress(c) : null;
     }
 
-    public static List<Address> getAddressesByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public static List<Address> getAddressesByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Integer userId = UserDatabase.getUserIdByUsername(username);
         return getAddressesByUserId(userId);
     }
