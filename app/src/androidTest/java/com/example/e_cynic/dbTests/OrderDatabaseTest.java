@@ -31,7 +31,7 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
+    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
        List<Order> orderList = OrderDatabase.getOrdersByUsername(username);
         if(orderList == null) {
             LoggingUtil.printMessage("get orders by username", "no orders exist");
@@ -44,13 +44,13 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
+    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Order order = OrderDatabase.getOrderByOrderId(orderId);
         LoggingUtil.printMessage("get order by orderId", (order != null) ? order.toString() : "null");
     }
 
     @Test
-    public void getOrdersByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
+    public void getOrdersByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         List<Order> orderList = OrderDatabase.getOrdersByUserId(userId);
         if(orderList == null) {
             LoggingUtil.printMessage("get orders by userid", "no orders exist");
@@ -63,7 +63,7 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void editOrderByOrderId() throws IllegalAccessException, NoSuchMethodException {
+    public void editOrderByOrderId() throws IllegalAccessException {
         Order order = new Order(orderId, 1,3, DateUtil.getCurrentTimestamp(), "processing") ;
         boolean result = OrderDatabase.editOrderByOrderId(order);
         LoggingUtil.printMessage("edit order by orderid", (result == true) ? "true" : "false");
