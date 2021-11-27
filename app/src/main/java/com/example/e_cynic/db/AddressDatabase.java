@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.AddressMapper;
 import com.example.e_cynic.entity.Address;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class AddressDatabase
         return (c.moveToNext()) ? AddressMapper.mapCursorToAddress(c) : null;
     }
 
-    public static List<Address> getAddressesByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public static List<Address> getAddressesByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Integer userId = UserDatabase.getUserIdByUsername(username);
         return getAddressesByUserId(userId);
     }
@@ -60,8 +61,10 @@ public class AddressDatabase
         return result > 0;
     }
 
-    public static boolean editAddressByAddressId(Integer addressId, Address new_address) {
-        // TODO Map Address to ContentValues
-        return false;
+    public static boolean editAddressByAddressId(Address new_address) throws IllegalAccessException {
+        ContentValues cv = AddressMapper.mapAddressToContentValues(new_address);
+        long result = db.update(addressesTable, cv, "addressId=?",
+                new String[]{String.valueOf(new_address.addressId)});
+        return result > 0;
     }
 }

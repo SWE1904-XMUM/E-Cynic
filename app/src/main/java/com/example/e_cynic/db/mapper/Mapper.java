@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.e_cynic.utils.mapper.ContentValuesMapper;
-import com.example.e_cynic.utils.mapper.FieldTypeCaster;
+import com.example.e_cynic.utils.mapper.CursorColumnsMapper;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -28,12 +28,7 @@ public class Mapper
             return null;
         }
         T object = (T) cons.newInstance();
-
-        List<String> column_names = Arrays.asList(cursor.getColumnNames());
-        for (int i = 0; i < cursor.getColumnCount(); i++) {
-            Field field = object.getClass().getDeclaredField(column_names.get(i));
-            field.set(object, FieldTypeCaster.parseValueToType(cursor.getString(i), field.getType()));
-        }
+        object = CursorColumnsMapper.mapCursorColumnsToObject(cursor, object);
 
         return object;
     }

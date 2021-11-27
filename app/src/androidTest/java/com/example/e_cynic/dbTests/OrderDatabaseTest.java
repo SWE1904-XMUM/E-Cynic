@@ -9,6 +9,7 @@ import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ public class OrderDatabaseTest {
 
     private String username = "testuser";
     private Integer orderId = 1;
-    private Integer userId = 3;
+    private Integer userId = 1;
 
     @Test
     public void insertOrder() {
@@ -29,7 +30,7 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getOrdersByUsername() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
        List<Order> orderList = OrderDatabase.getOrdersByUsername(username);
         if(orderList == null) {
             LoggingUtil.printMessage("get orders by username", "no orders exist");
@@ -42,21 +43,28 @@ public class OrderDatabaseTest {
     }
 
     @Test
-    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public void getOrderByOrderId() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
         Order order = OrderDatabase.getOrderByOrderId(orderId);
         LoggingUtil.printMessage("get order by orderId", (order != null) ? order.toString() : "null");
     }
 
     @Test
-    public void getOrderByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void getOrdersByUserId() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException, IOException {
         List<Order> orderList = OrderDatabase.getOrdersByUserId(userId);
         if(orderList == null) {
-            LoggingUtil.printMessage("get order by userid", "no orders exist");
+            LoggingUtil.printMessage("get orders by userid", "no orders exist");
             return;
         }
         for (Order o :
                 orderList) {
-            LoggingUtil.printMessage("get order by userid", o.toString());
+            LoggingUtil.printMessage("get orders by userid", o.toString());
         }
+    }
+
+    @Test
+    public void editOrderByOrderId() throws IllegalAccessException, NoSuchMethodException {
+        Order order = new Order(orderId, 1,3, new Date().getTime()) ;
+        boolean result = OrderDatabase.editOrderByOrderId(order);
+        LoggingUtil.printMessage("edit order by orderid", (result == true) ? "true" : "false");
     }
 }

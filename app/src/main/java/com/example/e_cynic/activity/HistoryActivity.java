@@ -1,19 +1,27 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.e_cynic.R;
+import com.example.e_cynic.adapter.HistoryItemListAdapter;
+import com.example.e_cynic.arrayList.HistoryArrayLists;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HistoryActivity extends AppCompatActivity
 {
     private ImageView redeemPointsBtn;
+    private RecyclerView historyRecyclerView;
+    HistoryArrayLists historyArrayLists;
+    HistoryItemListAdapter historyItemListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,8 +29,9 @@ public class HistoryActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
 
-        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
-
+        setViewComponent();
+        classDeclaration();
+        setUpRecyclerView();
         bottomNavBar();
 
         redeemPointsBtn.setOnClickListener(new View.OnClickListener()
@@ -34,6 +43,29 @@ public class HistoryActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void setViewComponent()
+    {
+        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
+        historyRecyclerView = findViewById(R.id.historyRecyclerView);
+    }
+
+    private void classDeclaration()
+    {
+        historyArrayLists = new HistoryArrayLists();
+        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(),
+                HistoryArrayLists.itemImage,
+                HistoryArrayLists.itemName,
+                HistoryArrayLists.numberOfItems,
+                HistoryArrayLists.price,
+                HistoryArrayLists.date);
+    }
+
+    private void setUpRecyclerView()
+    {
+        historyRecyclerView.setAdapter(historyItemListAdapter);
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }
 
     public void bottomNavBar()

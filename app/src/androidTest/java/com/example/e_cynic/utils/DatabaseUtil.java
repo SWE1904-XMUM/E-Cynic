@@ -3,8 +3,6 @@ package com.example.e_cynic.utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import androidx.test.platform.app.InstrumentationRegistry;
-
 import com.example.e_cynic.db.DatabaseConnectionProvider;
 
 public class DatabaseUtil {

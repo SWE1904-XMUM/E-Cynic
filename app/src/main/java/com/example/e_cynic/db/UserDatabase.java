@@ -60,8 +60,9 @@ public class UserDatabase
         return userList;
     }
 
-    public static boolean editUserByUserId(Integer userId, User new_user) {
-        //TODO Map User to ContentValues
-        return false;
+    public static boolean editUserByUserId(User new_user) throws IllegalAccessException {
+        ContentValues cv = UserMapper.mapUserToContentValues(new_user);
+        long result = db.update(usersTable, cv, "userId=?", new String[]{String.valueOf(new_user.userId)});
+        return result > 0;
     }
 }

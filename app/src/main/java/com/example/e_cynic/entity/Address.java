@@ -14,7 +14,9 @@ public class Address {
 
     public Address (){}
 
-    public Address(Integer addressId, Integer userId, String firstLine, String secondLine, String thirdLine, String city, String state, Integer postcode) {
+    public Address(@Nullable Integer addressId, @Nullable Integer userId, String firstLine,
+                   @Nullable String secondLine,
+                   @Nullable String thirdLine, String city, String state, Integer postcode) {
         this.addressId = addressId;
         this.userId = userId;
         this.firstLine = firstLine;

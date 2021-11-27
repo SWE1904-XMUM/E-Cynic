@@ -45,12 +45,13 @@ public class OrderDatabase
 
     public static List<Order> getOrdersByUserId(int userId) throws NoSuchMethodException,
             NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Cursor c = db.rawQuery("select * from orders where userId=?",null);
+        Cursor c = db.rawQuery("select * from orders where userId=?",new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null ;
     }
 
-    public static boolean editOrderByOrderId(Integer orderId, Order order) {
-        //TODO Map Order to ContentValues
-        return false;
+    public static boolean editOrderByOrderId(Order new_order) throws IllegalAccessException {
+        ContentValues cv = OrderMapper.mapOrderToContentValues(new_order);
+        long result = db.update(ordersTable, cv, "orderId=?", new String[]{String.valueOf(new_order.orderId)});
+        return result > 0;
     }
 }

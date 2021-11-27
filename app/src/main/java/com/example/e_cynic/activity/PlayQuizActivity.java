@@ -19,17 +19,12 @@ import java.util.Random;
 
 public class PlayQuizActivity extends AppCompatActivity
 {
-    private TextView questionNo;
-    private TextView question;
-    private TextView score;
-    private RadioButton ans1;
-    private RadioButton ans2;
-    private RadioButton ans3;
-    private RadioButton ans4;
+    // views
+    private TextView questionNo,question,score;
+    private RadioButton ans1,ans2,ans3,ans4;
 
     private String correctAns;
-    private int correctAnsCount = 0;
-    private int qCount = 1;
+    private int correctAnsCount = 0, qCount = 1;
     static final private int qc = 5;
 
     ArrayList<ArrayList<String>> quizArray = new ArrayList<>();
@@ -137,8 +132,7 @@ public class PlayQuizActivity extends AppCompatActivity
         {
             alertTitle = "Correct!";
             correctAnsCount++;
-            // TODO -> display current score
-            //score.setText(correctAnsCount);
+            score.setText("Score: " + String.valueOf(correctAnsCount));
         }
 
         else
