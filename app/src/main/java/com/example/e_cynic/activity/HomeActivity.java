@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        setComponentView();
+        setViewComponent();
         slideShow();
         articles();
 
@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity
         bottomNavBar();
     }
 
-    private void setComponentView()
+    private void setViewComponent()
     {
         info = findViewById(R.id.info);
         iv_slideshow = findViewById(R.id.slideshow);
