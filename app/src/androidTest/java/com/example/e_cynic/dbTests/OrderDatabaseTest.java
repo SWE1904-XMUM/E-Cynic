@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.DatabaseUtil;
+import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class OrderDatabaseTest {
 
     @Test
     public void insertOrder() {
-        Order order = new Order(null, userId,1, new Date().getTime());
+        Order order = new Order(null, userId,1, DateUtil.getCurrentTimestamp(), null);
         boolean result = OrderDatabase.insertOrder(order);
         LoggingUtil.printMessage("insert order", (result == true) ? "true" : "false");
     }
@@ -63,7 +64,7 @@ public class OrderDatabaseTest {
 
     @Test
     public void editOrderByOrderId() throws IllegalAccessException, NoSuchMethodException {
-        Order order = new Order(orderId, 1,3, new Date().getTime()) ;
+        Order order = new Order(orderId, 1,3, DateUtil.getCurrentTimestamp(), "processing") ;
         boolean result = OrderDatabase.editOrderByOrderId(order);
         LoggingUtil.printMessage("edit order by orderid", (result == true) ? "true" : "false");
     }
