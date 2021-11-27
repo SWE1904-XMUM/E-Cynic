@@ -19,12 +19,12 @@ public class HistoryItemListAdapter  extends RecyclerView.Adapter<HistoryItemLis
     Context context;
     private ArrayList itemImage,itemName,numberOfItems,price,date;
 
-    HistoryItemListAdapter(Context context,
-                           ArrayList itemImage,
-                           ArrayList itemName,
-                           ArrayList numberOfItems,
-                           ArrayList price,
-                           ArrayList date)
+    public HistoryItemListAdapter(Context context,
+                                  ArrayList itemImage,
+                                  ArrayList itemName,
+                                  ArrayList numberOfItems,
+                                  ArrayList price,
+                                  ArrayList date)
     {
         this.context = context;
         this.itemImage = itemImage;

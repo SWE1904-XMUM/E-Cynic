@@ -1,19 +1,32 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.adapter.HistoryItemListAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity
 {
     private ImageView redeemPointsBtn;
+    private RecyclerView historyRecyclerView;
+    HistoryItemListAdapter historyItemListAdapter;
+
+    // TODO -> itemImage array list
+    public ArrayList<String> itemImage = new ArrayList<>();
+    public ArrayList<String> itemName = new ArrayList<>();
+    public ArrayList<String> numberOfItems = new ArrayList<>();
+    public ArrayList<String> price = new ArrayList<>();
+    public ArrayList<String> date = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,9 +34,12 @@ public class HistoryActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
 
-        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
-
+        setViewComponent();
         bottomNavBar();
+
+        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(), itemImage, itemName, numberOfItems, price, date);
+        historyRecyclerView.setAdapter(historyItemListAdapter);
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
 
         redeemPointsBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -34,6 +50,17 @@ public class HistoryActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void setViewComponent()
+    {
+        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
+        historyRecyclerView = findViewById(R.id.historyRecyclerView);
+    }
+
+    public void storeItemInArray()
+    {
+        // TODO -> connect to database
     }
 
     public void bottomNavBar()
