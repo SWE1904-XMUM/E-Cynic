@@ -41,9 +41,6 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table addresses (addressId integer primary key autoincrement, userId" +
                 " integer, firstLine text not null, secondLine text, thirdLine text, city text not null, state text not null, postcode integer not null)");
 
-        //create articles database
-        sqLiteDatabase.execSQL("create table articles (articleId integer primary key autoincrement, articleName text, url text, articleDate text)");
-
         //create items database
         sqLiteDatabase.execSQL("create table items (itemId integer primary key autoincrement, orderId integer not null, itemName text not null, numberOfItems integer not null, image longblob not null, price number)");
 
