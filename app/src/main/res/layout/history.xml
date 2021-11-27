@@ -40,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="History Page"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:layout_marginBottom="?attr/actionBarSize"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"

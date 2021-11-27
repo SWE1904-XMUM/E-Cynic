@@ -40,7 +40,8 @@
         </activity>
         <activity
             android:name=".activity.QuizResultActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Quiz"/>
         <activity
             android:name=".activity.RedeemPointsActivity"
             android:exported="false" />

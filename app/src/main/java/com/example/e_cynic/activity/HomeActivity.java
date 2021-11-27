@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity
         AnimationDrawable ad = (AnimationDrawable) iv_slideshow.getDrawable();
         ad.start();
 
-        //get resourse from the array (string.xml)
+        //get resource from the array (string.xml)
         article = findViewById(R.id.ArticleView);
         s1 = getResources().getStringArray(R.array.Articles);
         s2 = getResources().getStringArray (R.array.A_description);

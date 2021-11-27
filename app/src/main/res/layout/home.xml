@@ -97,7 +97,6 @@
         android:id="@+id/btmNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/articlesList"
         android:layout_alignParentBottom="true"
         android:background="@color/apple_green"
         app:itemIconTint="@drawable/tab_color"

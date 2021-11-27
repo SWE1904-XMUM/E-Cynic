@@ -9,10 +9,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="109dp"
         app:cardBackgroundColor="@color/dark_green"
-        app:contentPadding="1.3dp">
+        app:contentPadding="1.3dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="109dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,9 +27,9 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:text="title"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,10 +37,10 @@
                 android:id="@+id/tv_articleDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
-                android:textSize="16sp"
-                android:textColor="@color/black"
                 android:paddingBottom="5dp"
+                android:text="Description"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_articleTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle" />
 
