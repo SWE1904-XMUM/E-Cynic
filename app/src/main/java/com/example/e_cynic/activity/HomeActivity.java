@@ -1,16 +1,16 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HomeArticleAdapter;
@@ -103,48 +103,4 @@ public class HomeActivity extends AppCompatActivity
             }
         });
     }
-
-    /*
-    private void btmNavListener()
-    {
-        BottomNavigationView btmNav = findViewById(R.id.btmNav);
-        btmNav.setSelectedItemId(R.id.home);
-        btmNav.setOnNavigationItemSelectedListener(navListener);
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
-    {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item)
-        {
-            Fragment f1 = new ArticlesFragment();
-            Fragment f2 = new RecycleItemsFragment();
-            Fragment f3 = new HistoryFragment();
-            Fragment f4 = new ProfileFragment();
-
-            FragmentManager fm = getSupportFragmentManager();
-
-            switch (item.getItemId())
-            {
-                case R.id.home:
-                    fm.beginTransaction().replace(R.id.homeFrame,f1).commit();
-                    break;
-
-                case R.id.recycle:
-                    fm.beginTransaction().replace(R.id.homeFrame,f2).commit();
-                    break;
-
-                case R.id.history:
-                    fm.beginTransaction().replace(R.id.homeFrame,f3).commit();
-                    break;
-
-                case R.id.profile:
-                    fm.beginTransaction().replace(R.id.homeFrame,f4).commit();
-                    break;
-            }
-
-            return false;
-        }
-    };
-     */
 }
