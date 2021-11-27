@@ -8,6 +8,8 @@ public class RequestCode
     public static final int PHOTO_PERMISSION = 2;
     public static final int LOCATION_PERMISSION = 3;
 
+    public static final int PIN_LOCATION_ACTIVITY = 20;
+
     RequestCode()
     {
 

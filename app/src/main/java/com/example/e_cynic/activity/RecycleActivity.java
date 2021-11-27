@@ -47,7 +47,7 @@ public class RecycleActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent i = new Intent(RecycleActivity.this, PinLocationActivity.class);
-                startActivity(i);
+                startActivityForResult(i, RequestCode.PIN_LOCATION_ACTIVITY);
             }
         });
 
@@ -160,6 +160,11 @@ public class RecycleActivity extends AppCompatActivity
                     }
 
                     break;
+
+                case RequestCode.PIN_LOCATION_ACTIVITY:
+                    if(resultCode == RESULT_OK && data != null) {
+                        System.out.println(data.getStringExtra("address"));
+                    }
             }
         }
     }

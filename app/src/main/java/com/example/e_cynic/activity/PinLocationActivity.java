@@ -1,10 +1,14 @@
 package com.example.e_cynic.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -34,6 +38,9 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     Location currentLocation;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
+    TextView pinAddress;
+    Button confirmButton;
+    Address currentAddressValue; //address of pin location
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,8 +48,12 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pin_location);
 
+        pinAddress = findViewById(R.id.pin_address);
+        confirmButton = findViewById(R.id.confirm_button);
+
         client = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
+        setConfirmButton();
     }
 
     private void fetchLastLocation()
@@ -80,8 +91,10 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
         MarkerOptions markerOptions =
                 new MarkerOptions().position(latLng).title("Your location").draggable(true);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
         googleMap.addMarker(markerOptions);
+
+
 
         googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
@@ -91,13 +104,7 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onMarkerDragEnd(@NonNull Marker marker) {
                 try {
-                    LatLng newLatLng = new LatLng(marker.getPosition().latitude,
-                            marker.getPosition().longitude);
-                    Address address = LocationUtil.getAddressByLongitudeLatitude(PinLocationActivity.this
-                            , newLatLng.longitude, newLatLng.latitude);
-                    if(address != null) {
-                        //TODO do something with the address
-                    }
+                    updatePinLocation(marker.getPosition().latitude, marker.getPosition().longitude);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -123,5 +130,31 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
                 }
                 break;
         }
+    }
+
+    private void updatePinLocation(double latitude, double longitude) throws IOException {
+        LatLng newLatLng = new LatLng(latitude, longitude);
+        currentAddressValue = LocationUtil.getAddressByLongitudeLatitude(PinLocationActivity.this
+                , newLatLng.longitude, newLatLng.latitude);
+        if(currentAddressValue != null) {
+            pinAddress.setText(currentAddressValue.getAddressLine(0));
+            System.out.println(currentAddressValue.getCountryName());
+            System.out.println(currentAddressValue.getPostalCode());
+            System.out.println(currentAddressValue.getLocality());
+            System.out.println(currentAddressValue.getSubLocality());
+        }
+
+    }
+
+    private void setConfirmButton() {
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("address", currentAddressValue.getAddressLine(0));
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
     }
 }
