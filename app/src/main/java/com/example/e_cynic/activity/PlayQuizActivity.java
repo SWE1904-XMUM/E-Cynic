@@ -137,8 +137,7 @@ public class PlayQuizActivity extends AppCompatActivity
         {
             alertTitle = "Correct!";
             correctAnsCount++;
-            // TODO -> display current score
-            //score.setText(correctAnsCount);
+            score.setText("Score: " + String.valueOf(correctAnsCount));
         }
 
         else
