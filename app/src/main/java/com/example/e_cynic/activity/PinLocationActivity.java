@@ -87,14 +87,19 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
-        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+//        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+        LatLng latLng = new LatLng(2.832703706851475, 101.7069749970963); //XMUM's address
         MarkerOptions markerOptions =
                 new MarkerOptions().position(latLng).title("Your location").draggable(true);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
         googleMap.addMarker(markerOptions);
 
-
+        try {
+            updatePinLocation(latLng.latitude, latLng.longitude);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
@@ -138,10 +143,6 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
                 , newLatLng.longitude, newLatLng.latitude);
         if(currentAddressValue != null) {
             pinAddress.setText(currentAddressValue.getAddressLine(0));
-            System.out.println(currentAddressValue.getCountryName());
-            System.out.println(currentAddressValue.getPostalCode());
-            System.out.println(currentAddressValue.getLocality());
-            System.out.println(currentAddressValue.getSubLocality());
         }
 
     }
