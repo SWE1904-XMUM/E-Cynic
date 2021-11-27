@@ -7,6 +7,7 @@
     tools:context=".activity.HistoryActivity">
 
     <FrameLayout
+        android:id="@+id/historyFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/apple_green">
@@ -31,16 +32,30 @@
             android:layout_marginRight="20dp"
             app:srcCompat="@drawable/ic_baseline_card_giftcard_24"
             app:tint="@color/white" />
-
-
     </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/sortFrame"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="History Page"
-        android:textSize="30dp" />
+        android:layout_below="@id/historyFrame"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sort" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sortFrame">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
