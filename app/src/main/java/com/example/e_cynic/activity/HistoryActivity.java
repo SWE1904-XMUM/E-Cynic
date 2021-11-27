@@ -30,17 +30,8 @@ public class HistoryActivity extends AppCompatActivity
         setContentView(R.layout.history);
 
         setViewComponent();
+        classDeclaration();
         bottomNavBar();
-
-        historyArrayLists = new HistoryArrayLists();
-        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(),
-                HistoryArrayLists.itemImage,
-                HistoryArrayLists.itemName,
-                HistoryArrayLists.numberOfItems,
-                HistoryArrayLists.price,
-                HistoryArrayLists.date);
-        historyRecyclerView.setAdapter(historyItemListAdapter);
-        historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
 
         redeemPointsBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -59,9 +50,18 @@ public class HistoryActivity extends AppCompatActivity
         historyRecyclerView = findViewById(R.id.historyRecyclerView);
     }
 
-    public void storeItemInArray()
+    private void classDeclaration()
     {
-        // TODO -> connect to database
+        historyArrayLists = new HistoryArrayLists();
+        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(),
+                HistoryArrayLists.itemImage,
+                HistoryArrayLists.itemName,
+                HistoryArrayLists.numberOfItems,
+                HistoryArrayLists.price,
+                HistoryArrayLists.date);
+        historyRecyclerView.setAdapter(historyItemListAdapter);
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
+
     }
 
     public void bottomNavBar()
