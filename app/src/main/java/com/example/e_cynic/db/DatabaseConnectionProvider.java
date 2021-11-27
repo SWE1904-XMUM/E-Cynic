@@ -56,7 +56,6 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         List<String> databases_name = new ArrayList<>();
         databases_name.add("users");
         databases_name.add("addresses");
-        databases_name.add("articles");
         databases_name.add("items");
         databases_name.add("orders");
         databases_name.add("points");
