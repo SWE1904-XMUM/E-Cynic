@@ -31,6 +31,7 @@ public class HistoryActivity extends AppCompatActivity
 
         setViewComponent();
         classDeclaration();
+        setUpRecyclerView();
         bottomNavBar();
 
         redeemPointsBtn.setOnClickListener(new View.OnClickListener()
@@ -59,9 +60,12 @@ public class HistoryActivity extends AppCompatActivity
                 HistoryArrayLists.numberOfItems,
                 HistoryArrayLists.price,
                 HistoryArrayLists.date);
+    }
+
+    private void setUpRecyclerView()
+    {
         historyRecyclerView.setAdapter(historyItemListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
-
     }
 
     public void bottomNavBar()
