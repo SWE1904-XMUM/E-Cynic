@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.constants.RequestCode;
-import com.example.e_cynic.permission.LocationPermission;
+import com.example.e_cynic.permission.Permissions;
 import com.example.e_cynic.utils.LocationUtil;
 import com.example.e_cynic.utils.userInteraction.ToastCreator;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -49,10 +49,10 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
-            LocationPermission locationPermission = new LocationPermission();
-            locationPermission.grantLocationPermission(this);
-            return;
+            Permissions permissions = new Permissions();
+            permissions.grantLocationPermission(this);
         }
+
         Task<Location> task = client.getLastLocation();
 
         task.addOnSuccessListener(new OnSuccessListener<Location>()

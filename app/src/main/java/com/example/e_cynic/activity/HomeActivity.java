@@ -6,23 +6,22 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HomeArticleAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity
 {
-    private ImageView info;
+    // Views
+    private ImageView info,iv_slideshow;
+    RecyclerView article;
+
     //article array
     String s1[], s2[], s3[];
-    //recycler view
-    RecyclerView article;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +29,9 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        info = findViewById(R.id.info);
+        setViewComponent();
+        slideShow();
+        articles();
 
         info.setOnClickListener(new View.OnClickListener()
         {
@@ -43,14 +44,25 @@ public class HomeActivity extends AppCompatActivity
         });
 
         bottomNavBar();
+    }
 
+    private void setViewComponent()
+    {
+        info = findViewById(R.id.info);
+        iv_slideshow = findViewById(R.id.slideshow);
+        article = findViewById(R.id.ArticleView);
+    }
+
+    private void slideShow()
+    {
         //homepage header slide show
-        ImageView iv_slideshow = findViewById(R.id.slideshow);
         AnimationDrawable ad = (AnimationDrawable) iv_slideshow.getDrawable();
         ad.start();
+    }
 
-        //get resourse from the array (string.xml)
-        article = findViewById(R.id.ArticleView);
+    private void articles()
+    {
+        //get resources from the array (string.xml)
         s1 = getResources().getStringArray(R.array.Articles);
         s2 = getResources().getStringArray (R.array.A_description);
         s3 = getResources().getStringArray(R.array.A_link);
