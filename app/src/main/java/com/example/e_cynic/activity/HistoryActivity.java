@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,21 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryItemListAdapter;
+import com.example.e_cynic.arrayList.HistoryArrayLists;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity
 {
     private ImageView redeemPointsBtn;
     private RecyclerView historyRecyclerView;
+    HistoryArrayLists historyArrayLists;
     HistoryItemListAdapter historyItemListAdapter;
-
-    // TODO -> itemImage array list
-    public ArrayList<String> itemImage = new ArrayList<>();
-    public ArrayList<String> itemName = new ArrayList<>();
-    public ArrayList<String> numberOfItems = new ArrayList<>();
-    public ArrayList<String> price = new ArrayList<>();
-    public ArrayList<String> date = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,7 +32,13 @@ public class HistoryActivity extends AppCompatActivity
         setViewComponent();
         bottomNavBar();
 
-        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(), itemImage, itemName, numberOfItems, price, date);
+        historyArrayLists = new HistoryArrayLists();
+        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(),
+                HistoryArrayLists.itemImage,
+                HistoryArrayLists.itemName,
+                HistoryArrayLists.numberOfItems,
+                HistoryArrayLists.price,
+                HistoryArrayLists.date);
         historyRecyclerView.setAdapter(historyItemListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
 

@@ -11,20 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.arrayList.HistoryArrayLists;
 
 import java.util.ArrayList;
 
 public class HistoryItemListAdapter  extends RecyclerView.Adapter<HistoryItemListAdapter.MyViewHoler>
 {
     Context context;
-    private ArrayList itemImage,itemName,numberOfItems,price,date;
+    private ArrayList<String> itemImage, itemName,
+            numberOfItems,price,date;
 
     public HistoryItemListAdapter(Context context,
-                                  ArrayList itemImage,
-                                  ArrayList itemName,
-                                  ArrayList numberOfItems,
-                                  ArrayList price,
-                                  ArrayList date)
+                                  ArrayList<String> itemImage,
+                                  ArrayList<String> itemName,
+                                  ArrayList<String> numberOfItems,
+                                  ArrayList<String> price,
+                                  ArrayList<String> date)
     {
         this.context = context;
         this.itemImage = itemImage;
@@ -48,16 +50,16 @@ public class HistoryItemListAdapter  extends RecyclerView.Adapter<HistoryItemLis
     {
         // TODO -> retrieve image & display
         //holder.itemImageList.setImageBitmap(....itemImage.get(position));
-        holder.itemNameList.setText(String.valueOf(itemImage.get(position)));
-        holder.numberOfItemsList.setText(String.valueOf(numberOfItems.get(position)));
-        holder.priceList.setText(String.valueOf(price.get(position)));
-        holder.dateList.setText(String.valueOf(date.get(position)));
+        holder.itemNameList.setText(String.valueOf(HistoryArrayLists.itemImage.get(position)));
+        holder.numberOfItemsList.setText(String.valueOf(HistoryArrayLists.numberOfItems.get(position)));
+        holder.priceList.setText(String.valueOf(HistoryArrayLists.price.get(position)));
+        holder.dateList.setText(String.valueOf(HistoryArrayLists.date.get(position)));
     }
 
     @Override
     public int getItemCount()
     {
-        return itemName.size();
+        return HistoryArrayLists.itemName.size();
     }
 
     public class MyViewHoler extends RecyclerView.ViewHolder
