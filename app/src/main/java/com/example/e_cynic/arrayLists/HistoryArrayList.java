@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class HistoryArrayList
 {
+    // TODO -> declare itemImage array list
     ArrayList<String> itemName = new ArrayList<>();
     ArrayList<String> numberOfItems = new ArrayList<>();
     ArrayList<String> price = new ArrayList<>();
