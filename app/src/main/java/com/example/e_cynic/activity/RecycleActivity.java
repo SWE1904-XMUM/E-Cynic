@@ -1,14 +1,9 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,9 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.e_cynic.R;
-import com.example.e_cynic.permission.PhotoPermission;
 import com.example.e_cynic.constants.RequestCode;
+import com.example.e_cynic.permission.PhotoPermission;
+import com.example.e_cynic.utils.ImageUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RecycleActivity extends AppCompatActivity {
@@ -114,7 +116,7 @@ public class RecycleActivity extends AppCompatActivity {
 
                                 int colInd = cursor.getColumnIndex(filePath[0]);
                                 String imgPath = cursor.getString(colInd);
-                                uploadImg.setImageBitmap(BitmapFactory.decodeFile(imgPath));
+                                uploadImg.setImageBitmap(ImageUtils.imagePathToBitmap(imgPath));
                                 cursor.close();
                             }
                         }

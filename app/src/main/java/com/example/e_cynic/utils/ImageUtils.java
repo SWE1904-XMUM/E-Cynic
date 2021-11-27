@@ -12,7 +12,7 @@ public class ImageUtils {
 
     public static ByteArrayOutputStream getJpegBitmapOutputStream(Bitmap bitmap) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, out);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         return out;
     }
 
