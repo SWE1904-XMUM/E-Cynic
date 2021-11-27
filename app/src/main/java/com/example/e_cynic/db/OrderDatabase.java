@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.OrderMapper;
 import com.example.e_cynic.entity.Order;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -32,25 +31,25 @@ public class OrderDatabase
         return result > 0;
     }
 
-    public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
+    public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Integer userId = UserDatabase.getUserIdByUsername(username);
         Cursor c = db.rawQuery("select * from orders where userId=?", new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null;
     }
 
-    public static Order getOrderByOrderId(int orderId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
+    public static Order getOrderByOrderId(int orderId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from orders where orderId=?",
                 new String[]{String.valueOf(orderId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOneOrder(c) : null;
     }
 
     public static List<Order> getOrdersByUserId(int userId) throws NoSuchMethodException,
-            NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
+            NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select * from orders where userId=?",new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? OrderMapper.mapCursorToOrders(c) : null ;
     }
 
-    public static boolean editOrderByOrderId(Order new_order) throws IllegalAccessException, NoSuchMethodException {
+    public static boolean editOrderByOrderId(Order new_order) throws IllegalAccessException {
         ContentValues cv = OrderMapper.mapOrderToContentValues(new_order);
         long result = db.update(ordersTable, cv, "orderId=?", new String[]{String.valueOf(new_order.orderId)});
         return result > 0;

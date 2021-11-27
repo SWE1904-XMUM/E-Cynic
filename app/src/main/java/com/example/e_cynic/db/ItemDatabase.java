@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.ItemMapper;
 import com.example.e_cynic.entity.Item;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDatabase
@@ -25,18 +23,18 @@ public class ItemDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static boolean insertItem(Item item) throws IllegalAccessException, NoSuchMethodException {
+    public static boolean insertItem(Item item) throws IllegalAccessException {
         ContentValues cv = ItemMapper.mapItemToContentValues(item);
         long result = db.insert(itemsTable, null, cv);
         return result > 0;
     }
 
-    public static List<Item> getItemsByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
+    public static List<Item> getItemsByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select * from items where orderId=?", new String[]{String.valueOf(orderId)});
         return (c.moveToNext()) ? ItemMapper.mapCursorToItems(c) : null;
     }
 
-    public static Item getItemByItemId(Integer itemId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
+    public static Item getItemByItemId(Integer itemId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from items where itemId=?", new String[]{String.valueOf(itemId)});
         return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
     }

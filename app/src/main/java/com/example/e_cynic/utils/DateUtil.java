@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-    //TODO DateUtil
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YY HH:mm:ss");
 
     public static String getCurrentDateTime() {

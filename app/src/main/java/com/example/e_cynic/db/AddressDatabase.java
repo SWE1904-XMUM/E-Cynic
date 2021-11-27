@@ -39,13 +39,13 @@ public class AddressDatabase
         return result > 0;
     }
 
-    public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
+    public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from addresses where addressId=?",
                 new String[]{String.valueOf(addressId)});
         return (c.moveToNext()) ? AddressMapper.mapCursorToOneAddress(c) : null;
     }
 
-    public static List<Address> getAddressesByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
+    public static List<Address> getAddressesByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from addresses where userId=?",
                 new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? AddressMapper.mapCursorToAddress(c) : null;
@@ -61,7 +61,7 @@ public class AddressDatabase
         return result > 0;
     }
 
-    public static boolean editAddressByAddressId(Address new_address) throws IllegalAccessException, NoSuchMethodException {
+    public static boolean editAddressByAddressId(Address new_address) throws IllegalAccessException {
         ContentValues cv = AddressMapper.mapAddressToContentValues(new_address);
         long result = db.update(addressesTable, cv, "addressId=?",
                 new String[]{String.valueOf(new_address.addressId)});

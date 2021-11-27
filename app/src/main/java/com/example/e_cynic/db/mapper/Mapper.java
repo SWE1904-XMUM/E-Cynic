@@ -5,9 +5,7 @@ import android.database.Cursor;
 
 import com.example.e_cynic.utils.mapper.ContentValuesMapper;
 import com.example.e_cynic.utils.mapper.CursorColumnsMapper;
-import com.example.e_cynic.utils.mapper.FieldTypeCaster;
 
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

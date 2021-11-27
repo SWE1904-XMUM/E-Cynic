@@ -2,7 +2,6 @@ package com.example.e_cynic.utils.mapper;
 
 import android.content.ContentValues;
 
-import com.example.e_cynic.entity.User;
 import com.example.e_cynic.entityTests.TestEntity;
 import com.example.e_cynic.utils.LoggingUtil;
 

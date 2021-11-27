@@ -9,13 +9,10 @@ public class Item {
     public Integer orderId;
     public String itemName;
     public Integer numberOfItems;
-    //TODO BLOB image
     public byte[] image;
     public Double price;
 
     public Item(){}
-
-    public Item(Integer itemId, int orderId, String smartphone, int numberOfItems, byte[] ByteArray, Object price) {}
 
     public Item(@Nullable Integer itemId, Integer orderId, String itemName, Integer numberOfItems,
                 byte[] image, @Nullable Double price) {

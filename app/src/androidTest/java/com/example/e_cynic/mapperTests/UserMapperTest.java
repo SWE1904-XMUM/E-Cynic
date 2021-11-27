@@ -12,10 +12,7 @@ import com.example.e_cynic.utils.LoggingUtil;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class UserMapperTest {

@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +26,13 @@ public class UserDatabase
         return (c.moveToNext() && password.equals(c.getString(0)));
     }
 
-    public static boolean insertUser(User user) throws IllegalAccessException, NoSuchMethodException {
+    public static boolean insertUser(User user) throws IllegalAccessException {
         ContentValues cv = UserMapper.mapUserToContentValues(user);
         long result = db.insert(usersTable, null, cv);
         return result > 0;
     }
 
-    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, IOException {
+    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         //return User object in users table (except password)
         Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users where username=?",
                 new String[]{username});
@@ -52,7 +51,7 @@ public class UserDatabase
         return (c.moveToNext()) ? c.getInt(0) : -1;
     }
 
-    public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
+    public static List<User> getAllUsers() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users", null);
         List<User> userList = new ArrayList<>();
         if(c.getCount() > 0) {
@@ -61,7 +60,7 @@ public class UserDatabase
         return userList;
     }
 
-    public static boolean editUserByUserId(User new_user) throws IllegalAccessException, NoSuchMethodException {
+    public static boolean editUserByUserId(User new_user) throws IllegalAccessException {
         ContentValues cv = UserMapper.mapUserToContentValues(new_user);
         long result = db.update(usersTable, cv, "userId=?", new String[]{String.valueOf(new_user.userId)});
         return result > 0;

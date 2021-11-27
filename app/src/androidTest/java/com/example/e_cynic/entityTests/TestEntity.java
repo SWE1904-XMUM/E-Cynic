@@ -1,7 +1,5 @@
 package com.example.e_cynic.entityTests;
 
-import com.example.e_cynic.entity.User;
-
 public class TestEntity {
     public String string;
     public Float flt;
