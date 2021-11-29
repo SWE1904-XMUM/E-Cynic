@@ -49,6 +49,9 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
 
         //create points database
         sqLiteDatabase.execSQL("create table points (pointId integer primary key autoincrement, userId integer not null, pointsEarned integer not null, date text not null)");
+
+        //create userReward database
+        sqLiteDatabase.execSQL("create table userRewards (rewardId integer primary key autoincrement, userId integer not null, date long not null, rewardItem text not null, points integer not null)");
     }
 
     @Override
@@ -59,6 +62,7 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         databases_name.add("items");
         databases_name.add("orders");
         databases_name.add("points");
+        databases_name.add("userRewards");
         for (int index = 0; index < databases_name.size(); index++) {
             sqLiteDatabase.execSQL("drop table if exists " + databases_name.get(index));
         }
