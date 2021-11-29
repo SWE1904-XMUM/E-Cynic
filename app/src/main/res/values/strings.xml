@@ -68,5 +68,11 @@
         <item>https://ecocycle.com.au/lighting-and-electrical/5-benefits-of-recycling-e-waste/</item>
     </string-array>
 
+    <string-array name="sortListEg">
+        <item>Date</item>
+        <item>Item Name</item>
+        <item>Price</item>
+    </string-array>
+
 
 </resources>

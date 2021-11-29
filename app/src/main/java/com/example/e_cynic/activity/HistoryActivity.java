@@ -3,8 +3,8 @@ package com.example.e_cynic.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +22,7 @@ public class HistoryActivity extends AppCompatActivity
     private RecyclerView historyRecyclerView;
     HistoryArrayLists historyArrayLists;
     HistoryItemListAdapter historyItemListAdapter;
+    private String[] itemInSortList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +34,15 @@ public class HistoryActivity extends AppCompatActivity
         classDeclaration();
         setUpRecyclerView();
         bottomNavBar();
+
+        //Sort drop down list
+        Spinner sortList = (Spinner) findViewById(R.id.spinner);
+        itemInSortList = getResources().getStringArray(R.array.sortListEg);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(HistoryActivity.this,
+                android.R.layout.simple_list_item_1, itemInSortList);
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortList.setAdapter(myAdapter); // show data
 
     }
 
