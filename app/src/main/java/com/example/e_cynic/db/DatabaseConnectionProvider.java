@@ -45,10 +45,13 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table items (itemId integer primary key autoincrement, orderId integer not null, itemName text not null, numberOfItems integer not null, image longblob not null, price number)");
 
         //create orders database
-        sqLiteDatabase.execSQL("create table orders (orderId integer primary key autoincrement, userId integer not null, addressId integer not null, date text not null)");
+        sqLiteDatabase.execSQL("create table orders (orderId integer primary key autoincrement, userId integer not null, addressId integer not null, date text not null, status text default 'processing')");
 
         //create points database
         sqLiteDatabase.execSQL("create table points (pointId integer primary key autoincrement, userId integer not null, pointsEarned integer not null, date text not null)");
+
+        //create userReward database
+        sqLiteDatabase.execSQL("create table userRewards (rewardId integer primary key autoincrement, userId integer not null, date long not null, rewardItem text not null, points integer not null)");
     }
 
     @Override
@@ -59,6 +62,7 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         databases_name.add("items");
         databases_name.add("orders");
         databases_name.add("points");
+        databases_name.add("userRewards");
         for (int index = 0; index < databases_name.size(); index++) {
             sqLiteDatabase.execSQL("drop table if exists " + databases_name.get(index));
         }

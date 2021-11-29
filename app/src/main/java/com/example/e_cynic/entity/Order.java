@@ -1,18 +1,22 @@
 package com.example.e_cynic.entity;
 
+import androidx.annotation.Nullable;
+
 public class Order {
     public Integer orderId;
     public Integer userId;
     public Integer addressId;
     public Long date;
+    public String status;
 
     public Order() {}
 
-    public Order(Integer orderId, Integer userId, Integer addressId, long date) {
+    public Order(@Nullable Integer orderId, Integer userId, Integer addressId, Long date, @Nullable String status) {
         this.orderId = orderId;
         this.userId = userId;
         this.addressId = addressId;
         this.date = date;
+        this.status = status;
     }
 
     @Override
@@ -20,8 +24,9 @@ public class Order {
         return "Order{" +
                 "orderId=" + orderId +
                 ", userId=" + userId +
-                ", addresses=" + addressId +
+                ", addressId=" + addressId +
                 ", date=" + date +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -163,6 +163,15 @@ public class RecycleActivity extends AppCompatActivity
 
                 case RequestCode.PIN_LOCATION_ACTIVITY:
                     if(resultCode == RESULT_OK && data != null) {
+                        //TODO do something with the returned address
+                        /*
+                        currentAddressValue.getFeatureName(); //No. ...
+                        currentAddressValue.getThoroughfare(); // Jalan ...
+                        currentAddressValue.getSubLocality(); // Taman/Kampung ...
+                        currentAddressValue.getLocality(); // city
+                        currentAddressValue.getPostalCode(); //postcode
+                        currentAddressValue.getAdminArea(); //state
+                        */
                         System.out.println(data.getStringExtra("address"));
                     }
             }

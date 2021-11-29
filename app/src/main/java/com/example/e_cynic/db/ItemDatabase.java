@@ -17,8 +17,7 @@ public class ItemDatabase
     public static final String orderId = "orderId";
     public static final String itemName = "itemName";
     public static final String numberOfItems = "numberOfItems";
-    //TODO image -> byte
-    //public static final Blob image = null;
+    public static final String image = "image";
     public static final String price = "price";
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
