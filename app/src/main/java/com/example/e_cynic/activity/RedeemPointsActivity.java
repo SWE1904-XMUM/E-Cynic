@@ -27,7 +27,7 @@ public class RedeemPointsActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent i = new Intent(RedeemPointsActivity.this,
-                        HistoryActivity.class);
+                        ProfileActivity.class);
                 startActivity(i);
             }
         });

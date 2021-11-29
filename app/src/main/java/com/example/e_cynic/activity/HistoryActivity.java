@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HistoryActivity extends AppCompatActivity
 {
-    private ImageView redeemPointsBtn;
+
     private RecyclerView historyRecyclerView;
     HistoryArrayLists historyArrayLists;
     HistoryItemListAdapter historyItemListAdapter;
@@ -34,20 +34,10 @@ public class HistoryActivity extends AppCompatActivity
         setUpRecyclerView();
         bottomNavBar();
 
-        redeemPointsBtn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent i = new Intent(HistoryActivity.this,RedeemPointsActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
     private void setViewComponent()
     {
-        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
         historyRecyclerView = findViewById(R.id.historyRecyclerView);
     }
 
