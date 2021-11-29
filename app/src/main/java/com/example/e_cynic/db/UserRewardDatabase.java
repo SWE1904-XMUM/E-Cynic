@@ -8,6 +8,7 @@ import com.example.e_cynic.db.mapper.UserRewardMapper;
 import com.example.e_cynic.entity.UserReward;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class UserRewardDatabase {
     public static final String userRewardsTable = "userRewards";
@@ -25,14 +26,15 @@ public class UserRewardDatabase {
         return result > 0;
     }
 
-    public static UserReward getUserRewardInfoByUsername(String username) throws InvocationTargetException,
+    public static List<UserReward> getUserRewardsByUsername(String username) throws InvocationTargetException,
             NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Integer userId = UserDatabase.getUserIdByUsername(username);
-        return getUserRewardByUserId(userId);
+        return getUserRewardsByUserId(userId);
     }
 
-    public static UserReward getUserRewardByUserId(Integer userId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public static List<UserReward> getUserRewardsByUserId(Integer userId) throws InvocationTargetException,
+            NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from userRewards where userid=?", new String[]{String.valueOf(userId)});
-        return (c.moveToNext()) ? UserRewardMapper.mapCursorToOneUserReward(c) : null;
+        return (c.moveToNext()) ? UserRewardMapper.mapCursorToUserRewards(c) : null;
     }
 }

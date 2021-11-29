@@ -9,6 +9,9 @@ public class UserReward {
     public String rewardItem;
     public Integer points;
 
+    public UserReward() {
+    }
+
     public UserReward(@Nullable Integer rewardId, Integer userId, Long date, String rewardItem,
                       Integer points) {
         this.rewardId = rewardId;
