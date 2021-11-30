@@ -20,26 +20,37 @@ public class SessionManager
     // Set login
     public void setLogin(boolean login)
     {
-        edt.putBoolean("KEY_LOGIN",login);
+        edt.putBoolean("LOGIN",login);
         edt.commit();
     }
 
     // Get login
     public boolean getLogin()
     {
-        return sp.getBoolean("KEY_LOGIN",false);
+        return sp.getBoolean("LOGIN",false);
     }
 
     // Get username
     public void setUsername(String uname)
     {
-        edt.putString("KEY_USERNAME",uname);
+        edt.putString("USERNAME",uname);
         edt.commit();
     }
 
     // Get username
     public String getUsername()
     {
-        return sp.getString("KEY_USERNAME","");
+        return sp.getString("USERNAME","");
+    }
+
+    public void setTotalPoints(int totalPoints)
+    {
+        edt.putInt("TOTAL_POINTS",totalPoints);
+        edt.commit();
+    }
+
+    public int getTotalPoints()
+    {
+        return sp.getInt("TOTAL_POINTS",0);
     }
 }
