@@ -108,7 +108,16 @@
                         android:id="@+id/others"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:text="Other Accessories"></CheckBox>
+                        android:text="Other Accessories" />
+
+                    <EditText
+                        android:id="@+id/otherAccessories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4mm"
+                        android:layout_marginEnd="1mm"
+                        android:hint="@string/enter_type_of_items"
+                        android:textSize="15sp" />
 
                     <!--input number of devices-->
                     <LinearLayout
