@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ProfileActivity extends AppCompatActivity
 {
     private Button about, editProfile;
-    private ImageView redeemPointsBtn;
+    private ImageView redeemPointsBtn, myRewardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity
         setContentView(R.layout.profile);
 
         redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
+        myRewardBtn = findViewById(R.id.myRewardBtn);
         about = findViewById(R.id.aboutBtn);
         editProfile = findViewById(R.id.editBtn);
 
@@ -55,6 +56,16 @@ public class ProfileActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 Intent i = new Intent(ProfileActivity.this,RedeemPointsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        myRewardBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(ProfileActivity.this,RewardVoucherActivity.class);
                 startActivity(i);
             }
         });
