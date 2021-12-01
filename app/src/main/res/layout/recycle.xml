@@ -41,9 +41,7 @@
             <RelativeLayout
                 android:id="@+id/RL1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/dark_green"
-                android:paddingBottom="3dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/tv_instruction"
@@ -52,7 +50,7 @@
                     android:background="@color/grey"
                     android:fontFamily="@font/inder"
                     android:paddingLeft="1mm"
-                    android:text="Please enter the item(s)' details that need to recycle."
+                    android:text="Please add your items that need to recycle."
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -63,183 +61,56 @@
                     android:layout_height="wrap_content"
                     android:layout_alignRight="@+id/tv_instruction"
                     android:layout_alignBottom="@+id/tv_instruction"
-                    android:paddingRight="120dp"
+                    android:layout_marginRight="20dp"
                     android:paddingBottom="6dp"
                     app:srcCompat="@drawable/ic_baseline_question_mark_24" />
 
-            </RelativeLayout>
-
-            <!--Checkbox List-->
-            <RelativeLayout
-                android:id="@+id/RL2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <CheckBox
-                        android:id="@+id/computerAndMobile"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="Computer and Mobile Accessories" />
-
-                    <CheckBox
-                        android:id="@+id/HouseholdCleaning"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:text="Household Cleaning Machines" />
-
-                    <CheckBox
-                        android:id="@+id/KitchenAppliances"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:text="Kitchen Appliances" />
-
-                    <CheckBox
-                        android:id="@+id/TVAccessories"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="TVs and Accessories" />
-
-                    <CheckBox
-                        android:id="@+id/others"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="Other Accessories" />
-
-                    <EditText
-                        android:id="@+id/otherAccessories"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4mm"
-                        android:layout_marginEnd="1mm"
-                        android:hint="@string/enter_type_of_items"
-                        android:textSize="15sp" />
-
-                    <!--input number of devices-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/instructionEnterNoDvc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/inder"
-                            android:paddingLeft="1mm"
-                            android:paddingTop="10dp"
-                            android:text="Enter number of devices: "
-                            android:textColor="@color/black"
-                            android:textSize="23sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/editTextNumberDecimal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="7dp"
-                            android:ems="20"
-                            android:hint="Enter number"
-                            android:inputType="numberDecimal" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
 
             </RelativeLayout>
 
-            <!--Separate line-->
-            <RelativeLayout
-                android:id="@+id/RL3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/RL2">
 
-                <FrameLayout
-                    android:id="@+id/line"
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_centerInParent="true"
-                    android:background="@color/dark_green" />
-
-            </RelativeLayout>
-
-            <!-- Upload image and pin location -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/grey"
-                android:fontFamily="@font/inder"
-                android:paddingLeft="1mm"
-                android:text="Upload Image of Item and Pin Your Location"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_centerInParent="true"
-                android:background="@color/dark_green" />
-
+            <!-- pin location -->
             <RelativeLayout
                 android:id="@+id/RL4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_uploadImg"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/enterItemDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/btn_addItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/uploadImg"
-                    android:layout_alignEnd="@+id/uploadImg"
-                    android:background="@color/dark_green"
-                    android:fontFamily="@font/inder"
-                    android:text="@string/upload_your_image"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:layout_below="@id/enterItemDetail"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:text="+ Add Item"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/tv_pinLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/pinLocation"
-                    android:layout_alignRight="@+id/pinLocation"
-                    android:layout_toEndOf="@+id/tv_uploadImg"
-                    android:background="@color/dark_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/btn_addItem"
+                    android:layout_marginLeft="1mm"
                     android:fontFamily="@font/inder"
-                    android:text="@string/pin_your_location"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:text="Pin Your Location"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/uploadImg"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_below="@+id/tv_uploadImg"
-                    android:layout_marginStart="60dp"
-                    android:background="@color/grey"
-                    android:padding="20dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/ic_baseline_upload_24" />
 
                 <ImageView
                     android:id="@+id/pinLocation"
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="130dp"
                     android:layout_below="@+id/tv_pinLocation"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="60dp"
-                    android:layout_toEndOf="@+id/uploadImg"
+                    android:layout_margin="1mm"
                     android:background="@color/grey"
                     android:padding="20dp"
                     app:srcCompat="@drawable/ic_baseline_location_on_24" />

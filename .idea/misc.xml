@@ -79,7 +79,8 @@
         <entry key="app/src/main/res/layout/profile.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/quiz.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/quiz_result.xml" value="0.13858695652173914" />
-        <entry key="app/src/main/res/layout/recycle.xml" value="0.37927486136436206" />
+        <entry key="app/src/main/res/layout/recycle.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/layout/recycle_add_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/redeem_points.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/rowarticle.xml" value="0.44832345241117005" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.1503623188405797" />
