@@ -8,24 +8,76 @@
     android:orientation="vertical"
     tools:context=".activity.QuizResultActivity">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Final Score:"
-        android:textSize="40dp"/>
 
-    <TextView
-        android:id="@+id/scoreValue"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="score/5"
-        android:textSize="30dp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/border_image">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/playfair_display_black"
+            android:text="Final Score:"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/scoreValue"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_list"
+            android:fontFamily="@font/inder"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="score/5"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/returnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"/>
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_button"
+        android:text="RETURN"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
 
 </LinearLayout>
