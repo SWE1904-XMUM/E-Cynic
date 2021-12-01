@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class PlayQuizActivity extends AppCompatActivity
     // views
     private TextView questionNo,question,score;
     private RadioButton ans1,ans2,ans3,ans4;
+    private ImageView backBtn;
 
     private String correctAns;
     private int correctAnsCount = 0, qCount = 1;
@@ -48,23 +50,46 @@ public class PlayQuizActivity extends AppCompatActivity
     };
 
     String quizData[][] = {
-            // {"question","correct ans","ans","ans"}
-            {"Q1","ans1","ans2","ans3","ans4"},
-            {"Q2","ans1","ans2","ans3","ans4"},
-            {"Q3","ans1","ans2","ans3","ans4"},
-            {"Q4","ans1","ans2","ans3","ans4"},
-            {"Q5","ans1","ans2","ans3","ans4"},
-            {"Q6","ans1","ans2","ans3","ans4"},
-            {"Q7","ans1","ans2","ans3","ans4"},
-            {"Q8","ans1","ans2","ans3","ans4"},
-            {"Q9","ans1","ans2","ans3","ans4"},
-            {"Q10","ans1","ans2","ans3","ans4"}};
+            // {"question","correct ans","ans","ans","ans"}
+            {"Which item is not a kitchen appliance?","Television","Microwave","Refrigerator","Electronic Cooker"},
+            {"What goes in the green recycle bin?","Meat","Paper","Metal","Plastic"},
+            {"What goes in the orange recycle bin?","Plastic","Cardboard","Glass Bottle","Carrot"},
+            {"What goes in the blue recycle bin?","Paper","Metal","Glass","Battery"},
+            {"What color of recycle bin should glass bottle be put into? ","Orange","Brown","Green","Blue"},
+            {"What are the 3Rs of recycling?","Reduce, Reuse, Recycle","Rewrite, Respond, Rewind","Redirect, Round, Rationale","Respectful, Responsible, Right"},
+            {"Instead of using plastic for shopping, we can bring","a canvas bag","a cup","a tent","a table"},
+            {"What does recycle mean?","Convert waste into reusable material.","Use something over and over again.","Use less of something to reduce the waste.","Make something ugly into something beautiful."},
+            {"Every ton of new glass produced generates about how many pounds of mining waste?","385","159","287","450"},
+            {"One primary AAA battery pollutes up to _ liters of water.","400","300","200","100"},
+            {"If you recycle one glass bottle, it saves enough energy to light a 100-watt bulb for _ hours","4","3","2","1"},
+            {"Recycled cartons can be used to make","Paper","Clothes","Eraser","Glove"},
+            {"Which material below is never decomposed?","Styrofoam","Leaves","Tin Can","Diapers"},
+            {"Each ton of recycled paper can save about how many mature trees?","17","3","7","25"},
+            {"Which material requires longest time to decompose in landfill?","Aluminum Can","Cigarette","Cotton","Nylon Clothes"},
+            {"Which materials requires shortest time to decompose in landfill?","Cotton","Cigarette","Nylon Clothes","Aluminum Can"},
+            {"How long needed for plastic bottle decompose in landfill?","450","900","100","50"},
+            {"The most waste in offices is","Paper Waste","Food Waste","Medical Waste","Combustion Waste"},
+            {"Aluminum cans can actually be recycled and put back onto the shelf in just about","2 months","1 month","3 months","4 months"},
+            {"The average person generates _ pounds of solid waste every day.","4.4","2.7","6.8","8.3"}};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_quiz);
+
+        backBtn = findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(PlayQuizActivity.this,
+                        QuizActivity.class);
+                startActivity(i);
+            }
+        });
 
         questionNo = findViewById(R.id.questionNo);
         question = findViewById(R.id.question);

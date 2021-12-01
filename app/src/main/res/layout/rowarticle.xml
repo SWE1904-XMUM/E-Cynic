@@ -9,37 +9,52 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/dark_green"
-        app:contentPadding="1.3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:contentPadding="3dp"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="109dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:background="#E5F4D9">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:background="@drawable/bg_list">
 
             <TextView
                 android:id="@+id/tv_articleTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="345dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/inder"
                 android:text="title"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_articleDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="347dp"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="fill_horizontal"
+                android:fontFamily="@font/inder"
                 android:text="Description"
-                android:textColor="@color/black"
+                android:textColor="@android:color/secondary_text_light"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_articleTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle" />
