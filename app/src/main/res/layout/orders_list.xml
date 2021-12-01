@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/dark_green"
+        app:cardBackgroundColor="@color/apple_green"
         app:contentPadding="7dp">
 
         <RelativeLayout
@@ -18,60 +18,60 @@
             android:background="@color/grey">
 
             <ImageView
-                android:id="@+id/itemImageList"
+                android:id="@+id/orderImageList"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:padding="3dp"
-                android:background="@color/apple_green"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
+                android:background="@color/dark_green"
+                android:padding="3dp"
                 app:srcCompat="@drawable/computer" />
 
             <TextView
-                android:id="@+id/itemNameList"
+                android:id="@+id/orderList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/itemImageList"
+                android:layout_toRightOf="@+id/orderImageList"
                 android:padding="5dp"
-                android:text="Item Name"
+                android:text="Order 1"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/numberOfItemsList"
+                android:id="@+id/earnedPointsList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/itemNameList"
-                android:layout_toRightOf="@+id/itemImageList"
+                android:layout_below="@+id/orderList"
+                android:layout_toRightOf="@+id/orderImageList"
                 android:padding="5dp"
-                android:text="Number of Item"
+                android:text="Earned points"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/priceList"
-                app:layout_constraintStart_toEndOf="@+id/itemImageList"
-                app:layout_constraintTop_toBottomOf="@+id/itemNameList" />
+                app:layout_constraintBottom_toTopOf="@+id/orderStatusList"
+                app:layout_constraintStart_toEndOf="@+id/orderImageList"
+                app:layout_constraintTop_toBottomOf="@+id/orderList" />
 
             <TextView
-                android:id="@+id/priceList"
+                android:id="@+id/orderStatusList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/numberOfItemsList"
-                android:layout_toRightOf="@+id/itemImageList"
+                android:layout_below="@+id/earnedPointsList"
+                android:layout_toRightOf="@+id/orderImageList"
                 android:padding="5dp"
-                android:text="Price"
+                android:text="Order status"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/itemImageList" />
+                app:layout_constraintStart_toEndOf="@+id/orderImageList" />
 
             <TextView
-                android:id="@+id/dateList"
+                android:id="@+id/orderDateList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/itemNameList"
+                android:layout_alignTop="@+id/orderList"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="150dp"
-                android:layout_toRightOf="@+id/itemNameList"
+                android:layout_toRightOf="@+id/orderList"
                 android:padding="5dp"
                 android:text="Date"
                 android:textColor="@color/black"

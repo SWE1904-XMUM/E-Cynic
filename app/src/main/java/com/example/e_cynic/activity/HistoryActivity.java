@@ -5,24 +5,26 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.e_cynic.R;
-import com.example.e_cynic.adapter.HistoryItemListAdapter;
-import com.example.e_cynic.arrayList.HistoryArrayLists;
+import com.example.e_cynic.adapter.HistoryOrderListAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HistoryActivity extends AppCompatActivity
 {
 
     private RecyclerView historyRecyclerView;
-    HistoryArrayLists historyArrayLists;
-    HistoryItemListAdapter historyItemListAdapter;
+    HistoryOrderListAdapter historyOrderListAdapter;
     private String[] itemInSortList;
+
+    // order
+    private byte [] orderImage;
+    private String order,orderStatus;
+    private int earnedPoints;
+    private long orderDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,18 +55,17 @@ public class HistoryActivity extends AppCompatActivity
 
     private void classDeclaration()
     {
-        historyArrayLists = new HistoryArrayLists();
-        historyItemListAdapter = new HistoryItemListAdapter(getApplicationContext(),
-                HistoryArrayLists.itemImage,
-                HistoryArrayLists.itemName,
-                HistoryArrayLists.numberOfItems,
-                HistoryArrayLists.price,
-                HistoryArrayLists.date);
+        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),
+                orderImage,
+                order,
+                earnedPoints,
+                orderStatus,
+                orderDate);
     }
 
     private void setUpRecyclerView()
     {
-        historyRecyclerView.setAdapter(historyItemListAdapter);
+        historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }
 

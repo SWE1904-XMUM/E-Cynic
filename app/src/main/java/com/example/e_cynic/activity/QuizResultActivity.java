@@ -1,17 +1,23 @@
 package com.example.e_cynic.activity;
-import com.example.e_cynic.R;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.e_cynic.R;
+import com.example.e_cynic.session.SessionManager;
+
 public class QuizResultActivity extends AppCompatActivity
 {
     private TextView scoreValue;
     private Button returnBtn;
+    private int totalPoints;
+
+    // session manager
+    SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,16 +41,9 @@ public class QuizResultActivity extends AppCompatActivity
             }
         });
 
-        //TODO: could implement with session manager for later use
-        /*totalScore = findViewById(R.id.totalScore);
-        totalScore.setText("Total score: " + tScore);
-        SharedPreferences sp = getSharedPreferences("quizResult", Context.MODE_PRIVATE);
-        int tScore = sp.getInt("Total Score",0);
-
-        tScore += score;
-        //Update total score
-        SharedPreferences.Editor edt = sp.edit();
-        edt.putInt("Total Score",tScore);
-        edt.commit();*/
+        sm = new SessionManager(getApplicationContext());
+        totalPoints = sm.getTotalPoints();;
+        totalPoints += score;
+        sm.setTotalPoints(totalPoints);
     }
 }

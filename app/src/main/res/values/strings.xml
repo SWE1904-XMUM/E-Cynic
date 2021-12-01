@@ -21,6 +21,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="underlineFgtPwd"><u>Forgot your password?</u></string>
+    <string name="upload_your_image">Upload Your Image</string>
+    <string name="pin_your_location">Pin Your Location</string>
+    <string name="enter_type_of_items">Enter type of items</string>
 
     <string-array name="state">
         <item>Johor</item>
