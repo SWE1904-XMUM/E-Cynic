@@ -41,6 +41,18 @@ public class RecycleActivity extends AppCompatActivity
         setViewComponent();
         bottomNavBar();
 
+        //test: redirect to order details page (working)
+        uploadBtn = findViewById(R.id.uploadBtn);
+
+        uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RecycleActivity.this, orderDetailActivity.class);
+                startActivity(i);
+            }
+        });
+
+
         pinLocation.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -67,6 +79,7 @@ public class RecycleActivity extends AppCompatActivity
                 {
                     selectImg();
                 }
+
             }
         });
 
