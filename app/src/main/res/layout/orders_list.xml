@@ -31,6 +31,7 @@
                 android:id="@+id/orderList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="27dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/orderImageList"
                 android:padding="5dp"
@@ -40,28 +41,17 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/earnedPointsList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/orderList"
-                android:layout_toRightOf="@+id/orderImageList"
-                android:padding="5dp"
-                android:text="Earned points"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/orderStatusList"
-                app:layout_constraintStart_toEndOf="@+id/orderImageList"
-                app:layout_constraintTop_toBottomOf="@+id/orderList" />
-
-            <TextView
                 android:id="@+id/orderStatusList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/earnedPointsList"
+                android:layout_below="@+id/orderList"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="18dp"
                 android:layout_toRightOf="@+id/orderImageList"
                 android:padding="5dp"
                 android:text="Order status"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/orderList"
                 app:layout_constraintStart_toEndOf="@+id/orderImageList" />
 
             <TextView

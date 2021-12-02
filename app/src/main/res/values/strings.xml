@@ -73,7 +73,6 @@
 
     <string-array name="sortListEg">
         <item>Date</item>
-        <item>Item Name</item>
         <item>Price</item>
     </string-array>
 

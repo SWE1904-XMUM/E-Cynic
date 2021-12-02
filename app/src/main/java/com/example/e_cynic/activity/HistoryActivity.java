@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryOrderListAdapter;
+import com.example.e_cynic.entity.Item;
+import com.example.e_cynic.entity.Order;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity
 {
@@ -19,12 +23,11 @@ public class HistoryActivity extends AppCompatActivity
     private RecyclerView historyRecyclerView;
     HistoryOrderListAdapter historyOrderListAdapter;
     private String[] itemInSortList;
+    private Spinner sortList;
 
-    // order
-    private byte [] orderImage;
-    private String order,orderStatus;
-    private int earnedPoints;
-    private long orderDate;
+    // items list
+    ArrayList<Order> historyOrders;
+    ArrayList<Item> historyItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,38 +36,30 @@ public class HistoryActivity extends AppCompatActivity
         setContentView(R.layout.history);
 
         setViewComponent();
-        classDeclaration();
-        setUpRecyclerView();
+        setSortList();
+        //setUpRecyclerView();
         bottomNavBar();
-
-        //Sort drop down list
-        Spinner sortList = (Spinner) findViewById(R.id.spinner);
-        itemInSortList = getResources().getStringArray(R.array.sortListEg);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(HistoryActivity.this,
-                android.R.layout.simple_list_item_1, itemInSortList);
-
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sortList.setAdapter(myAdapter); // show data
-
     }
 
     private void setViewComponent()
     {
         historyRecyclerView = findViewById(R.id.historyRecyclerView);
+        sortList = (Spinner) findViewById(R.id.spinner);
     }
 
-    private void classDeclaration()
+    private void setSortList()
     {
-        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),
-                orderImage,
-                order,
-                earnedPoints,
-                orderStatus,
-                orderDate);
+        //Sort drop down list
+        itemInSortList = getResources().getStringArray(R.array.sortListEg);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(HistoryActivity.this,
+                android.R.layout.simple_list_item_1, itemInSortList);
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortList.setAdapter(myAdapter); // show data
     }
 
     private void setUpRecyclerView()
     {
+        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders,historyItem);
         historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }

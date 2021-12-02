@@ -158,6 +158,7 @@ public class RecycleActivity extends AppCompatActivity {
                         */
                         System.out.println(data.getStringExtra("address"));
                     }
+                    break;
             }
         }
     }
