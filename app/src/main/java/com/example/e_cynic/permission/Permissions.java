@@ -16,7 +16,7 @@ public class Permissions
 
     }
 
-    public void grantPhotoPermission(RecycleActivity context)
+    public void grantPhotoPermission(Context context)
     {
         ActivityCompat.requestPermissions((Activity) context, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, RequestCode.PHOTO_PERMISSION);
     }

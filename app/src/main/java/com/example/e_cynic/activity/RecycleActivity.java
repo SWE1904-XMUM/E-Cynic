@@ -1,9 +1,6 @@
 package com.example.e_cynic.activity;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,23 +8,19 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RecycleAddItemAdapter;
 import com.example.e_cynic.constants.RequestCode;
-import com.example.e_cynic.permission.Permissions;
+import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.utils.ImageUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -36,12 +29,12 @@ import java.util.ArrayList;
 public class RecycleActivity extends AppCompatActivity {
     // Views
     private ImageView example, pinLocation;
-    //private ImageView uploadImg;
     private Button uploadBtn, addItem;
     RecyclerView recycler_view;
     RecycleAddItemAdapter rvAdapter;
-    ArrayList<String> items;
+    ArrayList<Item> items;
 
+    public int clickedItem = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +45,6 @@ public class RecycleActivity extends AppCompatActivity {
         bottomNavBar();
 
         RV_AddItem();
-
 
         //test: redirect to order details page (working)
         uploadBtn = findViewById(R.id.uploadBtn);
@@ -73,20 +65,6 @@ public class RecycleActivity extends AppCompatActivity {
             }
         });
 
-       /* uploadImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    Permissions permissions = new Permissions();
-                    permissions.grantPhotoPermission(RecycleActivity.this);
-                    selectImg();
-                } else {
-                    selectImg();
-                }
-
-            }
-        });*/
-
         example.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +80,7 @@ public class RecycleActivity extends AppCompatActivity {
         //add item recycler view
         addItem = findViewById(R.id.btn_addItem);
         items = new ArrayList<>();
-        items.add("Item 1");
+        items.add(new Item("category", null));
 
         //set click
         addItem.setOnClickListener(new View.OnClickListener() {
@@ -111,45 +89,24 @@ public class RecycleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 i++;
-                items.add("Item " + i);
+                items.add(new Item("c2", null));
                 rvAdapter.notifyItemInserted(i);
             }
         });
+        updateRecyclerView();
+    }
 
+    private void updateRecyclerView() {
         recycler_view = findViewById(R.id.enterItemDetail);
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
-        rvAdapter = new RecycleAddItemAdapter(this, items);
+        rvAdapter = new RecycleAddItemAdapter(this, items, RecycleActivity.this);
         recycler_view.setAdapter(rvAdapter);
     }
 
     private void setViewComponent() {
         example = findViewById(R.id.example);
-        //uploadImg = findViewById(R.id.uploadImg);
         uploadBtn = findViewById(R.id.uploadBtn);
         pinLocation = findViewById(R.id.pinLocation);
-    }
-
-    private void selectImg() {
-        final CharSequence[] options = {"Snap photo", "Choose from gallery", "Cancel"};
-        AlertDialog.Builder ad = new AlertDialog.Builder(this);
-        ad.setTitle("Upload photo");
-
-        ad.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (options[i].equals("Snap photo")) {
-                    Intent snapPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(snapPhoto, RequestCode.SNAP_PHOTO);
-                } else if (options[i].equals("Choose from gallery")) {
-                    Intent chooseFromGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(chooseFromGallery, RequestCode.CHOOSE_FROM_GALLERY);
-                } else if (options[i].equals("Cancel")) {
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-
-        ad.show();
     }
 
     @Override
@@ -161,7 +118,8 @@ public class RecycleActivity extends AppCompatActivity {
                 case RequestCode.SNAP_PHOTO:
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
-                        //uploadImg.setImageBitmap(capturedImg);
+                        items.get(clickedItem).image = ImageUtils.bitmapToByteArray(capturedImg);
+                        updateRecyclerView();
                     }
                     break;
 
@@ -178,7 +136,8 @@ public class RecycleActivity extends AppCompatActivity {
 
                                 int colInd = cursor.getColumnIndex(filePath[0]);
                                 String imgPath = cursor.getString(colInd);
-                                //uploadImg.setImageBitmap(ImageUtils.imagePathToBitmap(imgPath));
+                                items.get(clickedItem).image = ImageUtils.imagePathToByteArray(imgPath);
+                                updateRecyclerView();
                                 cursor.close();
                             }
                         }

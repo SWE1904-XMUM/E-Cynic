@@ -19,14 +19,13 @@ public class ItemDatabaseTest {
     private Integer itemId = 1;
     private Integer orderId = 1;
     private String itemName = "smartphone";
-    private Integer numberOfItems = 1;
     private String imgPath = "/storage/emulated/0/DCIM/Camera/IMG_20211127_072317.jpg";
     private Double price = 300d;
 
     @Test
     public void insertItem() throws IllegalAccessException {
         byte[] imgBytes = ImageUtils.imagePathToByteArray(imgPath);
-        Item item = new Item(null, orderId, itemName, numberOfItems, imgBytes, null);
+        Item item = new Item(null, orderId, itemName, imgBytes, null);
         boolean result = ItemDatabase.insertItem(item);
         LoggingUtil.printMessage("insert item", (result == true) ? "true" : "false");
     }
