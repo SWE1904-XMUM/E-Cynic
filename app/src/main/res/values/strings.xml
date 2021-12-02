@@ -77,11 +77,11 @@
     </string-array>
 
     <string-array name="itemsSelection">
-        <item>Computer and Mobile Accessories</item>
+        <item>Computer, Mobile &amp; Accessories</item>
         <item>Household Cleaning Machines</item>
         <item>Kitchen Appliances</item>
-        <item>TVs and Accessories</item>
-        <item>Other Accessories</item>
+        <item>TVs &amp; Accessories</item>
+        <item>Other Electronic Device</item>
     </string-array>
 
 

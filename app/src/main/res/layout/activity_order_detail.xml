@@ -7,34 +7,46 @@
     android:orientation="vertical"
     tools:context=".activity.orderDetailActivity">
 
-    <RelativeLayout
-        android:id="@+id/RL1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="2dp"
-            app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
-            app:tint="@color/apple_green" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/playfair_display_black"
-            android:text="Recycle 1"
-            android:textColor="@color/dark_green"
-            android:textSize="40sp"
-            android:textStyle="normal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center">
 
-    </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="2dp"
+                app:tint="@color/apple_green"
+                app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/inder"
+                android:text="Recycle 1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,14 +59,16 @@
 
             <TextView
                 android:id="@+id/tv_orderDetails"
-                android:layout_width="wrap_content"
+                android:layout_width="380dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2mm"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/inder"
-                android:padding="5dp"
                 android:text="Order Details"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 tools:ignore="InOrMmUsage" />
 
@@ -71,9 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/splitline"
-                android:layout_alignLeft="@+id/tv_orderDetails"
                 android:layout_centerInParent="true"
-                android:padding="10dp" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp" />
 
             <!--total device-->
             <LinearLayout
@@ -88,17 +104,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2mm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/inder"
                     android:text="Total number of devices: "
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/noOfDevice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2mm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
                     android:hint="#device"
                     android:textSize="20sp" />
 
@@ -109,32 +132,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/LL_numofdvc"
-                android:background="@color/grey"
-                android:padding="10dp">
+                android:background="@color/grey">
 
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2mm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/inder"
                     android:text="Address:  "
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pinnedAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="20"
                     android:background="@drawable/border"
                     android:gravity="center_vertical"
                     android:hint="Address of pin location"
-                    android:padding="10dp"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -144,27 +171,34 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/LR_address"
                 android:background="@color/grey"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2mm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/inder"
                     android:text="Earned Point: "
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/inder"
-                    android:hint="point / RM0.00"
+                    android:hint="100 points/ To Be Confirmed"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -175,28 +209,35 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/LR_earnedPoint"
                 android:background="@color/grey"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="2mm"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
                     android:fontFamily="@font/inder"
                     android:text="Order Status: "
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/inder"
                     android:hint="progress/ confirm / received"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -209,7 +250,8 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/border_with_gradient"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:layout_marginBottom="50dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -218,14 +260,15 @@
                     android:fontFamily="@font/playfair_display_black"
                     android:gravity="center"
                     android:padding="4dp"
-                    android:text="- Thanks for your support -"
+                    android:text="- Thanks for Your Support -"
                     android:textColor="@color/dark_green"
                     android:textSize="28dp" />
+
             </LinearLayout>
 
         </RelativeLayout>
 
     </ScrollView>
 
-
+    </LinearLayout>
 </LinearLayout>

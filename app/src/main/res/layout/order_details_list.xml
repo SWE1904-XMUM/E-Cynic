@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="525dp"
+        android:layout_marginBottom="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,14 +18,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="408dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/apple_green" />
+
             <TextView
                 android:id="@+id/arrayItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="3dp"
                 android:fontFamily="@font/inder"
                 android:text="Item 1"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -33,9 +48,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/arrayItem"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="3dp"
                 android:text="type of appliances"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
 
             <ImageView
@@ -43,16 +61,22 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_below="@+id/typeofAppliances"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/cleaning" />
 
             <FrameLayout
                 android:id="@+id/splitline"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_width="408dp"
+                android:layout_height="3dp"
                 android:layout_below="@+id/iv_appliancesImg"
+                android:layout_marginStart="1dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/dark_green" />
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/apple_green" />
 
         </RelativeLayout>
 
