@@ -7,24 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.e_cynic.R;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.ImageUtils;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderListAdapter.MyViewHoler>
 {
     Context context;
-    private ArrayList<Order> historyOrders;
-    private ArrayList<Item> historyItem;
+    private List<Order> historyOrders;
+    private List<Item> historyItem;
 
-    public HistoryOrderListAdapter(Context context,ArrayList<Order> historyOrders,ArrayList<Item> historyItem)
+    public HistoryOrderListAdapter(Context context,List<Order> historyOrders,List<Item> historyItem)
     {
         this.context = context;
         this.historyOrders = historyOrders;

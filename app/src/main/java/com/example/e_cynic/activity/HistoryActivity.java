@@ -14,8 +14,7 @@ import com.example.e_cynic.adapter.HistoryOrderListAdapter;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.entity.Order;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
 {
@@ -26,8 +25,8 @@ public class HistoryActivity extends AppCompatActivity
     private Spinner sortList;
 
     // items list
-    ArrayList<Order> historyOrders;
-    ArrayList<Item> historyItem;
+    List<Order> historyOrders;
+    List<Item> historyItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,6 +36,7 @@ public class HistoryActivity extends AppCompatActivity
 
         setViewComponent();
         setSortList();
+        storeDataIntoList();
         //setUpRecyclerView();
         bottomNavBar();
     }
@@ -55,6 +55,11 @@ public class HistoryActivity extends AppCompatActivity
                 android.R.layout.simple_list_item_1, itemInSortList);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortList.setAdapter(myAdapter); // show data
+    }
+
+    private void storeDataIntoList()
+    {
+        //
     }
 
     private void setUpRecyclerView()
