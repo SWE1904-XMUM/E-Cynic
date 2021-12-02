@@ -11,4 +11,5 @@ public class PointsDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
+    //TODO PointsDatabase function
 }
