@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
 
-public class ImageUtils {
+public class ImageUtil {
     public static Bitmap imagePathToBitmap(String imagePath) {
         if(imagePath.equals("")) {
             return null;

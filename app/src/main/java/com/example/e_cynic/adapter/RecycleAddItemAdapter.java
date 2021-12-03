@@ -26,7 +26,7 @@ import com.example.e_cynic.activity.RecycleActivity;
 import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.permission.Permissions;
-import com.example.e_cynic.utils.ImageUtils;
+import com.example.e_cynic.utils.ImageUtil;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemNo.setText(data.get(position).itemName);
-        Bitmap bitmap = ImageUtils.byteArrayToBitmap(data.get(position).image);
+        Bitmap bitmap = ImageUtil.byteArrayToBitmap(data.get(position).image);
         if(bitmap != null) {
             holder.imageView.setImageBitmap(bitmap);
         }

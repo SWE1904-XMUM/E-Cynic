@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.utils.DatabaseUtil;
-import com.example.e_cynic.utils.ImageUtils;
+import com.example.e_cynic.utils.ImageUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class ItemDatabaseTest {
 
     @Test
     public void insertItem() throws IllegalAccessException {
-        byte[] imgBytes = ImageUtils.imagePathToByteArray(imgPath);
+        byte[] imgBytes = ImageUtil.imagePathToByteArray(imgPath);
         Item item = new Item(null, orderId, itemName, imgBytes, null);
         boolean result = ItemDatabase.insertItem(item);
         LoggingUtil.printMessage("insert item", (result == true) ? "true" : "false");

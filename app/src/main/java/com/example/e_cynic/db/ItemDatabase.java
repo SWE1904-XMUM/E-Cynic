@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 
 import com.example.e_cynic.db.mapper.ItemMapper;
 import com.example.e_cynic.entity.Item;
-import com.example.e_cynic.utils.ImageUtils;
+import com.example.e_cynic.utils.ImageUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -46,7 +46,7 @@ public class ItemDatabase
 
         if (item != null)
         {
-            Bitmap bitmap = ImageUtils.byteArrayToBitmap(item.image);
+            Bitmap bitmap = ImageUtil.byteArrayToBitmap(item.image);
             return bitmap;
         }
         return null;

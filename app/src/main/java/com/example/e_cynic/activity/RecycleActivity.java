@@ -21,7 +21,7 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RecycleAddItemAdapter;
 import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.entity.Item;
-import com.example.e_cynic.utils.ImageUtils;
+import com.example.e_cynic.utils.ImageUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -118,7 +118,7 @@ public class RecycleActivity extends AppCompatActivity {
                 case RequestCode.SNAP_PHOTO:
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap capturedImg = (Bitmap) data.getExtras().get("data");
-                        items.get(clickedItem).image = ImageUtils.bitmapToByteArray(capturedImg);
+                        items.get(clickedItem).image = ImageUtil.bitmapToByteArray(capturedImg);
                         updateRecyclerView();
                     }
                     break;
@@ -136,7 +136,7 @@ public class RecycleActivity extends AppCompatActivity {
 
                                 int colInd = cursor.getColumnIndex(filePath[0]);
                                 String imgPath = cursor.getString(colInd);
-                                items.get(clickedItem).image = ImageUtils.imagePathToByteArray(imgPath);
+                                items.get(clickedItem).image = ImageUtil.imagePathToByteArray(imgPath);
                                 updateRecyclerView();
                                 cursor.close();
                             }
