@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -54,8 +55,15 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.itemNo.setText(data.get(position).itemName);
+        holder.itemNo.setText(String.valueOf(position + 1));
         Bitmap bitmap = ImageUtil.byteArrayToBitmap(data.get(position).image);
+        for(int i = 0; i < holder.spinner.getCount(); i++) {
+            if(holder.spinner.getItemAtPosition(i).equals(data.get(position).itemName)) {
+                holder.spinner.setSelection(i);
+                break;
+            }
+        }
+
         if(bitmap != null) {
             holder.imageView.setImageBitmap(bitmap);
         }
@@ -76,6 +84,20 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
                 }
             }
         );
+
+        holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(activity.getClass() == RecycleActivity.class) {
+                    ((RecycleActivity)activity).items.get(pos).itemName = (String) holder.spinner.getSelectedItem();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -87,16 +109,15 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
 
         TextView itemNo;
         ImageView imageView;
+        Spinner spinner;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            //add item id
-            itemNo = itemView.findViewById(R.id.arr_noOfItem);
-            imageView = itemView.findViewById(R.id.uploadImg);
+            itemNo = itemView.findViewById(R.id.tv_item_no);
+            imageView = itemView.findViewById(R.id.iv_uploadImg);
+            spinner = itemView.findViewById(R.id.sp_itemSelection);
 
-            //Sort drop down list
-            Spinner spinner = itemView.findViewById(R.id.sp_itemSelection);
             itemSelectionList = itemView.getResources().getStringArray(R.array.itemsSelection);
             ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context,
                     android.R.layout.simple_list_item_1,
@@ -123,7 +144,6 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
                 } else if (options[i].equals("Cancel")) {
                     dialogInterface.dismiss();
                 }
-                System.out.println("clicked");
             }
         });
 

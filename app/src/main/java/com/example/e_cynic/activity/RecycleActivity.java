@@ -32,7 +32,7 @@ public class RecycleActivity extends AppCompatActivity {
     private Button submitRecycleBtn, addItem;
     RecyclerView recycler_view;
     RecycleAddItemAdapter rvAdapter;
-    ArrayList<Item> items;
+    public ArrayList<Item> items;
 
     public int clickedItem = -1;
 

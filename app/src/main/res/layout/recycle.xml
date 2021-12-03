@@ -89,15 +89,14 @@
             android:id="@+id/RL4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+    
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/enterItemDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:nestedScrollingEnabled="false"
-                android:padding="10dp" />
+                    android:id="@+id/enterItemDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:nestedScrollingEnabled="false"
+                    android:padding="10dp" />
 
         <Button
             android:id="@+id/btn_addItem"
