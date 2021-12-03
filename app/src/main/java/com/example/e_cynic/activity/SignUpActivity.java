@@ -76,7 +76,12 @@ public class SignUpActivity extends AppCompatActivity
                     {
                         Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
                                 addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
-                        boolean insertAddress = AddressDatabase.insertAddress(address);
+                        boolean insertAddress = false;
+                        try {
+                            insertAddress = AddressDatabase.insertAddress(address);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
 
                         if (insertAddress)
                         {

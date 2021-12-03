@@ -76,10 +76,10 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
                     currentLocation = location;
                     ToastCreator toastCreator = new ToastCreator();
                     toastCreator.createToast(getApplicationContext(),currentLocation.getLatitude()+""+currentLocation.getLongitude());
-
-                    supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
-                    supportMapFragment.getMapAsync(PinLocationActivity.this);
                 }
+
+                supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
+                supportMapFragment.getMapAsync(PinLocationActivity.this);
             }
         });
     }
@@ -152,7 +152,12 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.putExtra("address", currentAddressValue.getAddressLine(0));
+                intent.putExtra("firstLine",
+                        currentAddressValue.getFeatureName() + " " + currentAddressValue.getThoroughfare()) ;
+                intent.putExtra("secondLine", currentAddressValue.getSubLocality()) ;
+                intent.putExtra("city", currentAddressValue.getLocality());
+                intent.putExtra("postcode", currentAddressValue.getPostalCode());
+                intent.putExtra("state", currentAddressValue.getAdminArea());
                 setResult(RESULT_OK, intent);
                 finish();
             }

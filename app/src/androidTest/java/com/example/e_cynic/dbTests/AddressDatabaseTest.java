@@ -27,7 +27,7 @@ public class AddressDatabaseTest {
     private Address address = new Address(null, userId, line1, line2, line3, city, state, postcode);
 
     @Test
-    public void insertAddress() {
+    public void insertAddress() throws IllegalAccessException {
         boolean result = AddressDatabase.insertAddress(address);
         LoggingUtil.printMessage("insert address", (result == true)? "true" : "false");
     }

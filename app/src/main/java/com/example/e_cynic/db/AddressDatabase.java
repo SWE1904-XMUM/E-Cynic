@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.e_cynic.db.mapper.AddressMapper;
 import com.example.e_cynic.entity.Address;
+import com.example.e_cynic.utils.mapper.ContentValuesMapper;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -24,19 +25,16 @@ public class AddressDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static boolean insertAddress(Address address)
-    {
-        ContentValues cv = new ContentValues();
-        cv.put(userId,address.userId);
-        cv.put(firstLine,address.firstLine);
-        cv.put(secondLine,address.secondLine);
-        cv.put(thirdLine,address.thirdLine);
-        cv.put(city,address.city);
-        cv.put(state,address.state);
-        cv.put(postcode,address.postcode);
+    public static boolean insertAddress(Address address) throws IllegalAccessException {
+        return insertAddressAndGetId(address) > 0;
+    }
+
+    public static long insertAddressAndGetId(Address address) throws IllegalAccessException {
+
+        ContentValues cv = AddressMapper.mapAddressToContentValues(address);
 
         long result = db.insert(addressesTable, null, cv);
-        return result > 0;
+        return result;
     }
 
     public static Address getAddressByAddressId(Integer addressId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {

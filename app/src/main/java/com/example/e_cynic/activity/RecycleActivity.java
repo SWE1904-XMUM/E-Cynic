@@ -20,10 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RecycleAddItemAdapter;
 import com.example.e_cynic.constants.RequestCode;
+import com.example.e_cynic.db.AddressDatabase;
+import com.example.e_cynic.db.UserDatabase;
+import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.Item;
+import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.ImageUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class RecycleActivity extends AppCompatActivity {
@@ -33,6 +38,7 @@ public class RecycleActivity extends AppCompatActivity {
     RecyclerView recycler_view;
     RecycleAddItemAdapter rvAdapter;
     public ArrayList<Item> items;
+    public Address address;
 
     public int clickedItem = -1;
 
@@ -145,15 +151,24 @@ public class RecycleActivity extends AppCompatActivity {
                 case RequestCode.PIN_LOCATION_ACTIVITY:
                     if (resultCode == RESULT_OK && data != null) {
                         //TODO do something with the returned address
-                        /*
-                        currentAddressValue.getFeatureName(); //No. ...
-                        currentAddressValue.getThoroughfare(); // Jalan ...
-                        currentAddressValue.getSubLocality(); // Taman/Kampung ...
-                        currentAddressValue.getLocality(); // city
-                        currentAddressValue.getPostalCode(); //postcode
-                        currentAddressValue.getAdminArea(); //state
-                        */
-                        System.out.println(data.getStringExtra("address"));
+                        SessionManager sessionManager = new SessionManager(getApplicationContext());
+                        String username = sessionManager.getUsername();
+                        Integer userId = UserDatabase.getUserIdByUsername(username);
+                        address = new Address(null,
+                                               userId,
+                                               data.getStringExtra("firstLine"),
+                                               data.getStringExtra("secondLine"),
+                                               null,
+                                               data.getStringExtra("city"),
+                                               data.getStringExtra("state"),
+                                               Integer.parseInt(data.getStringExtra("postcode")));
+                        long insertedAddressId = 0;
+                        try {
+                            insertedAddressId = AddressDatabase.insertAddressAndGetId(address);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println(insertedAddressId);
                     }
                     break;
             }
@@ -161,6 +176,7 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private void bottomNavBar() {
+        ;
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
