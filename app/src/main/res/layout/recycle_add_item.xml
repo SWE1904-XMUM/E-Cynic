@@ -76,7 +76,7 @@
 						android:textColor="@color/black"
 						android:textSize="20dp"
 						android:textStyle="bold"
-						android:layout_weight="5"/>
+						android:layout_weight="5" />
 				
 				<ImageView
 						android:id="@+id/iv_uploadImg"
@@ -87,7 +87,7 @@
 						android:background="@color/grey"
 						android:scaleType="fitCenter"
 						android:src="@drawable/ic_baseline_upload_24"
-						android:layout_weight="5"/>
+						android:layout_weight="5" />
 			</LinearLayout>
 			
 			<FrameLayout

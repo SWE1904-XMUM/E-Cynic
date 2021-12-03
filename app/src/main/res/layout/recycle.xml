@@ -1,198 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.RecycleActivity">
-
-    <FrameLayout
-        android:id="@+id/recycleHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/apple_green">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/playfair_display_black"
-            android:text="Recycle"
-            android:textColor="@color/white"
-            android:textSize="34dp" />
-
-    </FrameLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recycleHeader"
-        android:layout_marginBottom="?attr/actionBarSize">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recycleHeader"
-        android:orientation="vertical">
-
-        <!--Instruction & icon question mark-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/inder"
-                    android:text="Please enter item(s) that need to recycle."
-                    android:textColor="@color/black"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/example"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignRight="@+id/textView1"
-                    android:layout_alignBottom="@+id/textView1"
-                    android:paddingRight="220dp"
-                    android:paddingBottom="6dp"
-                    app:srcCompat="@drawable/ic_baseline_contact_support_24"
-                    app:tint="@android:color/holo_red_dark" />
-
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="370dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="@color/black" />
-
-        </LinearLayout>
-
-
-        <!-- pin location -->
-        <RelativeLayout
-            android:id="@+id/RL4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/enterItemDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:nestedScrollingEnabled="false"
-                    android:padding="10dp" />
-
-        <Button
-            android:id="@+id/btn_addItem"
-            android:layout_width="130dp"
-            android:layout_height="45dp"
-            android:layout_below="@id/enterItemDetail"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/bg_button"
-            android:text="+ Add Item"
-            android:textAlignment="center" />
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="370dp"
-                android:layout_height="2dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_below="@id/btn_addItem"
-                android:layout_gravity="center"
-                android:background="@color/black" />
-
-        <TextView
-            android:id="@+id/tv_pinLocation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/divider2"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/inder"
-            android:text="Pin Your Location"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
-        <ImageView
-            android:id="@+id/pinLocation"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_below="@+id/tv_pinLocation"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/grey"
-            android:padding="20dp"
-            app:srcCompat="@drawable/ic_baseline_location_on_24" />
-
-            </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_submitRecycle"
-                android:layout_width="250dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/bg_button"
-                android:text="SUBMIT"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/white"
-                android:textSize="14dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btmNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="1dp"
-        android:background="@color/apple_green"
-        app:itemIconTint="@drawable/tab_color"
-        app:itemTextColor="@drawable/tab_color"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".activity.RecycleActivity">
+	
+	<FrameLayout
+			android:id="@+id/recycleHeader"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/apple_green">
+		
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:fontFamily="@font/playfair_display_black"
+				android:text="Recycle"
+				android:textColor="@color/white"
+				android:textSize="34dp" />
+	
+	</FrameLayout>
+	
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/recycleHeader"
+			android:layout_marginBottom="?attr/actionBarSize">
+		
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/recycleHeader"
+				android:orientation="vertical">
+			
+			<!--Instruction & icon question mark-->
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+				
+				<RelativeLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+					
+					<TextView
+							android:id="@+id/textView1"
+							android:layout_width="380dp"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="20dp"
+							android:layout_marginTop="5dp"
+							android:layout_marginEnd="20dp"
+							android:layout_marginBottom="5dp"
+							android:fontFamily="@font/inder"
+							android:text="Please enter item(s) that need to recycle."
+							android:textColor="@color/black"
+							android:textSize="26sp"
+							android:textStyle="bold" />
+					
+					<ImageView
+							android:id="@+id/example"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_alignRight="@+id/textView1"
+							android:layout_alignBottom="@+id/textView1"
+							android:paddingRight="220dp"
+							android:paddingBottom="6dp"
+							app:srcCompat="@drawable/ic_baseline_contact_support_24"
+							app:tint="@android:color/holo_red_dark" />
+				
+				</RelativeLayout>
+				
+				<View
+						android:id="@+id/divider1"
+						android:layout_width="370dp"
+						android:layout_height="2dp"
+						android:layout_gravity="center"
+						android:background="@color/black" />
+			
+			</LinearLayout>
+			
+			
+			<!-- pin location -->
+			<RelativeLayout
+					android:id="@+id/RL4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+				
+				<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/enterItemDetail"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="10dp"
+						android:nestedScrollingEnabled="false"
+						android:padding="10dp" />
+				
+				<Button
+						android:id="@+id/btn_addItem"
+						android:layout_width="130dp"
+						android:layout_height="45dp"
+						android:layout_below="@id/enterItemDetail"
+						android:layout_marginStart="20dp"
+						android:layout_marginTop="10dp"
+						android:layout_marginEnd="20dp"
+						android:layout_marginBottom="15dp"
+						android:background="@drawable/bg_button"
+						android:text="+ Add Item"
+						android:textAlignment="center" />
+				
+				<View
+						android:id="@+id/divider2"
+						android:layout_width="370dp"
+						android:layout_height="2dp"
+						android:layout_marginStart="20dp"
+						android:layout_marginEnd="20dp"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_below="@id/btn_addItem"
+						android:layout_gravity="center"
+						android:background="@color/black" />
+				
+				<TextView
+						android:id="@+id/tv_pinLocation"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_below="@id/divider2"
+						android:layout_marginStart="20dp"
+						android:layout_marginTop="10dp"
+						android:layout_marginEnd="20dp"
+						android:layout_marginBottom="5dp"
+						android:fontFamily="@font/inder"
+						android:text="Pin Your Location"
+						android:textColor="@color/black"
+						android:textSize="20sp"
+						android:textStyle="bold" />
+				
+				
+				<ImageView
+						android:id="@+id/pinLocation"
+						android:layout_width="match_parent"
+						android:layout_height="150dp"
+						android:layout_below="@+id/tv_pinLocation"
+						android:layout_marginStart="20dp"
+						android:layout_marginTop="3dp"
+						android:layout_marginEnd="20dp"
+						android:layout_marginBottom="10dp"
+						android:background="@color/grey"
+						android:padding="20dp"
+						app:srcCompat="@drawable/ic_baseline_location_on_24" />
+			
+			</RelativeLayout>
+			
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+				
+				<Button
+						android:id="@+id/btn_submitRecycle"
+						android:layout_width="250dp"
+						android:layout_height="35dp"
+						android:layout_gravity="center"
+						android:layout_marginStart="100dp"
+						android:layout_marginTop="20dp"
+						android:layout_marginEnd="100dp"
+						android:layout_marginBottom="30dp"
+						android:background="@drawable/bg_button"
+						android:text="SUBMIT"
+						android:textAlignment="center"
+						android:textColor="@color/white"
+						android:textColorHighlight="@color/white"
+						android:textSize="14dp"
+						android:textStyle="bold" />
+			
+			</LinearLayout>
+		
+		</LinearLayout>
+	</ScrollView>
+	
+	
+	<com.google.android.material.bottomnavigation.BottomNavigationView
+			android:id="@+id/btmNav"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="1dp"
+			android:background="@color/apple_green"
+			app:itemIconTint="@drawable/tab_color"
+			app:itemTextColor="@drawable/tab_color"
+			app:labelVisibilityMode="labeled"
+			app:menu="@menu/bottom_nav_menu" />
 
 
 </RelativeLayout>

@@ -11,7 +11,8 @@ public class Item {
     public byte[] image;
     public Double price;
 
-    public Item(){}
+    public Item() {
+    }
 
     // newly added -> order history
     public Item(byte[] image) {

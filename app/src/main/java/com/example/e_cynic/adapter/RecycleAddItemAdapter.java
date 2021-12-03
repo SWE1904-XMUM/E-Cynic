@@ -57,39 +57,39 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemNo.setText(String.valueOf(position + 1));
         Bitmap bitmap = ImageUtil.byteArrayToBitmap(data.get(position).image);
-        for(int i = 0; i < holder.spinner.getCount(); i++) {
-            if(holder.spinner.getItemAtPosition(i).equals(data.get(position).itemName)) {
+        for (int i = 0; i < holder.spinner.getCount(); i++) {
+            if (holder.spinner.getItemAtPosition(i).equals(data.get(position).itemName)) {
                 holder.spinner.setSelection(i);
                 break;
             }
         }
 
-        if(bitmap != null) {
+        if (bitmap != null) {
             holder.imageView.setImageBitmap(bitmap);
         }
         int pos = position;
 
         holder.imageView.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (ActivityCompat.checkSelfPermission(holder.imageView.getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(holder.imageView.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        Permissions permissions = new Permissions();
-                        permissions.grantPhotoPermission(holder.imageView.getContext());
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (ActivityCompat.checkSelfPermission(holder.imageView.getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(holder.imageView.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            Permissions permissions = new Permissions();
+                            permissions.grantPhotoPermission(holder.imageView.getContext());
+                        }
+                        if (activity.getClass() == RecycleActivity.class) {
+                            ((RecycleActivity) activity).clickedItem = pos;
+                        }
+                        selectImg(holder.imageView.getContext(), activity);
                     }
-                    if (activity.getClass() == RecycleActivity.class) {
-                        ((RecycleActivity) activity).clickedItem = pos;
-                    }
-                    selectImg(holder.imageView.getContext(), activity);
                 }
-            }
         );
 
         holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(activity.getClass() == RecycleActivity.class) {
-                    ((RecycleActivity)activity).items.get(pos).itemName = (String) holder.spinner.getSelectedItem();
+                if (activity.getClass() == RecycleActivity.class) {
+                    ((RecycleActivity) activity).items.get(pos).itemName = (String) holder.spinner.getSelectedItem();
                 }
             }
 
