@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class RecycleActivity extends AppCompatActivity {
     // Views
     private ImageView example, pinLocation;
-    private Button uploadBtn, addItem;
+    private Button submitRecycleBtn, addItem;
     RecyclerView recycler_view;
     RecycleAddItemAdapter rvAdapter;
     ArrayList<Item> items;
@@ -46,10 +46,7 @@ public class RecycleActivity extends AppCompatActivity {
 
         RV_AddItem();
 
-        //test: redirect to order details page (working)
-        uploadBtn = findViewById(R.id.uploadBtn);
-
-        uploadBtn.setOnClickListener(new View.OnClickListener() {
+        submitRecycleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(RecycleActivity.this, orderDetailActivity.class);
@@ -80,7 +77,7 @@ public class RecycleActivity extends AppCompatActivity {
         //add item recycler view
         addItem = findViewById(R.id.btn_addItem);
         items = new ArrayList<>();
-        items.add(new Item("category", null));
+        items.add(new Item());
 
         //set click
         addItem.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +86,7 @@ public class RecycleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 i++;
-                items.add(new Item("c2", null));
+                items.add(new Item());
                 rvAdapter.notifyItemInserted(i);
             }
         });
@@ -105,7 +102,7 @@ public class RecycleActivity extends AppCompatActivity {
 
     private void setViewComponent() {
         example = findViewById(R.id.example);
-        uploadBtn = findViewById(R.id.uploadBtn);
+        submitRecycleBtn = findViewById(R.id.btn_submitRecycle);
         pinLocation = findViewById(R.id.pinLocation);
     }
 
