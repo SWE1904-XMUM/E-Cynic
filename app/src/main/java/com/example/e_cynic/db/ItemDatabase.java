@@ -3,9 +3,11 @@ package com.example.e_cynic.db;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 
 import com.example.e_cynic.db.mapper.ItemMapper;
 import com.example.e_cynic.entity.Item;
+import com.example.e_cynic.utils.ImageUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -35,6 +37,23 @@ public class ItemDatabase
 
     public static Item getItemByItemId(Integer itemId) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
         Cursor c = db.rawQuery("select * from items where itemId=?", new String[]{String.valueOf(itemId)});
+        return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
+    }
+
+    // newly added function -> order history
+    public static Bitmap getFirstItemImageByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Item item = getFirstItemByOrderId(orderId);
+
+        if (item != null)
+        {
+            Bitmap bitmap = ImageUtils.byteArrayToBitmap(item.image);
+            return bitmap;
+        }
+        return null;
+    }
+
+    public static Item getFirstItemByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Cursor c = db.rawQuery("select * from items where orderId=? limit 1", new String[]{String.valueOf(orderId)});
         return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
     }
 }

@@ -11,6 +11,13 @@ public class Order {
 
     public Order() {}
 
+    // newly added -> order history
+    public Order(@Nullable Integer orderId, @Nullable String status, Long date) {
+        this.orderId = orderId;
+        this.date = date;
+        this.status = status;
+    }
+
     public Order(@Nullable Integer orderId, Integer userId, Integer addressId, Long date, @Nullable String status) {
         this.orderId = orderId;
         this.userId = userId;

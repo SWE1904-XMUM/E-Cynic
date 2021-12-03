@@ -7,25 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.e_cynic.R;
-import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.entity.Order;
-import com.example.e_cynic.utils.ImageUtils;
+import com.example.e_cynic.utils.DateUtil;
+
 import java.util.List;
 
 public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderListAdapter.MyViewHoler>
 {
     Context context;
     private List<Order> historyOrders;
-    private List<Item> historyItem;
+    private List<Bitmap> firstItemImage;
 
-    public HistoryOrderListAdapter(Context context,List<Order> historyOrders,List<Item> historyItem)
+    public HistoryOrderListAdapter(Context context,List<Order> historyOrders, List<Bitmap> firstItemImage)
     {
         this.context = context;
         this.historyOrders = historyOrders;
-        this.historyItem = historyItem;
+        this.firstItemImage = firstItemImage;
     }
 
     @NonNull
@@ -40,20 +42,16 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     @Override
     public void onBindViewHolder(@NonNull MyViewHoler holder, int position)
     {
-        Bitmap bitmap = ImageUtils.byteArrayToBitmap(historyItem.get(position).image);
-        if(bitmap != null)
-        {
-            holder.orderImageList.setImageBitmap(bitmap);
-        }
-        holder.orderList.setText(String.valueOf(historyOrders.get(position).orderId));
+        holder.orderImageList.setImageBitmap(firstItemImage.get(position));
+        holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
         holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
-        holder.orderDateList.setText(String.valueOf(historyOrders.get(position).date));
+        holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));
     }
 
     @Override
     public int getItemCount()
     {
-        return historyOrders.size();
+        return historyOrders != null ? historyOrders.size():0;
     }
 
     public class MyViewHoler extends RecyclerView.ViewHolder

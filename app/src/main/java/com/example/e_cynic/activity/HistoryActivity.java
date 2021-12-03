@@ -1,19 +1,25 @@
 package com.example.e_cynic.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryOrderListAdapter;
-import com.example.e_cynic.entity.Item;
+import com.example.e_cynic.db.ItemDatabase;
+import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -26,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity
 
     // items list
     List<Order> historyOrders;
-    List<Item> historyItem;
+    List<Bitmap> firstItemImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,8 +42,18 @@ public class HistoryActivity extends AppCompatActivity
 
         setViewComponent();
         setSortList();
-        storeDataIntoList();
-        //setUpRecyclerView();
+
+        try
+        {
+            storeDataIntoList();
+        }
+
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        setUpRecyclerView();
         bottomNavBar();
     }
 
@@ -57,14 +73,22 @@ public class HistoryActivity extends AppCompatActivity
         sortList.setAdapter(myAdapter); // show data
     }
 
-    private void storeDataIntoList()
+    private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
-        //
+        historyOrders = OrderDatabase.getOrdersByUsername("fgfdg");
+
+        if (historyOrders != null)
+        {
+            for (int i=0; i<historyOrders.size(); i++)
+            {
+                firstItemImage.add(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(0).orderId));
+            }
+        }
     }
 
     private void setUpRecyclerView()
     {
-        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders,historyItem);
+        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders,firstItemImage);
         historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }

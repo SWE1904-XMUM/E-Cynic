@@ -13,6 +13,11 @@ public class Item {
 
     public Item(){}
 
+    // newly added -> order history
+    public Item(byte[] image) {
+        this.image = image;
+    }
+
     public Item(String itemName, @Nullable byte[] image) {
         this.itemName = itemName;
         this.image = image;
