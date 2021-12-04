@@ -16,12 +16,12 @@ import com.example.e_cynic.entity.Voucher;
 
 import java.util.List;
 
-public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.MyViewHolder>
+public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.MyViewHolder>
 {
     Context context;
     List<Voucher> voucherList;
 
-    public RedeemListAdapter(Context context, List<Voucher> voucherList)
+    public VoucherListAdapter(Context context, List<Voucher> voucherList)
     {
         this.context = context;
         this.voucherList = voucherList;
@@ -29,7 +29,7 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.My
 
     @NonNull
     @Override
-    public RedeemListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public VoucherListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.voucher_list,parent,false);
@@ -37,7 +37,7 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RedeemListAdapter.MyViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull VoucherListAdapter.MyViewHolder holder, int position)
     {
         holder.voucherImgList.setImageResource(voucherList.get(position).voucherImage);
         holder.voucherNameList.setText(voucherList.get(position).voucherName);
