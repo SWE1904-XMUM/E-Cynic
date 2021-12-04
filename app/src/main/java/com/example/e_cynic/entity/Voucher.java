@@ -7,12 +7,11 @@ public class Voucher
     public Integer voucherPoints;
     public Long redeemDate;
 
-    public Voucher(Integer voucherImage, String voucherName, Integer voucherPoints, Long redeemDate)
+    public Voucher(Integer voucherImage, String voucherName, Integer voucherPoints)
     {
         this.voucherImage = voucherImage;
         this.voucherName = voucherName;
         this.voucherPoints = voucherPoints;
-        this.redeemDate = redeemDate;
     }
 
     @Override

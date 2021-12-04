@@ -9,13 +9,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RedeemPointsActivity extends AppCompatActivity
 {
     private ImageView backBtn;
     private TextView availablePoints;
     SessionManager sm;
+    List<Voucher> voucherList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +31,7 @@ public class RedeemPointsActivity extends AppCompatActivity
         sm = new SessionManager(getApplicationContext());
         setViewComponent();
         setAvailablePoints();
+        storeDataIntoVoucherList();
 
         backBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -43,6 +49,21 @@ public class RedeemPointsActivity extends AppCompatActivity
     {
         backBtn = findViewById(R.id.backBtn);
         availablePoints = findViewById(R.id.availablePoints);
+    }
+
+    private void storeDataIntoVoucherList()
+    {
+        voucherList = new ArrayList<>();
+        voucherList.add(new Voucher(R.drawable.aeon,"Aeon RM50 Cash Voucher",5000));
+        voucherList.add(new Voucher(R.drawable.tng_50,"TNG RM50 Cash Voucher",5000));
+        voucherList.add(new Voucher(R.drawable.shell,"Shell RM50 Cash Voucher",5000));
+        voucherList.add(new Voucher(R.drawable.baskin,"Baskin Robbins RM20 Cash Voucher",2000));
+        voucherList.add(new Voucher(R.drawable.secret,"Secret Recipe RM20 Cash Voucher",2000));
+        voucherList.add(new Voucher(R.drawable.lazada,"Lazada RM10 Cash Voucher",1000));
+        voucherList.add(new Voucher(R.drawable.tealive,"Tealive RM10 Cash Voucher",1000));
+        voucherList.add(new Voucher(R.drawable.tng_10,"TNG RM10 Cash Voucher",1000));
+        voucherList.add(new Voucher(R.drawable.spca,"SPCA RM10 Donation Voucher",1000));
+        voucherList.add(new Voucher(R.drawable.unicef,"Unicef RM5 Donation Voucher",500));
     }
 
     private void setAvailablePoints()
