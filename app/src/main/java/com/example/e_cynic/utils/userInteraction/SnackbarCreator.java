@@ -6,10 +6,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class SnackbarCreator
 {
-    public SnackbarCreator()
-    {
-
-    }
+    public SnackbarCreator() {}
 
     public static void createNewSnackbar(View view,String message)
     {

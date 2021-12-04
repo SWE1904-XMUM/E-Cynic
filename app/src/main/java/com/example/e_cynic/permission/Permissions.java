@@ -6,7 +6,6 @@ import android.content.Context;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.e_cynic.activity.RecycleActivity;
 import com.example.e_cynic.constants.RequestCode;
 
 public class Permissions

@@ -14,15 +14,13 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.utils.ImageUtil;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapter.MyViewHolder> {
     private Context context;
     private List<Item> itemList;
 
-    public OrderDetailsAdapter(Context context, List<Item> itemList) throws NoSuchMethodException,
-            NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public OrderDetailsAdapter(Context context, List<Item> itemList) {
         this.context = context;
         this.itemList = itemList;
     }

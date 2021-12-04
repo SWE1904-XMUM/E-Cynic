@@ -39,7 +39,6 @@ import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class RecycleActivity extends AppCompatActivity {
     // Views

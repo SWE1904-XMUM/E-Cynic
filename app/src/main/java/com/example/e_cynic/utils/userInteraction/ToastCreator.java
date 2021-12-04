@@ -5,10 +5,7 @@ import android.widget.Toast;
 
 public class ToastCreator
 {
-    public ToastCreator()
-    {
-
-    }
+    public ToastCreator() {}
 
     public void createToast(Context context,String message)
     {

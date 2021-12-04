@@ -1,7 +1,6 @@
 package com.example.e_cynic.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
 {
     Context context;
     private List<Order> historyOrders;
-    private List<Bitmap> bitmapList;
 
     public HistoryOrderListAdapter(Context context,List<Order> historyOrders)
     {
