@@ -12,7 +12,7 @@ public class SessionManager
     // Constructor
     public SessionManager(Context context)
     {
-        sp = context.getSharedPreferences("E-Cynic",0);
+        sp = context.getSharedPreferences("E-Cynic",context.MODE_PRIVATE);
         edt = sp.edit();
         edt.apply();
     }
@@ -52,5 +52,16 @@ public class SessionManager
     public int getTotalPoints()
     {
         return sp.getInt("TOTAL_POINTS",0);
+    }
+
+    public void setCurrentDate(String dateTime)
+    {
+        edt.putString("DATE", dateTime);
+        edt.commit();
+    }
+
+    public String getDate()
+    {
+        return sp.getString("DATE","");
     }
 }

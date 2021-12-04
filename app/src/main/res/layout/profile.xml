@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="match_parent"
+            android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
@@ -24,6 +24,14 @@
             android:textColor="@color/white"
             android:textSize="30dp" />
 
+        <ImageView
+            android:id="@+id/logoutBtn"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="360dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/ic_baseline_logout_24"
+            app:tint="@color/white" />
 
     </FrameLayout>
 
