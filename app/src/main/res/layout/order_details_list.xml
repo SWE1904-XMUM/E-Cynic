@@ -15,7 +15,7 @@
 		
 		<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="120dp"
+				android:layout_height="wrap_content"
 				android:layout_marginVertical="5dp"
 				android:orientation="horizontal">
 			
@@ -33,7 +33,7 @@
 			
 			<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="match_parent"
+					android:layout_height="wrap_content"
 					android:orientation="vertical"
 					android:layout_margin="10dp"
 					android:layout_weight="3">
@@ -41,19 +41,21 @@
 				<TextView
 						android:id="@+id/tv_typeofAppliances"
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="wrap_content"
 						android:text="type of appliances"
 						android:textSize="18sp"
 						android:gravity="center"
+						android:layout_marginVertical="5dp"
 						android:layout_weight="1" />
 				
 				<TextView
 						android:id="@+id/tv_item_point"
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_height="wrap_content"
 						android:text="points"
 						android:textSize="15sp"
 						android:gravity="center"
+						android:layout_marginVertical="5dp"
 						android:layout_weight="1" />
 			</LinearLayout>
 			
@@ -64,8 +66,6 @@
 					android:src="@drawable/cleaning"
 					android:layout_weight="4" />
 		</LinearLayout>
-	
-	
 	</androidx.cardview.widget.CardView>
 	
 	<FrameLayout

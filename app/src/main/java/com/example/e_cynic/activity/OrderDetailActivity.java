@@ -69,6 +69,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         tv_noOfDevice.setText(String.valueOf(itemList.size()));
         tv_address.setText(address.getAddressString());
+        System.out.println(address.getAddressString());
         tv_status.setText("Processing");
         tv_point.setText("To be confirmed");
     }

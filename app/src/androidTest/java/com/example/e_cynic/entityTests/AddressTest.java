@@ -35,7 +35,7 @@ public class AddressTest {
 
     @Test
     public void getAddressString() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Address address = AddressDatabase.getAddressByAddressId(5);
+        Address address = AddressDatabase.getAddressByAddressId(50);
         LoggingUtil.printMessage("get address string", address.getAddressString());
     }
 }
