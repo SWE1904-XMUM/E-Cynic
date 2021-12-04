@@ -66,6 +66,11 @@ public class OrderDetailActivity extends AppCompatActivity {
         OrderDetailsAdapter adapter = new OrderDetailsAdapter(getApplicationContext(), itemList);
         rv_itemList.setAdapter(adapter);
         rv_itemList.setLayoutManager(new LinearLayoutManager(this));
+
+        tv_noOfDevice.setText(String.valueOf(itemList.size()));
+        tv_address.setText(address.getAddressString());
+        tv_status.setText("Processing");
+        tv_point.setText("To be confirmed");
     }
 
     private void setViewComponents() {

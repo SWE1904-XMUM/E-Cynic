@@ -1,12 +1,19 @@
 package com.example.e_cynic.entityTests;
 
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.entity.Address;
+import com.example.e_cynic.utils.DatabaseUtil;
 import com.example.e_cynic.utils.LoggingUtil;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class AddressTest {
+    private static SQLiteDatabase database = DatabaseUtil.getTestDatabase();
     private String TAG = "AddressTest";
 
     @Test
@@ -24,5 +31,11 @@ public class AddressTest {
         String result = address.toString();
         LoggingUtil.printMessage(TAG, result);
         Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void getAddressString() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Address address = AddressDatabase.getAddressByAddressId(5);
+        LoggingUtil.printMessage("get address string", address.getAddressString());
     }
 }

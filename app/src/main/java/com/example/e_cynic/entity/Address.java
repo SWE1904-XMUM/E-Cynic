@@ -39,4 +39,15 @@ public class Address {
                 ", postcode=" + postcode +
                 '}';
     }
+
+    public String getAddressString() {
+        String addressString = firstLine.concat("\n");
+        if(secondLine != null) {
+            addressString.concat(secondLine).concat("\n");
+        }
+        if(thirdLine != null) {
+            addressString.concat(thirdLine).concat("\n");
+        }
+        return addressString.concat(String.valueOf(postcode) + " ").concat(city + "\n").concat(state + " ");
+    }
 }
