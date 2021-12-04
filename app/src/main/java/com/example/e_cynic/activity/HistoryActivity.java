@@ -19,10 +19,10 @@ import com.example.e_cynic.adapter.HistoryOrderListAdapter;
 import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
+import com.example.e_cynic.utils.comparator.OrderComparator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -68,14 +68,14 @@ public class HistoryActivity extends AppCompatActivity
                 switch (index)
                 {
                     case 0:
-                        Collections.sort(historyOrders,Order.NewestOrder);
+                        historyOrders.sort(OrderComparator.NewestOrder);
                         historyOrderListAdapter.notifyDataSetChanged();
-                        return;
+                        break;
 
                     case 1:
-                        Collections.sort(historyOrders,Order.OldestOrder);
+                        historyOrders.sort(OrderComparator.OldestOrder);
                         historyOrderListAdapter.notifyDataSetChanged();
-                        return;
+                        break;
                 }
             }
 

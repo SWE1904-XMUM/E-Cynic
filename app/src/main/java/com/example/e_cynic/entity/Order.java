@@ -2,8 +2,6 @@ package com.example.e_cynic.entity;
 
 import androidx.annotation.Nullable;
 
-import java.util.Comparator;
-
 public class Order {
     public Integer orderId;
     public Integer userId;
@@ -11,7 +9,8 @@ public class Order {
     public Long date;
     public String status;
 
-    public Order() {}
+    public Order() {
+    }
 
     // newly added -> order history
     public Order(@Nullable Integer orderId, @Nullable String status, Long date) {
@@ -27,24 +26,6 @@ public class Order {
         this.date = date;
         this.status = status;
     }
-
-    public static Comparator<Order> NewestOrder = new Comparator<Order>()
-    {
-        @Override
-        public int compare(Order o1, Order o2)
-        {
-            return o2.date.compareTo(o1.date);
-        }
-    };
-
-    public static Comparator<Order> OldestOrder = new Comparator<Order>()
-    {
-        @Override
-        public int compare(Order o1, Order o2)
-        {
-            return o1.date.compareTo(o2.date);
-        }
-    };
 
     @Override
     public String toString() {
