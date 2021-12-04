@@ -1,20 +1,26 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.DateUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class QuizActivity extends AppCompatActivity
 {
     private Button playBtn;
+    private TextView noOfChance;
+    String currentDate,date;
+    SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,9 +28,11 @@ public class QuizActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz);
 
-        playBtn = findViewById(R.id.playBtn);
+        sm = new SessionManager(getApplicationContext());
 
+        setViewComponent();
         bottomNavBar();
+        quizChance();
 
         playBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -35,6 +43,41 @@ public class QuizActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void setViewComponent()
+    {
+        playBtn = findViewById(R.id.playBtn);
+        noOfChance = findViewById(R.id.noOfChance);
+    }
+
+    private void quizChance()
+    {
+        date = sm.getDate();
+        currentDate = DateUtil.getCurrentDate();
+
+        if ("".equals(date))
+        {
+            playBtn.setEnabled(true);
+            sm.setCurrentDate(currentDate);
+            noOfChance.setText("1");
+        }
+
+        else
+        {
+            if (currentDate.equals(date))
+            {
+                playBtn.setEnabled(false);
+                noOfChance.setText("0");
+            }
+
+            else
+            {
+                playBtn.setEnabled(true);
+                sm.setCurrentDate(currentDate);
+                noOfChance.setText("1");
+            }
+        }
     }
 
     public void bottomNavBar()
