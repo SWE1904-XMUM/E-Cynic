@@ -34,7 +34,7 @@
 
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/redeemNameList"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -47,7 +47,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toTopOf="@+id/redeemPointList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -69,7 +69,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/redeemPointList"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="85dp"
@@ -84,7 +84,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/noOfChance"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                    app:layout_constraintTop_toBottomOf="@+id/redeemNameList" />
 
                 <TextView
                     android:id="@+id/noOfChance"
@@ -100,13 +100,13 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="50sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/textView3"
+                    app:layout_constraintBottom_toTopOf="@+id/redeemDateList"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/redeemPointList" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/redeemDateList"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
@@ -150,7 +150,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/btmNav"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/redeemDateList" />
 
         </LinearLayout>
 
