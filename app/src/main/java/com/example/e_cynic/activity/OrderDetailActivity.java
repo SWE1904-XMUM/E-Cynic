@@ -18,6 +18,7 @@ import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.entity.Order;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class OrderDetailActivity extends AppCompatActivity {
@@ -31,7 +32,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView tv_status;
 
     //data
-    private Integer orderId;
+    private Integer orderId; //to be passed by intent
+
     private Order order;
     private List<Item> itemList;
     private Address address;
@@ -50,17 +52,20 @@ public class OrderDetailActivity extends AppCompatActivity {
             itemList = ItemDatabase.getItemsByOrderId(orderId);
 
             address = AddressDatabase.getAddressByAddressId(order.addressId);
+
+            if (itemList != null) {
+                updateView();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        if (itemList != null) {
-            updateView();
-        }
     }
 
-    private void updateView() {
+    private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         //TODO display item list
+        OrderDetailsAdapter adapter = new OrderDetailsAdapter(getApplicationContext(), itemList);
+        rv_itemList.setAdapter(adapter);
+        rv_itemList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setViewComponents() {
