@@ -75,7 +75,7 @@ public class HistoryActivity extends AppCompatActivity
 
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
-        historyOrders = OrderDatabase.getOrdersByUsername("fgfdg");
+        historyOrders = OrderDatabase.getOrdersByUsername("testuser");
 
         if (historyOrders != null)
         {

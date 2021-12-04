@@ -55,6 +55,13 @@ public class RecycleActivity extends AppCompatActivity {
         submitRecycleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO submit recycle order
+                //get userid
+                //insert address to db
+                //create order and get orderid
+                //insert items to order
+                //direct to order detail activity, pass orderid
+
                 Intent i = new Intent(RecycleActivity.this, orderDetailActivity.class);
                 startActivity(i);
             }

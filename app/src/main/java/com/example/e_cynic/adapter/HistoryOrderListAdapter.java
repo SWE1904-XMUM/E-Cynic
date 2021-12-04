@@ -42,7 +42,7 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     @Override
     public void onBindViewHolder(@NonNull MyViewHoler holder, int position)
     {
-        holder.orderImageList.setImageBitmap(firstItemImage.get(position));
+//        holder.orderImageList.setImageBitmap(firstItemImage.get(position));
         holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
         holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
         holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));

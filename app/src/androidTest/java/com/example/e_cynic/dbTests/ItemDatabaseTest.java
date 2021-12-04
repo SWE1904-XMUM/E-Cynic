@@ -19,7 +19,7 @@ public class ItemDatabaseTest {
     private Integer itemId = 1;
     private Integer orderId = 1;
     private String itemName = "smartphone";
-    private String imgPath = "/storage/emulated/0/DCIM/Camera/IMG_20211130_041038.jpg";
+    private String imgPath = "/storage/emulated/0/DCIM/Camera/IMG_20211127_072317.jpg";
     private Double price = 300d;
 
     @Test
