@@ -20,7 +20,7 @@
         android:theme="@style/Theme.ECynic"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.orderDetailActivity"
+            android:name=".activity.OrderDetailActivity"
             android:exported="true" />
         <activity
             android:name=".activity.RewardVoucherActivity"

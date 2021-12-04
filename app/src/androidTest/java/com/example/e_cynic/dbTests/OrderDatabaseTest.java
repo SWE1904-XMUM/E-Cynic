@@ -24,7 +24,7 @@ public class OrderDatabaseTest {
     private Integer userId = 1;
 
     @Test
-    public void insertOrder() {
+    public void insertOrder() throws IllegalAccessException {
         Order order = new Order(null, userId,1, DateUtil.getCurrentTimestamp(), null);
         boolean result = OrderDatabase.insertOrder(order);
         LoggingUtil.printMessage("insert order", (result == true) ? "true" : "false");

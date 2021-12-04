@@ -21,22 +21,28 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RecycleAddItemAdapter;
 import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.db.AddressDatabase;
+import com.example.e_cynic.db.ItemDatabase;
+import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.Item;
+import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.ImageUtil;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class RecycleActivity extends AppCompatActivity {
     // Views
     private ImageView example, pinLocation;
     private Button submitRecycleBtn, addItem;
-    RecyclerView recycler_view;
-    RecycleAddItemAdapter rvAdapter;
+    private RecyclerView recycler_view;
+    private RecycleAddItemAdapter rvAdapter;
+    private SessionManager sessionManager;
+
     public ArrayList<Item> items;
     public Address address;
 
@@ -49,21 +55,54 @@ public class RecycleActivity extends AppCompatActivity {
 
         setViewComponent();
         bottomNavBar();
-
         RV_AddItem();
+        sessionManager = new SessionManager(getApplicationContext());
 
         submitRecycleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO submit recycle order
                 //get userid
-                //insert address to db
-                //create order and get orderid
-                //insert items to order
-                //direct to order detail activity, pass orderid
+                //TODO get userId
+//                String username = sessionManager.getUsername();
+                String username = "testuser";
+                Integer userId = UserDatabase.getUserIdByUsername(username);
 
-                Intent i = new Intent(RecycleActivity.this, orderDetailActivity.class);
-                startActivity(i);
+                try {
+
+                    //insert address to db
+                    address.userId = userId;
+                    long addressId = AddressDatabase.insertAddressAndGetAddressId(address);
+                    if (addressId <= 0) {
+                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
+                        return;
+                    }
+
+                    //create order and get orderid
+                    long orderId = OrderDatabase.insertOrderAndGetOrderId(new Order(null, userId, (int) addressId,
+                            DateUtil.getCurrentTimestamp(), null));
+                    if (orderId <= 0) {
+                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
+                        return;
+                    }
+
+                    //insert items to order
+                    for (Item item : items) {
+                        item.orderId = (int) orderId;
+                        boolean result = ItemDatabase.insertItem(item);
+                        if (result == false) {
+                            SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
+                            return;
+                        }
+                    }
+
+
+                    //direct to order detail activity, pass orderid
+                    Intent i = new Intent(RecycleActivity.this, OrderDetailActivity.class);
+                    i.putExtra("orderId", String.valueOf(orderId));
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -162,20 +201,13 @@ public class RecycleActivity extends AppCompatActivity {
                         String username = sessionManager.getUsername();
                         Integer userId = UserDatabase.getUserIdByUsername(username);
                         address = new Address(null,
-                                               userId,
-                                               data.getStringExtra("firstLine"),
-                                               data.getStringExtra("secondLine"),
-                                               null,
-                                               data.getStringExtra("city"),
-                                               data.getStringExtra("state"),
-                                               Integer.parseInt(data.getStringExtra("postcode")));
-                        long insertedAddressId = 0;
-                        try {
-                            insertedAddressId = AddressDatabase.insertAddressAndGetId(address);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println(insertedAddressId);
+                                userId,
+                                data.getStringExtra("firstLine"),
+                                data.getStringExtra("secondLine"),
+                                null,
+                                data.getStringExtra("city"),
+                                data.getStringExtra("state"),
+                                Integer.parseInt(data.getStringExtra("postcode")));
                     }
                     break;
             }
@@ -183,7 +215,6 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private void bottomNavBar() {
-        ;
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
@@ -191,37 +222,35 @@ public class RecycleActivity extends AppCompatActivity {
         btmNav.setSelectedItemId(R.id.recycle);
 
         // Perform item selected listener
-        {
-            btmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.home:
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                            overridePendingTransition(0, 0);
-                            return true;
+        btmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
 
-                        case R.id.recycle:
-                            return true;
+                    case R.id.recycle:
+                        return true;
 
-                        case R.id.quiz:
-                            startActivity(new Intent(getApplicationContext(), QuizActivity.class));
-                            overridePendingTransition(0, 0);
-                            return true;
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
 
-                        case R.id.history:
-                            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
-                            overridePendingTransition(0, 0);
-                            return true;
+                    case R.id.history:
+                        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
 
-                        case R.id.profile:
-                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-                    }
-                    return false;
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                 }
-            });
-        }
+                return false;
+            }
+        });
     }
 }

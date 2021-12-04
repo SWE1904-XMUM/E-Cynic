@@ -21,15 +21,13 @@ public class OrderDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    public static boolean insertOrder(Order order)
-    {
-        ContentValues cv = new ContentValues();
-        cv.put(userId,order.userId);
-        cv.put(addressId,order.addressId);
-        cv.put(date, String.valueOf(order.date));
+    public static boolean insertOrder(Order order) throws IllegalAccessException {
+        return insertOrderAndGetOrderId(order) > 0;
+    }
 
-        long result = db.insert(ordersTable, null, cv);
-        return result > 0;
+    public static long insertOrderAndGetOrderId(Order order) throws IllegalAccessException {
+        ContentValues cv = OrderMapper.mapOrderToContentValues(order);
+        return db.insert(ordersTable, null, cv);
     }
 
     public static List<Order> getOrdersByUsername(String username) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
