@@ -35,7 +35,7 @@ public class HistoryActivity extends AppCompatActivity
     private Spinner sortList;
 
     // items list
-    List<Order> historyOrders;
+    List<Order> historyOrders = new ArrayList<>();
     List<Bitmap> firstItemImage = new ArrayList<>();
 
     @Override
