@@ -23,6 +23,7 @@ import com.example.e_cynic.utils.comparator.OrderComparator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -35,7 +36,7 @@ public class HistoryActivity extends AppCompatActivity
 
     // items list
     List<Order> historyOrders;
-    List<Bitmap> firstItemImage;
+    List<Bitmap> firstItemImage = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
