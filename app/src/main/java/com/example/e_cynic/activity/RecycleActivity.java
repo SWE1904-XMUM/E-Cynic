@@ -83,7 +83,7 @@ public class RecycleActivity extends AppCompatActivity {
                 try {
 
                     //insert address to db
-                    address.userId = userId;
+                    updateAddressFromRecycleForm(userId);
                     long addressId = AddressDatabase.insertAddressAndGetAddressId(address);
                     if (addressId <= 0) {
                         SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
@@ -247,6 +247,16 @@ public class RecycleActivity extends AppCompatActivity {
         spinner_state.setSelection(getStateIdInSpinner(address.state));
         et_postcode.setText(String.valueOf(address.postcode));
         et_city.setText(address.city);
+    }
+
+    private void updateAddressFromRecycleForm(Integer userId) {
+        address.userId = userId;
+        address.firstLine = et_addLine1.getText().toString();
+        address.secondLine = et_addLine2.getText().toString();
+        address.thirdLine = et_addLine3.getText().toString();
+        address.state = spinner_state.getSelectedItem().toString();
+        address.postcode = Integer.parseInt(et_postcode.getText().toString());
+        address.city = et_city.getText().toString();
     }
 
     private int getStateIdInSpinner(String state) {
