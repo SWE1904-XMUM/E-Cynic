@@ -98,6 +98,17 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
 
             }
         });
+
+        holder.removeItemImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((RecycleActivity)activity).getClass() == RecycleActivity.class) {
+                    System.out.println(pos);
+                    ((RecycleActivity) activity).items.remove(pos);
+                    ((RecycleActivity) activity).updateRecyclerView();
+                }
+            }
+        });
     }
 
     @Override
@@ -110,6 +121,7 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
         TextView itemNo;
         ImageView imageView;
         Spinner spinner;
+        ImageView removeItemImg;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +129,7 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
             itemNo = itemView.findViewById(R.id.tv_item_no);
             imageView = itemView.findViewById(R.id.iv_uploadImg);
             spinner = itemView.findViewById(R.id.sp_itemSelection);
+            removeItemImg = itemView.findViewById(R.id.iv_removeItem);
 
             itemSelectionList = itemView.getResources().getStringArray(R.array.itemsSelection);
             ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context,

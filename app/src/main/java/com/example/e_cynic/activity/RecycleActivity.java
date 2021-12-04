@@ -163,7 +163,7 @@ public class RecycleActivity extends AppCompatActivity {
         updateRecyclerView();
     }
 
-    private void updateRecyclerView() {
+    public void updateRecyclerView() {
         recycler_view = findViewById(R.id.enterItemDetail);
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
         rvAdapter = new RecycleAddItemAdapter(this, items, RecycleActivity.this);
