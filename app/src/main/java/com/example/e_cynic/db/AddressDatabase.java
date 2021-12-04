@@ -26,10 +26,10 @@ public class AddressDatabase
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
     public static boolean insertAddress(Address address) throws IllegalAccessException {
-        return insertAddressAndGetId(address) > 0;
+        return insertAddressAndGetAddressId(address) > 0;
     }
 
-    public static long insertAddressAndGetId(Address address) throws IllegalAccessException {
+    public static long insertAddressAndGetAddressId(Address address) throws IllegalAccessException {
 
         ContentValues cv = AddressMapper.mapAddressToContentValues(address);
 
