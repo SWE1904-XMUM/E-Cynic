@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
-import com.example.e_cynic.adapter.RedeemListAdapter;
+import com.example.e_cynic.adapter.VoucherListAdapter;
 import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
 
@@ -25,7 +25,7 @@ public class RedeemPointsActivity extends AppCompatActivity
     SessionManager sm;
     List<Voucher> voucherList;
     RecyclerView voucherRecyclerView;
-    RedeemListAdapter redeemListAdapter;
+    VoucherListAdapter redeemListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,7 +60,7 @@ public class RedeemPointsActivity extends AppCompatActivity
 
     private void setUpAdapter()
     {
-        redeemListAdapter = new RedeemListAdapter(getApplicationContext(),voucherList);
+        redeemListAdapter = new VoucherListAdapter(getApplicationContext(),voucherList);
         voucherRecyclerView.setAdapter(redeemListAdapter);
         voucherRecyclerView.setLayoutManager(new LinearLayoutManager(RedeemPointsActivity.this));
     }
