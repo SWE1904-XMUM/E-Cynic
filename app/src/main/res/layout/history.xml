@@ -36,10 +36,10 @@
         android:layout_marginBottom="20dp">
 
         <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="120dp"
+            android:id="@+id/sortOrders"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="210dp"
             android:minHeight="30dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </FrameLayout>

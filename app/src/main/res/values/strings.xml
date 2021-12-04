@@ -72,8 +72,8 @@
     </string-array>
 
     <string-array name="sortListEg">
-        <item>Date</item>
-        <item>Price</item>
+        <item>Newest</item>
+        <item>Oldest</item>
     </string-array>
 
     <string-array name="itemsSelection">
