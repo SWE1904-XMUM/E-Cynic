@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,14 +38,23 @@ import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class RecycleActivity extends AppCompatActivity {
     // Views
-    private ImageView example, pinLocation;
+    private ImageView example;
+    private LinearLayout pinLocation;
     private Button submitRecycleBtn, addItem;
     private RecyclerView recycler_view;
     private RecycleAddItemAdapter rvAdapter;
     private SessionManager sessionManager;
+
+    private EditText et_addLine1;
+    private EditText et_addLine2;
+    private EditText et_addLine3;
+    private Spinner spinner_state;
+    private EditText et_postcode;
+    private EditText et_city;
 
     public ArrayList<Item> items;
     public Address address;
@@ -121,6 +134,11 @@ public class RecycleActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.state));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_state.setAdapter(myAdapter);
     }
 
 
@@ -156,6 +174,13 @@ public class RecycleActivity extends AppCompatActivity {
         example = findViewById(R.id.example);
         submitRecycleBtn = findViewById(R.id.btn_submitRecycle);
         pinLocation = findViewById(R.id.pinLocation);
+
+        et_addLine1 = findViewById(R.id.addressLine1);
+        et_addLine2 = findViewById(R.id.addressLine2);
+        et_addLine3 = findViewById(R.id.addressLine3);
+        spinner_state = findViewById(R.id.spinner_state);
+        et_postcode = findViewById(R.id.postcode);
+        et_city = findViewById(R.id.city);
     }
 
     @Override
@@ -208,10 +233,29 @@ public class RecycleActivity extends AppCompatActivity {
                                 data.getStringExtra("city"),
                                 data.getStringExtra("state"),
                                 Integer.parseInt(data.getStringExtra("postcode")));
+                        updateAddressFields();
                     }
                     break;
             }
         }
+    }
+
+    private void updateAddressFields() {
+        et_addLine1.setText(address.firstLine);
+        et_addLine2.setText(address.secondLine);
+        et_addLine3.setText(address.thirdLine);
+        spinner_state.setSelection(getStateIdInSpinner(address.state));
+        et_postcode.setText(String.valueOf(address.postcode));
+        et_city.setText(address.city);
+    }
+
+    private int getStateIdInSpinner(String state) {
+        for (int i = 0; i < spinner_state.getCount(); i++) {
+            if(spinner_state.getItemAtPosition(i).equals(state)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private void bottomNavBar() {
