@@ -1,7 +1,6 @@
 package com.example.e_cynic.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,14 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryOrderListAdapter;
-import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.comparator.OrderComparator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -36,7 +33,6 @@ public class HistoryActivity extends AppCompatActivity
 
     // items list
     List<Order> historyOrders;
-    List<Bitmap> firstItemImage = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -108,19 +104,11 @@ public class HistoryActivity extends AppCompatActivity
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
         historyOrders = OrderDatabase.getOrdersByUsername("pjou");
-
-        if (historyOrders != null)
-        {
-            for (int i=0; i<historyOrders.size(); i++)
-            {
-                firstItemImage.add(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(0).orderId));
-            }
-        }
     }
 
     private void setUpRecyclerView()
     {
-        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders,firstItemImage);
+        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders);
         historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }

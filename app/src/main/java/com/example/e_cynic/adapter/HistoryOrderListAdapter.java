@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.DateUtil;
 
@@ -21,13 +22,12 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
 {
     Context context;
     private List<Order> historyOrders;
-    private List<Bitmap> firstItemImage;
+    private List<Bitmap> bitmapList;
 
-    public HistoryOrderListAdapter(Context context,List<Order> historyOrders, List<Bitmap> firstItemImage)
+    public HistoryOrderListAdapter(Context context,List<Order> historyOrders)
     {
         this.context = context;
         this.historyOrders = historyOrders;
-        this.firstItemImage = firstItemImage;
     }
 
     @NonNull
@@ -42,13 +42,14 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        if (firstItemImage != null)
-        {
-            holder.orderImageList.setImageBitmap(firstItemImage.get(position));
+        try {
+            holder.orderImageList.setImageBitmap(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(position).orderId));
+            holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
+            holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
+            holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
-        holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
-        holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));
     }
 
     @Override
