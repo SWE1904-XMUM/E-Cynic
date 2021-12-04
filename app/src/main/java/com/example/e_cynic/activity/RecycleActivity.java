@@ -82,8 +82,14 @@ public class RecycleActivity extends AppCompatActivity {
 
                 try {
 
-                    //insert address to db
                     updateAddressFromRecycleForm(userId);
+
+                    if(validateOrderInput() == false) {
+                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please input all required fields");
+                        return;
+                    }
+
+                    //insert address to db
                     long addressId = AddressDatabase.insertAddressAndGetAddressId(address);
                     if (addressId <= 0) {
                         SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
@@ -250,13 +256,17 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private void updateAddressFromRecycleForm(Integer userId) {
+        if(address == null) {
+            address = new Address();
+        }
         address.userId = userId;
         address.firstLine = et_addLine1.getText().toString();
         address.secondLine = et_addLine2.getText().toString();
         address.thirdLine = et_addLine3.getText().toString();
         address.state = spinner_state.getSelectedItem().toString();
-        address.postcode = Integer.parseInt(et_postcode.getText().toString());
+        address.postcode = Integer.parseInt(et_postcode.getText().toString().equals("")?"0":et_postcode.getText().toString());
         address.city = et_city.getText().toString();
+        System.out.println(address);
     }
 
     private int getStateIdInSpinner(String state) {
@@ -266,6 +276,19 @@ public class RecycleActivity extends AppCompatActivity {
             }
         }
         return -1;
+    }
+
+    private boolean validateOrderInput() {
+        for(Item item:items) {
+            if(item.image == null) {
+                return false;
+            }
+        }
+        System.out.println(address);
+        if(address.firstLine.equals("") || address.city.equals("") || address.postcode == 0 || address.city.equals("")) {
+            return false;
+        }
+        return true;
     }
 
     private void bottomNavBar() {
