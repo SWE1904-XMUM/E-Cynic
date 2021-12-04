@@ -2,6 +2,8 @@ package com.example.e_cynic.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView tv_address;
     private TextView tv_point;
     private TextView tv_status;
+    private ImageView backBtn;
 
     //data
     private Integer orderId; //to be passed by intent
@@ -59,6 +62,18 @@ public class OrderDetailActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        backBtn = findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
@@ -69,7 +84,6 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         tv_noOfDevice.setText(String.valueOf(itemList.size()));
         tv_address.setText(address.getAddressString());
-        System.out.println(address.getAddressString());
         tv_status.setText("Processing");
         tv_point.setText("To be confirmed");
     }
@@ -80,5 +94,10 @@ public class OrderDetailActivity extends AppCompatActivity {
         tv_address = findViewById(R.id.pinnedAddress);
         tv_status = findViewById(R.id.status);
         tv_point = findViewById(R.id.point);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }
