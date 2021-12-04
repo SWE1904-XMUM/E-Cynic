@@ -17,7 +17,7 @@ import com.example.e_cynic.utils.DateUtil;
 
 import java.util.List;
 
-public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderListAdapter.MyViewHoler>
+public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderListAdapter.MyViewHolder>
 {
     Context context;
     private List<Order> historyOrders;
@@ -32,15 +32,15 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
 
     @NonNull
     @Override
-    public HistoryOrderListAdapter.MyViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public HistoryOrderListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.orders_list,parent,false);
-        return new MyViewHoler(view);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHoler holder, int position)
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         if (firstItemImage != null)
         {
@@ -57,12 +57,12 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
         return historyOrders != null ? historyOrders.size():0;
     }
 
-    public class MyViewHoler extends RecyclerView.ViewHolder
+    public class MyViewHolder extends RecyclerView.ViewHolder
     {
         ImageView orderImageList;
         TextView orderList,orderStatusList,orderDateList;
 
-        public MyViewHoler(@NonNull View itemView)
+        public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
 
