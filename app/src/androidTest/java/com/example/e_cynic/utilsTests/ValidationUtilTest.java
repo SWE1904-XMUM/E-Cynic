@@ -217,4 +217,45 @@ public class ValidationUtilTest {
         String city = "33test city";
         Assert.assertEquals(false, ValidationUtil.validateCity(city));
     }
+
+    @Test
+    public void validatePostcode1() {
+        String postcode = "12345";
+        Assert.assertEquals(true, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode2() {
+        String postcode = "345";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode3() {
+        String postcode = "";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode4() {
+        String postcode = "posts";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode5() {
+        String postcode = "123aa";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode6() {
+        String postcode = "abncd";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode7() {
+        String postcode = "0";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
+    @Test
+    public void validatePostcode8() {
+        String postcode = "9000";
+        Assert.assertEquals(false, ValidationUtil.validatePostcode(postcode));
+    }
 }

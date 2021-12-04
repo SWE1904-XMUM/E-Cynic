@@ -34,6 +34,7 @@ import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.ImageUtil;
+import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -85,7 +86,7 @@ public class RecycleActivity extends AppCompatActivity {
                     updateAddressFromRecycleForm(userId);
 
                     if(validateOrderInput() == false) {
-                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please input all required fields");
+                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please input all required fields in correct format");
                         return;
                     }
 
@@ -285,7 +286,7 @@ public class RecycleActivity extends AppCompatActivity {
             }
         }
         System.out.println(address);
-        if(address.firstLine.equals("") || address.city.equals("") || address.postcode == 0 || address.city.equals("")) {
+        if(address.firstLine.equals("") || address.city.equals("") || !ValidationUtil.validatePostcode(String.valueOf(address.postcode)) || address.city.equals("")) {
             return false;
         }
         return true;
