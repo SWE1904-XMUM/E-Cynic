@@ -7,8 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.adapter.RedeemListAdapter;
 import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
 
@@ -21,6 +24,8 @@ public class RedeemPointsActivity extends AppCompatActivity
     private TextView availablePoints;
     SessionManager sm;
     List<Voucher> voucherList;
+    RecyclerView voucherRecyclerView;
+    RedeemListAdapter redeemListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +37,7 @@ public class RedeemPointsActivity extends AppCompatActivity
         setViewComponent();
         setAvailablePoints();
         storeDataIntoVoucherList();
+        setUpAdapter();
 
         backBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -49,6 +55,14 @@ public class RedeemPointsActivity extends AppCompatActivity
     {
         backBtn = findViewById(R.id.backBtn);
         availablePoints = findViewById(R.id.availablePoints);
+        voucherRecyclerView = findViewById(R.id.voucherRecyclerView);
+    }
+
+    private void setUpAdapter()
+    {
+        redeemListAdapter = new RedeemListAdapter(getApplicationContext(),voucherList);
+        voucherRecyclerView.setAdapter(redeemListAdapter);
+        voucherRecyclerView.setLayoutManager(new LinearLayoutManager(RedeemPointsActivity.this));
     }
 
     private void storeDataIntoVoucherList()
