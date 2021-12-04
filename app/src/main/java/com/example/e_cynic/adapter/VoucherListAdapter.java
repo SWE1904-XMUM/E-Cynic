@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.entity.Voucher;
+import com.example.e_cynic.session.SessionManager;
 
 import java.util.List;
 
@@ -20,11 +21,13 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
 {
     Context context;
     List<Voucher> voucherList;
+    SessionManager sm;
 
     public VoucherListAdapter(Context context, List<Voucher> voucherList)
     {
         this.context = context;
         this.voucherList = voucherList;
+        sm = new SessionManager(context);
     }
 
     @NonNull
@@ -42,6 +45,11 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
         holder.voucherImgList.setImageResource(voucherList.get(position).voucherImage);
         holder.voucherNameList.setText(voucherList.get(position).voucherName);
         holder.voucherPointList.setText(String.valueOf(voucherList.get(position).voucherPoints));
+
+        /*if (Integer.parseInt(String.valueOf(holder.voucherPointList.getText())) < sm.getTotalPoints())
+        {
+            holder.redeemBtnList.setEnabled(false);
+        }*/
 
         holder.redeemBtnList.setOnClickListener(new View.OnClickListener()
         {

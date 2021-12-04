@@ -21,6 +21,7 @@ import com.example.e_cynic.utils.comparator.OrderComparator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -32,7 +33,7 @@ public class HistoryActivity extends AppCompatActivity
     private Spinner sortList;
 
     // items list
-    List<Order> historyOrders;
+    List<Order> historyOrders = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
