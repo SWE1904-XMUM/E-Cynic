@@ -1,7 +1,5 @@
 package com.example.e_cynic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,13 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.e_cynic.R;
+import com.example.e_cynic.session.SessionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity
 {
     private Button about, editProfile;
-    private ImageView redeemPointsBtn, myRewardBtn;
+    private ImageView redeemPointsBtn, myRewardBtn,logoutBtn;
+    SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,12 +26,21 @@ public class ProfileActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
-        myRewardBtn = findViewById(R.id.myRewardBtn);
-        about = findViewById(R.id.aboutBtn);
-        editProfile = findViewById(R.id.editBtn);
+        sm = new SessionManager(getApplicationContext());
 
+        setViewComponent();
         bottomNavBar();
+
+        logoutBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent loginPage = new Intent(ProfileActivity.this,LoginActivity.class);
+                startActivity(loginPage);
+                sm.setLogin(false);
+            }
+        });
 
         about.setOnClickListener(new View.OnClickListener()
         {
@@ -69,6 +81,15 @@ public class ProfileActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void setViewComponent()
+    {
+        redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
+        myRewardBtn = findViewById(R.id.myRewardBtn);
+        about = findViewById(R.id.aboutBtn);
+        editProfile = findViewById(R.id.editBtn);
+        logoutBtn = findViewById(R.id.logoutBtn);
     }
 
     public void bottomNavBar()
