@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -20,6 +22,7 @@ import com.example.e_cynic.entity.Order;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
@@ -54,13 +57,41 @@ public class HistoryActivity extends AppCompatActivity
         }
 
         setUpRecyclerView();
+
+        sortList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                int index = adapterView.getSelectedItemPosition();
+
+                switch (index)
+                {
+                    case 0:
+                        Collections.sort(historyOrders,Order.NewestOrder);
+                        historyOrderListAdapter.notifyDataSetChanged();
+                        return;
+
+                    case 1:
+                        Collections.sort(historyOrders,Order.OldestOrder);
+                        historyOrderListAdapter.notifyDataSetChanged();
+                        return;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         bottomNavBar();
     }
 
     private void setViewComponent()
     {
         historyRecyclerView = findViewById(R.id.historyRecyclerView);
-        sortList = (Spinner) findViewById(R.id.spinner);
+        sortList = (Spinner) findViewById(R.id.sortOrders);
     }
 
     private void setSortList()
@@ -75,7 +106,7 @@ public class HistoryActivity extends AppCompatActivity
 
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
-        historyOrders = OrderDatabase.getOrdersByUsername("testuser");
+        historyOrders = OrderDatabase.getOrdersByUsername("pjou");
 
         if (historyOrders != null)
         {
