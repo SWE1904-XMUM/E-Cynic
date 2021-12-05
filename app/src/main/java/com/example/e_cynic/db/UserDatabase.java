@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.e_cynic.activity.StartupActivity;
 import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 

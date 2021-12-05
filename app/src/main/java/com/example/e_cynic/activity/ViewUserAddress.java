@@ -38,11 +38,11 @@ public class ViewUserAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_address);
 
+        sessionManager = new SessionManager(ViewUserAddress.this);
         userId = UserDatabase.getUserIdByUsername(sessionManager.getUsername());
 
         rv_addresses = findViewById(R.id.rv_addresses);
 
-        sessionManager = new SessionManager(ViewUserAddress.this);
 
         updateAddressList();
         adapter = new ViewAddressListAdapter(this, ViewUserAddress.this, addressList);

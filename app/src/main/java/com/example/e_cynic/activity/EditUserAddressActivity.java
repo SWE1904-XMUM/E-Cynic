@@ -2,13 +2,10 @@ package com.example.e_cynic.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CancellationSignal;
-import android.telephony.TelephonyCallback;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.e_cynic.R;
 import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.entity.Address;
+import com.example.e_cynic.utils.ValidationUtil;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 public class EditUserAddressActivity extends AppCompatActivity {
 
@@ -79,28 +78,31 @@ public class EditUserAddressActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateAddressFromFields();
-                boolean result = false;
-                try {
-                    result = AddressDatabase.editAddressByAddressId(address);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                Intent intent = new Intent();
-                if(result == true) {
-                    setResult(RESULT_OK, intent);
+                if (validateAddress() == true) {
+                    Intent intent = new Intent();
+                    boolean result = false;
+                    try {
+                        result = AddressDatabase.editAddressByAddressId(address);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (result == true) {
+                        setResult(RESULT_OK, intent);
+                    } else {
+                        setResult(RESULT_CANCELED, intent);
+                    }
+                    finish();
                 }
                 else {
-                    setResult(RESULT_CANCELED, intent);
+                    SnackbarCreator.createNewSnackbar(btn_editAddress, "Please enter valid address");
                 }
-                finish();
             }
         });
 
-        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener()
-        {
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent i = new Intent();
                 setResult(RESULT_CANCELED, i);
                 finish();
@@ -112,9 +114,32 @@ public class EditUserAddressActivity extends AppCompatActivity {
         address.firstLine = et_address_line1.getText().toString();
         address.secondLine = et_address_line2.getText().toString();
         address.thirdLine = et_address_line3.getText().toString();
-        address.postcode = Integer.valueOf(et_postcode.getText().toString());
+        address.postcode = Integer.valueOf(!et_postcode.getText().toString().equals("") ? et_postcode.getText().toString() : "0");
         address.state = spinner_state.getSelectedItem().toString();
         address.city = et_city.getText().toString();
+    }
+
+    private boolean validateAddress() {
+        boolean complete = true;
+        if (address.firstLine.equals("")) {
+            setErrorField(et_address_line1);
+            complete = complete && false;
+        } else {
+            resetField(et_address_line1);
+        }
+        if (address.postcode == 0 || !ValidationUtil.validatePostcode(String.valueOf(address.postcode))) {
+            setErrorField(et_postcode);
+            complete = complete && false;
+        } else {
+            resetField(et_postcode);
+        }
+        if (address.city.equals("") || !ValidationUtil.validateCity(address.city)) {
+            setErrorField(et_city);
+            complete = complete && false;
+        } else {
+            resetField(et_city);
+        }
+        return complete;
     }
 
     private int getStateIdInSpinner(String state) {
@@ -124,5 +149,13 @@ public class EditUserAddressActivity extends AppCompatActivity {
             }
         }
         return -1;
+    }
+
+    private void setErrorField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.error_background));
+    }
+
+    private void resetField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.grey));
     }
 }
