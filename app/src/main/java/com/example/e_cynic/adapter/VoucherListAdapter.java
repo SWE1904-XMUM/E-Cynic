@@ -1,5 +1,6 @@
 package com.example.e_cynic.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.UserDatabase;
+import com.example.e_cynic.db.UserRewardDatabase;
+import com.example.e_cynic.entity.UserReward;
 import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
-
+import com.example.e_cynic.utils.DateUtil;
+import com.example.e_cynic.utils.userInteraction.ToastCreator;
 import java.util.List;
 
 public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.MyViewHolder>
@@ -22,13 +25,11 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
     Context context;
     List<Voucher> voucherList;
     SessionManager sm;
-    RecyclerView voucherRecyclerView;
 
-    public VoucherListAdapter(Context context, List<Voucher> voucherList,RecyclerView voucherRecyclerView)
+    public VoucherListAdapter(Context context, List<Voucher> voucherList)
     {
         this.context = context;
         this.voucherList = voucherList;
-        this.voucherRecyclerView = voucherRecyclerView;
         sm = new SessionManager(context);
     }
 
@@ -42,7 +43,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VoucherListAdapter.MyViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull VoucherListAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position)
     {
         holder.voucherImgList.setImageResource(voucherList.get(position).voucherImage);
         holder.voucherNameList.setText(voucherList.get(position).voucherName);
@@ -53,13 +54,47 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
             @Override
             public void onClick(View view)
             {
-                //TODO -> link to redeem history page
-                //String uname = sm.getUsername();
-                /*int userId = UserDatabase.getUserIdByUsername("pjou");
-                UserReward userReward = new UserReward(null,userId,
+                int point = voucherList.get(position).voucherPoints;
+                String name = voucherList.get(position).voucherName;
+                ToastCreator toastCreator = new ToastCreator();
+
+                if (sm.getTotalPoints() < point)
+                {
+                    toastCreator.createToast(context,"Not enough points.");
+                }
+
+                else
+                {
+                    //TODO
+                    //String uname = sm.getUsername();
+                    int userId = UserDatabase.getUserIdByUsername("pjou");
+                    UserReward userReward = new UserReward(null,userId,
                         DateUtil.getCurrentTimestamp(),
-                        holder.voucherNameList.toString(),
-                        Integer.parseInt(holder.voucherPointList.toString()));*/
+                        name,
+                        point);
+
+                    boolean insertReward = false;
+
+                    try
+                    {
+                        insertReward = UserRewardDatabase.insertUserReward(userReward);
+                    }
+
+                    catch (IllegalAccessException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    if (insertReward == true)
+                    {
+                        toastCreator.createToast(context,"Redeem successfully!");
+                    }
+
+                    else
+                    {
+                        toastCreator.createToast(context,"Fail to redeem, please try again.");
+                    }
+                }
             }
         });
     }
