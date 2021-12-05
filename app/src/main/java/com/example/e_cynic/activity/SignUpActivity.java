@@ -1,13 +1,18 @@
 package com.example.e_cynic.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
@@ -17,15 +22,37 @@ import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.User;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUpActivity extends AppCompatActivity
 {
+
+    public final long DELAY = 1000;
     // views
-    TextView username,email,phone,password, postcode,city,addressLine1,addressLine2,addressLine3;
-    Spinner state;
-    Button signUpBtn;
+    private EditText username;
+    private EditText email;
+    private EditText phone;
+    private EditText password;
+    private EditText postcode;
+    private EditText city;
+    private EditText addressLine1;
+    private EditText addressLine2;
+    private EditText addressLine3;
+    private Spinner state;
+    private Button signUpBtn;
 
     // text of views
-    String usernameTxt, emailTxt, phoneTxt, passwordTxt, postcodeTxt, cityTxt, addressLine1Txt, addressLine2Txt, addressLine3Txt, stateTxt;
+    private String usernameTxt;
+    private String emailTxt;
+    private String phoneTxt;
+    private String passwordTxt;
+    private String postcodeTxt;
+    private String cityTxt;
+    private String addressLine1Txt;
+    private String addressLine2Txt;
+    private String addressLine3Txt;
+    String stateTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,9 +75,16 @@ public class SignUpActivity extends AppCompatActivity
                     return;
                 }
 
-                if(UserDatabase.checkUsernameExistence(usernameTxt)==true)
+                if(UserDatabase.checkUsernameExistence(usernameTxt) == true)
                 {
                     SnackbarCreator.createNewSnackbar(view,"Username already exist, please try another one.");
+                    setErrorField(username);
+                    return;
+                }
+
+                if(UserDatabase.checkEmailExistence(emailTxt) == true) {
+                    SnackbarCreator.createNewSnackbar(view,"Account with the given email already exist");
+                    setErrorField(email);
                     return;
                 }
 
@@ -74,8 +108,9 @@ public class SignUpActivity extends AppCompatActivity
 
                     if (userId > 0)
                     {
-                        Address address = new Address(null,userId,addressLine1Txt,addressLine2Txt,
-                                addressLine3Txt,cityTxt,stateTxt,Integer.parseInt(postcodeTxt));
+                        Address address = new Address(null,userId,addressLine1Txt,
+                                addressLine2Txt, addressLine3Txt,cityTxt,stateTxt,
+                                !postcodeTxt.equals("")?Integer.parseInt(postcodeTxt):0);
                         boolean insertAddress = false;
                         try {
                             insertAddress = AddressDatabase.insertAddress(address);
@@ -86,7 +121,12 @@ public class SignUpActivity extends AppCompatActivity
                         if (insertAddress)
                         {
                             SnackbarCreator.createNewSnackbar(view,"Successfully sign up!");
-                            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                }
+                            }, DELAY);
                         }
                     }
                 }
@@ -114,9 +154,65 @@ public class SignUpActivity extends AppCompatActivity
     }
 
     private boolean fieldDataIsComplete() {
-        return !(usernameTxt.equals("")||emailTxt.equals("")||phoneTxt.equals("")||
-                passwordTxt.equals("")|| postcodeTxt.equals("")||cityTxt.equals("")||
-                addressLine1Txt.equals("")||(addressLine2.equals("")&&!addressLine3.equals("")));
+        boolean complete = true;
+        if(usernameTxt.equals("")) {
+            setErrorField(username);
+            complete = complete && false;
+        }
+        else {
+            resetField(username);
+        }
+        if(emailTxt.equals("")) {
+            setErrorField(email);
+            complete = complete && false;
+        }
+        else {
+            resetField(email);
+        }
+        if(phoneTxt.equals("")) {
+            setErrorField(phone);
+            complete = complete && false;
+        }
+        else {
+            resetField(phone);
+        }
+        if(passwordTxt.equals("")) {
+            setErrorField(password);
+            complete = complete && false;
+        }
+        else {
+            resetField(password);
+        }
+        if(addressLine1Txt.equals("")) {
+            setErrorField(addressLine1);
+            complete = complete && false;
+        }
+        else {
+            resetField(addressLine1);
+        }
+        if(postcodeTxt.equals("")) {
+            setErrorField(postcode);
+            complete = complete && false;
+        }
+        else {
+            resetField(postcode);
+        }
+        if(cityTxt.equals("")) {
+            setErrorField(city);
+            complete = complete && false;
+        }
+        else {
+            resetField(city);
+        }
+        return complete;
+    }
+
+    private void setErrorField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.error_background));
+    }
+
+    private void resetField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.grey));
     }
 
     private void updateViewText() {

@@ -45,6 +45,11 @@ public class UserDatabase
         return (c.getCount() > 0);
     }
 
+    public static boolean checkEmailExistence(String email) {
+        Cursor c = db.rawQuery("select email from users where email=?", new String[]{email});
+        return (c.getCount() > 0);
+    }
+
     public static int getUserIdByUsername(String username)
     {
         Cursor c = db.rawQuery("select userId from users where username=?", new String[]{username});

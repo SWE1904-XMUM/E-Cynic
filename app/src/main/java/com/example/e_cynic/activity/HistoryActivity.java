@@ -18,6 +18,7 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryOrderListAdapter;
 import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
+import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.comparator.OrderComparator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -35,6 +36,8 @@ public class HistoryActivity extends AppCompatActivity
     private LinearLayout LL_recycleHistory;
     private LinearLayout LL_noRecycleHistory;
 
+    private SessionManager sessionManager;
+
     // items list
     List<Order> historyOrders = new ArrayList<>();
 
@@ -43,6 +46,7 @@ public class HistoryActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
+        sessionManager = new SessionManager(this);
 
         setViewComponent();
         setSortList();
@@ -118,7 +122,7 @@ public class HistoryActivity extends AppCompatActivity
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
         //TODO set username
-        historyOrders = OrderDatabase.getOrdersByUsername("pjou");
+        historyOrders = OrderDatabase.getOrdersByUsername(sessionManager.getUsername());
     }
 
     private void setUpRecyclerView()
