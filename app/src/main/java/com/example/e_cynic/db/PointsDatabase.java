@@ -1,6 +1,10 @@
 package com.example.e_cynic.db;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.e_cynic.db.mapper.PointsMapper;
+import com.example.e_cynic.entity.Point;
 
 public class PointsDatabase
 {
@@ -12,4 +16,9 @@ public class PointsDatabase
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
     //TODO PointsDatabase function
+    public static boolean insertPoint(Point point) throws IllegalAccessException {
+        ContentValues cv = PointsMapper.mapPointToContentValues(point);
+        long result = db.insert(pointsTable, null, cv);
+        return result > 0;
+    }
 }

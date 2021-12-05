@@ -11,8 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.PointsDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.db.UserRewardDatabase;
+import com.example.e_cynic.entity.Point;
 import com.example.e_cynic.entity.UserReward;
 import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
@@ -54,11 +56,11 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
             @Override
             public void onClick(View view)
             {
-                int point = voucherList.get(position).voucherPoints;
+                int p = voucherList.get(position).voucherPoints;
                 String name = voucherList.get(position).voucherName;
                 ToastCreator toastCreator = new ToastCreator();
 
-                if (sm.getTotalPoints() < point)
+                if (sm.getTotalPoints() < p)
                 {
                     toastCreator.createToast(context,"Not enough points.");
                 }
@@ -68,16 +70,18 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                     //TODO
                     //String uname = sm.getUsername();
                     int userId = UserDatabase.getUserIdByUsername("pjou");
-                    UserReward userReward = new UserReward(null,userId,
-                        DateUtil.getCurrentTimestamp(),
-                        name,
-                        point);
+                    Long date = DateUtil.getCurrentTimestamp();
+
+                    UserReward userReward = new UserReward(null,userId,date,name,p);
+                    Point point = new Point(null,userId,p,date);
 
                     boolean insertReward = false;
+                    boolean insertPoints = false;
 
                     try
                     {
                         insertReward = UserRewardDatabase.insertUserReward(userReward);
+                        insertPoints = PointsDatabase.insertPoint(point);
                     }
 
                     catch (IllegalAccessException e)
@@ -85,7 +89,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                         e.printStackTrace();
                     }
 
-                    if (insertReward == true)
+                    if (insertReward == true && insertPoints == true)
                     {
                         toastCreator.createToast(context,"Redeem successfully!");
                     }
