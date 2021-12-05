@@ -107,7 +107,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="80dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/inder"
             android:text="Redeem Your Points"
             android:textAlignment="center"
@@ -132,34 +132,6 @@
             android:layout_height="match_parent"/>
 
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/confirmBtn"
-            android:layout_width="250dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_button"
-            android:text="CONFIRM"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textColorHighlight="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/btmNav"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/redeemDateList" />
-
-    </LinearLayout>
 
 
 </LinearLayout>
