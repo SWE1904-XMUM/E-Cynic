@@ -7,24 +7,32 @@
 		android:orientation="vertical"
 		tools:context=".activity.HistoryActivity">
 	
-	
-	<FrameLayout
-			android:id="@+id/selectAddressFrame"
+	<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/apple_green">
+			android:layout_height="80dp"
+			android:gravity="center"
+			android:orientation="horizontal">
+		
+		<ImageView
+				android:id="@+id/backBtn"
+				android:layout_width="75dp"
+				android:layout_height="75dp"
+				app:tint="@color/apple_green"
+				app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
+				android:layout_weight="1" />
 		
 		<TextView
-				android:layout_width="match_parent"
+				android:id="@+id/textView1"
+				android:layout_width="270dp"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="20dp"
-				android:layout_marginTop="10dp"
-				android:layout_marginBottom="10dp"
-				android:fontFamily="@font/playfair_display_black"
+				android:fontFamily="@font/inder"
 				android:text="Select Address"
-				android:textColor="@color/white"
-				android:textSize="30sp" />
-	</FrameLayout>
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				android:textSize="32sp"
+				android:textStyle="bold"
+				android:layout_weight="5" />
+	</LinearLayout>
 	
 	<LinearLayout
 			android:id="@+id/ll_user_address"
@@ -67,16 +75,5 @@
 				android:gravity="center"
 				android:layout_weight="1"/>
 	</LinearLayout>
-	
-	<com.google.android.material.bottomnavigation.BottomNavigationView
-			android:id="@+id/btmNav"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/apple_green"
-			android:layout_gravity="bottom"
-			app:itemIconTint="@drawable/tab_color"
-			app:itemTextColor="@drawable/tab_color"
-			app:labelVisibilityMode="labeled"
-			app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>
