@@ -109,7 +109,7 @@ public class HistoryActivity extends AppCompatActivity
 
     private void setUpRecyclerView()
     {
-        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders);
+        historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders,HistoryActivity.this);
         historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
     }
