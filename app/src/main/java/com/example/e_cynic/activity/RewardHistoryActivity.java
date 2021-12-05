@@ -13,6 +13,7 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RewardHistoryAdapter;
 import com.example.e_cynic.entity.UserReward;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RewardHistoryActivity extends AppCompatActivity
@@ -31,7 +32,7 @@ public class RewardHistoryActivity extends AppCompatActivity
 
         setViewComponent();
         storeRewardDataIntoList();
-        setUpRecyclerView();
+        setUpAdapter();
 
         backBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -48,14 +49,15 @@ public class RewardHistoryActivity extends AppCompatActivity
     private void setViewComponent()
     {
         backBtn = findViewById(R.id.backBtn);
+        rewardsRecyclerView = findViewById(R.id.rewardsRecyclerView);
     }
 
     private void storeRewardDataIntoList()
     {
-
+        userRewardList = new ArrayList<>();
     }
 
-    private void setUpRecyclerView()
+    private void setUpAdapter()
     {
         rewardHistoryAdapter = new RewardHistoryAdapter(getApplicationContext(),userRewardList);
         rewardsRecyclerView.setAdapter(rewardHistoryAdapter);
