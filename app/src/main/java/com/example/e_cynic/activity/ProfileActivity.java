@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(ProfileActivity.this,RewardVoucherActivity.class);
+                Intent i = new Intent(ProfileActivity.this, RewardHistoryActivity.class);
                 startActivity(i);
             }
         });

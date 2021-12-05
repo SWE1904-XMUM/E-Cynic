@@ -23,7 +23,7 @@
             android:name=".activity.OrderDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.RewardVoucherActivity"
+            android:name=".activity.RewardHistoryActivity"
             android:exported="false" />
 
         <meta-data
