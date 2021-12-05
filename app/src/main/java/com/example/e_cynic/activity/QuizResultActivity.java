@@ -12,7 +12,7 @@ import com.example.e_cynic.session.SessionManager;
 
 public class QuizResultActivity extends AppCompatActivity
 {
-    private TextView scoreValue;
+    private TextView scoreValue, tp;
     private Button returnBtn;
     private int totalPoints;
 
@@ -25,8 +25,7 @@ public class QuizResultActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_result);
 
-        scoreValue = findViewById(R.id.scoreValue);
-        returnBtn = findViewById(R.id.returnBtn);
+        setViewComponent();
 
         int score = getIntent().getIntExtra("CorrectAns",0);
         scoreValue.setText(score + " / 5");
@@ -41,9 +40,19 @@ public class QuizResultActivity extends AppCompatActivity
             }
         });
 
+        int p = score * 3;
+        tp.setText(String.valueOf(p));
+
         sm = new SessionManager(getApplicationContext());
         totalPoints = sm.getTotalPoints();;
         totalPoints += (score * 3);
         sm.setTotalPoints(totalPoints);
+    }
+
+    private void setViewComponent()
+    {
+        scoreValue = findViewById(R.id.scoreValue);
+        returnBtn = findViewById(R.id.returnBtn);
+        tp = findViewById(R.id.totalPoints);
     }
 }

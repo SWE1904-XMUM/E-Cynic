@@ -92,7 +92,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/showPoints"
+                android:id="@+id/totalPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

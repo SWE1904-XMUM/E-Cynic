@@ -60,7 +60,7 @@ public class RedeemPointsActivity extends AppCompatActivity
 
     private void setUpAdapter()
     {
-        redeemListAdapter = new VoucherListAdapter(getApplicationContext(),voucherList);
+        redeemListAdapter = new VoucherListAdapter(getApplicationContext(),voucherList,voucherRecyclerView);
         voucherRecyclerView.setAdapter(redeemListAdapter);
         voucherRecyclerView.setLayoutManager(new LinearLayoutManager(RedeemPointsActivity.this));
     }
@@ -85,4 +85,6 @@ public class RedeemPointsActivity extends AppCompatActivity
         int p = sm.getTotalPoints();
         availablePoints.setText(String.valueOf(p));
     }
+
+    //private void
 }

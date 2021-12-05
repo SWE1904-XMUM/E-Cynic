@@ -22,11 +22,13 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
     Context context;
     List<Voucher> voucherList;
     SessionManager sm;
+    RecyclerView voucherRecyclerView;
 
-    public VoucherListAdapter(Context context, List<Voucher> voucherList)
+    public VoucherListAdapter(Context context, List<Voucher> voucherList,RecyclerView voucherRecyclerView)
     {
         this.context = context;
         this.voucherList = voucherList;
+        this.voucherRecyclerView = voucherRecyclerView;
         sm = new SessionManager(context);
     }
 
@@ -46,17 +48,18 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
         holder.voucherNameList.setText(voucherList.get(position).voucherName);
         holder.voucherPointList.setText(String.valueOf(voucherList.get(position).voucherPoints));
 
-        /*if (Integer.parseInt(String.valueOf(holder.voucherPointList.getText())) < sm.getTotalPoints())
-        {
-            holder.redeemBtnList.setEnabled(false);
-        }*/
-
         holder.redeemBtnList.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 //TODO -> link to redeem history page
+                //String uname = sm.getUsername();
+                /*int userId = UserDatabase.getUserIdByUsername("pjou");
+                UserReward userReward = new UserReward(null,userId,
+                        DateUtil.getCurrentTimestamp(),
+                        holder.voucherNameList.toString(),
+                        Integer.parseInt(holder.voucherPointList.toString()));*/
             }
         });
     }
