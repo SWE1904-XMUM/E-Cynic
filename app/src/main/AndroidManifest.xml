@@ -20,6 +20,9 @@
 			android:theme="@style/Theme.ECynic"
 			android:usesCleartextTraffic="true">
 		<activity
+				android:name=".activity.EditUserAddressActivity"
+				android:exported="true" />
+		<activity
 				android:name=".activity.SelectAddressActivity"
 				android:exported="true" />
 		<activity

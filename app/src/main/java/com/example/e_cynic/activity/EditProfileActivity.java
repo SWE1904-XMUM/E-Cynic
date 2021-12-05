@@ -22,10 +22,9 @@ import java.util.List;
 public class EditProfileActivity extends AppCompatActivity
 {
     private ImageView backBtn;
-    private Spinner state;
-    private TextView uname,email,phone,password,addressLine1,addressLine2,addressLine3,postcode,city;
+    private TextView uname,email,phone,password;
     SessionManager sm;
-    String stateTxt, unameTxt,emailTxt,phoneTxt,passwordTxt,addressLine1Txt,addressLine2Txt,addressLine3Txt,postcodeTxt,cityTxt;
+    String unameTxt,emailTxt,phoneTxt,passwordTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -57,12 +56,6 @@ public class EditProfileActivity extends AppCompatActivity
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
-        addressLine1 = findViewById(R.id.addressLine1);
-        addressLine2 = findViewById(R.id.addressLine2);
-        addressLine3 = findViewById(R.id.addressLine3);
-        state = findViewById(R.id.state);
-        postcode = findViewById(R.id.postcode);
-        city = findViewById(R.id.city);
     }
 
     private void getViewText()
@@ -71,12 +64,6 @@ public class EditProfileActivity extends AppCompatActivity
         emailTxt = email.getText().toString();
         phoneTxt = phone.getText().toString();
         passwordTxt = password.getText().toString();
-        addressLine1Txt = addressLine1.getText().toString();
-        addressLine2Txt = addressLine2.getText().toString();
-        addressLine3Txt = addressLine3.getText().toString();
-        stateTxt = state.getSelectedItem().toString();
-        postcodeTxt = postcode.getText().toString();
-        cityTxt = city.getText().toString();
     }
 
     private void displayProfileData()
