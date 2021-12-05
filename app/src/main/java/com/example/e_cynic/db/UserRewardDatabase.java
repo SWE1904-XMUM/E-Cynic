@@ -15,7 +15,7 @@ public class UserRewardDatabase {
     public static final String rewardId = "rewardId";
     public static final String userId = "userId";
     public static final String date = "date";
-    public static final String rewardItem = "rewardItem,";
+    public static final String rewardItem = "rewardItem";
     public static final String points = "points";
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
@@ -34,7 +34,7 @@ public class UserRewardDatabase {
 
     public static List<UserReward> getUserRewardsByUserId(Integer userId) throws InvocationTargetException,
             NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        Cursor c = db.rawQuery("select * from userRewards where userid=?", new String[]{String.valueOf(userId)});
+        Cursor c = db.rawQuery("select " + rewardItem +"," + points + "," + date + " from userRewards where userid=?", new String[]{String.valueOf(userId)});
         return (c.moveToNext()) ? UserRewardMapper.mapCursorToUserRewards(c) : null;
     }
 }

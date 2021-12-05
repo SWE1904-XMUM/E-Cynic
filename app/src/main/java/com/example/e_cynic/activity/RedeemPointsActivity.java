@@ -55,7 +55,7 @@ public class RedeemPointsActivity extends AppCompatActivity
     {
         backBtn = findViewById(R.id.backBtn);
         availablePoints = findViewById(R.id.availablePoints);
-        voucherRecyclerView = findViewById(R.id.voucherRecyclerView);
+        voucherRecyclerView = findViewById(R.id.rewardsRecyclerView);
     }
 
     private void setUpAdapter()

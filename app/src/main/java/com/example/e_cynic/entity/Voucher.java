@@ -7,6 +7,11 @@ public class Voucher
     public Integer voucherPoints;
     public Long redeemDate;
 
+    public Voucher(Integer voucherImage)
+    {
+        this.voucherImage = voucherImage;
+    }
+
     public Voucher(Integer voucherImage, String voucherName, Integer voucherPoints)
     {
         this.voucherImage = voucherImage;
