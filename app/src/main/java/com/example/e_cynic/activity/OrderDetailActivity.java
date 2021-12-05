@@ -82,8 +82,12 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         tv_noOfDevice.setText(String.valueOf(itemList.size()));
         tv_address.setText(address.getAddressString());
-        tv_status.setText("Processing");
-        tv_point.setText("To be confirmed");
+        String status = OrderDatabase.getOrderStatusByOrderId(orderId);
+        tv_status.setText(status != "" ? status : "Order not available");
+        System.out.println(status);
+        Integer points = ItemDatabase.getTotalPointByOrderId(orderId);
+        tv_point.setText(status != "" ? (points >= 0 ? String.valueOf(points) : "To be confirmed") : "Order not available");
+        System.out.println(points);
     }
 
     private void setViewComponents() {

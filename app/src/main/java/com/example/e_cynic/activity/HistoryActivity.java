@@ -122,7 +122,7 @@ public class HistoryActivity extends AppCompatActivity
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
         //TODO set username
-        historyOrders = OrderDatabase.getOrdersByUsername(sessionManager.getUsername());
+        historyOrders = OrderDatabase.getOrdersByUsername("testuser");
     }
 
     private void setUpRecyclerView()

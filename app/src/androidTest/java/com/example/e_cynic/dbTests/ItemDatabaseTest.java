@@ -20,7 +20,7 @@ public class ItemDatabaseTest {
     private Integer orderId = 1;
     private String itemName = "smartphone";
     private String imgPath = "/storage/emulated/0/DCIM/Camera/IMG_20211127_072317.jpg";
-    private Double price = 300d;
+    private Integer point = 300;
 
     @Test
     public void insertItem() throws IllegalAccessException {
