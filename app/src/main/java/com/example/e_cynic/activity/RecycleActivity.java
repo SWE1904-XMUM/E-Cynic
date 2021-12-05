@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,20 +43,30 @@ import java.util.ArrayList;
 
 public class RecycleActivity extends AppCompatActivity {
     // Views
+    private LinearLayout ll_new_address;
+    private LinearLayout ll_existing_address;
     private ImageView example;
-    private LinearLayout pinLocation;
+    private Button pinLocation;
     private Button submitRecycleBtn, addItem;
     private RecyclerView recycler_view;
     private RecycleAddItemAdapter rvAdapter;
     private SessionManager sessionManager;
     private Button btn_selectExistingAddress;
 
+    //new address fields
     private EditText et_addLine1;
     private EditText et_addLine2;
     private EditText et_addLine3;
     private Spinner spinner_state;
     private EditText et_postcode;
     private EditText et_city;
+
+    //existing address fields
+    private TextView tv_address_line1;
+    private TextView tv_address_line2;
+    private TextView tv_address_line3;
+    private TextView tv_address_postcode_city;
+    private TextView tv_address_state;
 
     public ArrayList<Item> items;
     public Address address;
@@ -85,16 +96,21 @@ public class RecycleActivity extends AppCompatActivity {
 
                     updateAddressFromRecycleForm(userId);
 
-                    if(validateOrderInput() == false) {
+                    if (validateOrderInput() == false) {
                         SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please input all required fields in correct format");
                         return;
                     }
 
+                    long addressId = 0;
                     //insert address to db
-                    long addressId = AddressDatabase.insertAddressAndGetAddressId(address);
-                    if (addressId <= 0) {
-                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
-                        return;
+                    if (address.addressId == null) {
+                        addressId = AddressDatabase.insertAddressAndGetAddressId(address);
+                        if (addressId <= 0) {
+                            SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please try again");
+                            return;
+                        }
+                    } else {
+                        addressId = address.addressId;
                     }
 
                     //create order and get orderid
@@ -147,7 +163,7 @@ public class RecycleActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //TODO get address from activity
                 Intent intent = new Intent(RecycleActivity.this, SelectAddressActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, RequestCode.SELECT_ADDRESS_ACTIVITY);
             }
         });
 
@@ -187,6 +203,11 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private void setViewComponent() {
+        ll_new_address = findViewById(R.id.ll_new_address);
+        ll_existing_address = findViewById(R.id.ll_existing_address);
+
+        ll_existing_address.setVisibility(View.GONE);
+
         example = findViewById(R.id.example);
         submitRecycleBtn = findViewById(R.id.btn_submitRecycle);
         pinLocation = findViewById(R.id.pinLocation);
@@ -198,6 +219,12 @@ public class RecycleActivity extends AppCompatActivity {
         spinner_state = findViewById(R.id.spinner_state);
         et_postcode = findViewById(R.id.postcode);
         et_city = findViewById(R.id.city);
+
+        tv_address_line1 = findViewById(R.id.tv_address_line1);
+        tv_address_line2 = findViewById(R.id.tv_address_line2);
+        tv_address_line3 = findViewById(R.id.tv_address_line3);
+        tv_address_postcode_city = findViewById(R.id.tv_address_postcode_city);
+        tv_address_state = findViewById(R.id.tv_address_state);
     }
 
     @Override
@@ -250,14 +277,29 @@ public class RecycleActivity extends AppCompatActivity {
                                 data.getStringExtra("city"),
                                 data.getStringExtra("state"),
                                 Integer.parseInt(data.getStringExtra("postcode")));
-                        updateAddressFields();
+                        ll_new_address.setVisibility(View.VISIBLE);
+                        ll_existing_address.setVisibility(View.GONE);
+                        updateNewAddressField();
+                    }
+                    break;
+
+                case RequestCode.SELECT_ADDRESS_ACTIVITY:
+                    if (resultCode == RESULT_OK && data != null) {
+                        try {
+                            address = AddressDatabase.getAddressByAddressId(Integer.parseInt(data.getStringExtra("addressId")));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        ll_new_address.setVisibility(View.GONE);
+                        ll_existing_address.setVisibility(View.VISIBLE);
+                        updateExistingAddressField();
                     }
                     break;
             }
         }
     }
 
-    private void updateAddressFields() {
+    private void updateNewAddressField() {
         et_addLine1.setText(address.firstLine);
         et_addLine2.setText(address.secondLine);
         et_addLine3.setText(address.thirdLine);
@@ -266,8 +308,30 @@ public class RecycleActivity extends AppCompatActivity {
         et_city.setText(address.city);
     }
 
+    private void updateExistingAddressField() {
+        tv_address_line1.setText(address.firstLine);
+        if(!address.secondLine.equals("")) {
+            tv_address_line2.setText(address.secondLine);
+            tv_address_line2.setVisibility(View.VISIBLE);
+        } else {
+            tv_address_line2.setText("");
+            tv_address_line2.setVisibility(View.GONE);
+        }
+
+        if(!address.thirdLine.equals("")) {
+            tv_address_line3.setText(address.thirdLine);
+            tv_address_line3.setVisibility(View.VISIBLE);
+        } else {
+            tv_address_line3.setText("");
+            tv_address_line3.setVisibility(View.GONE);
+        }
+        tv_address_line3.setText(address.thirdLine);
+        tv_address_postcode_city.setText(String.valueOf(address.postcode) + " " + address.city);
+        tv_address_state.setText(address.state);
+    }
+
     private void updateAddressFromRecycleForm(Integer userId) {
-        if(address == null) {
+        if (address == null) {
             address = new Address();
         }
         address.userId = userId;
@@ -275,14 +339,13 @@ public class RecycleActivity extends AppCompatActivity {
         address.secondLine = et_addLine2.getText().toString();
         address.thirdLine = et_addLine3.getText().toString();
         address.state = spinner_state.getSelectedItem().toString();
-        address.postcode = Integer.parseInt(et_postcode.getText().toString().equals("")?"0":et_postcode.getText().toString());
+        address.postcode = Integer.parseInt(et_postcode.getText().toString().equals("") ? "0" : et_postcode.getText().toString());
         address.city = et_city.getText().toString();
-        System.out.println(address);
     }
 
     private int getStateIdInSpinner(String state) {
         for (int i = 0; i < spinner_state.getCount(); i++) {
-            if(spinner_state.getItemAtPosition(i).equals(state)) {
+            if (spinner_state.getItemAtPosition(i).equals(state)) {
                 return i;
             }
         }
@@ -290,14 +353,21 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private boolean validateOrderInput() {
-        for(Item item:items) {
-            if(item.image == null) {
+        for (Item item : items) {
+            if (item.image == null) {
                 return false;
             }
         }
-        System.out.println(address);
-        if(address.firstLine.equals("") || address.city.equals("") || !ValidationUtil.validatePostcode(String.valueOf(address.postcode)) || address.city.equals("")) {
-            return false;
+
+        if(ll_new_address.getVisibility() == View.VISIBLE) {
+            if (address.firstLine.equals("") || address.city.equals("") || !ValidationUtil.validatePostcode(String.valueOf(address.postcode)) || address.city.equals("")) {
+                return false;
+            }
+            return true;
+        }
+
+        if(ll_existing_address.getVisibility() == View.VISIBLE) {
+            return true;
         }
         return true;
     }

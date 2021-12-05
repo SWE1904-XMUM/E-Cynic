@@ -9,6 +9,7 @@ public class RequestCode
     public static final int LOCATION_PERMISSION = 3;
 
     public static final int PIN_LOCATION_ACTIVITY = 20;
+    public static final int SELECT_ADDRESS_ACTIVITY = 21;
 
     RequestCode()
     {

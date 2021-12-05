@@ -103,7 +103,6 @@ public class RecycleAddItemAdapter extends RecyclerView.Adapter<RecycleAddItemAd
             @Override
             public void onClick(View view) {
                 if(((RecycleActivity)activity).getClass() == RecycleActivity.class) {
-                    System.out.println(pos);
                     ((RecycleActivity) activity).items.remove(pos);
                     ((RecycleActivity) activity).updateRecyclerView();
                 }
