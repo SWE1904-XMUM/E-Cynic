@@ -96,6 +96,7 @@
                         android:text="E-Cynic is a company providing the E-waste recycling service in Malaysia. The term ‘E-Cycnic’ is the combination of ‘Electronic’ and ‘Recycle’. It was founded by four passionate youths who are Ng Pee Jou, Ng Ger Qin, Tan Xin Yii and Teo Yin Yin. "
                         android:textSize="16sp"
                         android:textStyle="bold"
+		                    android:justificationMode="inter_word"
                         app:layout_constraintBottom_toTopOf="@+id/img3"
                         app:layout_constraintEnd_toEndOf="@id/redeemDateList"
                         app:layout_constraintStart_toStartOf="parent"
