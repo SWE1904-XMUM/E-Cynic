@@ -53,61 +53,69 @@ public class RewardHistoryAdapter extends RecyclerView.Adapter<RewardHistoryAdap
         voucherList.add(new Voucher(R.drawable.spca));
         voucherList.add(new Voucher(R.drawable.unicef));
 
-        if (userRewardList != null)
+        try
         {
-            switch (userRewardList.get(position).rewardItem)
+            if (userRewardList != null)
             {
-                case "Aeon RM50 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(0).voucherImage);
-                    break;
+                switch (userRewardList.get(position).rewardItem)
+                {
+                    case "Aeon RM50 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(0).voucherImage);
+                        break;
 
-                case "TNG RM50 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(1).voucherImage);
-                    break;
+                    case "TNG RM50 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(1).voucherImage);
+                        break;
 
-                case "Shell RM50 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(2).voucherImage);
-                    break;
+                    case "Shell RM50 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(2).voucherImage);
+                        break;
 
-                case "Baskin Robbins RM20 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(3).voucherImage);
-                    break;
+                    case "Baskin Robbins RM20 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(3).voucherImage);
+                        break;
 
-                case "Secret Recipe RM20 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(4).voucherImage);
-                    break;
+                    case "Secret Recipe RM20 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(4).voucherImage);
+                        break;
 
-                case "Lazada RM10 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(5).voucherImage);
-                    break;
+                    case "Lazada RM10 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(5).voucherImage);
+                        break;
 
-                case "Tealive RM10 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(6).voucherImage);
-                    break;
+                    case "Tealive RM10 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(6).voucherImage);
+                        break;
 
-                case "TNG RM10 Cash Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(7).voucherImage);
-                    break;
+                    case "TNG RM10 Cash Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(7).voucherImage);
+                        break;
 
-                case "SPCA RM10 Donation Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(8).voucherImage);
-                    break;
+                    case "SPCA RM10 Donation Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(8).voucherImage);
+                        break;
 
-                case "Unicef RM5 Donation Voucher":
-                    holder.redeemImgList.setImageResource(voucherList.get(9).voucherImage);
-                    break;
+                    case "Unicef RM5 Donation Voucher":
+                        holder.redeemImgList.setImageResource(voucherList.get(9).voucherImage);
+                        break;
+                }
             }
 
             holder.redeemNameList.setText(userRewardList.get(position).rewardItem);
             holder.redeemPointList.setText(String.valueOf(userRewardList.get(position).points));
             holder.redeemDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(userRewardList.get(position).date)));
         }
+
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public int getItemCount()
     {
-        return userRewardList.size();
+        return userRewardList != null ? userRewardList.size():0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
