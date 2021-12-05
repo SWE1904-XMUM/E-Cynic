@@ -69,8 +69,7 @@ public class OrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
     }
@@ -98,6 +97,8 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

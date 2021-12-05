@@ -133,9 +133,9 @@ public class RecycleActivity extends AppCompatActivity {
 
 
                     //direct to order detail activity, pass orderid
-                    Intent i = new Intent(RecycleActivity.this, OrderDetailActivity.class);
-                    i.putExtra("orderId", String.valueOf(orderId));
-                    startActivity(i);
+                    Intent intent = new Intent(RecycleActivity.this, OrderDetailActivity.class);
+                    intent.putExtra("orderId", String.valueOf(orderId));
+                    startActivityForResult(intent, RequestCode.VIEW_ORDER_DETAILS_ACTIVITY);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -260,7 +260,6 @@ public class RecycleActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                     break;
 
                 case RequestCode.PIN_LOCATION_ACTIVITY:
@@ -295,6 +294,12 @@ public class RecycleActivity extends AppCompatActivity {
                         updateExistingAddressField();
                     }
                     break;
+
+                case RequestCode.VIEW_ORDER_DETAILS_ACTIVITY:
+                    if(resultCode == RESULT_OK) {
+                        Intent intent = new Intent(RecycleActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    }
             }
         }
     }
@@ -310,7 +315,7 @@ public class RecycleActivity extends AppCompatActivity {
 
     private void updateExistingAddressField() {
         tv_address_line1.setText(address.firstLine);
-        if(!address.secondLine.equals("")) {
+        if (!address.secondLine.equals("")) {
             tv_address_line2.setText(address.secondLine);
             tv_address_line2.setVisibility(View.VISIBLE);
         } else {
@@ -318,7 +323,7 @@ public class RecycleActivity extends AppCompatActivity {
             tv_address_line2.setVisibility(View.GONE);
         }
 
-        if(!address.thirdLine.equals("")) {
+        if (!address.thirdLine.equals("")) {
             tv_address_line3.setText(address.thirdLine);
             tv_address_line3.setVisibility(View.VISIBLE);
         } else {
@@ -359,14 +364,14 @@ public class RecycleActivity extends AppCompatActivity {
             }
         }
 
-        if(ll_new_address.getVisibility() == View.VISIBLE) {
+        if (ll_new_address.getVisibility() == View.VISIBLE) {
             if (address.firstLine.equals("") || address.city.equals("") || !ValidationUtil.validatePostcode(String.valueOf(address.postcode)) || address.city.equals("")) {
                 return false;
             }
             return true;
         }
 
-        if(ll_existing_address.getVisibility() == View.VISIBLE) {
+        if (ll_existing_address.getVisibility() == View.VISIBLE) {
             return true;
         }
         return true;

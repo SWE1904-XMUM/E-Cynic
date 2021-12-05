@@ -10,12 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.HistoryOrderListAdapter;
+import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.session.SessionManager;
@@ -135,6 +137,21 @@ public class HistoryActivity extends AppCompatActivity
     private void setUpLinearLayout() {
         LL_recycleHistory = findViewById(R.id.LL_recycleHistory);
         LL_noRecycleHistory = findViewById(R.id.LL_noRecycleHistory);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+            case RequestCode.VIEW_ORDER_DETAILS_ACTIVITY:
+                onBackPressed();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     public void bottomNavBar()
