@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 // TODO remove login (after done)
-                updateViewText();
+                /*updateViewText();
 
                 if (!fieldDataIsComplete())
                 {
@@ -94,11 +94,9 @@ public class LoginActivity extends AppCompatActivity
                             SnackbarCreator.createNewSnackbar(view,"Invalid username or password!");
                         }
                     }
-                }
-/*
+                }*/
                 Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(homePage);
-*/
             }
         });
 
