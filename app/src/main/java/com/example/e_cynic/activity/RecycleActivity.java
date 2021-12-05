@@ -1,5 +1,7 @@
 package com.example.e_cynic.activity;
 
+import static com.example.e_cynic.db.AddressDatabase.postcode;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -365,16 +367,43 @@ public class RecycleActivity extends AppCompatActivity {
         }
 
         if (ll_new_address.getVisibility() == View.VISIBLE) {
-            if (address.firstLine.equals("") || address.city.equals("") || !ValidationUtil.validatePostcode(String.valueOf(address.postcode)) || address.city.equals("")) {
-                return false;
+            boolean complete = true;
+            if(address.firstLine.equals("")) {
+                setErrorField(et_addLine1);
+                complete = complete && false;
             }
-            return true;
+            else {
+                resetField(et_addLine1);
+            }
+            if(address.city.equals("")) {
+                setErrorField(et_city);
+                complete = complete && false;
+            }
+            else {
+                resetField(et_city);
+            }
+            if(address.postcode == 0 || !ValidationUtil.validatePostcode(String.valueOf(address.postcode))) {
+                setErrorField(et_postcode) ;
+                complete = complete && false;
+            }
+            else {
+                resetField(et_postcode);
+            }
+            return complete;
         }
 
         if (ll_existing_address.getVisibility() == View.VISIBLE) {
             return true;
         }
         return true;
+    }
+
+    private void setErrorField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.error_background));
+    }
+
+    private void resetField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.grey));
     }
 
     private void bottomNavBar() {
