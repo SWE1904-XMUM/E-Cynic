@@ -25,6 +25,7 @@ public class EditProfileActivity extends AppCompatActivity
     private Spinner state;
     private TextView uname,email,phone,password,addressLine1,addressLine2,addressLine3,postcode,city;
     SessionManager sm;
+    String stateTxt, unameTxt,emailTxt,phoneTxt,passwordTxt,addressLine1Txt,addressLine2Txt,addressLine3Txt,postcodeTxt,cityTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +63,20 @@ public class EditProfileActivity extends AppCompatActivity
         state = findViewById(R.id.state);
         postcode = findViewById(R.id.postcode);
         city = findViewById(R.id.city);
+    }
+
+    private void getViewText()
+    {
+        unameTxt = uname.getText().toString();
+        emailTxt = email.getText().toString();
+        phoneTxt = phone.getText().toString();
+        passwordTxt = password.getText().toString();
+        addressLine1Txt = addressLine1.getText().toString();
+        addressLine2Txt = addressLine2.getText().toString();
+        addressLine3Txt = addressLine3.getText().toString();
+        stateTxt = state.getSelectedItem().toString();
+        postcodeTxt = postcode.getText().toString();
+        cityTxt = city.getText().toString();
     }
 
     private void displayProfileData()
@@ -105,5 +120,11 @@ public class EditProfileActivity extends AppCompatActivity
         //state.setText(addressList.get(0).state);
         postcode.setText(addressList.get(0).postcode);
         city.setText(addressList.get(0).city);*/
+    }
+
+    private void updateEditedProfile()
+    {
+        getViewText();
+        //same code with sign up?
     }
 }
