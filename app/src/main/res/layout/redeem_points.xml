@@ -127,7 +127,7 @@
         android:scrollbars="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/voucherRecyclerView"
+            android:id="@+id/rewardsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
