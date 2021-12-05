@@ -9,12 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.User;
 import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -55,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this, EditProfileActivity.class);
-                startActivity(i);
+                startActivityForResult(i, RequestCode.EDIT_PROFILE_ACTIVITY);
             }
         });
 
@@ -109,6 +112,21 @@ public class ProfileActivity extends AppCompatActivity {
         profileUname.setText(uname);
         profileEmail.setText(user.email);
         profilePhone.setText(user.phoneNumber);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case RequestCode.EDIT_PROFILE_ACTIVITY:
+                if(resultCode == RESULT_OK) {
+                    SnackbarCreator.createNewSnackbar(editProfile, "Profile has been updated");
+                }
+                else if (resultCode == RESULT_CANCELED) {
+                    SnackbarCreator.createNewSnackbar(editProfile, "Profile was not updated");
+                }
+        }
     }
 
     public void bottomNavBar() {
