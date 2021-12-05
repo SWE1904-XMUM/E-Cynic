@@ -182,6 +182,13 @@
 				
 				</LinearLayout>
 				
+				<Button
+						android:id="@+id/btn_selectExistingAddress"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="Select from existing address"
+						android:textAllCaps="false" />
+				
 				
 				<EditText
 						android:id="@+id/addressLine1"

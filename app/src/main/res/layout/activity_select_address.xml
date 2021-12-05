@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".activity.HistoryActivity">
+	
+	
+	<FrameLayout
+			android:id="@+id/selectAddressFrame"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/apple_green">
+		
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:fontFamily="@font/playfair_display_black"
+				android:text="Select Address"
+				android:textColor="@color/white"
+				android:textSize="30sp" />
+	</FrameLayout>
+	
+	<LinearLayout
+			android:id="@+id/ll_user_address"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1">
+		
+		<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/fl_address"
+				android:layout_marginBottom="?attr/actionBarSize">
+			
+			<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/rv_addresses"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="20dp"
+					android:layout_marginTop="5dp"
+					android:layout_marginEnd="20dp"
+					android:layout_marginBottom="10dp" />
+		</FrameLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+			android:id="@+id/ll_no_user_address"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1">
+		
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="You do not have existing address"
+				android:textStyle="bold"
+				android:textSize="25dp"
+				android:textAlignment="center"
+				android:gravity="center"
+				android:layout_weight="1"/>
+	</LinearLayout>
+	
+	<com.google.android.material.bottomnavigation.BottomNavigationView
+			android:id="@+id/btmNav"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/apple_green"
+			android:layout_gravity="bottom"
+			app:itemIconTint="@drawable/tab_color"
+			app:itemTextColor="@drawable/tab_color"
+			app:labelVisibilityMode="labeled"
+			app:menu="@menu/bottom_nav_menu" />
+
+</LinearLayout>

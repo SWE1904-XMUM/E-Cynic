@@ -48,6 +48,7 @@ public class RecycleActivity extends AppCompatActivity {
     private RecyclerView recycler_view;
     private RecycleAddItemAdapter rvAdapter;
     private SessionManager sessionManager;
+    private Button btn_selectExistingAddress;
 
     private EditText et_addLine1;
     private EditText et_addLine2;
@@ -141,6 +142,15 @@ public class RecycleActivity extends AppCompatActivity {
             }
         });
 
+        btn_selectExistingAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO get address from activity
+                Intent intent = new Intent(RecycleActivity.this, SelectAddressActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.state));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -180,6 +190,7 @@ public class RecycleActivity extends AppCompatActivity {
         example = findViewById(R.id.example);
         submitRecycleBtn = findViewById(R.id.btn_submitRecycle);
         pinLocation = findViewById(R.id.pinLocation);
+        btn_selectExistingAddress = findViewById(R.id.btn_selectExistingAddress);
 
         et_addLine1 = findViewById(R.id.addressLine1);
         et_addLine2 = findViewById(R.id.addressLine2);
