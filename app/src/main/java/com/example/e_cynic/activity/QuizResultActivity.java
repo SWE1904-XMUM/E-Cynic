@@ -43,7 +43,7 @@ public class QuizResultActivity extends AppCompatActivity
 
         sm = new SessionManager(getApplicationContext());
         totalPoints = sm.getTotalPoints();;
-        totalPoints += score;
+        totalPoints += (score * 3);
         sm.setTotalPoints(totalPoints);
     }
 }
