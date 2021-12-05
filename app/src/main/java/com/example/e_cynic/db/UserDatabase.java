@@ -32,9 +32,9 @@ public class UserDatabase
         return result > 0;
     }
 
-    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        //return User object in users table (except password)
-        Cursor c = db.rawQuery("select userId, username, email, phoneNumber from users where username=?",
+    public static User getUserInfoByUsername(String username) throws InvocationTargetException, NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException
+    {
+        Cursor c = db.rawQuery("select userId, username, email, password, phoneNumber from users where username=?",
                 new String[]{username});
         return (c.moveToNext()) ? UserMapper.mapCursorToOneUser(c) : null;
     }

@@ -6,11 +6,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.UserDatabase;
+import com.example.e_cynic.entity.User;
 import com.example.e_cynic.session.SessionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity
 {
     private Button about, editProfile;
     private ImageView redeemPointsBtn, myRewardBtn,logoutBtn;
+    private TextView profileUname, profileEmail, profilePhone;
     SessionManager sm;
 
     @Override
@@ -29,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity
         sm = new SessionManager(getApplicationContext());
 
         setViewComponent();
+        setUpProfileText();
         bottomNavBar();
 
         logoutBtn.setOnClickListener(new View.OnClickListener()
@@ -90,6 +95,30 @@ public class ProfileActivity extends AppCompatActivity
         about = findViewById(R.id.aboutBtn);
         editProfile = findViewById(R.id.editBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
+        profileUname = findViewById(R.id.profileUname);
+        profileEmail = findViewById(R.id.profileEmail);
+        profilePhone = findViewById(R.id.profilePhone);
+    }
+
+    private void setUpProfileText()
+    {
+        //TODO
+        String uname = "testuser";//sm.getUsername();
+        User user = new User();
+
+        try
+        {
+            user = UserDatabase.getUserInfoByUsername(uname);
+        }
+
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        profileUname.setText(uname);
+        profileEmail.setText(user.email);
+        profilePhone.setText(user.phoneNumber);
     }
 
     public void bottomNavBar()
