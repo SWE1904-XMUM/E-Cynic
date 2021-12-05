@@ -160,7 +160,6 @@ public class RecycleActivity extends AppCompatActivity {
         btn_selectExistingAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO get address from activity
                 Intent intent = new Intent(RecycleActivity.this, SelectAddressActivity.class);
                 startActivityForResult(intent, RequestCode.SELECT_ADDRESS_ACTIVITY);
             }
@@ -263,7 +262,6 @@ public class RecycleActivity extends AppCompatActivity {
 
                 case RequestCode.PIN_LOCATION_ACTIVITY:
                     if (resultCode == RESULT_OK && data != null) {
-                        //TODO do something with the returned address
                         SessionManager sessionManager = new SessionManager(getApplicationContext());
                         String username = sessionManager.getUsername();
                         Integer userId = UserDatabase.getUserIdByUsername(username);
