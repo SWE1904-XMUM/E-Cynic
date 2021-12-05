@@ -15,52 +15,100 @@
         android:orientation="vertical"
         android:layout_gravity="center">
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/border_image">
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/playfair_display_black"
-            android:text="Final Score:"
-            android:textSize="40dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/border_image">
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="Final Score:"
+                android:textSize="40dp"
+                android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/scoreValue"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_list"
-            android:fontFamily="@font/inder"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="score/5"
-            android:textSize="40dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/scoreValue"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_list"
+                android:fontFamily="@font/inder"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="score/5"
+                android:textSize="40dp"
+                android:textStyle="bold" />
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="Congratulation !"
+                android:textColor="@color/gold"
+                android:textSize="38dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="You Got:"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/showPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="'Points'"
+                android:textColor="@color/teal_700"
+                android:textSize="38dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-    </LinearLayout>
-
-
 
     <Button
         android:id="@+id/returnBtn"
