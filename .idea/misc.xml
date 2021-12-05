@@ -39,11 +39,8 @@
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/play_quiz.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/quiz.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/quiz_result.xml" value="0.264" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/recycle.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/redeem_points.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/redeem_voucher_list.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/reward_voucher.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/rowarticle.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/layout/sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/user/Desktop/Software Engineering/Y3S2/Mobile Application System Design/Assessment/E-Cynic/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
@@ -56,7 +53,7 @@
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/activity_order_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/app_info.xml" value="0.12360688956433637" />
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/edit_profile.xml" value="0.12360688956433637" />
-        <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/history.xml" value="0.1" />
+        <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/history.xml" value="0.264" />
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/home.xml" value="0.1" />
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/order_details_list.xml" value="0.264" />
         <entry key="..\:/XMUM/SWE Y3/SWE Y3 S2/SWE311 Mobile Application System Design/Assignment/E-Cynic/app/src/main/res/layout/orders_list.xml" value="0.264" />

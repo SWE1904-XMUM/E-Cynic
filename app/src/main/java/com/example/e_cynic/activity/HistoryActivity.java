@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,8 @@ public class HistoryActivity extends AppCompatActivity
     HistoryOrderListAdapter historyOrderListAdapter;
     private String[] itemInSortList;
     private Spinner sortList;
+    private LinearLayout LL_recycleHistory;
+    private LinearLayout LL_noRecycleHistory;
 
     // items list
     List<Order> historyOrders = new ArrayList<>();
@@ -54,34 +57,44 @@ public class HistoryActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+        setUpLinearLayout();
         setUpRecyclerView();
 
-        sortList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+        if(historyOrders != null) {
+
+            LL_noRecycleHistory.setVisibility(View.GONE);
+            LL_recycleHistory.setVisibility(View.VISIBLE);
+            sortList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
             {
-                int index = adapterView.getSelectedItemPosition();
-
-                switch (index)
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
                 {
-                    case 0:
-                        historyOrders.sort(OrderComparator.NewestOrder);
-                        historyOrderListAdapter.notifyDataSetChanged();
-                        break;
+                    int index = adapterView.getSelectedItemPosition();
 
-                    case 1:
-                        historyOrders.sort(OrderComparator.OldestOrder);
-                        historyOrderListAdapter.notifyDataSetChanged();
-                        break;
+                    switch (index)
+                    {
+                        case 0:
+                            historyOrders.sort(OrderComparator.NewestOrder);
+                            historyOrderListAdapter.notifyDataSetChanged();
+                            break;
+
+                        case 1:
+                            historyOrders.sort(OrderComparator.OldestOrder);
+                            historyOrderListAdapter.notifyDataSetChanged();
+                            break;
+                    }
                 }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
+                }
+            });
+        }
+        else {
+            LL_recycleHistory.setVisibility(View.GONE);
+            LL_noRecycleHistory.setVisibility(View.VISIBLE);
+        }
 
         bottomNavBar();
     }
@@ -104,6 +117,7 @@ public class HistoryActivity extends AppCompatActivity
 
     private void storeDataIntoList() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
     {
+        //TODO set username
         historyOrders = OrderDatabase.getOrdersByUsername("pjou");
     }
 
@@ -112,6 +126,11 @@ public class HistoryActivity extends AppCompatActivity
         historyOrderListAdapter = new HistoryOrderListAdapter(getApplicationContext(),historyOrders);
         historyRecyclerView.setAdapter(historyOrderListAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
+    }
+
+    private void setUpLinearLayout() {
+        LL_recycleHistory = findViewById(R.id.LL_recycleHistory);
+        LL_noRecycleHistory = findViewById(R.id.LL_noRecycleHistory);
     }
 
     public void bottomNavBar()
