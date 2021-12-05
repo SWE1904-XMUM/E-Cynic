@@ -68,9 +68,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
 
                 else
                 {
-                    //TODO
-                    //String uname = sm.getUsername();
-                    int userId = UserDatabase.getUserIdByUsername("pjou");
+                    int userId = UserDatabase.getUserIdByUsername(sm.getUsername());
                     Long date = DateUtil.getCurrentTimestamp();
 
                     UserReward userReward = new UserReward(null,userId,date,name,p);

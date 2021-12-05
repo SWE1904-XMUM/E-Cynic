@@ -40,9 +40,7 @@ public class SelectAddressActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
 
         try {
-            //TODO get userid
-//            addressList = AddressDatabase.getAddressesByUserId(UserDatabase.getUserIdByUsername(sessionManager.getUsername()));
-            addressList = AddressDatabase.getAddressesByUserId(UserDatabase.getUserIdByUsername("testuser"));
+            addressList = AddressDatabase.getAddressesByUserId(UserDatabase.getUserIdByUsername(sessionManager.getUsername()));
         } catch (Exception e) {
             e.printStackTrace();
         }

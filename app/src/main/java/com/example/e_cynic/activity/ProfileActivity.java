@@ -97,8 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setUpProfileText() {
-        //TODO
-        String uname = "testuser";//sm.getUsername();
+        String uname = sm.getUsername();
         User user = new User();
 
         try {

@@ -69,8 +69,7 @@ public class EditProfileActivity extends AppCompatActivity
 
     private void displayProfileData()
     {
-        //TODO
-        String username = "testuser";//sm.getUsername();
+        String username = sm.getUsername();
         User user = new User();
         List<Address> addressList = new ArrayList<>();
 

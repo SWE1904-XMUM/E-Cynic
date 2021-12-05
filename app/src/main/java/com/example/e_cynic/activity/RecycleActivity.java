@@ -88,10 +88,7 @@ public class RecycleActivity extends AppCompatActivity {
         submitRecycleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //get userid
-                //TODO get userId
-//                String username = sessionManager.getUsername();
-                String username = "testuser";
+                String username = sessionManager.getUsername();
                 Integer userId = UserDatabase.getUserIdByUsername(username);
 
                 try {

@@ -16,6 +16,7 @@ import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.Address;
+import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 import java.util.List;
@@ -30,16 +31,18 @@ public class ViewUserAddress extends AppCompatActivity {
 
     private ViewAddressListAdapter adapter;
 
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_address);
 
-        //TODO get username
-        username = "testuser";
-        userId = UserDatabase.getUserIdByUsername(username);
+        userId = UserDatabase.getUserIdByUsername(sessionManager.getUsername());
 
         rv_addresses = findViewById(R.id.rv_addresses);
+
+        sessionManager = new SessionManager(ViewUserAddress.this);
 
         updateAddressList();
         adapter = new ViewAddressListAdapter(this, ViewUserAddress.this, addressList);
