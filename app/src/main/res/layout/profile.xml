@@ -319,6 +319,27 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/showDefaultAddress" />
+    
+                    <Button
+                            android:id="@+id/btn_addresses"
+                            android:layout_width="250dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="100dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="100dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/bg_button"
+                            android:text="Addresses"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textColorHighlight="@color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/aboutBtn"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/showDefaultAddress" />
 
                     <Button
                         android:id="@+id/aboutBtn"

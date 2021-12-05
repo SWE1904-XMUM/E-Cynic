@@ -11,6 +11,7 @@ public class RequestCode
     public static final int PIN_LOCATION_ACTIVITY = 20;
     public static final int SELECT_ADDRESS_ACTIVITY = 21;
     public static final int VIEW_ORDER_DETAILS_ACTIVITY = 22;
+    public static final int EDIT_ADDRESS_ACTIVITY = 23;
 
     RequestCode() {}
 }

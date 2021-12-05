@@ -17,16 +17,14 @@ import com.example.e_cynic.entity.User;
 import com.example.e_cynic.session.SessionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ProfileActivity extends AppCompatActivity
-{
-    private Button about, editProfile;
-    private ImageView redeemPointsBtn, myRewardBtn,logoutBtn;
+public class ProfileActivity extends AppCompatActivity {
+    private Button about, editProfile, btn_addresses;
+    private ImageView redeemPointsBtn, myRewardBtn, logoutBtn;
     private TextView profileUname, profileEmail, profilePhone;
     SessionManager sm;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
@@ -36,83 +34,76 @@ public class ProfileActivity extends AppCompatActivity
         setUpProfileText();
         bottomNavBar();
 
-        logoutBtn.setOnClickListener(new View.OnClickListener()
-        {
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Intent loginPage = new Intent(ProfileActivity.this,LoginActivity.class);
+            public void onClick(View view) {
+                Intent loginPage = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(loginPage);
                 sm.setLogin(false);
             }
         });
 
-        about.setOnClickListener(new View.OnClickListener()
-        {
+        about.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this, AboutActivity.class);
                 startActivity(i);
             }
         });
 
-        editProfile.setOnClickListener(new View.OnClickListener()
-        {
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this, EditProfileActivity.class);
                 startActivity(i);
             }
         });
 
-        redeemPointsBtn.setOnClickListener(new View.OnClickListener()
-        {
+        redeemPointsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                Intent i = new Intent(ProfileActivity.this,RedeemPointsActivity.class);
+            public void onClick(View view) {
+                Intent i = new Intent(ProfileActivity.this, RedeemPointsActivity.class);
                 startActivity(i);
             }
         });
 
-        myRewardBtn.setOnClickListener(new View.OnClickListener()
-        {
+        btn_addresses.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
+                Intent i = new Intent(ProfileActivity.this, ViewUserAddress.class);
+                startActivity(i);
+            }
+        });
+
+        myRewardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this, RewardHistoryActivity.class);
                 startActivity(i);
             }
         });
     }
 
-    private void setViewComponent()
-    {
+    private void setViewComponent() {
         redeemPointsBtn = findViewById(R.id.redeemPointsBtn);
         myRewardBtn = findViewById(R.id.myRewardBtn);
         about = findViewById(R.id.aboutBtn);
         editProfile = findViewById(R.id.editBtn);
+        btn_addresses = findViewById(R.id.btn_addresses);
         logoutBtn = findViewById(R.id.logoutBtn);
         profileUname = findViewById(R.id.profileUname);
         profileEmail = findViewById(R.id.profileEmail);
         profilePhone = findViewById(R.id.profilePhone);
     }
 
-    private void setUpProfileText()
-    {
+    private void setUpProfileText() {
         //TODO
         String uname = "testuser";//sm.getUsername();
         User user = new User();
 
-        try
-        {
+        try {
             user = UserDatabase.getUserInfoByUsername(uname);
-        }
-
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -121,8 +112,7 @@ public class ProfileActivity extends AppCompatActivity
         profilePhone.setText(user.phoneNumber);
     }
 
-    public void bottomNavBar()
-    {
+    public void bottomNavBar() {
         // Initiate & assign variable
         BottomNavigationView btmNav = findViewById(R.id.btmNav);
 
@@ -130,13 +120,10 @@ public class ProfileActivity extends AppCompatActivity
         btmNav.setSelectedItemId(R.id.profile);
 
         // Perform item selected listener
-        btmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
-        {
+        btmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item)
-            {
-                switch (item.getItemId())
-                {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
