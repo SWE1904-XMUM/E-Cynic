@@ -9,7 +9,7 @@ public class Item {
     public Integer orderId;
     public String itemName;
     public byte[] image;
-    public Double price;
+    public Integer point;
 
     public Item() {
     }
@@ -24,12 +24,13 @@ public class Item {
         this.image = image;
     }
 
-    public Item(@Nullable Integer itemId, Integer orderId, String itemName, byte[] image, @Nullable Double price) {
+    public Item(@Nullable Integer itemId, Integer orderId, String itemName, byte[] image,
+                @Nullable Integer point) {
         this.itemId = itemId;
         this.orderId = orderId;
         this.itemName = itemName;
         this.image = image;
-        this.price = price;
+        this.point = point;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class Item {
                 ", orderId=" + orderId +
                 ", itemName='" + itemName + '\'' +
                 ", image=" + Arrays.toString(image) +
-                ", price=" + price +
+                ", point=" + point +
                 '}';
     }
 }

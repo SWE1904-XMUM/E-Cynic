@@ -64,7 +64,7 @@ public class OrderDatabaseTest {
 
     @Test
     public void editOrderByOrderId() throws IllegalAccessException {
-        Order order = new Order(orderId, 1,3, DateUtil.getCurrentTimestamp(), "processing") ;
+        Order order = new Order(orderId, 1,3, DateUtil.getCurrentTimestamp(), "Processing") ;
         boolean result = OrderDatabase.editOrderByOrderId(order);
         LoggingUtil.printMessage("edit order by orderid", (result == true) ? "true" : "false");
     }

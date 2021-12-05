@@ -42,10 +42,10 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
                 " integer, firstLine text not null, secondLine text, thirdLine text, city text not null, state text not null, postcode integer not null)");
 
         //create items database
-        sqLiteDatabase.execSQL("create table items (itemId integer primary key autoincrement, orderId integer not null, itemName text not null, image longblob not null, price number)");
+        sqLiteDatabase.execSQL("create table items (itemId integer primary key autoincrement, orderId integer not null, itemName text not null, image longblob not null, point number)");
 
         //create orders database
-        sqLiteDatabase.execSQL("create table orders (orderId integer primary key autoincrement, userId integer not null, addressId integer not null, date text not null, status text default 'processing')");
+        sqLiteDatabase.execSQL("create table orders (orderId integer primary key autoincrement, userId integer not null, addressId integer not null, date text not null, status text default 'Processing')");
 
         //create points database
         sqLiteDatabase.execSQL("create table points (pointId integer primary key autoincrement, userId integer not null, pointsEarned integer not null, date text not null)");

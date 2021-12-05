@@ -53,4 +53,9 @@ public class OrderDatabase
         long result = db.update(ordersTable, cv, "orderId=?", new String[]{String.valueOf(new_order.orderId)});
         return result > 0;
     }
+
+    public static String getOrderStatusByOrderId(Integer orderId) {
+        Cursor c = db.rawQuery("select status from orders where orderId=?", new String[]{String.valueOf(orderId)});
+        return c.moveToNext() ? c.getString(0) : "";
+    }
 }

@@ -37,7 +37,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     public void onBindViewHolder(@NonNull OrderDetailsAdapter.MyViewHolder holder, int position) {
         holder.tv_itemIndex.setText(String.valueOf(position + 1));
         holder.tv_typeOfAppliances.setText(itemList.get(position).itemName);
-        holder.tv_itemPoint.setText(String.valueOf(itemList.get(position).price));
+        holder.tv_itemPoint.setText(String.valueOf(itemList.get(position).point));
         holder.iv_appliancesImg.setImageBitmap(ImageUtil.byteArrayToBitmap(itemList.get(position).image));
     }
 

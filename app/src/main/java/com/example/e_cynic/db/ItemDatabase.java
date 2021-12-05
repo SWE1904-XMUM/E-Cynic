@@ -20,7 +20,7 @@ public class ItemDatabase
     public static final String itemName = "itemName";
     public static final String numberOfItems = "numberOfItems";
     public static final String image = "image";
-    public static final String price = "price";
+    public static final String point = "point";
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
@@ -55,5 +55,10 @@ public class ItemDatabase
     public static Item getFirstItemByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Cursor c = db.rawQuery("select * from items where orderId=? limit 1", new String[]{String.valueOf(orderId)});
         return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
+    }
+
+    public static Integer getTotalPointByOrderId(Integer orderId) {
+        Cursor c = db.rawQuery("select SUM(point) from items where orderId=? group by orderId", null);
+        return c.moveToNext() ? c.getInt(0) : -1;
     }
 }
