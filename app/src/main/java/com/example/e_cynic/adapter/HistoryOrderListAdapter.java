@@ -1,6 +1,8 @@
 package com.example.e_cynic.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.activity.OrderDetailActivity;
 import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.DateUtil;
@@ -21,11 +26,13 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
 {
     Context context;
     private List<Order> historyOrders;
+    AppCompatActivity activity;
 
-    public HistoryOrderListAdapter(Context context,List<Order> historyOrders)
+    public HistoryOrderListAdapter(Context context, List<Order> historyOrders, AppCompatActivity activity)
     {
         this.context = context;
         this.historyOrders = historyOrders;
+        this.activity = activity;
     }
 
     @NonNull
@@ -33,21 +40,36 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     public HistoryOrderListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.orders_list,parent,false);
+        View view = inflater.inflate(R.layout.history_orders_list,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position)
     {
-        try {
+        try
+        {
             holder.orderImageList.setImageBitmap(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(position).orderId));
             holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
             holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
             holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));
-        } catch (Exception e) {
+        }
+
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
+
+        holder.orderCard.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                int id = historyOrders.get(position).orderId;
+                Intent orderDetail = new Intent(view.getContext(), OrderDetailActivity.class).putExtra("orderId",String.valueOf(id));
+                activity.startActivity(orderDetail);
+            }
+        });
     }
 
     @Override
@@ -60,11 +82,13 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     {
         ImageView orderImageList;
         TextView orderList,orderStatusList,orderDateList;
+        CardView orderCard;
 
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
 
+            orderCard = itemView.findViewById(R.id.orderCard);
             orderImageList = itemView.findViewById(R.id.orderImageList);
             orderList = itemView.findViewById(R.id.orderList);
             orderStatusList = itemView.findViewById(R.id.orderStatusList);
