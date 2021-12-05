@@ -8,18 +8,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.e_cynic.R;
-import com.example.e_cynic.db.PointsDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.db.UserRewardDatabase;
-import com.example.e_cynic.entity.Point;
 import com.example.e_cynic.entity.UserReward;
 import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.userInteraction.ToastCreator;
+
 import java.util.List;
 
 public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.MyViewHolder>
@@ -73,15 +74,12 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                     Long date = DateUtil.getCurrentTimestamp();
 
                     UserReward userReward = new UserReward(null,userId,date,name,p);
-                    Point point = new Point(null,userId,p,date);
 
                     boolean insertReward = false;
-                    boolean insertPoints = false;
 
                     try
                     {
                         insertReward = UserRewardDatabase.insertUserReward(userReward);
-                        insertPoints = PointsDatabase.insertPoint(point);
                     }
 
                     catch (IllegalAccessException e)
@@ -89,7 +87,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                         e.printStackTrace();
                     }
 
-                    if (insertReward == true && insertPoints == true)
+                    if (insertReward == true)
                     {
                         toastCreator.createToast(context,"Redeem successfully!");
                     }
