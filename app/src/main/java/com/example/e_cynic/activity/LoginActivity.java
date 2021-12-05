@@ -2,20 +2,24 @@ package com.example.e_cynic.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 public class LoginActivity extends AppCompatActivity
 {
     // views
     private Button loginBtn, signUpBtn, forgotPwd;
-    private TextView username,password;
+    private EditText username,password;
 
     // text of view
     private String usernameTxt,passwordTxt;
@@ -45,7 +49,6 @@ public class LoginActivity extends AppCompatActivity
                 // TODO remove login (after done)
 /*
                 updateViewText();
-
                 if (!fieldDataIsComplete())
                 {
                     SnackbarCreator.createNewSnackbar(view,"Please enter all field.");
@@ -137,6 +140,29 @@ public class LoginActivity extends AppCompatActivity
 
     private boolean fieldDataIsComplete()
     {
-        return !(usernameTxt.equals("")||passwordTxt.equals(""));
+        boolean complete = true;
+        if(usernameTxt.equals("")) {
+            setErrorField(username);
+            complete = complete && false;
+        }
+        else {
+            resetField(username);
+        }
+        if(passwordTxt.equals("")) {
+            setErrorField(password);
+            complete = complete && false;
+        }
+        else {
+            resetField(password);
+        }
+        return complete;
+    }
+
+    private void setErrorField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.error_background));
+    }
+
+    private void resetField(EditText et) {
+        et.setBackgroundColor(getResources().getColor(R.color.grey));
     }
 }
