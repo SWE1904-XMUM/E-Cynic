@@ -41,25 +41,27 @@
 			<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp">
 				
 				<RelativeLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content">
-					
+
 					<TextView
-							android:id="@+id/redeemNameList"
-							android:layout_width="380dp"
-							android:layout_height="wrap_content"
-							android:layout_marginStart="20dp"
-							android:layout_marginTop="5dp"
-							android:layout_marginEnd="20dp"
-							android:layout_marginBottom="5dp"
-							android:fontFamily="@font/inder"
-							android:text="Please enter item(s) that need to recycle."
-							android:textColor="@color/black"
-							android:textSize="26sp"
-							android:textStyle="bold" />
+						android:id="@+id/redeemNameList"
+						android:layout_width="380dp"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="20dp"
+						android:layout_marginTop="5dp"
+						android:layout_marginEnd="20dp"
+						android:layout_marginBottom="5dp"
+						android:fontFamily="@font/inder"
+						android:text="Please enter item(s) that need to recycle."
+						android:textColor="@color/black"
+						android:textSize="26sp"
+						android:textStyle="bold" />
 					
 					<ImageView
 							android:id="@+id/example"
@@ -88,14 +90,14 @@
 					android:id="@+id/RL4"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
-				
+
 				<androidx.recyclerview.widget.RecyclerView
-						android:id="@+id/enterItemDetail"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_marginHorizontal="10dp"
-						android:nestedScrollingEnabled="false"
-						android:padding="10dp" />
+					android:id="@+id/enterItemDetail"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="10dp"
+					android:nestedScrollingEnabled="false"
+					android:padding="10dp" />
 				
 				<Button
 						android:id="@+id/btn_addItem"
@@ -142,9 +144,11 @@
 							android:id="@+id/textView5"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
+							android:layout_marginTop="5dp"
+							android:layout_marginBottom="3dp"
 							android:fontFamily="@font/inder"
 							android:text="Residential Address"
-							android:textSize="20sp"
+							android:textSize="24sp"
 							android:textColor="@color/black"
 							android:textStyle="bold"
 							android:gravity="center_vertical"
@@ -155,14 +159,16 @@
 				
 				<LinearLayout
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:orientation="horizontal">
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:layout_marginTop="2dp"
+						android:layout_marginBottom="3dp">
 					
 					<Button
 							android:id="@+id/btn_selectExistingAddress"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:text="Select from existing address"
+							android:text="SELECT FROM EXISTING ADDRESS"
 							android:layout_weight="1"
 							android:layout_marginHorizontal="5dp"
 							android:textAllCaps="false" />
@@ -172,7 +178,7 @@
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
 							android:drawableLeft="@drawable/ic_baseline_location_on_24"
-							android:text="Pin Location"
+							android:text="PIN LOCATION"
 							android:textAllCaps="false"
 							android:layout_marginHorizontal="5dp"
 							android:drawableTint="@color/white"
@@ -185,6 +191,8 @@
 						android:id="@+id/ll_new_address"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:layout_marginBottom="3dp"
 						android:orientation="vertical">
 					
 					<EditText
@@ -225,7 +233,7 @@
 					
 					<RelativeLayout
 							android:layout_width="match_parent"
-							android:layout_height="match_parent"
+							android:layout_height="wrap_content"
 							android:layout_gravity="center"
 							android:layout_margin="5dp"
 							android:background="@drawable/bg_inputfield">
@@ -233,12 +241,14 @@
 						<Spinner
 								android:id="@+id/spinner_state"
 								android:layout_width="match_parent"
-								android:layout_height="match_parent" />
+								android:layout_height="wrap_content" />
 					</RelativeLayout>
 					
 					<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
+							android:layout_marginTop="2dp"
+							android:layout_marginBottom="3dp"
 							android:orientation="horizontal">
 						
 						<EditText
@@ -273,6 +283,8 @@
 						android:id="@+id/ll_existing_address"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
+						android:layout_marginTop="2dp"
+						android:layout_marginBottom="3dp"
 						android:orientation="vertical"
 						android:paddingHorizontal="10dp"
 						android:background="@drawable/bg_inputfield"

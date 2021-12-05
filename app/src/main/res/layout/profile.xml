@@ -284,11 +284,7 @@
                         android:fontFamily="sans-serif"
                         android:text="'PhoneNoHere'"
                         android:textColor="@color/black"
-                        android:textSize="22dp"
-                        app:layout_constraintBottom_toTopOf="@+id/textView7"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                        android:textSize="22dp" />
 
                 </LinearLayout>
 
@@ -296,16 +292,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
+    
+                    <Button
+                            android:id="@+id/btn_addresses"
+                            android:layout_width="250dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="100dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="100dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/bg_button"
+                            android:text="Saved Addresses"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textColorHighlight="@color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/editBtn"
-                        android:layout_width="250dp"
+                        android:layout_width="215dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="100dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="100dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/bg_button"
@@ -314,32 +327,7 @@
                         android:textColor="@color/white"
                         android:textColorHighlight="@color/white"
                         android:textSize="14dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/aboutBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/showDefaultAddress" />
-    
-                    <Button
-                            android:id="@+id/btn_addresses"
-                            android:layout_width="250dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="100dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="100dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/bg_button"
-                            android:text="Addresses"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textColorHighlight="@color/white"
-                            android:textSize="14dp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@id/aboutBtn"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/showDefaultAddress" />
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/aboutBtn"
@@ -360,7 +348,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/btmNav"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editBtn" />
+                        app:layout_constraintTop_toBottomOf="@+id/btn_addresses" />
 
                 </LinearLayout>
 

@@ -26,7 +26,7 @@
 				android:layout_width="270dp"
 				android:layout_height="wrap_content"
 				android:fontFamily="@font/inder"
-				android:text="Select Address"
+				android:text="Saved Addresses"
 				android:textAlignment="center"
 				android:textColor="@color/black"
 				android:textSize="32sp"
@@ -39,6 +39,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:orientation="vertical"
+			android:layout_marginTop="10dp"
 			android:layout_weight="1">
 		
 		<FrameLayout
@@ -68,9 +69,13 @@
 		<TextView
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
+				android:layout_marginTop="20dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:layout_gravity="center"
 				android:text="You do not have existing address"
 				android:textStyle="bold"
-				android:textSize="25dp"
+				android:textSize="30dp"
 				android:textAlignment="center"
 				android:gravity="center"
 				android:layout_weight="1"/>
