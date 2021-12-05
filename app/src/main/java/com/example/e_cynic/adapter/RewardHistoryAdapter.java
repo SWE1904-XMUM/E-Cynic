@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.entity.UserReward;
+import com.example.e_cynic.utils.DateUtil;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class RewardHistoryAdapter extends RecyclerView.Adapter<RewardHistoryAdap
             //holder.redeemImgList.setImageResource();
             holder.redeemNameList.setText(userRewardList.get(position).rewardItem);
             holder.redeemPointList.setText(String.valueOf(userRewardList.get(position).points));
-            holder.redeemDateList.setText(String.valueOf(userRewardList.get(position).date));
+            holder.redeemDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(userRewardList.get(position).date)));
         }
     }
 

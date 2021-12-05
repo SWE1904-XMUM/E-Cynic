@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RewardHistoryAdapter;
+import com.example.e_cynic.db.UserRewardDatabase;
 import com.example.e_cynic.entity.UserReward;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class RewardHistoryActivity extends AppCompatActivity
     private ImageView backBtn;
     private RecyclerView rewardsRecyclerView;
     private RewardHistoryAdapter rewardHistoryAdapter;
-    private List<UserReward> userRewardList;
+    private List<UserReward> userRewardList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +33,16 @@ public class RewardHistoryActivity extends AppCompatActivity
         setContentView(R.layout.reward);
 
         setViewComponent();
-        storeRewardDataIntoList();
+        try
+        {
+            storeRewardDataIntoList();
+        }
+
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         setUpAdapter();
 
         backBtn.setOnClickListener(new View.OnClickListener()
@@ -52,9 +63,9 @@ public class RewardHistoryActivity extends AppCompatActivity
         rewardsRecyclerView = findViewById(R.id.rewardsRecyclerView);
     }
 
-    private void storeRewardDataIntoList()
+    private void storeRewardDataIntoList() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
-        userRewardList = new ArrayList<>();
+        userRewardList = UserRewardDatabase.getUserRewardsByUsername("pjou");
     }
 
     private void setUpAdapter()
