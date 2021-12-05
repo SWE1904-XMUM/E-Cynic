@@ -27,21 +27,20 @@
 
     <FrameLayout
         android:id="@+id/sortFrame"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/historyFrame"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="240dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border">
 
         <Spinner
             android:id="@+id/sortOrders"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="210dp"
-            android:minHeight="30dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="30dp" />
     </FrameLayout>
 
     <FrameLayout
@@ -52,12 +51,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/historyRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_marginBottom="10dp" />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
