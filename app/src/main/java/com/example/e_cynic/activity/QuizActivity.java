@@ -56,27 +56,17 @@ public class QuizActivity extends AppCompatActivity
         date = sm.getDate();
         currentDate = DateUtil.getCurrentDate();
 
-        if ("".equals(date))
+        if (currentDate.equals(date))
         {
-            playBtn.setEnabled(true);
-            sm.setCurrentDate(currentDate);
-            noOfChance.setText("1");
+            playBtn.setEnabled(false);
+            noOfChance.setText("0");
         }
 
         else
         {
-            if (currentDate.equals(date))
-            {
-                playBtn.setEnabled(false);
-                noOfChance.setText("0");
-            }
-
-            else
-            {
-                playBtn.setEnabled(true);
-                sm.setCurrentDate(currentDate);
-                noOfChance.setText("1");
-            }
+            playBtn.setEnabled(true);
+            sm.setCurrentDate(currentDate);
+            noOfChance.setText("1");
         }
     }
 
