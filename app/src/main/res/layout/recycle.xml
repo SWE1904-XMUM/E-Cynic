@@ -97,20 +97,20 @@
 					android:layout_height="wrap_content"
 					android:layout_marginHorizontal="10dp"
 					android:nestedScrollingEnabled="false"
-					android:padding="10dp" />
-				
+					android:padding="5dp" />
+
 				<Button
-						android:id="@+id/btn_addItem"
-						android:layout_width="130dp"
-						android:layout_height="45dp"
-						android:layout_below="@id/enterItemDetail"
-						android:layout_marginStart="20dp"
-						android:layout_marginTop="10dp"
-						android:layout_marginEnd="20dp"
-						android:layout_marginBottom="15dp"
-						android:background="@drawable/bg_button"
-						android:text="+ Add Item"
-						android:textAlignment="center" />
+					android:id="@+id/btn_addItem"
+					android:layout_width="130dp"
+					android:layout_height="45dp"
+					android:layout_below="@id/enterItemDetail"
+					android:layout_marginStart="30dp"
+					android:layout_marginTop="5dp"
+					android:layout_marginEnd="20dp"
+					android:layout_marginBottom="10dp"
+					android:background="@drawable/bg_button"
+					android:text="+ Add Item"
+					android:textAlignment="center" />
 				
 				<View
 						android:id="@+id/divider2"
@@ -137,7 +137,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_marginVertical="5dp"
-						android:padding="5dp"
+						android:padding="2dp"
 						android:orientation="horizontal">
 					
 					<TextView
