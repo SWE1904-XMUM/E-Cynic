@@ -88,26 +88,6 @@ public class EditProfileActivity extends AppCompatActivity
         email.setText(user.email);
         phone.setText(user.phoneNumber);
         password.setText(user.phoneNumber);
-
-        try
-        {
-            addressList = AddressDatabase.getAddressesByUserId(user.userId);
-        }
-
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        System.out.println("address size " + addressList.size());
-
-        // TODO
-        /*addressLine1.setText(addressList.get(0).firstLine);
-        addressLine2.setText(addressList.get(0).secondLine);
-        addressLine3.setText(addressList.get(0).thirdLine);
-        //state.setText(addressList.get(0).state);
-        postcode.setText(addressList.get(0).postcode);
-        city.setText(addressList.get(0).city);*/
     }
 
     private void updateEditedProfile()
