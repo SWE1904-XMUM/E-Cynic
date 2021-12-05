@@ -53,6 +53,7 @@ public class EditProfileActivity extends AppCompatActivity
     {
         backBtn = findViewById(R.id.backBtn);
         uname = findViewById(R.id.uname);
+        uname.setEnabled(false);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
