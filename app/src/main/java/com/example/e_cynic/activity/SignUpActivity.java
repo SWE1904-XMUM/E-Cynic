@@ -20,6 +20,7 @@ import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.User;
+import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 import java.util.HashMap;
@@ -155,28 +156,28 @@ public class SignUpActivity extends AppCompatActivity
 
     private boolean fieldDataIsComplete() {
         boolean complete = true;
-        if(usernameTxt.equals("")) {
+        if(usernameTxt.equals("") || !ValidationUtil.validateUsername(usernameTxt)) {
             setErrorField(username);
             complete = complete && false;
         }
         else {
             resetField(username);
         }
-        if(emailTxt.equals("")) {
+        if(emailTxt.equals("") || !ValidationUtil.validateEmail(emailTxt)) {
             setErrorField(email);
             complete = complete && false;
         }
         else {
             resetField(email);
         }
-        if(phoneTxt.equals("")) {
+        if(phoneTxt.equals("") || !ValidationUtil.validatePhoneNumber(phoneTxt)) {
             setErrorField(phone);
             complete = complete && false;
         }
         else {
             resetField(phone);
         }
-        if(passwordTxt.equals("")) {
+        if(passwordTxt.equals("") || !ValidationUtil.validatePassword(passwordTxt)) {
             setErrorField(password);
             complete = complete && false;
         }
@@ -190,14 +191,14 @@ public class SignUpActivity extends AppCompatActivity
         else {
             resetField(addressLine1);
         }
-        if(postcodeTxt.equals("")) {
+        if(postcodeTxt.equals("") || !ValidationUtil.validatePostcode(postcodeTxt)) {
             setErrorField(postcode);
             complete = complete && false;
         }
         else {
             resetField(postcode);
         }
-        if(cityTxt.equals("")) {
+        if(cityTxt.equals("") || !ValidationUtil.validateCity(cityTxt)) {
             setErrorField(city);
             complete = complete && false;
         }
