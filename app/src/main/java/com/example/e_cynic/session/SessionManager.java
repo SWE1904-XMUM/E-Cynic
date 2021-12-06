@@ -41,7 +41,7 @@ public class SessionManager
     public String getUsername()
     {
         //TODO return username
-        //return sp.getString("USERNAME","");
+//        return sp.getString("USERNAME","");
         return "testuser";
     }
 
