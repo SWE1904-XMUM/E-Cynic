@@ -41,7 +41,6 @@ public class DateUtil {
             Date d2 = format.parse(orderDate);
             long diff = d2.getTime() - d1.getTime();
             String duration = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-            System.out.println ("Days: " + duration);
             return duration;
         }
 
