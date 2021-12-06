@@ -15,9 +15,15 @@ import com.example.e_cynic.adapter.OrderDetailsAdapter;
 import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.db.ItemDatabase;
 import com.example.e_cynic.db.OrderDatabase;
+import com.example.e_cynic.db.PointsDatabase;
+import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.entity.Order;
+import com.example.e_cynic.entity.Point;
+import com.example.e_cynic.session.SessionManager;
+import com.example.e_cynic.utils.DateUtil;
+import com.example.e_cynic.utils.userInteraction.ToastCreator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -34,6 +40,8 @@ public class OrderDetailActivity extends AppCompatActivity
     private TextView tv_status;
     private ImageView backBtn;
 
+    ToastCreator toastCreator = new ToastCreator();
+    SessionManager sm;
     //data
     private Integer orderId; //to be passed by intent
 
@@ -48,6 +56,8 @@ public class OrderDetailActivity extends AppCompatActivity
         setContentView(R.layout.activity_order_detail);
         setViewComponents();
         intent = getIntent();
+
+       sm = new SessionManager(getApplicationContext());
 
         orderId = Integer.valueOf(intent.getStringExtra("orderId"));
 
@@ -100,8 +110,66 @@ public class OrderDetailActivity extends AppCompatActivity
     private void updateStatus()
     {
         orderId = Integer.valueOf(intent.getStringExtra("orderId"));
+        String orderDateTime = DateUtil.getDateFromTimestamp(Long.valueOf(OrderDatabase.getOrderDateTimeByOrderId(orderId)));
+        String currentDateTime = DateUtil.getCurrentDate();
+        String duration = DateUtil.getDuration(currentDateTime,orderDateTime);
+        System.out.println("Duration " + duration);
 
-        String orderDate = OrderDatabase.getOrderDateByOrderId(orderId);
+        if (Integer.parseInt(duration) >= 3)
+        {
+            // update point in item db
+            for (int i=0; i<itemList.size(); i++)
+            {
+                ItemDatabase.editItemPointsByItemId(itemList.get(i).itemId,50);
+            }
+
+            // update order status to "collected"
+            OrderDatabase.editOrderStatusByOrderId(orderId,"collected");
+
+            // get total points of order
+            int totalPoints = (itemList.size())*50;
+
+            // update user's points in point db
+            insertPointsIntoDb(totalPoints);
+
+            // update points in sp
+            int tp = sm.getTotalPoints();;
+            tp += totalPoints;
+            sm.setTotalPoints(tp);
+
+            // display in textview
+            tv_point.setText(String.valueOf(totalPoints));
+            tv_status.setText("collected");
+        }
+    }
+
+    private void insertPointsIntoDb(int p)
+    {
+        int userId = UserDatabase.getUserIdByUsername(sm.getUsername());
+        Long date = DateUtil.getCurrentTimestamp();
+        Point point = new Point(null,userId,p,date);
+
+        boolean insertPoints = false;
+
+        try
+        {
+            insertPoints = PointsDatabase.insertPoint(point);
+        }
+
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+
+        if (insertPoints == true)
+        {
+            toastCreator.createToast(this,"Store points successfully!");
+        }
+
+        else
+        {
+            toastCreator.createToast(this,"Fail to store points");
+        }
     }
 
     private void setViewComponents()

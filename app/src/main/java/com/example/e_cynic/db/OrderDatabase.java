@@ -59,7 +59,7 @@ public class OrderDatabase
         return c.moveToNext() ? c.getString(0) : "";
     }
 
-    public static String getOrderDateByOrderId(Integer orderId) {
+    public static String getOrderDateTimeByOrderId(Integer orderId) {
         Cursor c = db.rawQuery("select " + date + " from orders where orderId=?", new String[]{String.valueOf(orderId)});
         return c.moveToNext() ? c.getString(0) : "";
     }
