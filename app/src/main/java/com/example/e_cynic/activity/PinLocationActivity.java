@@ -35,12 +35,12 @@ import java.io.IOException;
 
 public class PinLocationActivity extends FragmentActivity implements OnMapReadyCallback
 {
-    Location currentLocation;
-    SupportMapFragment supportMapFragment;
-    FusedLocationProviderClient client;
-    TextView pinAddress;
-    Button confirmButton;
-    Address currentAddressValue; //address of pin location
+    private Location currentLocation;
+    private SupportMapFragment supportMapFragment;
+    private FusedLocationProviderClient client;
+    private TextView pinAddress;
+    private Button confirmButton;
+    private Address currentAddressValue; //address of pin location
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

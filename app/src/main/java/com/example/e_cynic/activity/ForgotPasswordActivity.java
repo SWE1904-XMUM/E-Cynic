@@ -14,8 +14,8 @@ public class ForgotPasswordActivity extends AppCompatActivity
 {
     private TextView username,email,newPassword;
     private Button updateBtn;
-    String usernameTxt,emailTxt,newPasswordTxt;
-    SessionManager sm;
+    private String usernameTxt,emailTxt,newPasswordTxt;
+    private SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

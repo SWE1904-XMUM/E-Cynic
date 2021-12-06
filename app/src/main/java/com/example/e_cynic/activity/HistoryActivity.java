@@ -32,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity
 {
 
     private RecyclerView historyRecyclerView;
-    HistoryOrderListAdapter historyOrderListAdapter;
+    private HistoryOrderListAdapter historyOrderListAdapter;
     private String[] itemInSortList;
     private Spinner sortList;
     private LinearLayout LL_recycleHistory;

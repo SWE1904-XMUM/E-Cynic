@@ -15,8 +15,9 @@ import com.example.e_cynic.R;
 
 public class HomeArticleAdapter extends RecyclerView.Adapter<HomeArticleAdapter.MyViewHolder> {
     //retrieve the data from array
-    String[] d1, d2, d3;
-    Context context;
+    private String[] d1, d2, d3;
+    private Context context;
+
     public HomeArticleAdapter(Context ct, String[] s1, String[] s2, String[] s3) {
         context = ct;
         d1 = s1;
