@@ -34,12 +34,14 @@ public class QuizActivity extends AppCompatActivity
 
         setViewComponent();
         bottomNavBar();
+        updateQuizChance();
 
         playBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                sm.setCurrentDate(currentDate);
                 updateQuizChance();
                 Intent i = new Intent(QuizActivity.this,PlayQuizActivity.class);
                 startActivityForResult(i, RequestCode.PLAY_QUIZ_ACTIVITY);
@@ -67,7 +69,6 @@ public class QuizActivity extends AppCompatActivity
         else
         {
             playBtn.setEnabled(true);
-            sm.setCurrentDate(currentDate);
             noOfChance.setText("1");
         }
     }
@@ -78,7 +79,6 @@ public class QuizActivity extends AppCompatActivity
 
         switch (requestCode) {
             case RequestCode.PLAY_QUIZ_ACTIVITY:
-                updateQuizChance();
                 break;
         }
     }
