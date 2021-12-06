@@ -190,7 +190,7 @@
             android:layout_marginEnd="260dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/inder"
-            android:text="(**Must at least 8 characters including 1 uppercase letter, 1 special character and 1 alphanumeric character)"
+            android:text="(**Must at least 8 characters including 1 uppercase letter, and 1 alphanumeric character)"
             android:textColor="@color/black"
             android:textSize="11sp"
             android:textStyle="bold"

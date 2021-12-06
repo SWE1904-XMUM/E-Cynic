@@ -55,6 +55,8 @@ public class SignUpActivity extends AppCompatActivity
     private String addressLine3Txt;
     private String stateTxt;
 
+    private boolean acceptMessage = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -72,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity
 
                 if (!fieldDataIsComplete())
                 {
-                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
+//                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
                     return;
                 }
 
@@ -156,56 +158,89 @@ public class SignUpActivity extends AppCompatActivity
 
     private boolean fieldDataIsComplete() {
         boolean complete = true;
-        if(usernameTxt.equals("") || !ValidationUtil.validateUsername(usernameTxt)) {
-            setErrorField(username);
+        acceptMessage = true;
+        if(usernameTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(username, "Username field is empty");
+        }
+        else if(!ValidationUtil.validateUsername(usernameTxt)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(username, "Please ensure your username contains 6 to 12 characters of alphabets and numbers");
         }
         else {
             resetField(username);
         }
-        if(emailTxt.equals("") || !ValidationUtil.validateEmail(emailTxt)) {
-            setErrorField(email);
+        if(emailTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(email, "Email field is empty");
+        }
+        else if(!ValidationUtil.validateEmail(emailTxt))  {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(email, "Please ensure your email is valid");
         }
         else {
             resetField(email);
         }
-        if(phoneTxt.equals("") || !ValidationUtil.validatePhoneNumber(phoneTxt)) {
-            setErrorField(phone);
+        if(phoneTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(phone, "Phone number field is empty");
+        }
+        else if(!ValidationUtil.validatePhoneNumber(phoneTxt)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(phone, "Please ensure your phone number is in correct format");
         }
         else {
             resetField(phone);
         }
-        if(passwordTxt.equals("") || !ValidationUtil.validatePassword(passwordTxt)) {
-            setErrorField(password);
+        if(passwordTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(password, "Password field is empty");
+        }
+        else if(!ValidationUtil.validatePassword(passwordTxt)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(password, "Please ensure your password fulfils the requirement");
         }
         else {
             resetField(password);
         }
         if(addressLine1Txt.equals("")) {
-            setErrorField(addressLine1);
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(addressLine1, "Address line 1 field is empty");
         }
         else {
             resetField(addressLine1);
         }
-        if(postcodeTxt.equals("") || !ValidationUtil.validatePostcode(postcodeTxt)) {
-            setErrorField(postcode);
+        if(postcodeTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(postcode, "Postcode field is empty");
+        }
+        else if(!ValidationUtil.validatePostcode(postcodeTxt)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(postcode, "Please ensure postcode is in correct format");
         }
         else {
             resetField(postcode);
         }
-        if(cityTxt.equals("") || !ValidationUtil.validateCity(cityTxt)) {
-            setErrorField(city);
+        if (cityTxt.equals("")) {
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(city, "City field is empty");
+        }
+        else if(!ValidationUtil.validateCity(cityTxt)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(city, "Please ensure city field contains only alphabets");
         }
         else {
             resetField(city);
         }
         return complete;
+    }
+
+    private void setErrorFieldAndDisplaySnackBarMessage(EditText et, String message) {
+        setErrorField(et);
+        if(acceptMessage) {
+            SnackbarCreator.createNewSnackbar(signUpBtn, message);
+            acceptMessage = false;
+        }
     }
 
     private void setErrorField(EditText et) {

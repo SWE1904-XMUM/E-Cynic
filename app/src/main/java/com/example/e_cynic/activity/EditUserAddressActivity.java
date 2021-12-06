@@ -30,6 +30,8 @@ public class EditUserAddressActivity extends AppCompatActivity {
 
     private Button btn_editAddress;
 
+    private boolean acceptMessage = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,21 +124,31 @@ public class EditUserAddressActivity extends AppCompatActivity {
     private boolean validateAddress() {
         boolean complete = true;
         if (address.firstLine.equals("")) {
-            setErrorField(et_address_line1);
             complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(et_address_line1, "Line 1 field is empty");
         } else {
             resetField(et_address_line1);
         }
-        if (address.postcode == 0 || !ValidationUtil.validatePostcode(String.valueOf(address.postcode))) {
-            setErrorField(et_postcode);
+        if (address.postcode == 0) {
             complete = complete && false;
-        } else {
+            setErrorFieldAndDisplaySnackBarMessage(et_postcode, "Postcode field is empty");
+        }
+        else if (!ValidationUtil.validatePostcode(String.valueOf(address.postcode))){
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(et_postcode, "Please ensure postcode is in correct format");
+        }
+        else {
             resetField(et_postcode);
         }
-        if (address.city.equals("") || !ValidationUtil.validateCity(address.city)) {
-            setErrorField(et_city);
+        if (address.city.equals("")) {
             complete = complete && false;
-        } else {
+            setErrorFieldAndDisplaySnackBarMessage(et_city, "City field is empty");
+        }
+        else if(!ValidationUtil.validateCity(address.city)) {
+            complete = complete && false;
+            setErrorFieldAndDisplaySnackBarMessage(et_city, "Please ensure city field contains only alphabets");
+        }
+        else {
             resetField(et_city);
         }
         return complete;
@@ -149,6 +161,13 @@ public class EditUserAddressActivity extends AppCompatActivity {
             }
         }
         return -1;
+    }
+    private void setErrorFieldAndDisplaySnackBarMessage(EditText et, String message) {
+        setErrorField(et);
+        if(acceptMessage) {
+            SnackbarCreator.createNewSnackbar(btn_editAddress, message);
+            acceptMessage = false;
+        }
     }
 
     private void setErrorField(EditText et) {
