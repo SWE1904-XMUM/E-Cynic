@@ -1,6 +1,5 @@
 package com.example.e_cynic.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.db.UserDatabase;
-import com.example.e_cynic.entity.User;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
@@ -35,26 +33,23 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getViewText();
                 if (validateFields() == true) {
-                    if(!UserDatabase.checkUsernameExistence(usernameTxt)) {
+                    if (!UserDatabase.checkUsernameExistence(usernameTxt)) {
                         SnackbarCreator.createNewSnackbar(updateBtn, "Account with the given username does " +
                                 "not exist");
-                    }
-                    else if(!UserDatabase.checkEmailExistence(emailTxt)) {
+                    } else if (!UserDatabase.checkEmailExistence(emailTxt)) {
                         SnackbarCreator.createNewSnackbar(updateBtn, "Account with the given email does not" +
                                 " exist");
-                    }
-                    else {
+                    } else {
                         boolean result = false;
                         try {
                             result = UserDatabase.editUserPassword(usernameTxt, emailTxt, newPasswordTxt);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if(result == true) {
+                        if (result == true) {
                             SnackbarCreator.createNewSnackbar(updateBtn, "Your password has been updated");
                             finish();
-                        }
-                        else {
+                        } else {
                             SnackbarCreator.createNewSnackbar(updateBtn, "Password update failed. Please try again");
                         }
                     }
@@ -78,22 +73,43 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private boolean validateFields() {
         boolean complete = true;
-        if (usernameTxt.equals("") || !ValidationUtil.validateUsername(usernameTxt)) {
+        if (usernameTxt.equals("")) {
             setErrorField(username);
             complete = complete && false;
-        } else {
+            SnackbarCreator.createNewSnackbar(updateBtn, "Username field is empty");
+        } else if (!ValidationUtil.validateUsername(usernameTxt)) {
+            setErrorField(username);
+            complete = complete && false;
+            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your username contains 6 to 12 " +
+                    "characters of alphabets and numbers");
+        }
+        else{
             resetField(username);
         }
-        if (emailTxt.equals("") || !ValidationUtil.validateEmail(emailTxt)) {
+        if (emailTxt.equals("")) {
             setErrorField(email);
             complete = complete && false;
-        } else {
+            SnackbarCreator.createNewSnackbar(updateBtn, "Email field is empty");
+        }
+        else if(!ValidationUtil.validateEmail(emailTxt)) {
+            setErrorField(email);
+            complete = complete && false;
+            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your email is valid");
+        }
+        else{
             resetField(email);
         }
-        if (newPasswordTxt.equals("") || !ValidationUtil.validatePassword(newPasswordTxt)) {
+        if (newPasswordTxt.equals("")) {
             setErrorField(newPassword);
             complete = complete && false;
-        } else {
+            SnackbarCreator.createNewSnackbar(updateBtn, "Password field is empty");
+        }
+        else if (!ValidationUtil.validatePassword(newPasswordTxt)){
+            setErrorField(newPassword);
+            complete = complete && false;
+            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your password contains upper case, lower case, and number, its length is at least 6");
+        }
+        else {
             resetField(newPassword);
         }
         return complete;
