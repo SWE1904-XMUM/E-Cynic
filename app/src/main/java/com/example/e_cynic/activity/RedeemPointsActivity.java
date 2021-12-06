@@ -60,7 +60,7 @@ public class RedeemPointsActivity extends AppCompatActivity
 
     private void setUpAdapter()
     {
-        redeemListAdapter = new VoucherListAdapter(getApplicationContext(),voucherList);
+        redeemListAdapter = new VoucherListAdapter(getApplicationContext(),RedeemPointsActivity.this, voucherList);
         voucherRecyclerView.setAdapter(redeemListAdapter);
         voucherRecyclerView.setLayoutManager(new LinearLayoutManager(RedeemPointsActivity.this));
     }
@@ -80,7 +80,7 @@ public class RedeemPointsActivity extends AppCompatActivity
         voucherList.add(new Voucher(R.drawable.unicef,"Unicef RM5 Donation Voucher",500));
     }
 
-    private void setAvailablePoints()
+    public void setAvailablePoints()
     {
         int p = sm.getTotalPoints();
         availablePoints.setText(String.valueOf(p));

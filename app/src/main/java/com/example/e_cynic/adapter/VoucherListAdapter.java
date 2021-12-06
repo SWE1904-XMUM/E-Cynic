@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.activity.RedeemPointsActivity;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.db.UserRewardDatabase;
 import com.example.e_cynic.entity.UserReward;
@@ -25,13 +27,15 @@ import java.util.List;
 
 public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.MyViewHolder>
 {
-    Context context;
-    List<Voucher> voucherList;
-    SessionManager sm;
+    private Context context;
+    private AppCompatActivity activity;
+    private List<Voucher> voucherList;
+    private SessionManager sm;
 
-    public VoucherListAdapter(Context context, List<Voucher> voucherList)
+    public VoucherListAdapter(Context context, AppCompatActivity activity, List<Voucher> voucherList)
     {
         this.context = context;
+        this.activity = activity;
         this.voucherList = voucherList;
         sm = new SessionManager(context);
     }
@@ -89,6 +93,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                     {
                         toastCreator.createToast(context,"Redeem successfully!");
                         sm.setTotalPoints((sm.getTotalPoints()-p));
+                        ((RedeemPointsActivity)activity).setAvailablePoints();
                     }
 
                     else
