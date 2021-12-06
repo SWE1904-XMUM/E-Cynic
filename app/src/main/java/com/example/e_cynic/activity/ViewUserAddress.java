@@ -60,7 +60,8 @@ public class ViewUserAddress extends AppCompatActivity {
         });
     }
 
-    private void setUpRecyclerView() {
+    public void setUpRecyclerView() {
+        updateAddressList();
         ViewAddressListAdapter adapter = new ViewAddressListAdapter(this, ViewUserAddress.this, addressList);
         rv_addresses.setAdapter(adapter);
         rv_addresses.setLayoutManager(new LinearLayoutManager(ViewUserAddress.this));
@@ -82,7 +83,6 @@ public class ViewUserAddress extends AppCompatActivity {
             case RequestCode.EDIT_ADDRESS_ACTIVITY:
                 if (resultCode == RESULT_OK) {
                     SnackbarCreator.createNewSnackbar(rv_addresses, "Address has been updated");
-                    updateAddressList();
                     setUpRecyclerView();
                 } else if (resultCode == RESULT_CANCELED) {
                     SnackbarCreator.createNewSnackbar(rv_addresses, "Address was not updated");

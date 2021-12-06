@@ -1,14 +1,13 @@
 package com.example.e_cynic.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
 import com.example.e_cynic.activity.EditUserAddressActivity;
+import com.example.e_cynic.activity.ViewUserAddress;
 import com.example.e_cynic.constants.RequestCode;
+import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.entity.Address;
+import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
 import java.util.List;
 
@@ -37,18 +39,31 @@ public class ViewAddressListAdapter extends RecyclerView.Adapter<ViewAddressList
     @Override
     public ViewAddressListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.user_addresses_list, parent, false);
+        View view = inflater.inflate(R.layout.user_edit_address_list, parent, false);
         return new ViewAddressListAdapter.MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewAddressListAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+        holder.imgBtn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, EditUserAddressActivity.class);
                 intent.putExtra("addressId", String.valueOf(addressList.get(position).addressId));
                 activity.startActivityForResult(intent, RequestCode.EDIT_ADDRESS_ACTIVITY);
+            }
+        });
+        holder.imgBtn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean result = AddressDatabase.removeAddressByAddressId(addressList.get(position).addressId);
+                if(result == true) {
+                    SnackbarCreator.createNewSnackbar(holder.imgBtn_delete, "Address has been deleted");
+                    ((ViewUserAddress)activity).setUpRecyclerView();
+                }
+                else {
+                    SnackbarCreator.createNewSnackbar(holder.imgBtn_delete, "Address deletion failed. Please try again");
+                }
             }
         });
 
@@ -67,7 +82,6 @@ public class ViewAddressListAdapter extends RecyclerView.Adapter<ViewAddressList
         }
         holder.tv_address_postcode_city.setText(String.valueOf(addressList.get(position).postcode) + " " + addressList.get(position).city);
         holder.tv_address_state.setText(addressList.get(position).state);
-        holder.btn_edit.setImageResource(R.drawable.ic_baseline_create_24);
     }
 
     @Override
@@ -84,7 +98,8 @@ public class ViewAddressListAdapter extends RecyclerView.Adapter<ViewAddressList
         TextView tv_address_postcode_city;
         TextView tv_address_state;
 
-        ImageButton btn_edit;
+        ImageButton imgBtn_edit;
+        ImageButton imgBtn_delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,7 +112,8 @@ public class ViewAddressListAdapter extends RecyclerView.Adapter<ViewAddressList
             tv_address_postcode_city = itemView.findViewById(R.id.tv_address_postcode_city);
             tv_address_state = itemView.findViewById(R.id.tv_address_state);
 
-            btn_edit = itemView.findViewById(R.id.imgBtn);
+            imgBtn_edit = itemView.findViewById(R.id.imgBtn_edit);
+            imgBtn_delete = itemView.findViewById(R.id.imgBtn_delete);
         }
     }
 }
