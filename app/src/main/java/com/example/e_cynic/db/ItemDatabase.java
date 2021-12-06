@@ -60,4 +60,11 @@ public class ItemDatabase
         Cursor c = db.rawQuery("select SUM(point) from items where orderId=? group by orderId", null);
         return c.moveToNext() ? c.getInt(0) : -1;
     }
+
+    public static boolean editItemPointsByItemId(Integer itemId,Integer itemPoints) {
+        ContentValues cv = new ContentValues();
+        cv.put(point,itemPoints);
+        long result = db.update(itemsTable, cv, "itemId=?", new String[]{String.valueOf(itemId)})  ;
+        return result > 0;
+    }
 }

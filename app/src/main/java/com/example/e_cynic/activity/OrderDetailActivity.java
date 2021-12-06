@@ -22,7 +22,8 @@ import com.example.e_cynic.entity.Order;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class OrderDetailActivity extends AppCompatActivity {
+public class OrderDetailActivity extends AppCompatActivity
+{
     private Intent intent;
 
     //Views
@@ -41,7 +42,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private Address address;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
         setViewComponents();
@@ -49,16 +51,21 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         orderId = Integer.valueOf(intent.getStringExtra("orderId"));
 
-        try {
+        try
+        {
             order = OrderDatabase.getOrderByOrderId(orderId);
             itemList = ItemDatabase.getItemsByOrderId(orderId);
 
             address = AddressDatabase.getAddressByAddressId(order.addressId);
 
-            if (itemList != null) {
+            if (itemList != null)
+            {
                 updateView();
             }
-        } catch (Exception e) {
+        }
+
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
 
@@ -74,7 +81,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
+    {
         OrderDetailsAdapter adapter = new OrderDetailsAdapter(getApplicationContext(), itemList);
         rv_itemList.setAdapter(adapter);
         rv_itemList.setLayoutManager(new LinearLayoutManager(this));
@@ -87,7 +95,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         tv_point.setText(status != "" ? (points >= 0 ? String.valueOf(points) : "To be confirmed") : "Order not available");
     }
 
-    private void setViewComponents() {
+    private void setViewComponents()
+    {
         rv_itemList = findViewById(R.id.rv_itemList);
         tv_noOfDevice = findViewById(R.id.noOfDevice);
         tv_address = findViewById(R.id.pinnedAddress);
@@ -96,7 +105,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         finish();
