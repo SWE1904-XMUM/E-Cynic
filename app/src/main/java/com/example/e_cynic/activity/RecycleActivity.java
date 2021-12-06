@@ -74,6 +74,7 @@ public class RecycleActivity extends AppCompatActivity {
     public Address address;
 
     public int clickedItem = -1;
+    private boolean acceptMessage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,6 @@ public class RecycleActivity extends AppCompatActivity {
                     updateAddressFromRecycleForm(userId);
 
                     if (validateOrderInput() == false) {
-                        SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please input all required fields in correct format");
                         return;
                     }
 
@@ -355,8 +355,10 @@ public class RecycleActivity extends AppCompatActivity {
     }
 
     private boolean validateOrderInput() {
+        acceptMessage = true;
         for (Item item : items) {
             if (item.image == null) {
+                SnackbarCreator.createNewSnackbar(submitRecycleBtn, "Please upload one image for each item");
                 return false;
             }
         }
@@ -364,26 +366,35 @@ public class RecycleActivity extends AppCompatActivity {
         if (ll_new_address.getVisibility() == View.VISIBLE) {
             boolean complete = true;
             if(address.firstLine.equals("")) {
-                setErrorField(et_addLine1);
                 complete = complete && false;
+                setErrorFieldAndDisplaySnackBarMessage(et_addLine1, "Address line 1 field is empty");
             }
             else {
                 resetField(et_addLine1);
             }
-            if(address.city.equals("")) {
-                setErrorField(et_city);
+            if(address.postcode == 0) {
                 complete = complete && false;
+                setErrorFieldAndDisplaySnackBarMessage(et_postcode, "Postcode field is empty");
             }
-            else {
-                resetField(et_city);
-            }
-            if(address.postcode == 0 || !ValidationUtil.validatePostcode(String.valueOf(address.postcode))) {
-                setErrorField(et_postcode) ;
+            else if(!ValidationUtil.validatePostcode(String.valueOf(address.postcode))) {
                 complete = complete && false;
+                setErrorFieldAndDisplaySnackBarMessage(et_postcode, "Please ensure postcode is in correct format");
             }
             else {
                 resetField(et_postcode);
             }
+            if(address.city.equals("")) {
+                complete = complete && false;
+                setErrorFieldAndDisplaySnackBarMessage(et_city, "City field is empty");
+            }
+            else if(!ValidationUtil.validateCity(address.city)) {
+                complete = complete && false;
+                setErrorFieldAndDisplaySnackBarMessage(et_city, "City name should contain only alphabets");
+            }
+            else {
+                resetField(et_city);
+            }
+
             return complete;
         }
 
@@ -391,6 +402,14 @@ public class RecycleActivity extends AppCompatActivity {
             return true;
         }
         return true;
+    }
+
+    private void setErrorFieldAndDisplaySnackBarMessage(EditText et, String message) {
+        setErrorField(et);
+        if(acceptMessage) {
+            SnackbarCreator.createNewSnackbar(submitRecycleBtn, message);
+            acceptMessage = false;
+        }
     }
 
     private void setErrorField(EditText et) {
