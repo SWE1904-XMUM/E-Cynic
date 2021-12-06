@@ -40,7 +40,6 @@ public class ItemDatabase
         return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
     }
 
-    // newly added function -> order history
     public static Bitmap getFirstItemImageByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Item item = getFirstItemByOrderId(orderId);
 
