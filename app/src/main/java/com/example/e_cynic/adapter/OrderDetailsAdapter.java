@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Item;
 import com.example.e_cynic.utils.ImageUtil;
 
@@ -20,9 +21,12 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     private Context context;
     private List<Item> itemList;
 
+    private boolean orderInProcess;
+
     public OrderDetailsAdapter(Context context, List<Item> itemList) {
         this.context = context;
         this.itemList = itemList;
+        this.orderInProcess = (OrderDatabase.getOrderStatusByOrderId(itemList.get(0).orderId)).toLowerCase().equals("processing");
     }
 
     @NonNull
@@ -37,7 +41,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     public void onBindViewHolder(@NonNull OrderDetailsAdapter.MyViewHolder holder, int position) {
         holder.tv_itemIndex.setText(String.valueOf(position + 1));
         holder.tv_typeOfAppliances.setText(itemList.get(position).itemName);
-        holder.tv_itemPoint.setText(String.valueOf(itemList.get(position).point));
+        holder.tv_itemPoint.setText(orderInProcess ? "To be confirmed" : String.valueOf(itemList.get(position).point));
         holder.iv_appliancesImg.setImageBitmap(ImageUtil.byteArrayToBitmap(itemList.get(position).image));
     }
 
