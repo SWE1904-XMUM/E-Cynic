@@ -50,7 +50,7 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
         try
         {
             holder.orderImageList.setImageBitmap(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(position).orderId));
-            holder.orderList.setText("Order " + String.valueOf(historyOrders.get(position).orderId));
+            holder.orderList.setText("Id: " + String.valueOf(historyOrders.get(position).orderId));
             holder.orderStatusList.setText(String.valueOf(historyOrders.get(position).status));
             holder.orderDateList.setText(String.valueOf(DateUtil.getDateTimeByTimestamp(historyOrders.get(position).date)));
         }
