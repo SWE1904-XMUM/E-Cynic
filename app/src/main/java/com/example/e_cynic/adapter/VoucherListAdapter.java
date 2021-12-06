@@ -58,10 +58,11 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
             public void onClick(View view)
             {
                 int p = voucherList.get(position).voucherPoints;
+                int tp = sm.getTotalPoints();
                 String name = voucherList.get(position).voucherName;
                 ToastCreator toastCreator = new ToastCreator();
 
-                if (sm.getTotalPoints() < p)
+                if (tp < p)
                 {
                     toastCreator.createToast(context,"Not enough points.");
                 }
@@ -88,6 +89,7 @@ public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.
                     if (insertReward == true)
                     {
                         toastCreator.createToast(context,"Redeem successfully!");
+                        sm.setTotalPoints(tp-p);
                     }
 
                     else
