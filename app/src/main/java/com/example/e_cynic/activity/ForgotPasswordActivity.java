@@ -18,6 +18,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button updateBtn;
     private String usernameTxt, emailTxt, newPasswordTxt;
     private SessionManager sm;
+    boolean acceptMessage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,46 +74,48 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private boolean validateFields() {
         boolean complete = true;
+        acceptMessage = true;
         if (usernameTxt.equals("")) {
-            setErrorField(username);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Username field is empty");
+            setErrorFieldAndDisplaySnackBarMessage(username, "Username field is empty");
         } else if (!ValidationUtil.validateUsername(usernameTxt)) {
-            setErrorField(username);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your username contains 6 to 12 " +
-                    "characters of alphabets and numbers");
+            setErrorFieldAndDisplaySnackBarMessage(username, "Please ensure your username contains 6 to 12 characters of alphabets and numbers");
         }
         else{
             resetField(username);
         }
         if (emailTxt.equals("")) {
-            setErrorField(email);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Email field is empty");
+            setErrorFieldAndDisplaySnackBarMessage(email, "Email field is empty");
         }
         else if(!ValidationUtil.validateEmail(emailTxt)) {
-            setErrorField(email);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your email is valid");
+            setErrorFieldAndDisplaySnackBarMessage(email, "Please ensure your email is valid");
         }
         else{
             resetField(email);
         }
         if (newPasswordTxt.equals("")) {
-            setErrorField(newPassword);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Password field is empty");
+            setErrorFieldAndDisplaySnackBarMessage(newPassword, "Password field is empty");
         }
         else if (!ValidationUtil.validatePassword(newPasswordTxt)){
-            setErrorField(newPassword);
             complete = complete && false;
-            SnackbarCreator.createNewSnackbar(updateBtn, "Please ensure your password contains upper case, lower case, and number, its length is at least 6");
+            setErrorFieldAndDisplaySnackBarMessage(newPassword, "Please ensure your password contains upper case, lower case, and number, its length is at least 6");
         }
         else {
             resetField(newPassword);
         }
         return complete;
+    }
+
+    private void setErrorFieldAndDisplaySnackBarMessage(EditText et, String message) {
+        setErrorField(et);
+        if(acceptMessage) {
+            SnackbarCreator.createNewSnackbar(updateBtn, message);
+            acceptMessage = false;
+        }
     }
 
     private void setErrorField(EditText et) {
