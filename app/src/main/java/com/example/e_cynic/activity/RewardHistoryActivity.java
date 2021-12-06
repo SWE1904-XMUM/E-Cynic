@@ -13,6 +13,8 @@ import com.example.e_cynic.R;
 import com.example.e_cynic.adapter.RewardHistoryAdapter;
 import com.example.e_cynic.db.UserRewardDatabase;
 import com.example.e_cynic.entity.UserReward;
+import com.example.e_cynic.session.SessionManager;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class RewardHistoryActivity extends AppCompatActivity
     private List<UserReward> userRewardList = new ArrayList<>();
     private LinearLayout LL_rewardHistory;
     private LinearLayout LL_noRewardHistory;
+    private SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +37,7 @@ public class RewardHistoryActivity extends AppCompatActivity
         setContentView(R.layout.reward);
 
         setViewComponent();
+        sm = new SessionManager(getApplicationContext());
 
         try
         {
@@ -48,8 +52,7 @@ public class RewardHistoryActivity extends AppCompatActivity
         setUpLinearLayout();
         setUpAdapter();
 
-        //TODO
-        /*if (userRewardList != null)
+        if (userRewardList != null)
         {
             LL_noRewardHistory.setVisibility(View.GONE);
             LL_rewardHistory.setVisibility(View.VISIBLE);
@@ -59,7 +62,7 @@ public class RewardHistoryActivity extends AppCompatActivity
         {
             LL_noRewardHistory.setVisibility(View.VISIBLE);
             LL_rewardHistory.setVisibility(View.GONE);
-        }*/
+        }
 
         backBtn.setOnClickListener(new View.OnClickListener()
         {
@@ -81,7 +84,8 @@ public class RewardHistoryActivity extends AppCompatActivity
 
     private void storeRewardDataIntoList() throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
-        userRewardList = UserRewardDatabase.getUserRewardsByUsername("pjou");
+        String uname = sm.getUsername();
+        userRewardList = UserRewardDatabase.getUserRewardsByUsername(uname);
     }
 
     private void setUpAdapter()
@@ -93,7 +97,7 @@ public class RewardHistoryActivity extends AppCompatActivity
 
     private void setUpLinearLayout()
     {
-        LL_rewardHistory = findViewById(R.id.LL_recycleHistory);
-        LL_noRewardHistory = findViewById(R.id.LL_noRecycleHistory);
+        LL_rewardHistory = findViewById(R.id.LL_RedeemHistory);
+        LL_noRewardHistory = findViewById(R.id.LL_noRedeemHistory);
     }
 }
