@@ -13,6 +13,8 @@ public class RequestCode
     public static final int VIEW_ORDER_DETAILS_ACTIVITY = 22;
     public static final int EDIT_ADDRESS_ACTIVITY = 23;
     public static final int EDIT_PROFILE_ACTIVITY = 24;
+    public static final int PLAY_QUIZ_ACTIVITY = 25;
+    public static final int VIEW_QUIZ_RESULT_ACTIVITY = 26;
 
     RequestCode() {}
 }

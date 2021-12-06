@@ -42,8 +42,7 @@ public class QuizResultActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(QuizResultActivity.this,QuizActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -100,5 +99,10 @@ public class QuizResultActivity extends AppCompatActivity
         {
             toastCreator.createToast(this,"Fail to store points");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

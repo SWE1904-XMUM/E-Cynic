@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.DateUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +42,7 @@ public class QuizActivity extends AppCompatActivity
             {
                 updateQuizChance();
                 Intent i = new Intent(QuizActivity.this,PlayQuizActivity.class);
-                startActivity(i);
+                startActivityForResult(i, RequestCode.PLAY_QUIZ_ACTIVITY);
             }
         });
     }
@@ -67,6 +69,17 @@ public class QuizActivity extends AppCompatActivity
             playBtn.setEnabled(true);
             sm.setCurrentDate(currentDate);
             noOfChance.setText("1");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case RequestCode.PLAY_QUIZ_ACTIVITY:
+                updateQuizChance();
+                break;
         }
     }
 

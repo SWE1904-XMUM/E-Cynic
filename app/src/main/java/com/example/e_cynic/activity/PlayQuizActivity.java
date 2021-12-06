@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
+import com.example.e_cynic.constants.RequestCode;
 import com.example.e_cynic.utils.userInteraction.AlertDialogCreator;
 
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class PlayQuizActivity extends AppCompatActivity
             {
                 Intent intent = new Intent(getApplicationContext(), QuizResultActivity.class);
                 intent.putExtra("CorrectAns", correctAnsCount);
-                startActivity(intent);
+                startActivityForResult(intent, RequestCode.VIEW_QUIZ_RESULT_ACTIVITY);
             }
 
             else
@@ -170,5 +172,16 @@ public class PlayQuizActivity extends AppCompatActivity
 
         AlertDialogCreator.createAlertDialog(this, alertTitle, "Answer: " + correctAns + ".\n\n" + explain, "NEXT QUESTION",
                 ad_positive_listener, null, null).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case RequestCode.VIEW_QUIZ_RESULT_ACTIVITY:
+                finish();
+                break;
+        }
     }
 }
