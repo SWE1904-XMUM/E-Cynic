@@ -74,7 +74,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_gravity="center"
-            android:text="You have not any redeemed reward"
+            android:text="You have not redeem anything"
             android:textStyle="bold"
             android:textSize="30dp"
             android:gravity="center"
