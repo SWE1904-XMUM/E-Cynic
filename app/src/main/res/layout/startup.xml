@@ -17,8 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="170dp"
-        android:textStyle="bold"
         android:text="~Welcome to E-Cynic~"
-        android:textColor="@color/apple_green"
-        android:textSize="20dp" />
+        android:textColor="@color/dark_green"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>

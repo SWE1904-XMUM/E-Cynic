@@ -32,10 +32,10 @@
 					android:id="@+id/textView1"
 					android:layout_width="270dp"
 					android:layout_height="wrap_content"
-					android:fontFamily="@font/inder"
-					android:text="Recycle 1"
+					android:fontFamily="@font/playfair_display_black"
+					android:text="Recycle"
 					android:textAlignment="center"
-					android:textColor="@color/black"
+					android:textColor="#113716"
 					android:textSize="32sp"
 					android:textStyle="bold"
 					android:layout_weight="5" />
@@ -142,7 +142,7 @@
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
 								android:layout_weight="1"
-								android:background="@drawable/border"
+								android:background="@drawable/border_light"
 								android:gravity="center_vertical"
 								android:hint="Address of pin location"
 								android:padding="8dp"
@@ -234,10 +234,10 @@
 							android:layout_gravity="center"
 							android:fontFamily="@font/playfair_display_black"
 							android:gravity="center"
-							android:padding="4dp"
+							android:padding="2dp"
 							android:text="- Thanks for Your Support -"
 							android:textColor="@color/dark_green"
-							android:textSize="28dp" />
+							android:textSize="27dp" />
 				
 				</LinearLayout>
 				
