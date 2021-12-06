@@ -10,8 +10,7 @@ public class SharedPreferencesDatabase {
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
     public static String getFileByUsername(String username) {
-        Cursor c = db.rawQuery("select spFile from " + sharedPreferencesTable + " where username=?",
-                new String[]{username});
+        Cursor c = db.rawQuery("select spFile from " + sharedPreferencesTable + " where username=?", new String[]{username});
         return (c.moveToNext()) ? c.getString(0) : "";
     }
 

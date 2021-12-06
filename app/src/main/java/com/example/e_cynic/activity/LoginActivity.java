@@ -16,6 +16,8 @@ import com.example.e_cynic.session.AppSharedPreferences;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class LoginActivity extends AppCompatActivity
 {
     // views
@@ -36,6 +38,18 @@ public class LoginActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        String loggedInUsername = "";
+        try {
+            loggedInUsername = AppSharedPreferences.getLoggedInUsername(LoginActivity.this) ;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(!loggedInUsername.equals("")) {
+            usernameTxt = loggedInUsername;
+            loginUser();
+            finish();
+        }
 
         setViewComponent();
 
@@ -76,18 +90,7 @@ public class LoginActivity extends AppCompatActivity
 
                         if (verify == true)
                         {
-                            AppSharedPreferences.updateUser(usernameTxt);
-                            sm = new SessionManager(LoginActivity.this);
-
-                            //Store login in session
-                            sm.setLogin(true);
-
-                            // Store username
-                            sm.setUsername(usernameTxt);
-
-                            // Redirect to home page
-                            Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
-                            startActivity(homePage);
+                            loginUser();
                         }
 
                         else
@@ -122,6 +125,21 @@ public class LoginActivity extends AppCompatActivity
                 startActivity(i);
             }
         });
+    }
+
+    private void loginUser() {
+        AppSharedPreferences.updateUser(usernameTxt);
+        sm = new SessionManager(LoginActivity.this);
+
+        //Store login in session
+        sm.setLogin(true);
+
+        // Store username
+        sm.setUsername(usernameTxt);
+
+        // Redirect to home page
+        Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
+        startActivity(homePage);
     }
 
     private void setViewComponent()
