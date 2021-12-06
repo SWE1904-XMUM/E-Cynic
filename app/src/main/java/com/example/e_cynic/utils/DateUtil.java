@@ -3,24 +3,23 @@ package com.example.e_cynic.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtil {
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YY HH:mm:ss");
+    private static SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/YY HH:mm:ss");
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public static String getCurrentDate()
     {
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        return date;
+        return dateFormat.format(new Date());
     }
 
     public static String getCurrentDateTime() {
-        return dateFormat.format(new Date().getTime());
+        return dateTimeFormat.format(new Date().getTime());
     }
 
     public static String getDateTimeByTimestamp(Long timestamp) {
-        return dateFormat.format(new Date(timestamp).getTime());
+        return dateTimeFormat.format(new Date(timestamp).getTime());
     }
 
     public static Long getCurrentTimestamp() {
@@ -29,17 +28,16 @@ public class DateUtil {
 
     public static String  getDateFromTimestamp(Long timestamp)
     {
-        return new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
+        return dateFormat.format(timestamp);
     }
 
     public static String getDuration(String currentDate,String orderDate)
     {
-        SimpleDateFormat format = new SimpleDateFormat("YY-MM-DDDD");
         try
         {
-            Date d1 = format.parse(currentDate);
-            Date d2 = format.parse(orderDate);
-            long diff = d2.getTime() - d1.getTime();
+            Date d1 = dateFormat.parse(currentDate);
+            Date d2 = dateFormat.parse(orderDate);
+            long diff = d1.getTime() - d2.getTime();
             String duration = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
             return duration;
         }
