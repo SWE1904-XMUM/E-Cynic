@@ -74,7 +74,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    private void updateView() {
         OrderDetailsAdapter adapter = new OrderDetailsAdapter(getApplicationContext(), itemList);
         rv_itemList.setAdapter(adapter);
         rv_itemList.setLayoutManager(new LinearLayoutManager(this));
