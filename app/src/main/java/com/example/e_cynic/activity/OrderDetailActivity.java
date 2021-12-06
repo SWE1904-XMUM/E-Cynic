@@ -79,6 +79,8 @@ public class OrderDetailActivity extends AppCompatActivity
                 onBackPressed();
             }
         });
+
+        updateStatus();
     }
 
     private void updateView() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException
@@ -93,6 +95,13 @@ public class OrderDetailActivity extends AppCompatActivity
         tv_status.setText(status != "" ? status : "Order not available");
         Integer points = ItemDatabase.getTotalPointByOrderId(orderId);
         tv_point.setText(status != "" ? (points >= 0 ? String.valueOf(points) : "To be confirmed") : "Order not available");
+    }
+
+    private void updateStatus()
+    {
+        orderId = Integer.valueOf(intent.getStringExtra("orderId"));
+
+        String orderDate = OrderDatabase.getOrderDateByOrderId(orderId);
     }
 
     private void setViewComponents()
