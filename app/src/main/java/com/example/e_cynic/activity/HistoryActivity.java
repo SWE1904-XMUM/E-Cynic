@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -100,6 +101,14 @@ public class HistoryActivity extends AppCompatActivity
         else {
             LL_recycleHistory.setVisibility(View.GONE);
             LL_noRecycleHistory.setVisibility(View.VISIBLE);
+
+            findViewById(R.id.btn_goRecycle).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(HistoryActivity.this, RecycleActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
 
         bottomNavBar();
