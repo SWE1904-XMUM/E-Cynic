@@ -297,7 +297,7 @@
     
                     <Button
                             android:id="@+id/btn_addresses"
-                            android:layout_width="250dp"
+                            android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_gravity="center"
                             android:layout_marginStart="100dp"
@@ -314,7 +314,7 @@
 
                     <Button
                         android:id="@+id/editBtn"
-                        android:layout_width="215dp"
+                        android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="100dp"
@@ -331,7 +331,7 @@
 
                     <Button
                         android:id="@+id/aboutBtn"
-                        android:layout_width="180dp"
+                        android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="100dp"
