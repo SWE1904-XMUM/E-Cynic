@@ -94,15 +94,16 @@
         <entry key="app/src/main/res/layout/electronic_appliances_example.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/forgot_password.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/history.xml" value="0.48901833197957983" />
+        <entry key="app/src/main/res/layout/history_orders_list.xml" value="0.7024797648991719" />
         <entry key="app/src/main/res/layout/home.xml" value="0.24269622320394563" />
         <entry key="app/src/main/res/layout/login.xml" value="0.22208743001817532" />
         <entry key="app/src/main/res/layout/order_details_list.xml" value="0.14492753623188406" />
         <entry key="app/src/main/res/layout/play_quiz.xml" value="0.2115036231884058" />
-        <entry key="app/src/main/res/layout/profile.xml" value="0.2115036231884058" />
+        <entry key="app/src/main/res/layout/profile.xml" value="0.3230769230769231" />
         <entry key="app/src/main/res/layout/quiz.xml" value="0.2115036231884058" />
-        <entry key="app/src/main/res/layout/recycle.xml" value="0.2115036231884058" />
+        <entry key="app/src/main/res/layout/recycle.xml" value="0.340080971659919" />
         <entry key="app/src/main/res/layout/redeem_points.xml" value="0.2115036231884058" />
-        <entry key="app/src/main/res/layout/rowarticle.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/rowarticle.xml" value="0.1320754716981132" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/startup.xml" value="0.2081080035650765" />
         <entry key="app/src/main/res/layout/user_addresses_list.xml" value="0.2033514492753623" />
