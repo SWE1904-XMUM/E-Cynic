@@ -6,22 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_cynic.R;
-import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.db.UserDatabase;
-import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.User;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EditProfileActivity extends AppCompatActivity
 {
@@ -60,7 +53,7 @@ public class EditProfileActivity extends AppCompatActivity
             public void onClick(View view) {
                 getViewText();
                 updateUserInformation();
-                //same code with sign up?
+
                 if(validateProfile() == true) {
                     boolean result = false;
                     try {

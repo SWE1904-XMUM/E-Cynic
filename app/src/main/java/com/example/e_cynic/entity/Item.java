@@ -14,7 +14,6 @@ public class Item {
     public Item() {
     }
 
-    // newly added -> order history
     public Item(byte[] image) {
         this.image = image;
     }

@@ -6,12 +6,14 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.e_cynic.R;
 import com.example.e_cynic.db.DatabaseConnectionProvider;
 
 public class StartupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.startup);
 
         //create database connection on startup
         DatabaseConnectionProvider.getConnection(this.getApplicationContext());
@@ -22,6 +24,6 @@ public class StartupActivity extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(StartupActivity.this, LoginActivity.class));
             }
-        },0);
+        },2000);
     }
 }

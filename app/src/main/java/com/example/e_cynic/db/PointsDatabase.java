@@ -15,7 +15,6 @@ public class PointsDatabase
 
     private static SQLiteDatabase db = DatabaseConnectionProvider.getDatabase(null);
 
-    //TODO PointsDatabase function
     public static boolean insertPoint(Point point) throws IllegalAccessException {
         ContentValues cv = PointsMapper.mapPointToContentValues(point);
         long result = db.insert(pointsTable, null, cv);

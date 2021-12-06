@@ -12,7 +12,6 @@ public class Order {
     public Order() {
     }
 
-    // newly added -> order history
     public Order(@Nullable Integer orderId, @Nullable String status, Long date) {
         this.orderId = orderId;
         this.date = date;

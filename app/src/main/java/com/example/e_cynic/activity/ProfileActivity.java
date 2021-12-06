@@ -99,7 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilePhone = findViewById(R.id.profilePhone);
     }
 
-    private void setUpProfileText() {
+    public void setUpProfileText() {
         String uname = sm.getUsername();
         User user = new User();
 
