@@ -75,7 +75,7 @@ public class QuizResultActivity extends AppCompatActivity
 
     private void insertPointsIntoDb(int p)
     {
-        int userId = UserDatabase.getUserIdByUsername("pjou");
+        int userId = UserDatabase.getUserIdByUsername(sm.getUsername());
         Long date = DateUtil.getCurrentTimestamp();
         Point point = new Point(null,userId,p,date);
 
