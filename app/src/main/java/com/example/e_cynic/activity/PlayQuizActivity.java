@@ -29,7 +29,7 @@ public class PlayQuizActivity extends AppCompatActivity
     private int correctAnsCount = 0, qCount = 1;
     static final private int qc = 5;
 
-    ArrayList<ArrayList<String>> quizArray = new ArrayList<>();
+    private ArrayList<ArrayList<String>> quizArray = new ArrayList<>();
 
     private DialogInterface.OnClickListener ad_positive_listener = new DialogInterface.OnClickListener() {
         @Override

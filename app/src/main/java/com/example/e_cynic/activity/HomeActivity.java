@@ -18,10 +18,10 @@ public class HomeActivity extends AppCompatActivity
 {
     // Views
     private ImageView info,iv_slideshow;
-    RecyclerView article;
+    private RecyclerView article;
 
     //article array
-    String s1[], s2[], s3[];
+    private String s1[], s2[], s3[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

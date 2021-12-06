@@ -20,8 +20,8 @@ import java.util.List;
 
 public class RewardHistoryAdapter extends RecyclerView.Adapter<RewardHistoryAdapter.ViewHolder>
 {
-    Context context;
-    List<UserReward> userRewardList;
+    private Context context;
+    private List<UserReward> userRewardList;
 
     public RewardHistoryAdapter(Context context, List<UserReward> userRewardList)
     {

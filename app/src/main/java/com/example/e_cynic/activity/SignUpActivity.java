@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity
     private String addressLine1Txt;
     private String addressLine2Txt;
     private String addressLine3Txt;
-    String stateTxt;
+    private String stateTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

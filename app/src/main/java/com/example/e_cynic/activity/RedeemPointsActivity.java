@@ -22,10 +22,10 @@ public class RedeemPointsActivity extends AppCompatActivity
 {
     private ImageView backBtn;
     private TextView availablePoints;
-    SessionManager sm;
-    List<Voucher> voucherList;
-    RecyclerView voucherRecyclerView;
-    VoucherListAdapter redeemListAdapter;
+    private SessionManager sm;
+    private List<Voucher> voucherList;
+    private RecyclerView voucherRecyclerView;
+    private VoucherListAdapter redeemListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

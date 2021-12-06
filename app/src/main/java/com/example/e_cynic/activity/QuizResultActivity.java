@@ -22,8 +22,8 @@ public class QuizResultActivity extends AppCompatActivity
     private int totalPoints;
 
     // session manager
-    SessionManager sm;
-    ToastCreator toastCreator;
+    private SessionManager sm;
+    private ToastCreator toastCreator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

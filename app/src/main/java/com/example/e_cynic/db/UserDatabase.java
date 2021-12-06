@@ -71,4 +71,11 @@ public class UserDatabase
         long result = db.update(usersTable, cv, "userId=?", new String[]{String.valueOf(new_user.userId)});
         return result > 0;
     }
+
+    public static boolean editUserPassword(String username, String email, String newPassword) {
+        ContentValues cv = new ContentValues();
+        cv.put("password", newPassword);
+        long result = db.update(usersTable, cv, "username=? and email=?", new String[]{username, email})  ;
+        return result > 0;
+    }
 }

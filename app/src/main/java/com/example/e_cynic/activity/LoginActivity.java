@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity
     private int signUpDelay = 1000;
 
     // session manager
-    SessionManager sm;
+    private SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

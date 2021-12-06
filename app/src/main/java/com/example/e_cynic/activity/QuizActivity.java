@@ -19,8 +19,8 @@ public class QuizActivity extends AppCompatActivity
 {
     private Button playBtn;
     private TextView noOfChance;
-    String currentDate,date;
-    SessionManager sm;
+    private String currentDate,date;
+    private SessionManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

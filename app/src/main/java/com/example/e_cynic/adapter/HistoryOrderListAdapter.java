@@ -24,9 +24,9 @@ import java.util.List;
 
 public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderListAdapter.MyViewHolder>
 {
-    Context context;
+    private Context context;
     private List<Order> historyOrders;
-    AppCompatActivity activity;
+    private AppCompatActivity activity;
 
     public HistoryOrderListAdapter(Context context, List<Order> historyOrders, AppCompatActivity activity)
     {
