@@ -47,9 +47,12 @@ public class QuizResultActivity extends AppCompatActivity
             }
         });
 
+        // update text view of total score
+        // one score represent 3 points
         int p = score * 3;
         tp.setText(String.valueOf(p));
 
+        // Store total points into session manager
         totalPoints = sm.getTotalPoints();;
         totalPoints += (score * 3);
         sm.setTotalPoints(totalPoints);

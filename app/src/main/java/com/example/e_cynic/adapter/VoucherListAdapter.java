@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.e_cynic.R;
 import com.example.e_cynic.activity.RedeemPointsActivity;
 import com.example.e_cynic.db.UserDatabase;
@@ -22,7 +20,6 @@ import com.example.e_cynic.entity.Voucher;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.userInteraction.ToastCreator;
-
 import java.util.List;
 
 public class VoucherListAdapter extends RecyclerView.Adapter<VoucherListAdapter.MyViewHolder>

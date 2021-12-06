@@ -40,7 +40,7 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     private FusedLocationProviderClient client;
     private TextView pinAddress;
     private Button confirmButton;
-    private Address currentAddressValue; //address of pin location
+    private Address currentAddressValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -87,7 +87,8 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
-//        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+        //TODO -> still needed?
+        //LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
         LatLng latLng = new LatLng(2.832703706851475, 101.7069749970963); //XMUM's address
         MarkerOptions markerOptions =
                 new MarkerOptions().position(latLng).title("Your location").draggable(true);
