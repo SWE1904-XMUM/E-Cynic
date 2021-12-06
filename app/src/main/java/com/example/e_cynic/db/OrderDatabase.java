@@ -58,4 +58,16 @@ public class OrderDatabase
         Cursor c = db.rawQuery("select status from orders where orderId=?", new String[]{String.valueOf(orderId)});
         return c.moveToNext() ? c.getString(0) : "";
     }
+
+    public static String getOrderDateTimeByOrderId(Integer orderId) {
+        Cursor c = db.rawQuery("select " + date + " from orders where orderId=?", new String[]{String.valueOf(orderId)});
+        return c.moveToNext() ? c.getString(0) : "";
+    }
+
+    public static boolean editOrderStatusByOrderId(Integer orderId,String orderStatus) {
+        ContentValues cv = new ContentValues();
+        cv.put(status,orderStatus);
+        long result = db.update(ordersTable, cv, "orderId=?", new String[]{String.valueOf(orderId)})  ;
+        return result > 0;
+    }
 }

@@ -40,7 +40,6 @@ public class ItemDatabase
         return (c.moveToNext()) ? ItemMapper.mapCursorToOneItem(c) : null;
     }
 
-    // newly added function -> order history
     public static Bitmap getFirstItemImageByOrderId(Integer orderId) throws NoSuchMethodException, NoSuchFieldException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Item item = getFirstItemByOrderId(orderId);
 
@@ -60,5 +59,12 @@ public class ItemDatabase
     public static Integer getTotalPointByOrderId(Integer orderId) {
         Cursor c = db.rawQuery("select SUM(point) from items where orderId=? group by orderId", null);
         return c.moveToNext() ? c.getInt(0) : -1;
+    }
+
+    public static boolean editItemPointsByItemId(Integer itemId,Integer itemPoints) {
+        ContentValues cv = new ContentValues();
+        cv.put(point,itemPoints);
+        long result = db.update(itemsTable, cv, "itemId=?", new String[]{String.valueOf(itemId)})  ;
+        return result > 0;
     }
 }
