@@ -113,7 +113,6 @@ public class OrderDetailActivity extends AppCompatActivity
         String orderDateTime = DateUtil.getDateFromTimestamp(Long.valueOf(OrderDatabase.getOrderDateTimeByOrderId(orderId)));
         String currentDateTime = DateUtil.getCurrentDate();
         String duration = DateUtil.getDuration(currentDateTime,orderDateTime);
-        System.out.println("Duration " + duration);
 
         if (Integer.parseInt(duration) >= 3)
         {

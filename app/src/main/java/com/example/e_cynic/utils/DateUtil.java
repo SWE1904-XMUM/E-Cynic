@@ -34,7 +34,7 @@ public class DateUtil {
 
     public static String getDuration(String currentDate,String orderDate)
     {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("YY-MM-DDDD");
         try
         {
             Date d1 = format.parse(currentDate);
