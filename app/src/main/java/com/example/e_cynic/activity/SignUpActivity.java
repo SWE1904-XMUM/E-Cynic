@@ -75,7 +75,6 @@ public class SignUpActivity extends AppCompatActivity
 
                 if (!fieldDataIsComplete())
                 {
-//                    SnackbarCreator.createNewSnackbar(view,"Please fill in required field.");
                     return;
                 }
 

@@ -32,13 +32,13 @@ public class QuizActivity extends AppCompatActivity
 
         setViewComponent();
         bottomNavBar();
-        quizChance();
 
         playBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                updateQuizChance();
                 Intent i = new Intent(QuizActivity.this,PlayQuizActivity.class);
                 startActivity(i);
             }
@@ -51,7 +51,7 @@ public class QuizActivity extends AppCompatActivity
         noOfChance = findViewById(R.id.noOfChance);
     }
 
-    private void quizChance()
+    private void updateQuizChance()
     {
         date = sm.getDate();
         currentDate = DateUtil.getCurrentDate();
