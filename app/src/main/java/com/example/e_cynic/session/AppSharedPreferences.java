@@ -1,6 +1,15 @@
 package com.example.e_cynic.session;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.service.autofill.UserData;
+
 import com.example.e_cynic.db.SharedPreferencesDatabase;
+import com.example.e_cynic.db.UserDatabase;
+import com.example.e_cynic.entity.User;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class AppSharedPreferences {
     public static String sharedPreferencesFile;
@@ -19,5 +28,22 @@ public class AppSharedPreferences {
 
     public static String getSpFile() {
         return sharedPreferencesFile;
+    }
+
+    public static String getLoggedInUsername(Context context) {
+        List<String> usernameList = UserDatabase.getAllUsername();
+        SharedPreferences sp = null;
+        System.out.println(usernameList);
+        if(usernameList == null) {
+            return "";
+        }
+        for (String username : usernameList) {
+            sp = context.getSharedPreferences(SharedPreferencesDatabase.getFileByUsername(username), Context.MODE_PRIVATE);
+            if(sp.getBoolean("LOGIN",true)) {
+                System.out.println("login username: " + sp.getString("USERNAME",""));
+                return sp.getString("USERNAME","");
+            }
+        }
+        return "";
     }
 }

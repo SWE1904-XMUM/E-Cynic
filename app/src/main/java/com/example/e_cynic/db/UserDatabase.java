@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.e_cynic.activity.StartupActivity;
+import com.example.e_cynic.db.mapper.Mapper;
 import com.example.e_cynic.db.mapper.UserMapper;
 import com.example.e_cynic.entity.User;
 
@@ -77,5 +78,14 @@ public class UserDatabase
         cv.put("password", newPassword);
         long result = db.update(usersTable, cv, "username=? and email=?", new String[]{username, email})  ;
         return result > 0;
+    }
+
+    public static List<String> getAllUsername() {
+        Cursor c = db.rawQuery("select username from " + usersTable, null);
+        List<String> usernameList = new ArrayList<>();
+        while(c.moveToNext()) {
+            usernameList.add(c.getString(0));
+        }
+        return usernameList;
     }
 }
