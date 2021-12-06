@@ -52,6 +52,9 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
 
         //create userReward database
         sqLiteDatabase.execSQL("create table userRewards (rewardId integer primary key autoincrement, userId integer not null, date long not null, rewardItem text not null, points integer not null)");
+
+        //create shared preferences database
+        sqLiteDatabase.execSQL("create table sharedPreferences(userId integer primary key, username text not null, spFile text not null)");
     }
 
     @Override
@@ -63,6 +66,7 @@ public class DatabaseConnectionProvider extends SQLiteOpenHelper {
         databases_name.add("orders");
         databases_name.add("points");
         databases_name.add("userRewards");
+        databases_name.add("sharedPreferences");
         for (int index = 0; index < databases_name.size(); index++) {
             sqLiteDatabase.execSQL("drop table if exists " + databases_name.get(index));
         }

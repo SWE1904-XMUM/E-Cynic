@@ -12,7 +12,7 @@ public class SessionManager
     // Constructor
     public SessionManager(Context context)
     {
-        sp = context.getSharedPreferences("E-Cynic",context.MODE_PRIVATE);
+        sp = context.getSharedPreferences(AppSharedPreferences.getSpFile(),context.MODE_PRIVATE);
         edt = sp.edit();
         edt.apply();
     }
@@ -41,8 +41,8 @@ public class SessionManager
     public String getUsername()
     {
         //TODO return username
-//        return sp.getString("USERNAME","");
-        return "testuser";
+        return sp.getString("USERNAME","");
+//        return "testuser";
     }
 
     public void setTotalPoints(int totalPoints)

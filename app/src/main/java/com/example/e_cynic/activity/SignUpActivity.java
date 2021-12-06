@@ -20,6 +20,7 @@ import com.example.e_cynic.db.AddressDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.entity.Address;
 import com.example.e_cynic.entity.User;
+import com.example.e_cynic.session.AppSharedPreferences;
 import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 
@@ -127,6 +128,7 @@ public class SignUpActivity extends AppCompatActivity
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+                                    AppSharedPreferences.updateUser(usernameTxt);
                                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                 }
                             }, DELAY);
