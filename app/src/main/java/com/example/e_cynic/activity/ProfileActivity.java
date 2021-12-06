@@ -122,6 +122,7 @@ public class ProfileActivity extends AppCompatActivity {
             case RequestCode.EDIT_PROFILE_ACTIVITY:
                 if(resultCode == RESULT_OK) {
                     SnackbarCreator.createNewSnackbar(editProfile, "Profile has been updated");
+                    setUpProfileText();
                 }
                 else if (resultCode == RESULT_CANCELED) {
                     SnackbarCreator.createNewSnackbar(editProfile, "Profile was not updated");
