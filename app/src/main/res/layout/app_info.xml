@@ -1,143 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.AppInfoActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="vertical">
-
-
-            <ImageView
-                android:id="@+id/backBtn"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="2dp"
-                app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
-                app:tint="@color/apple_green" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/redeemNameList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/playfair_display_black"
-                android:text="How the recycling works?"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/playBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/backBtn" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/redeemImgList"
-                        android:layout_width="300dp"
-                        android:layout_height="160dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/border_step"
-                        android:padding="9dp"
-                        app:layout_constraintBottom_toTopOf="@+id/img2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/redeemNameList"
-                        app:srcCompat="@drawable/step1" />
-
-                    <ImageView
-                        android:id="@+id/img2"
-                        android:layout_width="300dp"
-                        android:layout_height="205dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/border_step"
-                        android:padding="9dp"
-                        app:layout_constraintBottom_toTopOf="@+id/img3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/img2"
-                        app:srcCompat="@drawable/step2" />
-
-                    <ImageView
-                        android:id="@+id/img3"
-                        android:layout_width="300dp"
-                        android:layout_height="180dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/border_step"
-                        android:padding="9dp"
-                        app:layout_constraintBottom_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/img2"
-                        app:srcCompat="@drawable/step3" />
-
-                </LinearLayout>
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".activity.AppInfoActivity">
+	
+	<ImageView
+			android:id="@+id/backBtn"
+			android:layout_width="75dp"
+			android:layout_height="75dp"
+			android:layout_marginVertical="2dp"
+			android:layout_marginHorizontal="12dp"
+			app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
+			app:tint="@color/apple_green" />
+	
+	
+	<TextView
+			android:id="@+id/redeemNameList"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:fontFamily="@font/playfair_display_black"
+			android:text="How the recycling works?"
+			android:textColor="@color/black"
+			android:paddingVertical="30dp"
+			android:textSize="24sp" />
+	
+	
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_gravity="center">
+		
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginHorizontal="50dp"
+				android:orientation="vertical">
+			
+			
+			<ImageView
+					android:id="@+id/redeemImgList"
+					android:layout_width="match_parent"
+					android:layout_height="250dp"
+					android:layout_gravity="center"
+					android:layout_marginVertical="10dp"
+					android:background="@drawable/border_step"
+					app:srcCompat="@drawable/step1" />
+			
+			<ImageView
+					android:id="@+id/img2"
+					android:layout_width="match_parent"
+					android:layout_height="250dp"
+					android:layout_gravity="center"
+					android:layout_marginVertical="10dp"
+					android:background="@drawable/border_step"
+					app:srcCompat="@drawable/step2" />
+			
+			<ImageView
+					android:id="@+id/img3"
+					android:layout_width="match_parent"
+					android:layout_height="250dp"
+					android:layout_gravity="center"
+					android:layout_marginVertical="10dp"
+					android:background="@drawable/border_step"
+					app:srcCompat="@drawable/step3" />
+		
+		
+		</LinearLayout>
+	</ScrollView>
 
 
-            </ScrollView>
-        </LinearLayout>
-
-    </LinearLayout>
 </LinearLayout>
