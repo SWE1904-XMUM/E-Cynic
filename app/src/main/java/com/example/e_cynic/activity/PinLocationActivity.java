@@ -77,7 +77,12 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
                     ToastCreator toastCreator = new ToastCreator();
                     toastCreator.createToast(getApplicationContext(),currentLocation.getLatitude()+""+currentLocation.getLongitude());
                 }
-
+                else {
+                    //set location to XMUM
+                    currentLocation = new Location("");
+                    currentLocation.setLongitude(101.7069749970963);
+                    currentLocation.setLatitude(2.832703706851475);
+                }
                 supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
                 supportMapFragment.getMapAsync(PinLocationActivity.this);
             }
@@ -87,10 +92,7 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
-        //LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
-
-        //XMUM's address
-        LatLng latLng = new LatLng(2.832703706851475, 101.7069749970963);
+        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
 
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Your location").draggable(true);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
