@@ -1,7 +1,5 @@
 package com.example.e_cynic.activity;
 
-import static com.example.e_cynic.db.AddressDatabase.postcode;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -41,6 +39,7 @@ import com.example.e_cynic.utils.ValidationUtil;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class RecycleActivity extends AppCompatActivity {
@@ -252,7 +251,12 @@ public class RecycleActivity extends AppCompatActivity {
 
                                 int colInd = cursor.getColumnIndex(filePath[0]);
                                 String imgPath = cursor.getString(colInd);
-                                items.get(clickedItem).image = ImageUtil.imagePathToByteArray(imgPath);
+//                                items.get(clickedItem).image = ImageUtil.imagePathToByteArray(imgPath);
+                                try {
+                                    items.get(clickedItem).image = ImageUtil.bitmapToByteArray(MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage));
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                                 updateRecyclerView();
                                 cursor.close();
                             }
