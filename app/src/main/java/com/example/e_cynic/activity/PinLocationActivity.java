@@ -87,9 +87,11 @@ public class PinLocationActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
-        //TODO -> still needed?
-        //LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
-        LatLng latLng = new LatLng(2.832703706851475, 101.7069749970963); //XMUM's address
+        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+
+        //XMUM's address
+        //LatLng latLng = new LatLng(2.832703706851475, 101.7069749970963);
+
         MarkerOptions markerOptions =
                 new MarkerOptions().position(latLng).title("Your location").draggable(true);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
