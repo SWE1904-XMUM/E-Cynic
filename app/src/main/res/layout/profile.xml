@@ -190,7 +190,7 @@
 									android:paddingVertical="5dp"
 									android:layout_weight="4"
 									android:textSize="15dp"
-									android:text="Redeem Points" />
+									android:text="My Rewards" />
 						
 						</LinearLayout>
 					
