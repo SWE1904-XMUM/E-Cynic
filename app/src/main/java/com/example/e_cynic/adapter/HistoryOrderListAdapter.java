@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_cynic.R;
 import com.example.e_cynic.activity.OrderDetailActivity;
 import com.example.e_cynic.db.ItemDatabase;
+import com.example.e_cynic.db.OrderDatabase;
 import com.example.e_cynic.entity.Order;
 import com.example.e_cynic.utils.DateUtil;
 
@@ -47,6 +48,17 @@ public class HistoryOrderListAdapter extends RecyclerView.Adapter<HistoryOrderLi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position)
     {
+        int orderId = Integer.valueOf(historyOrders.get(position).orderId);
+        String orderDateTime = DateUtil.getDateFromTimestamp(Long.valueOf(OrderDatabase.getOrderDateTimeByOrderId(orderId)));
+        String currentDateTime = DateUtil.getCurrentDate();
+        String duration = DateUtil.getDuration(currentDateTime,orderDateTime);
+
+        if (Integer.parseInt(duration) >= 3)
+        {
+            // update order status to "collected"
+            OrderDatabase.editOrderStatusByOrderId(orderId,"collected");
+        }
+
         try
         {
             holder.orderImageList.setImageBitmap(ItemDatabase.getFirstItemImageByOrderId(historyOrders.get(position).orderId));

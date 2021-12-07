@@ -25,7 +25,6 @@ import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.DateUtil;
 import com.example.e_cynic.utils.userInteraction.ToastCreator;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class OrderDetailActivity extends AppCompatActivity
@@ -120,9 +119,6 @@ public class OrderDetailActivity extends AppCompatActivity
             {
                 ItemDatabase.editItemPointsByItemId(itemList.get(i).itemId,50);
             }
-
-            // update order status to "collected"
-            OrderDatabase.editOrderStatusByOrderId(orderId,"collected");
 
             // get total points of order
             int totalPoints = (itemList.size()*50);
