@@ -6,34 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProfileActivity">
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/apple_green">
 
-        <TextView
-            android:id="@+id/redeemNameList"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/playfair_display_black"
-            android:text="Profile"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/logoutBtn"
-            android:layout_width="43dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/ic_baseline_logout_24"
-            app:tint="@color/white" />
+            <TextView
+                android:id="@+id/redeemNameList"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/logoutBtn"
+                android:layout_width="43dp"
+                android:layout_height="38dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/ic_baseline_logout_24"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
 
     </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -128,14 +136,14 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="20dp"
-                        android:padding="5dp"
-                        android:layout_gravity="center"
                         android:background="@drawable/bg_list"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -144,10 +152,10 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:padding="3dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="3dp">
 
                                 <ImageView
                                     android:id="@+id/redeemPointsBtn"
@@ -181,18 +189,18 @@
                             <LinearLayout
                                 android:layout_width="3dp"
                                 android:layout_height="80dp"
+                                android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:layout_gravity="center"
                                 android:background="@color/black"
                                 android:orientation="vertical"></LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:padding="3dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="3dp">
 
                                 <ImageView
                                     android:id="@+id/myRewardBtn"
@@ -307,23 +315,23 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
-    
+
                     <Button
-                            android:id="@+id/btn_addresses"
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="80dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="80dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/bg_button"
-                            android:text="Saved Addresses"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textColorHighlight="@color/white"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                        android:id="@+id/btn_addresses"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="80dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_button"
+                        android:text="Saved Addresses"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="@color/white"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/editBtn"

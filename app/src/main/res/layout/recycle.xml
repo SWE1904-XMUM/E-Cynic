@@ -51,7 +51,7 @@
 
                     <TextView
                         android:id="@+id/redeemNameList"
-                        android:layout_width="380dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="5dp"
@@ -60,17 +60,15 @@
                         android:fontFamily="@font/inder"
                         android:text="Please enter item(s) that need to recycle."
                         android:textColor="@color/black"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/example"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignRight="@+id/redeemNameList"
+                        android:layout_alignEnd="@+id/redeemNameList"
                         android:layout_alignBottom="@+id/redeemNameList"
-                        android:paddingRight="170dp"
-                        android:paddingBottom="6dp"
                         app:srcCompat="@drawable/ic_baseline_contact_support_24"
                         app:tint="@android:color/holo_red_dark" />
 
@@ -98,21 +96,21 @@
                     android:layout_marginHorizontal="10dp"
                     android:nestedScrollingEnabled="false"
                     android:padding="5dp" />
-    
+
                 <Button
-                        android:id="@+id/btn_addItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/enterItemDetail"
-                        android:layout_marginHorizontal="50dp"
-                        android:layout_marginVertical="15dp"
-                        android:background="@drawable/bg_button"
-                        android:fontFamily="@font/inder"
-                        android:text="+ Add Item"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                    android:id="@+id/btn_addItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/enterItemDetail"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginVertical="15dp"
+                    android:background="@drawable/bg_button"
+                    android:fontFamily="@font/inder"
+                    android:text="+ Add Item"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/divider2"
@@ -281,7 +279,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_inputfield"
                             android:ems="10"
-                            android:hint="Enter city"
+                            android:hint="City"
                             android:inputType="text"
                             android:padding="5dp" />
                     </LinearLayout>
