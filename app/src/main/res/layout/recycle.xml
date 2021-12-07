@@ -21,7 +21,7 @@
             android:fontFamily="@font/playfair_display_black"
             android:text="Recycle"
             android:textColor="@color/white"
-            android:textSize="34dp" />
+            android:textSize="30dp" />
 
     </FrameLayout>
 
@@ -48,20 +48,20 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-    
+
                     <TextView
-                            android:id="@+id/redeemNameList"
-                            android:layout_width="380dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/inder"
-                            android:text="Please enter item(s) that need to recycle."
-                            android:textColor="@color/black"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
+                        android:id="@+id/redeemNameList"
+                        android:layout_width="380dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/inder"
+                        android:text="Please enter item(s) that need to recycle."
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/example"
@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@+id/redeemNameList"
                         android:layout_alignBottom="@+id/redeemNameList"
-                        android:paddingRight="220dp"
+                        android:paddingRight="170dp"
                         android:paddingBottom="6dp"
                         app:srcCompat="@drawable/ic_baseline_contact_support_24"
                         app:tint="@android:color/holo_red_dark" />
@@ -175,6 +175,7 @@
                         android:fontFamily="@font/inder"
                         android:text="SELECT FROM EXISTING ADDRESS"
                         android:textAllCaps="false"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -188,6 +189,7 @@
                         android:fontFamily="@font/inder"
                         android:text="PIN LOCATION"
                         android:textAllCaps="false"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

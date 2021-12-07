@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:gravity="center">
 
         <ImageView
@@ -26,17 +26,18 @@
 
         <TextView
             android:id="@+id/redeemNameList"
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="2dp"
+            android:layout_gravity="center"
             android:fontFamily="@font/inder"
             android:text="Points Redeem Page"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -48,23 +49,27 @@
 
         <LinearLayout
 
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="55dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
             android:background="@drawable/bg_text"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/availablePoints"
-                android:layout_width="125dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="85dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_gravity="center"
+                android:padding="1dp"
                 android:fontFamily="serif"
                 android:text="0"
                 android:textAlignment="center"
@@ -78,17 +83,19 @@
 
             <TextView
                 android:id="@+id/redeemPointList"
-                android:layout_width="220dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
                 android:fontFamily="@font/inder"
                 android:text="Points Available"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/playBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,17 +109,18 @@
 
         <TextView
             android:id="@+id/redeemDateList"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
             android:fontFamily="@font/inder"
             android:text="Redeem Your Points"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/playBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
