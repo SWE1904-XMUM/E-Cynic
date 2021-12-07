@@ -60,7 +60,7 @@
                         android:fontFamily="@font/inder"
                         android:text="Please enter item(s) that need to recycle."
                         android:textColor="@color/black"
-                        android:textSize="24sp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <ImageView
