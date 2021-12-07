@@ -40,9 +40,7 @@ public class SessionManager
     // Get username
     public String getUsername()
     {
-        //TODO return username
         return sp.getString("USERNAME","");
-//        return "testuser";
     }
 
     public void setTotalPoints(int totalPoints)
