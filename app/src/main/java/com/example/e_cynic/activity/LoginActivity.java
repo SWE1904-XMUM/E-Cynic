@@ -6,17 +6,12 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.e_cynic.R;
-import com.example.e_cynic.db.SharedPreferencesDatabase;
 import com.example.e_cynic.db.UserDatabase;
 import com.example.e_cynic.session.AppSharedPreferences;
 import com.example.e_cynic.session.SessionManager;
 import com.example.e_cynic.utils.userInteraction.SnackbarCreator;
-
-import java.lang.reflect.InvocationTargetException;
 
 public class LoginActivity extends AppCompatActivity
 {
@@ -58,7 +53,6 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                // TODO remove login (after done)
                 updateViewText();
                 if (!fieldDataIsComplete())
                 {
@@ -99,10 +93,6 @@ public class LoginActivity extends AppCompatActivity
                         }
                     }
                 }
-/*
-                Intent homePage = new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(homePage);
-*/
             }
         });
 
