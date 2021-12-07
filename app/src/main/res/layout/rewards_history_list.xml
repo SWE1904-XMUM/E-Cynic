@@ -13,17 +13,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="3dp"
             android:orientation="vertical" >
 
             <LinearLayout
 
-                android:layout_width="385dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
                 android:layout_gravity="center"
+                android:padding="2dp"
                 android:background="@drawable/bg_list"
                 android:orientation="vertical">
 
@@ -36,10 +39,11 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="15dp"
+                        android:padding="3dp"
                         app:layout_constraintBottom_toTopOf="@+id/redeemNameList"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -48,20 +52,22 @@
                         app:srcCompat="@drawable/baskin" />
 
                     <LinearLayout
-                        android:layout_width="265dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
+                        android:layout_gravity="center"
+                        android:padding="3dp"
                         android:orientation="vertical" >
 
                         <TextView
                             android:id="@+id/redeemNameList"
-                            android:layout_width="260dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="1dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="1dp"
-                            android:layout_marginBottom="1dp"
+                            android:layout_marginBottom="3dp"
                             android:fontFamily="@font/inder"
                             android:text="Baskin Robbins: RM20 Digital Cash Voucher"
                             android:textColor="@color/black"
@@ -74,7 +80,7 @@
 
                         <TextView
                             android:id="@+id/redeemPointList"
-                            android:layout_width="250dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="1dp"
                             android:layout_marginTop="5dp"
@@ -92,7 +98,7 @@
 
                         <TextView
                             android:id="@+id/redeemDateList"
-                            android:layout_width="250dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="1dp"
                             android:layout_marginTop="1dp"

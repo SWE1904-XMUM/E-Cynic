@@ -6,34 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProfileActivity">
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/apple_green">
 
-        <TextView
-            android:id="@+id/redeemNameList"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/playfair_display_black"
-            android:text="Profile"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/logoutBtn"
-            android:layout_width="43dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="360dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/ic_baseline_logout_24"
-            app:tint="@color/white" />
+            <TextView
+                android:id="@+id/redeemNameList"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/playfair_display_black"
+                android:text="Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/logoutBtn"
+                android:layout_width="43dp"
+                android:layout_height="38dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/ic_baseline_logout_24"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
 
     </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,7 +91,7 @@
 
                         <TextView
                             android:id="@+id/textView2"
-                            android:layout_width="125dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="35dp"
@@ -121,34 +129,41 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="55dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="55dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/bg_list"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
 
                             <LinearLayout
-                                android:layout_width="150dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:padding="3dp">
 
                                 <ImageView
                                     android:id="@+id/redeemPointsBtn"
                                     android:layout_width="74dp"
                                     android:layout_height="61dp"
                                     android:layout_gravity="center"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
                                     app:srcCompat="@drawable/ic_baseline_card_giftcard_24"
                                     app:tint="@color/dark_green" />
 
@@ -157,10 +172,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginTop="3dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="1dp"
                                     android:fontFamily="@font/playfair_display_black"
                                     android:text="Redeem Points"
                                     android:textSize="14sp"
@@ -174,21 +189,26 @@
                             <LinearLayout
                                 android:layout_width="3dp"
                                 android:layout_height="80dp"
+                                android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:background="@color/black"
                                 android:orientation="vertical"></LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="150dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:padding="3dp">
 
                                 <ImageView
                                     android:id="@+id/myRewardBtn"
                                     android:layout_width="74dp"
                                     android:layout_height="61dp"
                                     android:layout_gravity="center"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
                                     app:srcCompat="@drawable/ic_baseline_stars_24"
                                     app:tint="@color/dark_green" />
 
@@ -197,12 +217,12 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginTop="3dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="1dp"
                                     android:fontFamily="@font/playfair_display_black"
-                                    android:text="My Rewards"
+                                    android:text="  My Rewards  "
                                     android:textSize="14sp"
                                     app:layout_constraintBottom_toTopOf="@+id/textView5"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -220,6 +240,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -258,7 +279,7 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="125dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="5dp"
@@ -294,32 +315,32 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
-    
+
                     <Button
-                            android:id="@+id/btn_addresses"
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="100dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="100dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/bg_button"
-                            android:text="Saved Addresses"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textColorHighlight="@color/white"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                        android:id="@+id/btn_addresses"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="80dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_button"
+                        android:text="Saved Addresses"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="@color/white"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/editBtn"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
-                        android:layout_marginStart="100dp"
+                        android:layout_marginStart="80dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="100dp"
+                        android:layout_marginEnd="80dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/bg_button"
                         android:text="EDIT PROFILE"
@@ -334,9 +355,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
-                        android:layout_marginStart="100dp"
+                        android:layout_marginStart="80dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="100dp"
+                        android:layout_marginEnd="80dp"
                         android:layout_marginBottom="50dp"
                         android:background="@drawable/bg_button"
                         android:text="ABOUT E-CYNIC"
