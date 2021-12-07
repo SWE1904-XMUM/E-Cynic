@@ -122,22 +122,14 @@ public class OrderDetailActivity extends AppCompatActivity
 
             // get total points of order
             int totalPoints = (itemList.size()*50);
-            System.out.println("Size "+totalPoints);
 
-            //TODO -> choose to use insert one by one or all
-            // update user's points in point db
+            // insert total points into point db
             insertPointsIntoDb(totalPoints);
-
-            /*for (int i=0; i<itemList.size(); i++)
-            {
-                insertPointsIntoDb(50);
-            }*/
 
             // update points in sp
             int tp = sm.getTotalPoints();;
             tp += totalPoints;
             sm.setTotalPoints(tp);
-            System.out.println("tp: " + tp);
 
             // display in textview
             tv_point.setText(String.valueOf(totalPoints));
