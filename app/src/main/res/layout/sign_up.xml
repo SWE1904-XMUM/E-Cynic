@@ -128,7 +128,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/inder"
-					android:text="(**Must at least 8 characters including 1 uppercase letter, and 1 alphanumeric character)"
+					android:text="(**Must at least 6 characters including 1 uppercase letter, 1 lowercase letter and 1 alphanumeric character)"
 					android:textColor="@color/black"
 					android:textSize="11sp"
 					android:justificationMode="inter_word"
